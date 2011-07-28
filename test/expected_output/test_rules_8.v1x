@@ -1,0 +1,56 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "all<predet><sp>"
+push "<adj>|<adj><*>|<adj><sint>|<adj><sint><*>|<adj><comp>|<adj><sup>"
+push 2
+addtrie action_0_start
+patterns_end:
+action_0_start:
+#<chunk name="det_det_nom">
+push "det_det_nom"
+#<lit-tag v="SN">
+push "<SN>"
+#<var n="tipus_det">
+push tipus_det
+#<var n="gen_chunk">
+push gen_chunk
+#<var n="nbr_chunk">
+push nbr_chunk
+concat 4
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+chunk 3
+#<chunk namefrom="tipus_det">
+push tipus_det
+#<lit-tag v="SN">
+push "<SN>"
+#<var n="tipus_det">
+push tipus_det
+concat 2
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+chunk 4
+out 2
+action_0_end:
+section_rules_end:

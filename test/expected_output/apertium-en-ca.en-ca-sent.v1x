@@ -1,0 +1,71 @@
+#<assembly>
+#<transfer default="chunk">
+#<def-var v="&lt;m&gt;" n="genere">
+push "genere"
+push "<m>"
+storev
+#<def-var v="&lt;sg&gt;" n="nombre">
+push "nombre"
+push "<sg>"
+storev
+#<def-var v="true" n="EOS">
+push "EOS"
+push "true"
+storev
+jmp section_rules_start
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "<sent>"
+push 1
+addtrie action_0_start
+patterns_end:
+action_0_start:
+#<var n="nombre">
+push "nombre"
+#<lit-tag v="sg">
+push "<sg>"
+storev
+#<var n="genere">
+push "genere"
+#<lit-tag v="m">
+push "<m>"
+storev
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<lit v=";">
+push ";"
+cmp
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<lit v=":">
+push ":"
+cmp
+or 2
+not
+jz when_0_end
+#<var n="EOS">
+push "EOS"
+#<lit v="true">
+push "true"
+storev
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+#<chunk name="punt">
+push "punt"
+#<lit-tag v="sent">
+push "<sent>"
+#<clip part="whole" pos="1" side="tl">
+push 1
+push "whole"
+cliptl
+lu 1
+chunk 3
+out 1
+action_0_end:
+section_rules_end:

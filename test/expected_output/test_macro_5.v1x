@@ -1,0 +1,54 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<def-macro npar="2" n="begins_ends_test">
+macro_begins_ends_test_start:
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<lit v="el_">
+push "el_"
+begins-with
+jz when_0_end
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<list n="det_canviant">
+push "uno|otro|poco|cuánto|menos|mucho|tanto|demasiado"
+begins-with-ig
+jz when_1_end
+#<lit-tag v="pl_slsg">
+push "<pl_slsg>"
+#<lit v="sg">
+push "sg"
+ends-with
+jz when_2_end
+#<lit v="al menos">
+push "al menos"
+#<list n="det_canviant">
+push "uno|otro|poco|cuánto|menos|mucho|tanto|demasiado"
+ends-with-ig
+jz when_3_end
+#<lit-tag v="det">
+push "<det>"
+#<lit v="long sentence">
+push "long sentence"
+#<lit v="sen">
+push "sen"
+cmp-substr
+out 2
+jmp choose_2_end
+when_3_end:
+jmp choose_1_end
+when_2_end:
+jmp choose_0_end
+when_1_end:
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+macro_begins_ends_test_end: ret
+#<section-rules>
+section_rules_start:
+section_rules_end:

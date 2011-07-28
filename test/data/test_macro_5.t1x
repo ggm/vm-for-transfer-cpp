@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+  </section-def-vars>
+
+  <section-def-lists>
+    <def-list n="det_canviant">
+      <list-item v="uno"/>
+      <list-item v="otro"/>
+      <list-item v="poco"/>
+      <list-item v="cuánto"/>
+      <list-item v="menos"/>
+      <list-item v="mucho"/>
+      <list-item v="tanto"/>
+      <list-item v="demasiado"/>
+    </def-list>
+  </section-def-lists>
+
+  <section-def-macros>
+
+    <def-macro n="begins_ends_test" npar="2"><!-- This macro doesn't make much sense, it's only to test these elements, which are rarely used in rules files-->
+      <choose>
+	<when>
+	  <test>
+	    <begins-with>
+	      <clip pos="1" part="lem" side="sl"/>
+	      <lit v="el_"/>
+	    </begins-with>
+	  </test>
+	  <when>
+	    <test>
+	      <begins-with-list caseless="yes">
+		<clip pos="1" part="lem" side="sl"/>
+		<list n="det_canviant"/>
+	      </begins-with-list>
+	    </test>
+	    <when>
+	      <test>
+		<ends-with caseless="no">
+		  <lit-tag v="pl_slsg"/>
+		  <lit v="sg"/>
+		</ends-with>
+	      </test>
+	      <when>
+		<test>
+		  <ends-with-list caseless="yes">
+		    <lit v="al menos"/>
+		    <list n="det_canviant"/>
+		  </ends-with-list>
+		</test>
+		  <out>
+		    <lit-tag v="det"/>
+		    <contains-substring>
+		      <lit v="long sentence"/>
+		      <lit v="sen"/>
+		    </contains-substring>
+		  </out>
+	      </when>
+	    </when>
+	  </when>
+	</when>
+      </choose>
+    </def-macro>
+  </section-def-macros>
+
+  <section-rules>
+  </section-rules>
+
+</transfer>
+

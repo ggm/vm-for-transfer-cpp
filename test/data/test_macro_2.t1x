@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+  </section-def-cats>
+
+  <section-def-attrs>
+    <def-attr n="nbr">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="nombre" v="&amp;lt;sg&amp;gt;"/>
+    <def-var n="genere" v="&amp;lt;m&amp;gt;"/>
+  </section-def-vars>
+
+  <section-def-lists>
+  </section-def-lists>
+
+  <section-def-macros>
+
+    <def-macro n="nombre_nom" npar="1"><!-- per determinar si hi ha hagut canvi de nombre en la traducció. Després d'aquesta macro s'aplica la macro 'canvia_det'. Caldria ajuntar aquesta macro i la 'canvia_det' !!!!!!! -->
+      <let>
+	<var n="nombre"/>
+	<lit v=""/>
+      </let>
+      <choose>
+	<when>
+	  <test>
+	    <and>
+	      <equal>
+		<clip pos="1" side="sl" part="nbr"/>
+		<lit-tag v="sg"/>
+	      </equal>
+	      <equal>
+		<clip pos="1" side="tl" part="nbr"/>
+		<lit-tag v="pl"/>
+	      </equal>
+	    </and>
+	  </test>
+	  <let>
+	    <var n="nombre"/>
+	    <lit-tag v="pl_slsg"/>
+	  </let>
+	</when>
+	<when>
+	  <test>
+	    <and>
+	      <equal>
+		<clip pos="1" side="sl" part="nbr"/>
+		<lit-tag v="pl"/>
+	      </equal>
+	      <equal>
+		<clip pos="1" side="tl" part="nbr"/>
+		<lit-tag v="sg"/>
+	      </equal>
+	    </and>
+	  </test>
+	  <let>
+	    <var n="nombre"/>
+	    <lit-tag v="sg_slpl"/>
+	  </let>
+	</when>
+	<otherwise>
+	  <let>
+	    <var n="nombre"/>
+	    <clip pos="1" side="tl" part="nbr"/>
+	  </let>
+	</otherwise>
+      </choose> 
+    </def-macro>
+
+  </section-def-macros>
+
+  <section-rules>
+  </section-rules>
+
+</transfer>
+

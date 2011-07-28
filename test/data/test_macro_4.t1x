@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+  </section-def-cats>
+
+  <section-def-attrs>
+    <def-attr n="a_adj">          
+      <attr-item tags="adj"/>
+      <attr-item tags="adj.sint"/>
+      <attr-item tags="adj.sint.comp"/>
+      <attr-item tags="adj.sint.sup"/>
+      <attr-item tags="adj.pos"/>
+      <attr-item tags="vblex.pp"/>
+    </def-attr>  
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="adv_adjectiu"/>
+    <def-var n="lema_SV"/>
+  </section-def-vars>
+
+  <section-def-lists>
+  </section-def-lists>
+
+  <section-def-macros>
+
+    <def-macro n="adv_adj" npar="2">
+	<choose>
+	  <when>
+	    <test>
+	      <equal>
+		<clip pos="2" side="tl" part="a_adj"/> 
+		<lit-tag v="adj.sint"/>
+	      </equal>
+	    </test>
+	    <let>
+	      <var n="adv_adjectiu"/>
+		<concat>
+		  <clip pos="2" side="tl" part="lem"/> 
+		  <clip pos="2" side="tl" part="a_adj"/>
+		  <lit-tag v="comp"/>
+		</concat>
+	    </let>
+	    <let>
+	      <var n="adv_adjectiu"/>
+		<concat>
+		  <clip pos="1" side="tl" part="whole"/> 
+		  <lit v="$ ^"/>
+		  <clip pos="2" side="tl" part="lem"/> 
+		  <clip pos="2" side="tl" part="a_adj"/>
+		  <lit-tag v="comp"/>
+		</concat>
+	    </let>
+	    <append n="lema_SV">
+	      <lit v="_enc"/>
+	    </append>
+	    <modify-case>
+	      <var n="lema_SV" />
+	      <lit v="aa"/>
+	    </modify-case>
+	    <let>
+	      <var n="lema_SV"/>
+	      <case-of pos="2" side="sl" part="lem"/>
+	    </let>
+	  </when>
+	</choose>
+    </def-macro>
+  </section-def-macros>
+
+  <section-rules>
+  </section-rules>
+
+</transfer>
+

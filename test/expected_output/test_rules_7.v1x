@@ -1,0 +1,33 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "all<predet><sp>"
+push "<adj>|<adj><*>|<adj><sint>|<adj><sint><*>|<adj><comp>|<adj><sup>"
+push 2
+addtrie action_0_start
+patterns_end:
+action_0_start:
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+#<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
+lu 4
+mlu 2
+action_0_end:
+section_rules_end:

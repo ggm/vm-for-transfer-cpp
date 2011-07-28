@@ -1,0 +1,73 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<def-macro npar="2" n="adv_adj">
+macro_adv_adj_start:
+#<clip part="a_adj" pos="2" side="tl">
+push 2
+push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex><pp>"
+cliptl
+#<lit-tag v="adj.sint">
+push "<adj><sint>"
+cmp
+jz when_0_end
+#<var n="adv_adjectiu">
+push "adv_adjectiu"
+#<clip part="lem" pos="2" side="tl">
+push 2
+push "lem"
+cliptl
+#<clip part="a_adj" pos="2" side="tl">
+push 2
+push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex><pp>"
+cliptl
+#<lit-tag v="comp">
+push "<comp>"
+concat 3
+storev
+#<var n="adv_adjectiu">
+push "adv_adjectiu"
+#<clip part="whole" pos="1" side="tl">
+push 1
+push "whole"
+cliptl
+#<lit v="$ ^">
+push "$ ^"
+#<clip part="lem" pos="2" side="tl">
+push 2
+push "lem"
+cliptl
+#<clip part="a_adj" pos="2" side="tl">
+push 2
+push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex><pp>"
+cliptl
+#<lit-tag v="comp">
+push "<comp>"
+concat 5
+storev
+#<append n="lema_SV">
+push "lema_SV"
+#<lit v="_enc">
+push "_enc"
+append 1
+#<var n="lema_SV">
+push lema_SV
+#<lit v="aa">
+push "aa"
+modify-case
+storev
+#<var n="lema_SV">
+push "lema_SV"
+#<case-of part="lem" pos="2" side="sl">
+push 2
+push "lem"
+clipsl
+case-of
+storev
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+macro_adv_adj_end: ret
+#<section-rules>
+section_rules_start:
+section_rules_end:

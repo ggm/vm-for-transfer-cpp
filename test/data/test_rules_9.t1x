@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+    <def-cat n="all"><!--BCN-->
+      <cat-item lemma="all" tags="predet.sp"/>
+    </def-cat>
+
+    <def-cat n="adj2"><!--revisar regles amb 'adj' i 'adj2' -->
+      <cat-item tags="adj"/>
+      <cat-item tags="adj.*"/>
+      <cat-item tags="adj.sint"/>
+      <cat-item tags="adj.sint.*"/>
+      <cat-item tags="adj.comp"/>
+      <cat-item tags="adj.sup"/>
+    </def-cat>
+
+    <def-cat n="nomcomu">
+      <cat-item tags="n.*"/>
+    </def-cat>
+    
+    <def-cat n="nompropi">
+      <cat-item tags="np.*"/>
+    </def-cat>
+
+    <def-cat n="nploc">
+      <cat-item tags="np.loc.*"/>
+    </def-cat>
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+  </section-def-vars>
+    <def-var n="tipus_det"/>
+    <def-var n="gen_chunk"/>
+    <def-var n="nbr_chunk"/>
+  <section-def-lists>
+
+  </section-def-lists>
+
+  <section-def-macros>
+    <def-macro n="firstWord" npar="1">
+    </def-macro>
+
+    <def-macro n="f_concord2" npar="2">
+    </def-macro>
+
+    <def-macro n="f_concord3" npar="3">
+    </def-macro>
+  </section-def-macros>
+
+  <section-rules>
+
+    <rule comment="REGLA: ALL NOUNplural (BCN: per afegir l'article definit en català 'all students' :: 'tots els estudiants'"> 
+
+      <pattern>
+	<pattern-item n="all"/>
+	<pattern-item n="adj2"/>
+	<pattern-item n="all"/>
+      </pattern>
+      <action>
+	<call-macro n="firstWord">
+	  <with-param pos="1"/>
+	</call-macro>
+	<call-macro n="f_concord2">
+	  <with-param pos="2"/>
+	  <with-param pos="1"/>
+	</call-macro>
+	<call-macro n="f_concord3">
+	  <with-param pos="2"/>
+	  <with-param pos="3"/>
+	  <with-param pos="1"/>
+	</call-macro>
+	<out>
+	  <chunk name="det_det_nom">
+	    <tags>
+	      <tag><lit-tag v="SN"/></tag>
+	    </tags>
+	    <lu>
+	      <lit v="el"/>
+	      <lit-tag v="det.def"/>
+	    </lu>
+	  </chunk>
+	</out>
+      </action>
+    </rule>
+
+  </section-rules>
+
+</transfer>

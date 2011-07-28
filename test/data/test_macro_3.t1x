@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+  </section-def-cats>
+
+  <section-def-attrs>
+    <def-attr n="nbr">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+
+    <def-attr n="a_det">
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.ind"/>
+      <attr-item tags="det.def"/>
+      <attr-item tags="det.pos"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.itg"/>
+      <attr-item tags="det.ord"/>
+      <attr-item tags="predet"/>
+      <attr-item tags="num"/>
+    </def-attr>
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="nombre"/>
+  </section-def-vars>
+
+  <section-def-lists>
+    <def-list n="det_canviant">
+      <list-item v="uno"/>
+      <list-item v="otro"/>
+      <list-item v="poco"/>
+      <list-item v="cuánto"/>
+      <list-item v="menos"/>
+      <list-item v="mucho"/>
+      <list-item v="tanto"/>
+      <list-item v="demasiado"/>
+    </def-list>
+  </section-def-lists>
+
+  <section-def-macros>
+
+    <def-macro n="canvia_det" npar="2">
+	  <choose>
+	    <when>
+	      <test>
+		<in caseless="yes">
+		  <clip pos="1" side="sl" part="lem"/>
+		  <list n="det_canviant"/>
+		</in>
+	      </test>
+	      <choose>
+		<when>
+		  <test>
+		    <or>
+		      <equal>
+			<var n="nombre"/>
+			<lit-tag v="sg_slpl"/>
+		      </equal>
+		      <and><!--perquè no doni error en casos (errors original) com 'uns arbre' -->
+			<equal>
+			  <clip pos="2" side="sl" part="nbr"/>
+			  <lit-tag v="sg"/>
+			</equal>
+			<equal>
+			  <clip pos="1" side="sl" part="nbr"/>
+			  <lit-tag v="pl"/>
+			</equal>
+		      </and>
+		    </or>
+		  </test>
+		  <choose>
+		    <when>
+		      <test>
+			<equal caseless="yes">
+			  <clip pos="1" side="tl" part="lem"/>
+			  <lit v="some"/>
+			</equal>
+		      </test>
+		      <let>
+			<clip pos="1" side="tl" part="lem"/>
+			<get-case-from pos="1">
+			  <lit v="a"/>
+			</get-case-from>
+		      </let>
+		      <let>
+			<clip pos="1" side="tl" part="a_det"/>
+			<lit-tag v="det.ind"/>
+		      </let>
+		    </when>
+		    <when>
+		      <test>
+			<equal caseless="yes">
+			  <clip pos="1" side="tl" part="lem"/>
+			  <lit v="other"/>
+			</equal>
+		      </test>
+		      <let>
+			<clip pos="1" side="tl" part="lem"/>
+			<get-case-from pos="1">
+			  <lit v="another"/>
+			</get-case-from>
+		      </let>
+		    </when>
+		  </choose>
+		</when>
+
+	      </choose>
+	    </when>
+
+	  </choose>
+	</def-macro>
+
+  </section-def-macros>
+
+  <section-rules>
+  </section-rules>
+
+</transfer>
+

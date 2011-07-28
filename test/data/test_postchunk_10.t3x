@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<postchunk>
+  <section-def-cats>
+
+    <def-cat n="SN_2words3">
+      <cat-item name="num_nom"/>
+      <cat-item name="det_nom"/>
+      <cat-item name="nom_adj"/>
+    </def-cat>
+
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+  </section-def-vars>
+
+  <section-rules>
+     <rule comment="CHUNK: SN_2words3">
+	<pattern>
+	  <pattern-item n="SN_2words3"/>
+	</pattern>
+	<action>
+	  <choose>
+	    <when>
+	      <test>
+		<equal>
+		  <lu-count/>
+		  <lit v="3"/>
+		</equal>
+	      </test>
+	      <out>
+		<b pos="2"/>
+	      </out> 
+	    </when>
+	  </choose> 
+	</action>
+      </rule>
+  </section-rules>
+
+</postchunk>

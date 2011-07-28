@@ -1,0 +1,20 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<def-macro npar="2" n="f_bcond">
+macro_f_bcond_start:
+pushsb 1
+#<lit v=" ">
+push " "
+cmp
+not
+jz when_0_end
+pushsb 1
+out 1
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+macro_f_bcond_end: ret
+#<section-rules>
+section_rules_start:
+section_rules_end:

@@ -1,0 +1,4716 @@
+#<assembly>
+#<postchunk>
+jmp section_rules_start
+#<def-macro npar="1" n="f_bcond">
+macro_f_bcond_start:
+pushsb 1
+#<lit v=" ">
+push " "
+cmp
+not
+jz when_0_end
+pushsb 1
+out 1
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+macro_f_bcond_end: ret
+#<def-macro npar="1" n="gen_nbr_determinante">
+macro_gen_nbr_determinante_start:
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+not
+jz when_1_end
+#<var n="genero">
+push "genero"
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storev
+jmp choose_1_end
+when_1_end:
+#<otherwise>
+#<var n="genero">
+push "genero"
+#<lit-tag v="m">
+push "<m>"
+storev
+choose_1_end:
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+not
+jz when_2_end
+#<var n="numero">
+push "numero"
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storev
+jmp choose_2_end
+when_2_end:
+#<otherwise>
+#<var n="numero">
+push "numero"
+#<lit-tag v="sg">
+push "<sg>"
+storev
+choose_2_end:
+macro_gen_nbr_determinante_end: ret
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "nom"
+push 1
+addtrie action_0_start
+push "adj_obj"
+push 1
+addtrie action_1_start
+push "num_nom|det_nom|nom_adj"
+push 1
+addtrie action_2_start
+push "nom_conj_nom"
+push 1
+addtrie action_3_start
+push "nom_adv_adj|nom_adj_adv|num_nom_adj|nom_adj_nom|nom_adj_adj"
+push 1
+addtrie action_4_start
+push "nom_adj_adv|nom_nom_nom|num_nom_nom|num_num_nom|nom_pr_nom|nom_nom_nom|nom_conj_nom|nom_to_inf"
+push 1
+addtrie action_5_start
+push "adj_num_nom_adj|nom_conj_nom_adj|num_nom_adv_adj|num_nom_adj_adj|nom_'adj'|'nom'_adj|nom_pr_nom_adj"
+push 1
+addtrie action_6_start
+push "nom_conj_nom_pr_nom|num_nom_pr_nom_adj|nom_pr_det_nom_nom"
+push 1
+addtrie action_7_start
+push "nom_pr_nom_pr_det_nom"
+push 1
+addtrie action_8_start
+push "nom_pr_nom_adj_nom|num_nom_adj_adv_adj"
+push 1
+addtrie action_9_start
+push "nom_pr_nom_pr_nom_adj"
+push 1
+addtrie action_10_start
+push "nom_pr_nom_pr_nom_pr_nom"
+push 1
+addtrie action_11_start
+push "num_nom_pr_nom|nom_pr_num_nom|nom_num_yearold|non_ger_nom"
+push 1
+addtrie action_12_start
+push "inf"
+push 1
+addtrie action_13_start
+push "inf_inf"
+push 1
+addtrie action_14_start
+push "inf_enc|subs_enc"
+push 1
+addtrie action_15_start
+push "inf_enc_enc|subs_enc_enc"
+push 1
+addtrie action_16_start
+push "inf_inf_enc"
+push 1
+addtrie action_17_start
+push "have_enc_pp"
+push 1
+addtrie action_18_start
+push "have_enc_enc_pp"
+push 1
+addtrie action_19_start
+push "ger"
+push 1
+addtrie action_20_start
+push "ger_enc"
+push 1
+addtrie action_21_start
+push "ger_enc_enc"
+push 1
+addtrie action_22_start
+push "be"
+push 1
+addtrie action_23_start
+push "pro_vblike"
+push 1
+addtrie action_24_start
+push "pro_vblike2"
+push 1
+addtrie action_25_start
+push "pro_vblike3"
+push 1
+addtrie action_26_start
+push "have_pp"
+push 1
+addtrie action_27_start
+push "be_ger"
+push 1
+addtrie action_28_start
+push "be_ger_enc"
+push 1
+addtrie action_29_start
+push "be_ger_inf|auxmod_inf_inf|have_pp_inf"
+push 1
+addtrie action_30_start
+push "auxmod_have_pp_inf"
+push 1
+addtrie action_31_start
+push "verbcj_inf"
+push 1
+addtrie action_32_start
+push "verbcj_inf_enc"
+push 1
+addtrie action_33_start
+push "verbcj|verbcj_perif|pro_verbcj|pro_verbcj_perif|auxmod_inf|mod_inf|auxmod_mod_inf|auxmod_have_pp|mod_inf_perif|pro_be_ger|pro_auxmod_inf|pro_mod_inf|pro_have_pp|pro_do_inf|pro_mod_inf_perif|pro_auxmod_mod_inf|pro_auxmod_have_pp|going_to_inf|pro_going_to_inf"
+push 1
+addtrie action_34_start
+push "reflexiu"
+push 1
+addtrie action_35_start
+push "hi"
+push 1
+addtrie action_36_start
+push "tenir"
+push 1
+addtrie action_37_start
+patterns_end:
+action_0_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_3_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_3_end
+when_3_end:
+choose_3_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_0_end:
+action_1_start:
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<lit-tag v="nt">
+push "<nt>"
+cmp
+or 2
+jz when_4_end
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+#<lit-tag v="m">
+push "<m>"
+storecl
+jmp choose_4_end
+when_4_end:
+choose_4_end:
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+or 2
+jz when_5_end
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+jmp choose_5_end
+when_5_end:
+choose_5_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_1_end:
+action_2_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_6_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_6_end
+when_6_end:
+choose_6_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+lu-count
+#<lit v="3">
+push 3
+cmp
+jz when_7_end
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_7_end
+when_7_end:
+choose_7_end:
+action_2_end:
+action_3_start:
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_8_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+#<call-macro n="gen_nbr_determinante">
+push 1
+push 1
+call gen_nbr_determinante
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+out 6
+#<call-macro n="gen_nbr_determinante">
+push 3
+push 1
+call gen_nbr_determinante
+#<get-case-from pos="3">
+#<lit v="el">
+push "el"
+push 3
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 3
+jmp choose_8_end
+when_8_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+choose_8_end:
+action_3_end:
+action_4_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_9_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_9_end
+when_9_end:
+choose_9_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+lu-count
+#<lit v="4">
+push 4
+cmp
+jz when_10_end
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_10_end
+when_10_end:
+lu-count
+#<lit v="5">
+push 5
+cmp
+jz when_11_end
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 4
+jmp choose_10_end
+when_11_end:
+choose_10_end:
+action_4_end:
+action_5_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_12_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_11_end
+when_12_end:
+choose_11_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+action_5_end:
+action_6_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_13_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_12_end
+when_13_end:
+choose_12_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+lu-count
+#<lit v="5">
+push 5
+cmp
+jz when_14_end
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_13_end
+when_14_end:
+lu-count
+#<lit v="6">
+push 6
+cmp
+jz when_15_end
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 4
+jmp choose_13_end
+when_15_end:
+choose_13_end:
+action_6_end:
+action_7_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_16_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_14_end
+when_16_end:
+choose_14_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+action_7_end:
+action_8_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_17_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_15_end
+when_17_end:
+choose_15_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+action_8_end:
+action_9_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_18_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_16_end
+when_18_end:
+choose_16_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+lu-count
+#<lit v="6">
+push 6
+cmp
+jz when_19_end
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_17_end
+when_19_end:
+lu-count
+#<lit v="7">
+push 7
+cmp
+jz when_20_end
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 4
+jmp choose_17_end
+when_20_end:
+choose_17_end:
+action_9_end:
+action_10_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_21_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_18_end
+when_21_end:
+choose_18_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+lu-count
+#<lit v="7">
+push 7
+cmp
+jz when_22_end
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_19_end
+when_22_end:
+choose_19_end:
+action_10_end:
+action_11_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_23_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_20_end
+when_23_end:
+choose_20_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 13
+action_11_end:
+action_12_start:
+#<call-macro n="gen_nbr_determinante">
+push 0
+push 1
+call gen_nbr_determinante
+#<clip part="a_SN" pos="0">
+push 0
+push "<DET>|<UNDET>|<NUM>|<PDET>"
+clip
+#<lit-tag v="PDET">
+push "<PDET>"
+cmp
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="np">
+push "<np>"
+cmp
+not
+#<clip part="a_nom" pos="1">
+push 1
+push "<n>|<np>|<n><acr>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+not
+and 3
+jz when_24_end
+#<get-case-from pos="0">
+#<lit v="el">
+push "el"
+push 0
+get-case-from
+modify-case
+#<lit-tag v="det.def">
+push "<det><def>"
+#<var n="genero">
+push genero
+#<var n="numero">
+push numero
+lu 4
+pushbl
+out 2
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_21_end
+when_24_end:
+choose_21_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_12_end:
+action_13_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+not
+and 2
+jz when_25_end
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 1
+jmp choose_22_end
+when_25_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_22_end:
+action_13_end:
+action_14_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+not
+and 2
+jz when_26_end
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 1
+jmp choose_23_end
+when_26_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_23_end:
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 2
+action_14_end:
+action_15_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_27_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+jz when_28_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+jmp choose_25_end
+when_28_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_29_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_26_end
+when_29_end:
+#<otherwise>
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro">
+push "<prn><pro>"
+storecl
+choose_26_end:
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 3
+choose_25_end:
+jmp choose_24_end
+when_27_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+not
+and 2
+jz when_30_end
+#<clip part="tipusprn" pos="2">
+push 2
+push "<pro>|<enc>"
+#<lit-tag v="pro">
+push "<pro>"
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 3
+jmp choose_27_end
+when_30_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+choose_27_end:
+choose_24_end:
+action_15_end:
+action_16_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_31_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+jz when_32_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 3
+out 1
+jmp choose_29_end
+when_32_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_33_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_30_end
+when_33_end:
+#<otherwise>
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro">
+push "<prn><pro>"
+storecl
+choose_30_end:
+#<clip part="tipusprn" pos="3">
+push 3
+push "<pro>|<enc>"
+#<lit-tag v="pro">
+push "<pro>"
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 5
+choose_29_end:
+jmp choose_28_end
+when_31_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+not
+and 2
+jz when_34_end
+#<clip part="tipusprn" pos="2">
+push 2
+push "<pro>|<enc>"
+#<lit-tag v="pro">
+push "<pro>"
+storecl
+#<clip part="tipusprn" pos="3">
+push 3
+push "<pro>|<enc>"
+#<lit-tag v="pro">
+push "<pro>"
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushbl
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 5
+jmp choose_31_end
+when_34_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 3
+out 1
+choose_31_end:
+choose_28_end:
+action_16_end:
+action_17_start:
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_35_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+jz when_36_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="3">
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 3
+out 3
+jmp choose_33_end
+when_36_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_37_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="3">
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_34_end
+when_37_end:
+choose_34_end:
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 3
+out 3
+choose_33_end:
+jmp choose_32_end
+when_35_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+not
+and 2
+jz when_38_end
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 3
+jmp choose_35_end
+when_38_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 3
+choose_35_end:
+choose_32_end:
+action_17_end:
+action_18_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_39_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+jz when_40_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_37_end
+when_40_end:
+choose_37_end:
+jmp choose_36_end
+when_39_end:
+choose_36_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+mlu 2
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 3
+action_18_end:
+action_19_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_41_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+jz when_42_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_39_end
+when_42_end:
+choose_39_end:
+jmp choose_38_end
+when_41_end:
+choose_38_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 3
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 3
+action_19_end:
+action_20_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+not
+and 2
+jz when_43_end
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+lu 5
+out 1
+jmp choose_40_end
+when_43_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_40_end:
+action_20_end:
+action_21_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+not
+and 2
+jz when_44_end
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_45_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_42_end
+when_45_end:
+choose_42_end:
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+clip
+#<lit-tag v="prn.pro">
+push "<prn><pro>"
+#<clip part="a_ref" pos="2">
+push 2
+push "<ref>"
+clip
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+lu 6
+pushsb 1
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="2">
+push 2
+push "lemq"
+clip
+lu 5
+out 3
+jmp choose_41_end
+when_44_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+and 2
+jz when_46_end
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_47_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_44_end
+when_47_end:
+choose_44_end:
+jmp choose_43_end
+when_46_end:
+choose_43_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+choose_41_end:
+#<call-macro n="f_bcond">
+push 1
+push 1
+call f_bcond
+action_21_end:
+action_22_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+not
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+not
+and 2
+jz when_48_end
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_49_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_46_end
+when_49_end:
+choose_46_end:
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+clip
+#<lit-tag v="prn.pro">
+push "<prn><pro>"
+#<clip part="a_ref" pos="2">
+push 2
+push "<ref>"
+clip
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+lu 6
+pushsb 1
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+clip
+#<lit-tag v="prn.pro">
+push "<prn><pro>"
+#<clip part="pers" pos="3">
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="gen" pos="3">
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+lu 5
+pushbl
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+clip
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<clip part="nbr" pos="0">
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+#<clip part="lemq" pos="2">
+push 2
+push "lemq"
+clip
+lu 5
+out 5
+jmp choose_45_end
+when_48_end:
+#<otherwise>
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+and 2
+jz when_50_end
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_51_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="2">
+push 2
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_48_end
+when_51_end:
+choose_48_end:
+jmp choose_47_end
+when_50_end:
+choose_47_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 3
+out 1
+choose_45_end:
+#<call-macro n="f_bcond">
+push 1
+push 1
+call f_bcond
+action_22_end:
+action_23_start:
+#<clip part="a_verb" pos="0">
+push 0
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="HAVER">
+push "<HAVER>"
+cmp
+jz when_52_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+clip
+#<lit v="anar">
+push "anar"
+cmpi
+jz when_53_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+jmp choose_50_end
+when_53_end:
+#<otherwise>
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="1">
+push 1
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+choose_50_end:
+jmp choose_49_end
+when_52_end:
+choose_49_end:
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+clip
+#<lit v="anar">
+push "anar"
+cmpi
+jz when_54_end
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+jmp choose_51_end
+when_54_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_51_end:
+action_23_end:
+action_24_start:
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<clip part="pers" pos="1">
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 1
+#<call-macro n="f_bcond">
+push 1
+push 1
+call f_bcond
+action_24_end:
+action_25_start:
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<clip part="pers" pos="1">
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 3
+#<call-macro n="f_bcond">
+push 2
+push 1
+call f_bcond
+action_25_end:
+action_26_start:
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+#<clip part="pers" pos="1">
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+storecl
+#<clip part="nbr" pos="2">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 5
+#<call-macro n="f_bcond">
+push 3
+push 1
+call f_bcond
+action_26_end:
+action_27_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_55_end
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ger">
+push "<ger>"
+cmp
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="PD">
+push "<PD>"
+cmp
+and 2
+jz when_56_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="pers" pos="1">
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+#<lit-tag v="p3">
+push "<p3>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+mlu 2
+pushsb 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 3
+#<call-macro n="f_bcond">
+push 2
+push 1
+call f_bcond
+jmp choose_53_end
+when_56_end:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_57_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+jmp choose_53_end
+when_57_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+choose_53_end:
+jmp choose_52_end
+when_55_end:
+#<otherwise>
+#<clip part="a_verb" pos="0">
+push 0
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="HAVER">
+push "<HAVER>"
+cmp
+jz when_58_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+jmp choose_54_end
+when_58_end:
+choose_54_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+choose_52_end:
+action_27_end:
+action_28_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_59_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_60_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_56_end
+when_60_end:
+choose_56_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 3
+jmp choose_55_end
+when_59_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+choose_55_end:
+action_28_end:
+action_29_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_61_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_62_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_58_end
+when_62_end:
+choose_58_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 3
+out 3
+jmp choose_57_end
+when_61_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 3
+choose_57_end:
+action_29_end:
+action_30_start:
+#<clip part="a_verb" pos="3">
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_63_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_64_end
+#<clip part="lem" pos="4">
+push 4
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="4">
+push 4
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="4">
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_60_end
+when_64_end:
+choose_60_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 2
+out 5
+jmp choose_59_end
+when_63_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+choose_59_end:
+action_30_end:
+action_31_start:
+#<clip part="a_verb" pos="4">
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_65_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_66_end
+#<clip part="lem" pos="5">
+push 5
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="5">
+push 5
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="5">
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_62_end
+when_66_end:
+choose_62_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+mlu 2
+out 7
+jmp choose_61_end
+when_65_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+choose_61_end:
+action_31_end:
+action_32_start:
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ifip">
+push "<ifip>"
+cmp
+not
+jz when_67_end
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_68_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_69_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_65_end
+when_69_end:
+choose_65_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+out 4
+jmp choose_64_end
+when_68_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+out 2
+choose_64_end:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_70_end
+#<clip part="a_verb" pos="3">
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_71_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_72_end
+#<clip part="lem" pos="4">
+push 4
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="4">
+push 4
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="4">
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_68_end
+when_72_end:
+choose_68_end:
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+jmp choose_67_end
+when_71_end:
+#<otherwise>
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 1
+out 1
+choose_67_end:
+jmp choose_66_end
+when_70_end:
+#<otherwise>
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_73_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_74_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_70_end
+when_74_end:
+choose_70_end:
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+jmp choose_69_end
+when_73_end:
+#<otherwise>
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+mlu 1
+out 1
+choose_69_end:
+choose_66_end:
+jmp choose_63_end
+when_67_end:
+#<otherwise>
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_75_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_76_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_72_end
+when_76_end:
+choose_72_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+out 6
+jmp choose_71_end
+when_75_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+out 4
+choose_71_end:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_77_end
+#<clip part="a_verb" pos="4">
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_78_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_79_end
+#<clip part="lem" pos="5">
+push 5
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="5">
+push 5
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="5">
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_75_end
+when_79_end:
+choose_75_end:
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+jmp choose_74_end
+when_78_end:
+#<otherwise>
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 1
+out 1
+choose_74_end:
+jmp choose_73_end
+when_77_end:
+#<otherwise>
+#<clip part="a_verb" pos="3">
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_80_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_81_end
+#<clip part="lem" pos="4">
+push 4
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="4">
+push 4
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="4">
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_77_end
+when_81_end:
+choose_77_end:
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 2
+out 1
+jmp choose_76_end
+when_80_end:
+#<otherwise>
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 1
+out 1
+choose_76_end:
+choose_73_end:
+choose_63_end:
+action_32_end:
+action_33_start:
+#<clip part="temps" pos="0">
+push 0
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+clip
+#<lit-tag v="ifip">
+push "<ifip>"
+cmp
+not
+jz when_82_end
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_83_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_84_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="3">
+push 3
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="3">
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_80_end
+when_84_end:
+choose_80_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 3
+out 3
+jmp choose_79_end
+when_83_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+mlu 2
+out 3
+choose_79_end:
+jmp choose_78_end
+when_82_end:
+#<otherwise>
+#<clip part="a_verb" pos="3">
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="vblex.pron">
+push "<vblex><pron>"
+cmp
+jz when_85_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_86_end
+#<clip part="lem" pos="4">
+push 4
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prn" pos="4">
+push 4
+push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
+#<lit-tag v="prn.enc.ref">
+push "<prn><enc><ref>"
+storecl
+#<clip part="nbr" pos="4">
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_82_end
+when_86_end:
+choose_82_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+mlu 3
+out 5
+jmp choose_81_end
+when_85_end:
+#<otherwise>
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+mlu 2
+out 5
+choose_81_end:
+choose_78_end:
+action_33_end:
+action_34_start:
+#<clip part="tipus_verb" pos="0">
+push 0
+push "<SV><pron>|<SV>"
+clip
+#<lit-tag v="SV.pron">
+push "<SV><pron>"
+cmp
+jz when_87_end
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_88_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="a_prnpro" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+jmp choose_84_end
+when_88_end:
+choose_84_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="verbcj_perif">
+push "verbcj_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_verbcj">
+push "pro_verbcj"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_inf">
+push "auxmod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf">
+push "mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="have_pp">
+push "have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="be_ger">
+push "be_ger"
+cmpi
+or 6
+jz when_89_end
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_85_end
+when_89_end:
+choose_85_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_verbcj_perif">
+push "pro_verbcj_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_mod_inf">
+push "auxmod_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_have_pp">
+push "auxmod_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf_perif">
+push "mod_inf_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="going_to_inf">
+push "going_to_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_be_ger">
+push "pro_be_ger"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_inf">
+push "pro_auxmod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_mod_inf">
+push "pro_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_have_pp">
+push "pro_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_do_inf">
+push "pro_do_inf"
+cmpi
+or 10
+jz when_90_end
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 4
+jmp choose_86_end
+when_90_end:
+choose_86_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_mod_inf_perif">
+push "pro_mod_inf_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_mod_inf">
+push "pro_auxmod_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_have_pp">
+push "pro_auxmod_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_going_to_inf">
+push "pro_going_to_inf"
+cmpi
+or 4
+jz when_91_end
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 6
+jmp choose_87_end
+when_91_end:
+choose_87_end:
+jmp choose_83_end
+when_87_end:
+#<otherwise>
+#<clip part="a_verb" pos="0">
+push 0
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+#<lit-tag v="HAVER">
+push "<HAVER>"
+cmp
+jz when_92_end
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="verbcj">
+push "verbcj"
+cmpi
+jz when_93_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="1">
+push 1
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+jmp choose_89_end
+when_93_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_inf">
+push "auxmod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf">
+push "mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="have_pp">
+push "have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="verbcj_perif">
+push "verbcj_perif"
+cmpi
+or 4
+jz when_94_end
+#<clip part="lem" pos="2">
+push 2
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="2">
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+jmp choose_89_end
+when_94_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_mod_inf">
+push "auxmod_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_have_pp">
+push "auxmod_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf_perif">
+push "mod_inf_perif"
+cmpi
+or 3
+jz when_95_end
+#<clip part="lem" pos="3">
+push 3
+push "lem"
+#<lit v="haver">
+push "haver"
+storecl
+#<clip part="a_verb" pos="3">
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vbhaver">
+push "<vbhaver>"
+storecl
+jmp choose_89_end
+when_95_end:
+choose_89_end:
+jmp choose_88_end
+when_92_end:
+choose_88_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="verbcj_perif">
+push "verbcj_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_verbcj">
+push "pro_verbcj"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_inf">
+push "auxmod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf">
+push "mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="have_pp">
+push "have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="be_ger">
+push "be_ger"
+cmpi
+or 6
+jz when_96_end
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_90_end
+when_96_end:
+choose_90_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_verbcj_perif">
+push "pro_verbcj_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_mod_inf">
+push "auxmod_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="auxmod_have_pp">
+push "auxmod_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="mod_inf_perif">
+push "mod_inf_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_be_ger">
+push "pro_be_ger"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_inf">
+push "pro_auxmod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_mod_inf">
+push "pro_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_have_pp">
+push "pro_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_be_ger">
+push "pro_be_ger"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_do_inf">
+push "pro_do_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="going_to_inf">
+push "going_to_inf"
+cmpi
+or 11
+jz when_97_end
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 4
+jmp choose_91_end
+when_97_end:
+choose_91_end:
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_mod_inf_perif">
+push "pro_mod_inf_perif"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_mod_inf">
+push "pro_auxmod_mod_inf"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_auxmod_have_pp">
+push "pro_auxmod_have_pp"
+cmpi
+#<clip part="lem" pos="0">
+push 0
+push "lem"
+clip
+#<lit v="pro_going_to_inf">
+push "pro_going_to_inf"
+cmpi
+or 4
+jz when_98_end
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 6
+jmp choose_92_end
+when_98_end:
+choose_92_end:
+choose_83_end:
+action_34_end:
+action_35_start:
+#<clip part="pers" pos="0">
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+jz when_99_end
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<lit v="es">
+push "es"
+storecl
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+#<lit-tag v="mf">
+push "<mf>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="a_prnpro" pos="1">
+push 1
+push "<prn><pro>|<prn><pro><ref>"
+#<lit-tag v="prn.pro.ref">
+push "<prn><pro><ref>"
+storecl
+jmp choose_93_end
+when_99_end:
+choose_93_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_35_end:
+action_36_start:
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<get-case-from pos="0">
+#<lit v="hi">
+push "hi"
+push 0
+get-case-from
+modify-case
+storecl
+#<clip part="tags" pos="1">
+push 1
+push "tags"
+#<lit-tag v="prn.pro.adv">
+push "<prn><pro><adv>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_36_end:
+action_37_start:
+#<clip part="lem" pos="1">
+push 1
+push "lem"
+#<get-case-from pos="0">
+#<lit v="tenir">
+push "tenir"
+push 0
+get-case-from
+modify-case
+storecl
+#<clip part="a_verb" pos="1">
+push 1
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+#<lit-tag v="vblex">
+push "<vblex>"
+storecl
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_37_end:
+section_rules_end:

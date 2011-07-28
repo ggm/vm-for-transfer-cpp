@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+    <def-cat n="sent">
+      <cat-item tags="sent"/>
+    </def-cat>
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="genere" v="&amp;lt;m&amp;gt;"/>
+    <def-var n="nombre" v="&amp;lt;sg&amp;gt;"/>
+    <def-var n="EOS" v="true"/>
+  </section-def-vars>
+
+  <section-def-macros>
+  </section-def-macros>
+
+  <section-rules>
+    <rule comment="REGLA: reset variables">
+      <pattern>
+	<pattern-item n="sent"/>
+      </pattern>
+      <action>
+	<let>
+	  <var n="nombre"/>
+	  <lit-tag v="sg"/>
+	</let>
+	<let>
+	  <var n="genere"/>
+	  <lit-tag v="m"/>
+	</let>
+	<choose>
+	  <when>
+	    <test>
+	      <not>
+		<or>
+		  <equal>
+		    <clip pos="1" side="sl" part="lem"/>
+		    <lit v=";"/>
+		  </equal>
+		  <equal>
+		    <clip pos="1" side="sl" part="lem"/>
+		    <lit v=":"/>
+		  </equal>
+		</or>
+	      </not>
+	    </test>	      
+	    <let>
+	      <var n="EOS"/>
+	      <lit v="true"/>
+	    </let>
+	  </when>
+	</choose>
+	<out>
+	  <chunk name="punt">
+	    <tags>
+	      <tag><lit-tag v="sent"/></tag>
+	    </tags>
+	    <lu>
+	      <clip pos="1" side="tl" part="whole"/>
+	    </lu>
+	  </chunk>
+	</out>
+      </action>
+    </rule>
+  </section-rules>
+
+</transfer>
+

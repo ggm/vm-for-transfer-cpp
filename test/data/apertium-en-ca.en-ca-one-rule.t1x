@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+  <section-def-cats>
+
+    <def-cat n="all"><!--BCN-->
+      <cat-item lemma="all" tags="predet.sp"/>
+    </def-cat>
+
+    <def-cat n="nomplural"><!--BCN-->
+      <cat-item tags="n.pl"/>
+    </def-cat>
+
+    <def-cat n="nom">
+      <cat-item tags="n.*"/>
+      <cat-item tags="np.*"/>
+    </def-cat>
+
+
+    <def-cat n="nomcomu">
+      <cat-item tags="n.*"/>
+    </def-cat>
+    
+    <def-cat n="nompropi">
+      <cat-item tags="np.*"/>
+    </def-cat>
+    <def-cat n="nploc">
+      <cat-item tags="np.loc.*"/>
+    </def-cat>
+
+    <def-cat n="adj">
+      <cat-item tags="adj"/>
+      <cat-item tags="adj.*"/>
+      <cat-item tags="adj.comp"/> 
+      <cat-item tags="adj.sup"/> 
+      <cat-item tags="adj.pos"/>
+      <cat-item tags="adj.sint"/>
+      <cat-item tags="adj.sint.*"/>
+      <cat-item tags="vblex.pp"/> <!-- BCN ok implica tocar les regles per la concordança-->
+      <cat-item tags="vbmod.pp"/> <!-- BCN ok implica tocar les regles per la concordança-->
+    </def-cat>
+
+    <def-cat n="adj2"><!--revisar regles amb 'adj' i 'adj2' -->
+      <cat-item tags="adj"/>
+      <cat-item tags="adj.*"/>
+      <cat-item tags="adj.sint"/>
+      <cat-item tags="adj.sint.*"/>
+      <cat-item tags="adj.comp"/>
+      <cat-item tags="adj.sup"/>
+    </def-cat> 
+
+    <def-cat n="adj2pos">
+      <cat-item tags="adj.pos"/>
+      <cat-item tags="adj"/>
+      <cat-item tags="adj.sint"/>
+      <cat-item tags="adj.sint.*"/>
+      <cat-item tags="adj.comp"/>
+      <cat-item tags="adj.sup"/>
+    </def-cat>
+
+    <def-cat n="adjsup">
+      <cat-item tags="adj.sup"/>
+      <cat-item tags="adj.sint.sup"/>
+    </def-cat>
+
+
+
+    <def-cat n="num">
+      <cat-item tags="num.*"/>
+      <cat-item tags="num"/>
+      
+    </def-cat>
+
+    <def-cat n="det"><!--Determinants i predeterminants, van anteposats en català -->
+      <cat-item tags="det.dem.*"/>
+      <cat-item tags="det.ind.*"/>
+      <cat-item tags="det.def.*"/>
+      <cat-item tags="det.pos.*"/>
+      <cat-item tags="det.qnt.*"/>
+      <cat-item tags="det.itg.*"/>
+      <cat-item tags="det.ord.*"/>
+      <cat-item tags="predet.*"/>
+    </def-cat>
+
+    <def-cat n="det2"><!--Poden anar precedits d'un altre determinant i anar després d'un genitiu saxó -->
+      <cat-item tags="det.qnt.*"/>
+      <cat-item tags="det.ord.*"/>
+    </def-cat>
+
+    <def-cat n="genitiu">
+      <cat-item tags="gen"/>
+    </def-cat>
+  </section-def-cats>
+
+  <section-def-attrs>
+    <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np.loc"/>
+      <attr-item tags="np.ant"/>
+      <attr-item tags="np.cog"/>
+      <attr-item tags="np.al"/>	
+      <attr-item tags="adv"/>	  
+    </def-attr>
+
+    <def-attr n="a_np">
+      <attr-item tags="np"/>
+    </def-attr>
+
+    <def-attr n="a_np_acr">
+      <attr-item tags="np"/>
+      <attr-item tags="acr"/>
+    </def-attr>
+
+    <def-attr n="a_adj">          
+      <attr-item tags="adj"/>
+      <attr-item tags="adj.pos"/>
+      <attr-item tags="vblex.pp"/>  
+      <attr-item tags="vbmod.pp"/> 
+      <attr-item tags="vblex.pron.pp"/> 
+      <attr-item tags="adjant"/>
+    </def-attr>  
+
+
+    <def-attr n="grau_adj">          
+      <attr-item tags="comp"/>
+      <attr-item tags="sup"/>
+    </def-attr>  
+
+    <def-attr n="a_det">
+      <attr-item tags="det.dem"/>
+      <attr-item tags="det.ind"/>
+      <attr-item tags="det.def"/>
+      <attr-item tags="det.pos"/>
+      <attr-item tags="det.qnt"/>
+      <attr-item tags="det.itg"/>	  	 
+      <attr-item tags="det.ord"/>
+      <attr-item tags="adj.pos"/>
+      <attr-item tags="num"/>
+      <attr-item tags="predet"/>
+    </def-attr>
+
+    <def-attr n="a_num">
+      <attr-item tags="num"/>
+      <attr-item tags="num.percent"/>
+      <attr-item tags="num.ord"/>
+      <attr-item tags="num.mon"/>
+    </def-attr>
+
+    <def-attr n="a_rel">
+      <attr-item tags="rel.nn"/>
+      <attr-item tags="rel.an"/>
+      <attr-item tags="rel.aa"/>
+      <attr-item tags="rel.adv"/>
+    </def-attr>
+
+    <def-attr n="tipus_rel">
+      <attr-item tags="nn"/>
+      <attr-item tags="an"/>
+      <attr-item tags="aa"/>
+      <attr-item tags="adv"/>
+    </def-attr>
+
+    <def-attr n="tipus_prn">
+      <attr-item tags="tn"/>
+      <attr-item tags="obj"/>
+      <attr-item tags="enc"/>
+      <attr-item tags="itg"/>
+      <attr-item tags="pos"/>
+    </def-attr>
+
+    <def-attr n="gen">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="mf"/>
+      <attr-item tags="GD"/>
+      <attr-item tags="nt"/>
+    </def-attr>
+
+   <def-attr n="gen_sense_mf">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="GD"/>
+      <attr-item tags="nt"/>
+    </def-attr>
+
+    <def-attr n="gen_mf">
+      <attr-item tags="mf"/>
+    </def-attr>
+
+    <def-attr n="nbr">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+   <def-attr n="nbr_sense_sp">
+      <attr-item tags="sg"/>
+      <attr-item tags="pl"/>
+      <attr-item tags="ND"/>
+    </def-attr>
+
+   <def-attr n="nbr_sp">
+      <attr-item tags="sp"/>
+    </def-attr>
+
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="genere" v="&amp;lt;m&amp;gt;"/>
+    <def-var n="nombre" v="&amp;lt;sg&amp;gt;"/>
+    <def-var n="interrogativa"/>
+    <def-var n="exclamativa"/>
+    <def-var n="neg"/>
+    <def-var n="adjectiu1"/>  
+    <def-var n="adjectiu2"/>       
+    <def-var n="auxiliar"/>
+    <def-var n="caseFirstWord"/>
+    <def-var n="EOS" v="true"/>
+    <def-var n="lema"/>
+    <def-var n="lema_SV"/>
+    <def-var n="verbfinal"/>
+    <def-var n="chunk"/>
+    <def-var n="temps_chunk"/>
+    <def-var n="pers_chunk"/>
+    <def-var n="nbr_chunk"/>
+    <def-var n="nbr_qual"/>
+    <def-var n="gen_chunk"/>
+    <def-var n="gen_qual"/>
+    <def-var n="gen_paraula"/>
+    <def-var n="nbr_paraula"/>
+    <def-var n="pronom"/>
+    <def-var n="pronomenc"/>
+    <def-var n="paraula1"/>
+    <def-var n="paraula2"/>
+    <def-var n="tipus_verb"/>
+    <def-var n="tipus_verb_imp"/>
+    <def-var n="negative"/> <!-- BCN-->
+    <def-var n="tipus_det"/>
+  </section-def-vars>
+
+  <section-def-macros>
+
+  <def-macro n="firstWord" npar="1">
+      <choose>
+	<when>
+	  <test>
+	      <equal>
+		<clip pos="1" side="sl" part="a_np_acr"/>
+		<lit v=""/>
+	      </equal>
+	  </test>
+	  <choose>
+	    <when>
+	      <test>
+		<equal> 
+		  <var n="EOS"/>
+		  <lit v="true"/>
+		</equal> 
+	      </test>
+	      <modify-case>
+		<clip pos="1" side="tl" part="lem"/>
+		<lit v="aa"/>
+	      </modify-case>
+	      <let>
+		<var n="caseFirstWord"/>
+		<lit v="Aa"/>
+	      </let>
+	    </when>
+	    <otherwise> 
+	      <let>
+		<var n="caseFirstWord"/>
+		<lit v="aa"/>
+	      </let>
+	    </otherwise>
+	  </choose>
+	</when>
+	<otherwise>
+	  <choose>
+  	    <when>
+	      <test>
+		<equal> 
+		  <var n="EOS"/>
+		  <lit v="true"/>
+		</equal> 
+	      </test>
+	      <let>
+		<var n="caseFirstWord"/>
+		<lit v="Aa"/>
+	      </let>
+ 	     </when>
+	    <otherwise>
+	      <let>
+		<var n="caseFirstWord"/>
+		<lit v="aa"/>
+	      </let>
+	    </otherwise>
+	  </choose>
+	</otherwise>
+      </choose>
+      <let>
+	<var n="EOS"/>
+	<lit v="false"/>
+      </let>
+    </def-macro>
+
+
+
+ <def-macro n="determiner" npar="1"><!-- to put in rules beginning with a determiner -->
+      <choose>
+	<when>
+	  <test>
+	      <equal>
+		<clip pos="1" side="tl" part="a_det"/>
+		<lit-tag v="det.ord"/>
+	      </equal>
+	  </test>
+	  <let>
+	    <var n="tipus_det"/>
+	    <lit-tag v="UNDET"/>
+	  </let>
+	</when>
+	<when>
+	  <test>
+	      <equal>
+		<clip pos="1" side="tl" part="a_det"/>
+		<lit-tag v="det.qnt"/>
+	      </equal>
+	  </test>
+	  <let>
+	    <var n="tipus_det"/>
+	    <lit-tag v="UNDEF"/>
+	  </let>
+	</when>
+	<otherwise>
+	  <let>
+	    <var n="tipus_det"/>
+	    <lit-tag v="DET"/>
+	  </let>
+	</otherwise>
+      </choose>
+    </def-macro>
+
+
+
+    <def-macro n="f_concord2" npar="2"><!--1 = main parameter (typically noun); 2 = secondary parameter (typically adj or det) -->
+      <let>
+	<var n="gen_chunk"/>
+	<lit v=""/>
+      </let>
+      <let>
+	<var n="nbr_chunk"/>
+	<lit v=""/>
+      </let>
+      <choose><!--posa GD i ND a la paraula si no té valor per a gènere o per a nombre (excepte números) -->
+	<when>
+	  <test>
+	    <equal>
+	      <clip pos="2" side="tl" part="a_num"/>
+	      <lit v=""/>
+	    </equal>
+	  </test>
+	  <choose><!--si no te valor per a gènere i , per tant, tampoc per a nombre: -->
+	    <when>
+	      <test>
+		<equal>
+		  <clip pos="2" side="tl" part="gen"/>
+		  <lit v=""/>
+		</equal>
+	      </test>
+	      <let>
+		<var n="paraula1"/>
+		<clip pos="2" side="tl" part="lemh"/>
+	      </let>
+	      <append n="paraula1">
+		<clip pos="2" side="tl" part="tags"/>
+		<lit-tag v="GD"/>
+		<lit-tag v="ND"/>
+		<clip pos="2" side="tl" part="lemq"/>
+	      </append>
+	      <let>
+		<clip pos="2" side="tl" part="whole"/>
+		<var n="paraula1"/>
+	      </let>
+	    </when>
+	    <when><!--si la paraula no té valor per a nombre (però sí per a gènere, ja que sinó hauria entrat pel when anterior) -->
+	      <test>
+		<equal>
+		  <clip pos="2" side="tl" part="nbr"/>
+		  <lit v=""/>
+		</equal>
+	      </test>
+	      <let>
+		<var n="paraula1"/>
+		<clip pos="2" side="tl" part="lemh"/>
+	      </let>
+	      <append n="paraula1">
+		<clip pos="2" side="tl" part="tags"/>
+		<lit-tag v="ND"/>
+		<clip pos="2" side="tl" part="lemq"/>
+	      </append>
+	      <let>
+		<clip pos="2" side="tl" part="whole"/>
+		<var n="paraula1"/>
+	      </let>
+	    </when>
+	  </choose>
+	</when>
+      </choose>
+
+
+      <!--OPERACIONS DE GÈNERE -->
+      <choose>
+	<when>
+	  <test>
+	    <equal>
+	      <clip pos="2" side="tl" part="gen"/>
+	      <lit-tag v="GD"/>
+	    </equal>
+	  </test>
+	  <choose>
+	    <when>
+	      <test>
+		<equal>
+		  <clip pos="1" side="tl" part="gen"/>
+		  <lit-tag v="GD"/>
+		</equal>
+	      </test>
+	      <let>
+		<var n="gen_chunk"/>
+		<lit-tag v="GD"/>
+	      </let>
+	    </when>
+	    <when>
+	      <test>
+		<not><!--si gènere de pos 1 és masc o fem -->
+		  <or>
+		    <equal>
+		      <clip pos="1" side="tl" part="gen"/>
+		      <lit-tag v="mf"/>
+		    </equal>
+		    <equal>
+		      <clip pos="1" side="tl" part="gen"/>
+		      <lit v=""/>
+		    </equal>
+		  </or>
+		</not>
+	      </test>
+	      <let>
+		<clip pos="2" side="tl" part="gen"/>
+		<clip pos="1" side="tl" part="gen"/>
+	      </let>
+	      <let>
+		<var n="gen_chunk"/>
+		<clip pos="1" side="tl" part="gen"/>
+	      </let>
+	    </when>
+	    <otherwise><!--si gènere pos 1 és mf o no té gènere-->
+	      <let>
+		<var n="gen_chunk"/>
+		<lit-tag v="GD"/>
+	      </let>
+	    </otherwise>
+	  </choose>
+	</when>
+      </choose>
+      <choose>
+	<when>
+	  <test>
+	    <equal>
+	      <clip pos="1" side="tl" part="gen"/>
+	      <lit-tag v="GD"/>
+	    </equal>
+	  </test>
+	  <let>
+	    <var n="gen_chunk"/>
+	    <lit-tag v="GD"/>
+	  </let>	
+	</when>
+	<when>
+	  <test>
+	    <not>
+	      <or>
+		<equal>
+		  <clip pos="1" side="tl" part="gen"/>
+		  <lit-tag v="mf"/>
+		</equal>
+		<equal>
+		  <clip pos="1" side="tl" part="gen"/>
+		  <lit v=""/>
+		</equal>
+	      </or>
+	    </not>
+	  </test>
+	  <let>
+	    <var n="gen_chunk"/>
+	    <clip pos="1" side="tl" part="gen"/>
+	  </let>
+	</when>
+	<otherwise><!--si gènere de pos 1 és mf -->
+	  <choose>
+	    <when>
+	      <test><!--si el gènere de pos 2 és GD, el gènere del chunk serà tb GD (deixant pos 1 com a mf) per si es pot assignar gènere a pos 2 (p. ex. 'the pacient - el/la pacient') -->
+		<not>
+		  <equal>
+		    <clip pos="2" side="tl" part="gen"/>
+		    <lit-tag v="GD"/>
+		  </equal>
+		</not>
+	      </test>
+	      <let>
+		<var n="gen_chunk"/>
+		<clip pos="1" side="tl" part="gen"/>
+	      </let>
+	    </when>
+	  </choose>
+	</otherwise>
+      </choose>
+      <!--OPERACIONS DE NOMBRE -->
+
+      <choose>
+	<when>
+	  <test>
+	    <equal>
+	      <clip pos="2" side="tl" part="nbr"/>
+	      <lit-tag v="ND"/>
+	    </equal>
+	  </test>
+	  <choose>
+	    <when>
+	      <test>
+		<equal>
+		  <clip pos="1" side="tl" part="nbr"/>
+		  <lit-tag v="ND"/>
+		</equal>
+	      </test>
+	      <let>
+		<var n="nbr_chunk"/>
+		<lit-tag v="ND"/>
+	      </let>
+	    </when>
+	    <when>
+	      <test>
+		<not><!--si nombre de pos 1 és masc o fem -->
+		  <or>
+		    <equal>
+		      <clip pos="1" side="tl" part="nbr"/>
+		      <lit-tag v="sp"/>
+		    </equal>
+		    <equal>
+		      <clip pos="1" side="tl" part="nbr"/>
+		      <lit v=""/>
+		    </equal>
+		  </or>
+		</not>
+	      </test>
+	      <let>
+		<clip pos="2" side="tl" part="nbr"/>
+		<clip pos="1" side="tl" part="nbr"/>
+	      </let>
+	      <let>
+		<var n="nbr_chunk"/>
+		<clip pos="1" side="tl" part="nbr"/>
+	      </let>
+	    </when>
+	    <otherwise><!--si nombre pos 1 és sp o no té nombre -->
+	      <let>
+		<var n="nbr_chunk"/>
+		<lit-tag v="ND"/>
+	      </let>
+	    </otherwise>
+	  </choose>
+	</when>
+      </choose>
+      <choose>
+	<when>
+	  <test>
+	    <equal>
+	      <clip pos="1" side="tl" part="nbr"/>
+	      <lit-tag v="ND"/>
+	    </equal>
+	  </test>
+	  <let>
+	    <var n="nbr_chunk"/>
+	    <lit-tag v="ND"/>
+	  </let>	
+	</when>
+	<when>
+	  <test>
+	    <not>
+	      <or>
+		<equal>
+		  <clip pos="1" side="tl" part="nbr"/>
+		  <lit-tag v="sp"/>
+		</equal>
+		<equal>
+		  <clip pos="1" side="tl" part="nbr"/>
+		  <lit v=""/>
+		</equal>
+	      </or>
+	    </not>
+	  </test>
+	  <let>
+	    <var n="nbr_chunk"/>
+	    <clip pos="1" side="tl" part="nbr"/>
+	  </let>
+	</when>
+	<otherwise><!--si nombre de pos 1 és sp -->
+	  <choose>
+	    <when>
+	      <test>
+		<or>
+		  <equal>
+		    <clip pos="2" side="tl" part="nbr"/>
+		    <lit-tag v="sg"/>
+		  </equal>
+		  <equal>
+		    <clip pos="2" side="tl" part="nbr"/>
+		    <lit-tag v="pl"/>
+		  </equal>
+		</or>
+	      </test>
+	      <let>
+		<var n="nbr_chunk"/>
+		<clip pos="2" side="tl" part="nbr"/>
+	      </let>
+	    </when>
+	    <when>
+	      <test><!--si pos 2 és també sp-->
+		<equal>
+		    <clip pos="2" side="tl" part="nbr"/>
+		    <lit-tag v="sp"/>
+		  </equal>
+	      </test>	      
+	      <let>
+		<var n="nbr_chunk"/>
+		<clip pos="1" side="tl" part="nbr"/>
+	      </let>
+	    </when>
+	    <when>
+	      <test><!--si pos 2 no té nombre (ex: xifres) -->
+		<equal>
+		    <clip pos="2" side="tl" part="nbr"/>
+		    <lit v=""/>
+		  </equal>
+	      </test>
+	      <let> <!-- el nombre del chunk serà sp, que no estarà enllaçat amb la posició 2 (pq no té valor per a l'atribut nbr"-->
+		<var n="nbr_chunk"/>
+		<clip pos="1" side="tl" part="nbr"/>
+	      </let>
+	    </when>
+	  </choose>
+	</otherwise>
+      </choose>
+    </def-macro>
+
+
+    <def-macro n="det_no" npar="2"><!--No cars -> cap cotxe (canvia nombre del nom de pl a sg) -->
+      
+      <choose>
+	<when> 
+	  <test>
+	    <and>
+	      <equal caseless="yes">
+		<clip pos="1" side="sl" part="lem"/>
+		<lit v="no"/>
+	      </equal>
+	      <equal>
+		<clip pos="2" side="sl" part="nbr"/>
+		<lit-tag v="pl"/>
+	      </equal>
+	    </and>
+	  </test>
+	  <let>
+	    <clip pos="2" side="tl" part="nbr"/>
+	    <lit-tag v="sg"/>
+	  </let>
+	  <let> <!-- BCN -->
+	    <var n="negative"/>
+	    <lit-tag v="negacio"/>
+	  </let>
+	</when>
+
+
+	<when> 
+	  <test>
+	    <and>
+	      <equal caseless="yes">
+		<clip pos="1" side="sl" part="lem"/>
+		<lit v="no"/>
+	      </equal>
+	      <equal>
+		<clip pos="2" side="sl" part="nbr"/>
+		<lit-tag v="sg"/>
+	      </equal>
+	    </and>
+	  </test>
+	  <let> <!-- BCN -->
+	    <var n="negative"/>
+	    <lit-tag v="negacio"/>
+	  </let>
+	</when>
+	<otherwise>
+	  <let>
+	    <var n="negative"/>
+	    <lit v=""/>
+	  </let>
+	</otherwise>
+      </choose>
+
+    </def-macro>
+  </section-def-macros>
+
+  <section-rules>
+
+    <!--********************************* REGLES DE SN ***************************************************** -->
+
+<!-- primer les regles lèxiques-->
+
+    <rule comment="REGLA: ALL NOUNplural (BCN: per afegir l'article definit en català 'all students' :: 'tots els estudiants'"> 
+
+      <pattern>
+	<pattern-item n="all"/>
+	<pattern-item n="nomplural"/>
+      </pattern>
+      <action>
+	<call-macro n="det_no">
+	  <with-param pos="1"/>
+	  <with-param pos="2"/>
+	</call-macro>
+	<call-macro n="f_concord2">
+	  <with-param pos="2"/>
+	  <with-param pos="1"/>
+	</call-macro>
+	<call-macro n="firstWord">
+	  <with-param pos="1"/>
+	</call-macro>
+	<call-macro n="determiner">
+	  <with-param pos="1"/>
+	</call-macro>
+	    <out>
+	      <chunk name="det_det_nom" case="caseFirstWord">
+		<tags>
+		  <tag><lit-tag v="SN"/></tag>
+		  <tag><var n="tipus_det"/></tag>
+		  <tag><var n="gen_chunk"/></tag>
+		  <tag><var n="nbr_chunk"/></tag>
+		</tags>
+		<lu>
+		  <clip pos="1" side="tl" part="lem"/>
+		  <clip pos="1" side="tl" part="a_det"/>
+		  <clip pos="1" side="tl" part="gen_sense_mf" link-to="3"/>
+		  <clip pos="1" side="tl" part="gen_mf"/>
+		  <clip pos="1" side="tl" part="nbr_sense_sp" link-to="4"/>
+		  <clip pos="1" side="tl" part="nbr_sp"/>
+		</lu>
+		<b/>
+		<lu>
+		  <lit v="el"/>
+		  <lit-tag v="det.def"/>
+		  <clip pos="1" side="tl" part="gen_sense_mf" link-to="3"/>
+		  <lit-tag v="pl"/>
+		</lu>
+		<b/>
+		<b pos="1"/>
+		<lu>
+		  <clip pos="2" side="tl" part="lemh"/>
+		  <clip pos="2" side="tl" part="a_nom"/>
+		  <clip pos="2" side="tl" part="gen_sense_mf" link-to="3"/>
+		  <clip pos="2" side="tl" part="gen_mf"/>
+		  <clip pos="2" side="tl" part="nbr_sense_sp" link-to="4"/>
+		  <clip pos="2" side="tl" part="nbr_sp"/>
+		  <clip pos="2" side="tl" part="lemq"/>
+		</lu>
+	      </chunk>
+	    </out>
+      </action>
+    </rule>
+
+  </section-rules>
+</transfer>

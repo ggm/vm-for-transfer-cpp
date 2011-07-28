@@ -1,0 +1,22 @@
+#<assembly>
+#<postchunk>
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "num_nom|det_nom|nom_adj"
+push 1
+addtrie action_0_start
+patterns_end:
+action_0_start:
+lu-count
+#<lit v="3">
+push "3"
+cmp
+jz when_0_end
+pushsb 2
+out 1
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+action_0_end:
+section_rules_end:

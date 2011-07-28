@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+    <def-cat n="all"><!--BCN-->
+      <cat-item lemma="all" tags="predet.sp"/>
+    </def-cat>
+
+    <def-cat n="adj2"><!--revisar regles amb 'adj' i 'adj2' -->
+      <cat-item tags="adj"/>
+      <cat-item tags="adj.*"/>
+      <cat-item tags="adj.sint"/>
+      <cat-item tags="adj.sint.*"/>
+      <cat-item tags="adj.comp"/>
+      <cat-item tags="adj.sup"/>
+    </def-cat>
+
+    <def-cat n="nomcomu">
+      <cat-item tags="n.*"/>
+    </def-cat>
+    
+    <def-cat n="nompropi">
+      <cat-item tags="np.*"/>
+    </def-cat>
+
+    <def-cat n="nploc">
+      <cat-item tags="np.loc.*"/>
+    </def-cat>
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+  </section-def-vars>
+
+  <section-def-lists>
+
+  </section-def-lists>
+
+  <section-def-macros>
+  </section-def-macros>
+
+  <section-rules>
+
+    <rule comment="REGLA: ALL NOUNplural (BCN: per afegir l'article definit en català 'all students' :: 'tots els estudiants'"> 
+
+      <pattern>
+	<pattern-item n="all"/>
+	<pattern-item n="adj2"/>
+      </pattern>
+      <action>
+	<out>
+	  <lit v="el"/>
+	  <lit-tag v="det.def"/>
+	  <lit-tag v="pl"/>
+	</out>
+      </action>
+    </rule>
+
+    <rule comment="REGLA: ALL NOUNplural (BCN: per afegir l'article definit en català 'all students' :: 'tots els estudiants'"> 
+
+      <pattern>
+	<pattern-item n="nomcomu"/>
+	<pattern-item n="nompropi"/>
+	<pattern-item n="nploc"/>
+      </pattern>
+      <action>
+	<out>
+	  <lit v="el"/>
+	  <lit-tag v="det.def"/>
+	  <lit-tag v="pl"/>
+	</out>
+      </action>
+    </rule>
+  </section-rules>
+
+</transfer>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+<!--
+****************************************************************************
+                    PRONOMBRES CLÍTICOS
+
+Cuando el pronombre proclítico es el reflexivo 'se', y no aparece con un verbo pronominal
+, se envía en un chunk aparte con lema 'ref', para que pueda detectarse en el t2x en caso necesario,
+para tratar frase impersonales y pasivas reflejas ('se dice que' vs. 'se casa mañana'...).
+Cuando sucede lo mismo pero se trata de un pronombre *enclítico*, no se envía aparte, simplemente
+se envia el verbo sin el pronombre reflexivo. Así, por ahora, no se puede saber si un pronombre enclítico
+'desaparecido' era un pronombre reflexivo aparecido junto con un verbo pronominal o un verbo no pronominal.
+Si se quiere empezar a tratar las frase impersonales en el t2x, habría que hacer algo al respecto.
+
+
+
+**************************************************************************
+-->
+
+
+
+
+  <section-def-cats>
+    <def-cat n="nom">
+      <cat-item tags="n.*"/><!--Falten els altres np (antroponims) que tenen gen i nbr, revisar regles.-->
+      <cat-item tags="np.loc.*"/>
+    </def-cat>
+
+     <def-cat n="ant">
+      <cat-item tags="np.ant.*"/>
+    </def-cat>
+     <def-cat n="al">
+      <cat-item tags="np.al.*"/>
+    </def-cat>
+     <def-cat n="cog">
+      <cat-item tags="np.cog.*"/>
+    </def-cat>
+  </section-def-cats>
+
+  <section-def-attrs>
+    <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="n.acr"/>
+      <attr-item tags="np.loc"/>
+      <attr-item tags="np.ant"/>
+      <attr-item tags="np.al"/>	
+      <attr-item tags="np.cog"/>
+      <attr-item tags="num"/>
+    </def-attr>
+  </section-def-attrs>
+
+  <section-def-vars>
+    <def-var n="nombre" v="&amp;lt;sg&amp;gt;"/>
+    <def-var n="genere" v="&amp;lt;m&amp;gt;"/>
+    <def-var n="concDet"/>
+    <def-var n="concAdj"/>
+  </section-def-vars>
+
+  <section-def-lists>
+    <def-list n="en_majuscules">
+      <list-item v="Monday"/>
+      <list-item v="Tuesday"/>
+      <list-item v="Wednesday"/>
+      <list-item v="Thursday"/>
+      <list-item v="Friday"/>
+      <list-item v="Saturday"/>
+      <list-item v="Sunday"/>
+    </def-list>
+  </section-def-lists>
+
+
+  <section-def-macros>
+     <def-macro n="f_concord2" npar="2"><!--element 1= principal (nom). Element 2 = secundari (adj/det) 
+				      En anglès els noms poden ser sg, pl o ND (mai sp en els diccs actuals)-->
+	<choose>
+	  <when>
+	    <test>
+	      <equal>
+		<clip pos="1" side="tl" part="nbr"/>
+		<lit-tag v="ND"/>
+	      </equal>
+	    </test>
+	    <choose>
+	      <when>
+		<test>
+		  <or>
+		    <equal>
+		      <clip pos="2" side="tl" part="nbr"/>
+		      <lit-tag v="sg"/>
+		    </equal>
+		    <equal>
+		      <clip pos="2" side="tl" part="nbr"/>
+		      <lit-tag v="pl"/>
+		    </equal>
+		  </or>
+		</test>
+		<let>
+		  <clip pos="1" side="tl" part="nbr"/>
+		  <clip pos="2" side="tl" part="nbr"/>
+		</let>
+	      </when>
+	      <when><!--'tres dijous' -->
+		<test>
+		  <equal>
+		    <clip pos="2" side="tl" part="a_num"/>
+		    <lit-tag v="num"/>
+		  </equal>
+		</test>
+		<let>
+		  <clip pos="1" side="tl" part="nbr"/>
+		  <lit-tag v="pl"/>
+		</let>
+	      </when>	
+
+	    </choose>
+	  </when>
+	</choose>
+    </def-macro>
+  </section-def-macros> 
+
+  <section-rules>
+    <!--*************************************** REGLES DE SN ******************************************** -->
+    <rule comment="REGLA: DET NOM">
+      <pattern>
+	<pattern-item n="det"/>
+	<pattern-item n="nom"/>
+      </pattern>
+      <action>
+	<call-macro n="firstWord">
+	  <with-param pos="1"/>
+	</call-macro>
+	<call-macro n="nombre_nom">
+	  <with-param pos="2"/>
+	</call-macro>
+	<call-macro n="canvia_det">
+	  <with-param pos="1"/>
+	  <with-param pos="2"/>
+	</call-macro>
+	<call-macro n="f_concord2">
+	  <with-param pos="2"/>
+	  <with-param pos="1"/>
+	</call-macro>
+	<out>
+	  <chunk name="det_nom" case="caseFirstWord">
+	    <tags>
+	      <tag><lit-tag v="SN"/></tag>
+	      <tag><clip pos="2" side="sl" part="gen"/></tag>
+	      <tag><clip pos="2" side="tl" part="nbr"/></tag>
+	    </tags>
+	    <lu>   
+	      <clip pos="1" side="tl" part="lem"/> 
+	      <clip pos="1" side="tl" part="a_det"/>
+	      <clip pos="1" side="tl" part="nbr" link-to="3"/>
+	    </lu> 
+	    <b pos="1"/>
+	    <lu>     
+	      <clip pos="2" side="tl" part="lemh"/> 
+	      <clip pos="2" side="tl" part="a_nom"/>
+	      <clip pos="2" side="tl" part="nbr" link-to="3"/>
+	      <clip pos="2" side="tl" part="lemq"/>
+	    </lu>
+	  </chunk>
+	</out>	 
+      </action>
+    </rule>
+  </section-rules>
+
+</transfer>

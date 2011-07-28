@@ -1,0 +1,92 @@
+#<assembly>
+#<transfer default="chunk">
+jmp section_rules_start
+#<def-macro npar="2" n="canvia_det">
+macro_canvia_det_start:
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<list n="det_canviant">
+push "uno|otro|poco|cuánto|menos|mucho|tanto|demasiado"
+inig
+jz when_0_end
+#<var n="nombre">
+push nombre
+#<lit-tag v="sg_slpl">
+push "<sg_slpl>"
+cmp
+#<clip part="nbr" pos="2" side="sl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clipsl
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="nbr" pos="1" side="sl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clipsl
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+and 2
+or 2
+jz when_1_end
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+cliptl
+#<lit v="some">
+push "some"
+cmpi
+jz when_2_end
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+#<get-case-from pos="1">
+#<lit v="a">
+push "a"
+push 1
+get-case-from
+modify-case
+storetl
+#<clip part="a_det" pos="1" side="tl">
+push 1
+push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<num>"
+#<lit-tag v="det.ind">
+push "<det><ind>"
+storetl
+jmp choose_2_end
+when_2_end:
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+cliptl
+#<lit v="other">
+push "other"
+cmpi
+jz when_3_end
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+#<get-case-from pos="1">
+#<lit v="another">
+push "another"
+push 1
+get-case-from
+modify-case
+storetl
+jmp choose_2_end
+when_3_end:
+choose_2_end:
+jmp choose_1_end
+when_1_end:
+choose_1_end:
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+macro_canvia_det_end: ret
+#<section-rules>
+section_rules_start:
+section_rules_end:

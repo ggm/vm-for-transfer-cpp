@@ -1,0 +1,698 @@
+#<assembly>
+#<transfer default="chunk">
+#<def-var v="&lt;m&gt;" n="genere">
+push "genere"
+push "<m>"
+storev
+#<def-var v="&lt;sg&gt;" n="nombre">
+push "nombre"
+push "<sg>"
+storev
+#<def-var v="true" n="EOS">
+push "EOS"
+push "true"
+storev
+jmp section_rules_start
+#<def-macro npar="1" n="firstWord">
+macro_firstWord_start:
+#<clip part="a_np_acr" pos="1" side="sl">
+push 1
+push "<np>|<acr>"
+clipsl
+#<lit v="">
+push ""
+cmp
+jz when_0_end
+#<var n="EOS">
+push EOS
+#<lit v="true">
+push "true"
+cmp
+jz when_1_end
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+push 1
+push "lem"
+cliptl
+#<lit v="aa">
+push "aa"
+modify-case
+storetl
+#<var n="caseFirstWord">
+push "caseFirstWord"
+#<lit v="Aa">
+push "Aa"
+storev
+jmp choose_1_end
+when_1_end:
+#<otherwise>
+#<var n="caseFirstWord">
+push "caseFirstWord"
+#<lit v="aa">
+push "aa"
+storev
+choose_1_end:
+jmp choose_0_end
+when_0_end:
+#<otherwise>
+#<var n="EOS">
+push EOS
+#<lit v="true">
+push "true"
+cmp
+jz when_2_end
+#<var n="caseFirstWord">
+push "caseFirstWord"
+#<lit v="Aa">
+push "Aa"
+storev
+jmp choose_2_end
+when_2_end:
+#<otherwise>
+#<var n="caseFirstWord">
+push "caseFirstWord"
+#<lit v="aa">
+push "aa"
+storev
+choose_2_end:
+choose_0_end:
+#<var n="EOS">
+push "EOS"
+#<lit v="false">
+push "false"
+storev
+macro_firstWord_end: ret
+#<def-macro npar="1" n="determiner">
+macro_determiner_start:
+#<clip part="a_det" pos="1" side="tl">
+push 1
+push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
+cliptl
+#<lit-tag v="det.ord">
+push "<det><ord>"
+cmp
+jz when_3_end
+#<var n="tipus_det">
+push "tipus_det"
+#<lit-tag v="UNDET">
+push "<UNDET>"
+storev
+jmp choose_3_end
+when_3_end:
+#<clip part="a_det" pos="1" side="tl">
+push 1
+push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
+cliptl
+#<lit-tag v="det.qnt">
+push "<det><qnt>"
+cmp
+jz when_4_end
+#<var n="tipus_det">
+push "tipus_det"
+#<lit-tag v="UNDEF">
+push "<UNDEF>"
+storev
+jmp choose_3_end
+when_4_end:
+#<otherwise>
+#<var n="tipus_det">
+push "tipus_det"
+#<lit-tag v="DET">
+push "<DET>"
+storev
+choose_3_end:
+macro_determiner_end: ret
+#<def-macro npar="2" n="f_concord2">
+macro_f_concord2_start:
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit v="">
+push ""
+storev
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit v="">
+push ""
+storev
+#<clip part="a_num" pos="2" side="tl">
+push 2
+push "<num>|<num><percent>|<num><ord>|<num><mon>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_5_end
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_6_end
+#<var n="paraula1">
+push "paraula1"
+#<clip part="lemh" pos="2" side="tl">
+push 2
+push "lemh"
+cliptl
+storev
+#<append n="paraula1">
+push "paraula1"
+#<clip part="tags" pos="2" side="tl">
+push 2
+push "tags"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+#<lit-tag v="ND">
+push "<ND>"
+#<clip part="lemq" pos="2" side="tl">
+push 2
+push "lemq"
+cliptl
+append 4
+#<clip part="whole" pos="2" side="tl">
+push 2
+push "whole"
+#<var n="paraula1">
+push paraula1
+storetl
+jmp choose_5_end
+when_6_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_7_end
+#<var n="paraula1">
+push "paraula1"
+#<clip part="lemh" pos="2" side="tl">
+push 2
+push "lemh"
+cliptl
+storev
+#<append n="paraula1">
+push "paraula1"
+#<clip part="tags" pos="2" side="tl">
+push 2
+push "tags"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+#<clip part="lemq" pos="2" side="tl">
+push 2
+push "lemq"
+cliptl
+append 3
+#<clip part="whole" pos="2" side="tl">
+push 2
+push "whole"
+#<var n="paraula1">
+push paraula1
+storetl
+jmp choose_5_end
+when_7_end:
+choose_5_end:
+jmp choose_4_end
+when_5_end:
+choose_4_end:
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_8_end
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_9_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+jmp choose_7_end
+when_9_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_10_end
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storetl
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_7_end
+when_10_end:
+#<otherwise>
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+choose_7_end:
+jmp choose_6_end
+when_8_end:
+choose_6_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_11_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+jmp choose_8_end
+when_11_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_12_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_8_end
+when_12_end:
+#<otherwise>
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+not
+jz when_13_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_9_end
+when_13_end:
+choose_9_end:
+choose_8_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_14_end
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_15_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+jmp choose_11_end
+when_15_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_16_end
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storetl
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_11_end
+when_16_end:
+#<otherwise>
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+choose_11_end:
+jmp choose_10_end
+when_14_end:
+choose_10_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_17_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+jmp choose_12_end
+when_17_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_18_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_12_end
+when_18_end:
+#<otherwise>
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+or 2
+jz when_19_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_13_end
+when_19_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+jz when_20_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_13_end
+when_20_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_21_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_13_end
+when_21_end:
+choose_13_end:
+choose_12_end:
+macro_f_concord2_end: ret
+#<def-macro npar="2" n="det_no">
+macro_det_no_start:
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<lit v="no">
+push "no"
+cmpi
+#<clip part="nbr" pos="2" side="sl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clipsl
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+and 2
+jz when_22_end
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<lit-tag v="sg">
+push "<sg>"
+storetl
+#<var n="negative">
+push "negative"
+#<lit-tag v="negacio">
+push "<negacio>"
+storev
+jmp choose_14_end
+when_22_end:
+#<clip part="lem" pos="1" side="sl">
+push 1
+push "lem"
+clipsl
+#<lit v="no">
+push "no"
+cmpi
+#<clip part="nbr" pos="2" side="sl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clipsl
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+and 2
+jz when_23_end
+#<var n="negative">
+push "negative"
+#<lit-tag v="negacio">
+push "<negacio>"
+storev
+jmp choose_14_end
+when_23_end:
+#<otherwise>
+#<var n="negative">
+push "negative"
+#<lit v="">
+push ""
+storev
+choose_14_end:
+macro_det_no_end: ret
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "all<predet><sp>"
+push "<n><pl>"
+push 2
+addtrie action_0_start
+patterns_end:
+action_0_start:
+#<call-macro n="det_no">
+push 1
+push 2
+push 2
+call det_no
+#<call-macro n="f_concord2">
+push 2
+push 1
+push 2
+call f_concord2
+#<call-macro n="firstWord">
+push 1
+push 1
+call firstWord
+#<call-macro n="determiner">
+push 1
+push 1
+call determiner
+#<chunk case="caseFirstWord" name="det_det_nom">
+push "det_det_nom"
+push caseFirstWord
+case-of
+modify-case
+#<lit-tag v="SN">
+push "<SN>"
+#<var n="tipus_det">
+push tipus_det
+#<var n="gen_chunk">
+push gen_chunk
+#<var n="nbr_chunk">
+push nbr_chunk
+concat 4
+#<clip part="lem" pos="1" side="tl">
+push 1
+push "lem"
+cliptl
+#<clip part="a_det" pos="1" side="tl">
+push 1
+push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
+cliptl
+#<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
+#<clip part="gen_mf" pos="1" side="tl">
+push 1
+push "<mf>"
+cliptl
+#<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
+#<clip part="nbr_sp" pos="1" side="tl">
+push 1
+push "<sp>"
+cliptl
+lu 6
+pushbl
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 4
+pushbl
+pushsb 1
+#<clip part="lemh" pos="2" side="tl">
+push 2
+push "lemh"
+cliptl
+#<clip part="a_nom" pos="2" side="tl">
+push 2
+push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
+cliptl
+#<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
+#<clip part="gen_mf" pos="2" side="tl">
+push 2
+push "<mf>"
+cliptl
+#<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
+#<clip part="nbr_sp" pos="2" side="tl">
+push 2
+push "<sp>"
+cliptl
+#<clip part="lemq" pos="2" side="tl">
+push 2
+push "lemq"
+cliptl
+lu 7
+chunk 8
+out 1
+action_0_end:
+section_rules_end:

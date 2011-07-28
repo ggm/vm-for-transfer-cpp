@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<transfer default="chunk">
+
+  <section-def-cats>
+  </section-def-cats>
+
+  <section-def-attrs>
+  </section-def-attrs>
+
+  <section-def-vars>
+  </section-def-vars>
+
+  <section-def-lists>
+  </section-def-lists>
+
+  <section-def-macros>
+  </section-def-macros>
+
+  <section-rules>
+  </section-rules>
+
+</transfer>
+
