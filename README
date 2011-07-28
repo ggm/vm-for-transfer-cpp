@@ -1,0 +1,14 @@
+== About the project ==
+
+This project is part of the free/open-source platform for developing rule-based
+machine translation systems, Apertium. And it is being developed as part of the
+Google Summer of Code 2011.
+
+The aim of the project is to create a simple compiler and VM for the transfer 
+files of Apertium.
+
+== Requirements ==
+
+ - libxml2 (same used by Apertium, you may have it already installed).
+ - lttoolbox (again also used by Apertium).
+
