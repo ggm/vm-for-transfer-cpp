@@ -28,7 +28,7 @@ XmlParser::XmlParser(int fd) {
 }
 
 XmlParser::XmlParser(char *fileName) {
-	reader = xmlReaderForFile("test_macro_1.t1x", NULL, 0);
+	reader = xmlReaderForFile(fileName, NULL, 0);
 }
 
 XmlParser::XmlParser(const XmlParser &p) {
