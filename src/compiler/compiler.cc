@@ -90,7 +90,7 @@ void Compiler::compile() {
   	parser.parse();
   	writeOutput(codeGenerator->getWritableCode());
   } catch (CompilerException &c) {
-  	debugMessage(WstringUtils::stows(c.what()));
+  	debugMessage(c.getMessage());
   	cerr << c.what() << endl;
   } catch (exception &e) {
   	debugMessage(WstringUtils::stows(e.what()));

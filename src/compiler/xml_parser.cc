@@ -69,7 +69,7 @@ void XmlParser::parse() {
 		}
 		xmlFreeTextReader(reader);
 		if (ret != 0) {
-			throw CompilerException("An error occurred while parsing rules the file");
+			throw CompilerException(L"An error occurred while parsing rules the file");
 		}
 	}
 }

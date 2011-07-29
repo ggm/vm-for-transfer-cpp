@@ -27,12 +27,12 @@ using namespace std;
 class CompilerException : public exception
 {
 public:
-	CompilerException(string m="exception!") : msg(m) {}
+	CompilerException(wstring m) : msg(m) {}
 	virtual ~CompilerException() throw () {}
-	const char* what() const throw() { return msg.c_str(); }
+	wstring getMessage() const { return msg; }
 
 private:
-	string msg;
+	wstring msg;
 };
 
 #endif /* COMPILEREXCEPTION_H_ */
