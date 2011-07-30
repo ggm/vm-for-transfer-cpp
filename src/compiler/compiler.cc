@@ -86,12 +86,13 @@ void Compiler::setOutputFile(char *fileName) {
  */
 void Compiler::compile() {
   createParser();
+
   try {
   	parser.parse();
   	writeOutput(codeGenerator->getWritableCode());
   } catch (CompilerException &c) {
   	debugMessage(c.getMessage());
-  	cerr << c.what() << endl;
+  	wcerr << L"Error: " << c.getMessage() << endl;
   } catch (exception &e) {
   	debugMessage(WstringUtils::stows(e.what()));
   	cerr << e.what() << endl;
