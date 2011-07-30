@@ -73,6 +73,58 @@ void EventHandler::throwError(const Event &event, const wstring &msg) const {
   }
 }
 
+/**
+ * Check if an event has an attribute.
+ *
+ * @param event the event which has to have to attribute
+ * @param attr the attribute to find
+ */
+void EventHandler::checkAttributeExists(const Event &event,
+    wstring attr) const {
+  if (!event.hasAttribute(attr)) {
+    wstringstream msg;
+    msg << event.getName() << L" needs attribute " << attr << L".";
+    throwError(event, msg.str());
+  }
+}
+
+/**
+ * Check if a macro definition is correct. Check the name and the number of
+ * parameters.
+ *
+ * @param event the event containing the macro
+ */
+void EventHandler::checkMacro(const Event &event) const {
+  wstring name = event.getAttribute(L"n");
+
+  if (!symbolTable.macroExists(name)) {
+    wstringstream msg;
+    msg << L"macro '" << name << L"' doesn't exist.";
+    throwError(event, msg.str());
+  }
+
+  // Check if the number of parameters passed is correct.
+  int numParams = event.getNumChildren();
+  int numParamsSymb = symbolTable.getMacro(name).getNumParameters();
+  if (numParams != numParamsSymb) {
+    wstringstream msg;
+    msg << L"macro '" << name << L"' needs " << numParamsSymb
+        << L" parameters, passed " << numParams;
+    throwError(event, msg.str());
+  }
+
+}
+
+/**
+ * Do all the necessary operations and the end of parsing. For now, check all
+ * remaining macros.
+ */
+void EventHandler::handleEndOfParsing() {
+  for (unsigned int i = 0; i < uncheckedMacros.size(); i++) {
+    checkMacro(uncheckedMacros[i]);
+  }
+}
+
 void EventHandler::handleTransferStart(const Event &event) {
 	transferStage = TRANSFER;
 
@@ -86,7 +138,7 @@ void EventHandler::handleTransferStart(const Event &event) {
 }
 
 void EventHandler::handleTransferEnd(const Event &event) {
-
+	handleEndOfParsing();
 }
 
 void EventHandler::handleInterchunkStart(const Event &event) {
@@ -95,7 +147,7 @@ void EventHandler::handleInterchunkStart(const Event &event) {
 }
 
 void EventHandler::handleInterchunkEnd(const Event &event) {
-
+	handleEndOfParsing();
 }
 
 void EventHandler::handlePostchunkStart(const Event &event) {
@@ -104,5 +156,39 @@ void EventHandler::handlePostchunkStart(const Event &event) {
 }
 
 void EventHandler::handlePostchunkEnd(const Event &event) {
+	handleEndOfParsing();
+}
 
+void EventHandler::handleDefMacroStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring name = event.getAttribute(L"n");
+  checkAttributeExists(event, L"npar");
+  int npar;
+  wstringstream ws(event.getAttribute(L"npar"));
+  ws >> npar;
+  symbolTable.addMacro(name, npar);
+  codeGenerator->genDefMacroStart(event);
+}
+void EventHandler::handleDefMacroEnd(const Event &event) {
+  codeGenerator->genDefMacroEnd(event);
+}
+
+void EventHandler::handleCallMacroStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  codeGenerator->genCallMacroStart(event);
+}
+
+void EventHandler::handleCallMacroEnd(const Event &event) {
+  wstring macroName = event.getAttribute(L"n");
+
+  // In one pass we can only check for the macros already parsed, so we add
+  // the other ones to check an the end.
+  if (symbolTable.macroExists(macroName)) {
+    checkMacro(event);
+  } else {
+    Event e = event;
+    uncheckedMacros.push_back(e);
+  }
+
+  codeGenerator->genCallMacroEnd(event);
 }

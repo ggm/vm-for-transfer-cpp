@@ -87,6 +87,10 @@ public:
 	void genTransferStart(const Event &);
 	void genInterchunkStart(const Event &);
 	void genPostchunkStart(const Event &);
+	void genDefMacroStart(const Event &);
+	void genDefMacroEnd(const Event &);
+	void genCallMacroStart(const Event &);
+	void genCallMacroEnd(const Event &);
 
 private:
 	/// Used to get the next address of an instruction if needed.

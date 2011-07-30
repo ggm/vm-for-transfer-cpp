@@ -98,3 +98,19 @@ void AssemblyCodeGenerator::genInterchunkStart(const Event &event) {
 void AssemblyCodeGenerator::genPostchunkStart(const Event &event) {
 	genHeader(event);
 }
+
+void AssemblyCodeGenerator::genDefMacroStart(const Event &) {
+
+}
+
+void AssemblyCodeGenerator::genDefMacroEnd(const Event &) {
+
+	}
+
+void AssemblyCodeGenerator::genCallMacroStart(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genCallMacroEnd(const Event & event)
+{
+}

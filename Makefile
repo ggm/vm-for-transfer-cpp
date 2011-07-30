@@ -7,7 +7,7 @@ OPTIONS= -g -Wall
 CFLAGS=`xml2-config --cflags` -I/usr/local/include/lttoolbox-3.2 -I/usr/local/lib/lttoolbox-3.2/include
 LIBS=`xml2-config --libs` -L/usr/local/lib -llttoolbox3
 COMPILER_DIR=./src/compiler
-_OBJ= compiler.o xml_parser.o wstring_utils.o event.o event_handler.o assembly_code_generator.o
+_OBJ= compiler.o xml_parser.o wstring_utils.o event.o event_handler.o assembly_code_generator.o symbol.o symbol_table.o
 OBJ = $(patsubst %,$(COMPILER_DIR)/%,$(_OBJ))
 
 .PHONY: all clean doc

@@ -184,6 +184,10 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
 		eventHandler.handleInterchunkStart(event);
 	else if (name == L"postchunk")
 		eventHandler.handlePostchunkStart(event);
+	else if (name == L"def-macro")
+		eventHandler.handleDefMacroStart(event);
+	else if (name == L"call-macro")
+		eventHandler.handleCallMacroStart(event);
 }
 
 /**
@@ -206,4 +210,8 @@ void XmlParser::handleEndElement(const wstring &name) {
 		eventHandler.handleInterchunkEnd(event);
 	else if (name == L"postchunk")
 		eventHandler.handlePostchunkEnd(event);
+	else if (name == L"def-macro")
+		eventHandler.handleDefMacroEnd(event);
+	else if (name == L"call-macro")
+		eventHandler.handleCallMacroEnd(event);
 }

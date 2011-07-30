@@ -18,8 +18,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef EVENT_HANDLER_H_
 #define EVENT_HANDLER_H_
 
+#include <vector>
+
 #include <event.h>
 #include <code_generator.h>
+#include <symbol_table.h>
 
 enum TRANSFER_STAGE {
 	TRANSFER, INTERCHUNK, POSTCHUNK
@@ -47,6 +50,10 @@ public:
 	void setCodeGenerator(CodeGenerator *);
 
 	void throwError(const Event &, const wstring &) const;
+	void checkAttributeExists(const Event &, wstring) const;
+	void checkMacro(const Event &) const;
+	void handleEndOfParsing();
+
 	// Handlers for each of the xml elements.
 	void handleTransferStart(const Event &);
 	void handleTransferEnd(const Event &);
@@ -54,6 +61,10 @@ public:
 	void handleInterchunkEnd(const Event &);
 	void handlePostchunkStart(const Event &);
 	void handlePostchunkEnd(const Event &);
+	void handleDefMacroStart(const Event &);
+	void handleDefMacroEnd(const Event &);
+	void handleCallMacroStart(const Event &);
+	void handleCallMacroEnd(const Event &);
 
 private:
 	/// Store the current transfer stage.
@@ -64,6 +75,12 @@ private:
 
 	/// The code generator to use when handling the events.
 	CodeGenerator *codeGenerator;
+
+	/// The symbol table is used to check information about symbols.
+	SymbolTable symbolTable;
+
+	/// Store copies of the macros which aren't already defined, to check later.
+	vector<Event> uncheckedMacros;
 };
 
 #endif /* EVENT_HANDLER_H_ */

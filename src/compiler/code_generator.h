@@ -33,6 +33,10 @@ public:
 	virtual void genTransferStart(const Event &) = 0;
 	virtual void genInterchunkStart(const Event &) = 0;
 	virtual void genPostchunkStart(const Event &) = 0;
+	virtual void genDefMacroStart(const Event &) = 0;
+	virtual void genDefMacroEnd(const Event &) = 0;
+	virtual void genCallMacroStart(const Event &) = 0;
+	virtual void genCallMacroEnd(const Event &) = 0;
 
 private:
 
