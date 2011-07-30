@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Event::Event() {
 	this->lineNumber = 0;
 	name = L"";
+	parent = NULL;
 }
 
 Event::Event(int lineNumber, const wstring &name,
@@ -34,7 +35,7 @@ Event::Event(const Event &e) {
 }
 
 Event::~Event() {
-
+	parent = NULL;
 }
 
 Event& Event::operator=(const Event &e) {
@@ -50,6 +51,8 @@ void Event::copy(const Event &e) {
 	lineNumber = e.lineNumber;
 	name = e.name;
 	attributes = e.attributes;
+	parent = e.parent;
+	children = e.children;
 }
 
 /**
@@ -82,6 +85,8 @@ map<wstring, wstring> Event::getAttributes() const {
 /**
  * Get the value of an attribute, given an attribute name.
  *
+ * @param name the name of the attribute
+ *
  * @return the value if the attribute is found, in other case, an empty string.
  */
 wstring Event::getAttribute(const wstring &name) const {
@@ -93,3 +98,48 @@ wstring Event::getAttribute(const wstring &name) const {
 		return L"";
 	}
 }
+
+/**
+ * Check if the event has an attribute with the name passed as parameter.
+ *
+ * @param name the name of the attribute
+ *
+ * @return true if the attribute is found, in other case, false.
+ */
+bool Event::hasAttribute(const wstring &name) const {
+	map<wstring, wstring>::const_iterator it;
+	it = attributes.find(name);
+	if (it != attributes.end()) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Get the number of events which are children of this one.
+ *
+ * @return the number of children
+ */
+int Event::getNumChildren() const {
+	return children.size();
+}
+
+/**
+ * Set a reference to the parent of the event.
+ *
+ * @param event the parent of the event
+ */
+void Event::setParent(const Event *event) {
+	parent = event;
+}
+
+/**
+ * Add a reference to a child so we can inspect them in the future.
+ *
+ * @param event the child of the event
+ */
+void Event::addChild(const Event *event) {
+	children.push_back(event);
+}
+

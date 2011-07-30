@@ -167,9 +167,15 @@ void XmlParser::detectSelfClosingElements() {
 void XmlParser::handleStartElement(const wstring &name, int lineNumber,
 		map<wstring, wstring> attributes) {
 	Event event(lineNumber, name, attributes);
+
+	// Add the event as a child of the current top.
 	if (!callStack.empty()) {
 		detectSelfClosingElements();
+		const Event *top = &(callStack.back());
+		callStack.back().addChild(&event);
+		event.setParent(top);
 	}
+
 	callStack.push_back(event);
 
 	if (name == L"transfer")

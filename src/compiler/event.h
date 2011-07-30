@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <string>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -39,6 +40,11 @@ public:
 	wstring getName() const;
 	map<wstring, wstring> getAttributes() const;
 	wstring getAttribute(const wstring&) const;
+	bool hasAttribute(const wstring &) const;
+	int getNumChildren() const;
+
+	void setParent(const Event *);
+	void addChild(const Event *);
 
 private:
 	/// The line number of the event in the XML original file.
@@ -49,6 +55,13 @@ private:
 
 	/// The attributes of the element.
 	map<wstring, wstring> attributes;
+
+	/// Store a reference to the parent of the event.
+	const Event *parent;
+
+	/// Storing references to the event's children gives us a lot of flexibility.
+	vector<const Event*> children;
+
 };
 
 #endif /* EVENT_H_ */
