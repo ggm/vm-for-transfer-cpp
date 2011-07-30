@@ -64,12 +64,18 @@ void XmlParser::parse() {
 	if (reader != NULL) {
 		ret = xmlTextReaderRead(reader);
 		while (ret == 1) {
-			processNode();
+			int t = xmlTextReaderNodeType(reader);
+
+			// Only need to process node of type element (start and end).
+			if (t == XML_READER_TYPE_ELEMENT || t == XML_READER_TYPE_END_ELEMENT) {
+				processNode();
+			}
 			ret = xmlTextReaderRead(reader);
 		}
 		xmlFreeTextReader(reader);
 		if (ret != 0) {
-			throw CompilerException(L"An error occurred while parsing rules the file");
+			throw CompilerException(
+					L"An error occurred while parsing rules the file");
 		}
 	}
 }
