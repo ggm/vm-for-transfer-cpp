@@ -16,7 +16,11 @@
  */
 
 #include <event_handler.h>
+
 #include <iostream>
+#include <sstream>
+
+#include <compiler_exception.h>
 
 EventHandler::EventHandler() {
 	codeGenerator = NULL;
@@ -51,6 +55,22 @@ void EventHandler::copy(const EventHandler &e) {
  */
 void EventHandler::setCodeGenerator(CodeGenerator *codeGenerator) {
 	this->codeGenerator = codeGenerator;
+}
+
+/**
+ * Throw an error so the compiler can handle it.
+ *
+ * @param event the event which generated the error
+ * @param msg the message to be shown
+ */
+void EventHandler::throwError(const Event &event, const wstring &msg) const {
+  try {
+    wstringstream exc;
+    exc << L"line " << event.getLineNumber() << L", " << msg;
+    throw CompilerException(exc.str());
+  } catch (CompilerException &c) {
+    throw c;
+  }
 }
 
 void EventHandler::handleTransferStart(const Event &event) {

@@ -46,6 +46,7 @@ public:
 
 	void setCodeGenerator(CodeGenerator *);
 
+	void throwError(const Event &, const wstring &) const;
 	// Handlers for each of the xml elements.
 	void handleTransferStart(const Event &);
 	void handleTransferEnd(const Event &);
