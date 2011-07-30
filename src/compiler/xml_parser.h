@@ -55,7 +55,11 @@ private:
 	/// The call stack with the parsed events.
 	list<Event> callStack;
 
-	void processNode();
+	/// Store if the last element was empty (self-closing) to pop it from stack.
+	bool lastElementWasEmpty;
+
+	void detectSelfClosingElements();
+  void processNode();
 	map<wstring, wstring> parseAttributes() const;
 	void handleStartElement(const wstring &, int, map<wstring, wstring>);
 	void handleEndElement(const wstring &);

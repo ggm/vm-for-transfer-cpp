@@ -21,14 +21,17 @@
 
 XmlParser::XmlParser() {
 	reader = NULL;
+	lastElementWasEmpty = false;
 }
 
 XmlParser::XmlParser(int fd) {
 	reader = xmlReaderForFd(fd, NULL, NULL, 0);
+	lastElementWasEmpty = false;
 }
 
 XmlParser::XmlParser(char *fileName) {
 	reader = xmlReaderForFile(fileName, NULL, 0);
+	lastElementWasEmpty = false;
 }
 
 XmlParser::XmlParser(const XmlParser &p) {
@@ -53,6 +56,7 @@ void XmlParser::copy(const XmlParser &c) {
 	reader = c.reader;
 	eventHandler = c.eventHandler;
 	callStack = c.callStack;
+	lastElementWasEmpty = c.lastElementWasEmpty;
 }
 
 /**
@@ -139,6 +143,20 @@ map<wstring, wstring> XmlParser::parseAttributes() const {
 }
 
 /**
+ * Detect a self-closing element and act accordingly. libxml2 doesn't create an
+ * end event for a self-closing element, so we detect them using the isEmpty
+ * function. Then we need to pop its event from the callstack as if it was the
+ * handleEndElement method.
+ */
+void XmlParser::detectSelfClosingElements() {
+	if (lastElementWasEmpty) {
+		callStack.pop_back();
+	}
+	lastElementWasEmpty =
+			(xmlTextReaderIsEmptyElement(reader) == 1) ? true : false;
+}
+
+/**
  * Create an event object, push it to the stack and call the appropriate
  * eventhandler's method.
  *
@@ -149,6 +167,9 @@ map<wstring, wstring> XmlParser::parseAttributes() const {
 void XmlParser::handleStartElement(const wstring &name, int lineNumber,
 		map<wstring, wstring> attributes) {
 	Event event(lineNumber, name, attributes);
+	if (!callStack.empty()) {
+		detectSelfClosingElements();
+	}
 	callStack.push_back(event);
 
 	if (name == L"transfer")
@@ -168,6 +189,7 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
 void XmlParser::handleEndElement(const wstring &name) {
 	Event event;
 	if (!callStack.empty()) {
+		detectSelfClosingElements();
 		event = callStack.back();
 		callStack.pop_back();
 	}
