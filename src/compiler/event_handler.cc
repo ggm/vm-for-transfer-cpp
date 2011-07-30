@@ -23,29 +23,29 @@
 #include <compiler_exception.h>
 
 EventHandler::EventHandler() {
-	codeGenerator = NULL;
+  codeGenerator = NULL;
 }
 
 EventHandler::EventHandler(const EventHandler &e) {
-	copy(e);
+  copy(e);
 }
 
 EventHandler::~EventHandler() {
-	codeGenerator = NULL;
+  codeGenerator = NULL;
 }
 
 EventHandler& EventHandler::operator=(const EventHandler &e) {
-	if (this != &e) {
-		this->~EventHandler();
-		this->copy(e);
-	}
-	return *this;
+  if (this != &e) {
+    this->~EventHandler();
+    this->copy(e);
+  }
+  return *this;
 }
 
 void EventHandler::copy(const EventHandler &e) {
-	transferStage = e.transferStage;
-	transferDefault = e.transferDefault;
-	codeGenerator = e.codeGenerator;
+  transferStage = e.transferStage;
+  transferDefault = e.transferDefault;
+  codeGenerator = e.codeGenerator;
 }
 
 /**
@@ -54,7 +54,7 @@ void EventHandler::copy(const EventHandler &e) {
  * @param codeGenerator the code generator to use.
  */
 void EventHandler::setCodeGenerator(CodeGenerator *codeGenerator) {
-	this->codeGenerator = codeGenerator;
+  this->codeGenerator = codeGenerator;
 }
 
 /**
@@ -126,37 +126,37 @@ void EventHandler::handleEndOfParsing() {
 }
 
 void EventHandler::handleTransferStart(const Event &event) {
-	transferStage = TRANSFER;
+  transferStage = TRANSFER;
 
-	wstring value = event.getAttribute(L"default");
-	if (value == L"chunk")
-		transferDefault = CHUNK;
-	else
-		transferDefault = LU;
+  wstring value = event.getAttribute(L"default");
+  if (value == L"chunk")
+    transferDefault = CHUNK;
+  else
+    transferDefault = LU;
 
-	codeGenerator->genTransferStart(event);
+  codeGenerator->genTransferStart(event);
 }
 
 void EventHandler::handleTransferEnd(const Event &event) {
-	handleEndOfParsing();
+  handleEndOfParsing();
 }
 
 void EventHandler::handleInterchunkStart(const Event &event) {
-	transferStage = INTERCHUNK;
-	codeGenerator->genInterchunkStart(event);
+  transferStage = INTERCHUNK;
+  codeGenerator->genInterchunkStart(event);
 }
 
 void EventHandler::handleInterchunkEnd(const Event &event) {
-	handleEndOfParsing();
+  handleEndOfParsing();
 }
 
 void EventHandler::handlePostchunkStart(const Event &event) {
-	transferStage = POSTCHUNK;
-	codeGenerator->genPostchunkStart(event);
+  transferStage = POSTCHUNK;
+  codeGenerator->genPostchunkStart(event);
 }
 
 void EventHandler::handlePostchunkEnd(const Event &event) {
-	handleEndOfParsing();
+  handleEndOfParsing();
 }
 
 void EventHandler::handleDefMacroStart(const Event &event) {

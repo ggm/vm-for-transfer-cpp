@@ -1,19 +1,19 @@
 /*Copyright (C) 2011  Gabriel Gregori Manzano
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 
 #ifndef EVENT_HANDLER_H_
 #define EVENT_HANDLER_H_
@@ -25,11 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <symbol_table.h>
 
 enum TRANSFER_STAGE {
-	TRANSFER, INTERCHUNK, POSTCHUNK
+  TRANSFER, INTERCHUNK, POSTCHUNK
 };
 
 enum TRANSFER_DEFAULT {
-	CHUNK, LU
+  CHUNK, LU
 };
 
 /**
@@ -41,46 +41,46 @@ class EventHandler {
 
 public:
 
-	EventHandler();
-	EventHandler(const EventHandler&);
-	~EventHandler();
-	EventHandler& operator=(const EventHandler&);
-	void copy(const EventHandler&);
+  EventHandler();
+  EventHandler(const EventHandler&);
+  ~EventHandler();
+  EventHandler& operator=(const EventHandler&);
+  void copy(const EventHandler&);
 
-	void setCodeGenerator(CodeGenerator *);
+  void setCodeGenerator(CodeGenerator *);
 
-	void throwError(const Event &, const wstring &) const;
-	void checkAttributeExists(const Event &, wstring) const;
-	void checkMacro(const Event &) const;
-	void handleEndOfParsing();
+  void throwError(const Event &, const wstring &) const;
+  void checkAttributeExists(const Event &, wstring) const;
+  void checkMacro(const Event &) const;
+  void handleEndOfParsing();
 
-	// Handlers for each of the xml elements.
-	void handleTransferStart(const Event &);
-	void handleTransferEnd(const Event &);
-	void handleInterchunkStart(const Event &);
-	void handleInterchunkEnd(const Event &);
-	void handlePostchunkStart(const Event &);
-	void handlePostchunkEnd(const Event &);
-	void handleDefMacroStart(const Event &);
-	void handleDefMacroEnd(const Event &);
-	void handleCallMacroStart(const Event &);
-	void handleCallMacroEnd(const Event &);
+  // Handlers for each of the xml elements.
+  void handleTransferStart(const Event &);
+  void handleTransferEnd(const Event &);
+  void handleInterchunkStart(const Event &);
+  void handleInterchunkEnd(const Event &);
+  void handlePostchunkStart(const Event &);
+  void handlePostchunkEnd(const Event &);
+  void handleDefMacroStart(const Event &);
+  void handleDefMacroEnd(const Event &);
+  void handleCallMacroStart(const Event &);
+  void handleCallMacroEnd(const Event &);
 
 private:
-	/// Store the current transfer stage.
-	TRANSFER_STAGE transferStage;
+  /// Store the current transfer stage.
+  TRANSFER_STAGE transferStage;
 
-	/// Store the default unit in the transfer.
-	TRANSFER_DEFAULT transferDefault;
+  /// Store the default unit in the transfer.
+  TRANSFER_DEFAULT transferDefault;
 
-	/// The code generator to use when handling the events.
-	CodeGenerator *codeGenerator;
+  /// The code generator to use when handling the events.
+  CodeGenerator *codeGenerator;
 
-	/// The symbol table is used to check information about symbols.
-	SymbolTable symbolTable;
+  /// The symbol table is used to check information about symbols.
+  SymbolTable symbolTable;
 
-	/// Store copies of the macros which aren't already defined, to check later.
-	vector<Event> uncheckedMacros;
+  /// Store copies of the macros which aren't already defined, to check later.
+  vector<Event> uncheckedMacros;
 };
 
 #endif /* EVENT_HANDLER_H_ */

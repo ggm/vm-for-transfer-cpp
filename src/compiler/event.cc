@@ -1,46 +1,45 @@
 /*Copyright (C) 2011  Gabriel Gregori Manzano
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 
 #include <event.h>
 
 Event::Event() {
-	this->lineNumber = 0;
-	name = L"";
-	parent = NULL;
+  this->lineNumber = 0;
+  name = L"";
+  parent = NULL;
 }
 
 Event::Event(int lineNumber, const wstring &name,
-						 map<wstring, wstring> attributes) {
-	this->lineNumber = lineNumber;
-	this->name = name;
-	this->attributes = attributes;
+    map<wstring, wstring> attributes) {
+  this->lineNumber = lineNumber;
+  this->name = name;
+  this->attributes = attributes;
 }
 
 Event::Event(const Event &e) {
-	copy(e);
+  copy(e);
 }
 
 Event::~Event() {
-	parent = NULL;
+  parent = NULL;
 }
 
 Event& Event::operator=(const Event &e) {
-  if(this != &e)
-  {
+  if (this != &e) {
     this->~Event();
     this->copy(e);
   }
@@ -48,11 +47,11 @@ Event& Event::operator=(const Event &e) {
 }
 
 void Event::copy(const Event &e) {
-	lineNumber = e.lineNumber;
-	name = e.name;
-	attributes = e.attributes;
-	parent = e.parent;
-	children = e.children;
+  lineNumber = e.lineNumber;
+  name = e.name;
+  attributes = e.attributes;
+  parent = e.parent;
+  children = e.children;
 }
 
 /**
@@ -61,7 +60,7 @@ void Event::copy(const Event &e) {
  * @return the line number
  */
 int Event::getLineNumber() const {
-	return lineNumber;
+  return lineNumber;
 }
 
 /**
@@ -70,7 +69,7 @@ int Event::getLineNumber() const {
  * @return the name of the element
  */
 wstring Event::getName() const {
-	return name;
+  return name;
 }
 
 /**
@@ -79,7 +78,7 @@ wstring Event::getName() const {
  * @return the map of key, value pairs.
  */
 map<wstring, wstring> Event::getAttributes() const {
-	return attributes;
+  return attributes;
 }
 
 /**
@@ -90,13 +89,13 @@ map<wstring, wstring> Event::getAttributes() const {
  * @return the value if the attribute is found, in other case, an empty string.
  */
 wstring Event::getAttribute(const wstring &name) const {
-	map<wstring, wstring>::const_iterator it;
-	it = attributes.find(name);
-	if (it != attributes.end()) {
-		return it->second;
-	} else {
-		return L"";
-	}
+  map<wstring, wstring>::const_iterator it;
+  it = attributes.find(name);
+  if (it != attributes.end()) {
+    return it->second;
+  } else {
+    return L"";
+  }
 }
 
 /**
@@ -107,13 +106,13 @@ wstring Event::getAttribute(const wstring &name) const {
  * @return true if the attribute is found, in other case, false.
  */
 bool Event::hasAttribute(const wstring &name) const {
-	map<wstring, wstring>::const_iterator it;
-	it = attributes.find(name);
-	if (it != attributes.end()) {
-		return true;
-	} else {
-		return false;
-	}
+  map<wstring, wstring>::const_iterator it;
+  it = attributes.find(name);
+  if (it != attributes.end()) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -122,7 +121,7 @@ bool Event::hasAttribute(const wstring &name) const {
  * @return the number of children
  */
 int Event::getNumChildren() const {
-	return children.size();
+  return children.size();
 }
 
 /**
@@ -131,7 +130,7 @@ int Event::getNumChildren() const {
  * @param event the parent of the event
  */
 void Event::setParent(const Event *event) {
-	parent = event;
+  parent = event;
 }
 
 /**
@@ -140,6 +139,6 @@ void Event::setParent(const Event *event) {
  * @param event the child of the event
  */
 void Event::addChild(const Event *event) {
-	children.push_back(event);
+  children.push_back(event);
 }
 

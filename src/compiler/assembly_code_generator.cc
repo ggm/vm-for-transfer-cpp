@@ -18,11 +18,11 @@
 #include <assembly_code_generator.h>
 
 AssemblyCodeGenerator::AssemblyCodeGenerator() {
-	nextAddress = 0;
+  nextAddress = 0;
 }
 
 AssemblyCodeGenerator::AssemblyCodeGenerator(const AssemblyCodeGenerator &c) {
-	copy(c);
+  copy(c);
 }
 
 AssemblyCodeGenerator::~AssemblyCodeGenerator() {
@@ -31,21 +31,21 @@ AssemblyCodeGenerator::~AssemblyCodeGenerator() {
 
 AssemblyCodeGenerator&
 AssemblyCodeGenerator::operator=(const AssemblyCodeGenerator &c) {
-	if (this != &c) {
-		this->~AssemblyCodeGenerator();
-		this->copy(c);
-	}
-	return *this;
+  if (this != &c) {
+    this->~AssemblyCodeGenerator();
+    this->copy(c);
+  }
+  return *this;
 }
 
 void AssemblyCodeGenerator::copy(const AssemblyCodeGenerator &c) {
-	this->nextAddress = c.nextAddress;
-	this->code = c.code;
+  this->nextAddress = c.nextAddress;
+  this->code = c.code;
 }
 
 void AssemblyCodeGenerator::addCode(const wstring &code) {
-	this->code.push_back(code);
-	nextAddress++;
+  this->code.push_back(code);
+  nextAddress++;
 }
 
 /**
@@ -54,14 +54,14 @@ void AssemblyCodeGenerator::addCode(const wstring &code) {
  * @return the writable representation as a wide string.
  */
 wstring AssemblyCodeGenerator::getWritableCode() const {
-	wstring writableCode = L"";
+  wstring writableCode = L"";
 
-	for (unsigned int i = 0; i < code.size(); i++) {
-		writableCode += code[i] + L"\n";
-	}
-	writableCode += L"\n";
+  for (unsigned int i = 0; i < code.size(); i++) {
+    writableCode += code[i] + L"\n";
+  }
+  writableCode += L"\n";
 
-	return writableCode;
+  return writableCode;
 }
 
 /*
@@ -70,33 +70,33 @@ wstring AssemblyCodeGenerator::getWritableCode() const {
  * @param event the first event of the xml rules file.
  */
 void AssemblyCodeGenerator::genHeader(const Event &event) {
-	// Add the type of file so the vm can read it accordingly.
-	addCode(L"#<assembly>");
+  // Add the type of file so the vm can read it accordingly.
+  addCode(L"#<assembly>");
 
-	// Add the rest of the header using the first element of the xml.
-	map<wstring, wstring> attributes = event.getAttributes();
-	map<wstring, wstring>::iterator it;
+  // Add the rest of the header using the first element of the xml.
+  map<wstring, wstring> attributes = event.getAttributes();
+  map<wstring, wstring>::iterator it;
 
-	wstringstream header;
-	header << L"#<" << event.getName();
-	for (it = attributes.begin(); it != attributes.end(); ++it) {
-		header << L" " << it->first << L"=\"" << it->second << L"\"";
-	}
-	header << L">";
+  wstringstream header;
+  header << L"#<" << event.getName();
+  for (it = attributes.begin(); it != attributes.end(); ++it) {
+    header << L" " << it->first << L"=\"" << it->second << L"\"";
+  }
+  header << L">";
 
-	addCode(header.str());
+  addCode(header.str());
 }
 
 void AssemblyCodeGenerator::genTransferStart(const Event &event) {
-	genHeader(event);
+  genHeader(event);
 }
 
 void AssemblyCodeGenerator::genInterchunkStart(const Event &event) {
-	genHeader(event);
+  genHeader(event);
 }
 
 void AssemblyCodeGenerator::genPostchunkStart(const Event &event) {
-	genHeader(event);
+  genHeader(event);
 }
 
 void AssemblyCodeGenerator::genDefMacroStart(const Event &) {
@@ -105,12 +105,10 @@ void AssemblyCodeGenerator::genDefMacroStart(const Event &) {
 
 void AssemblyCodeGenerator::genDefMacroEnd(const Event &) {
 
-	}
-
-void AssemblyCodeGenerator::genCallMacroStart(const Event & event)
-{
 }
 
-void AssemblyCodeGenerator::genCallMacroEnd(const Event & event)
-{
+void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genCallMacroEnd(const Event & event) {
 }
