@@ -37,6 +37,14 @@ public:
   virtual void genSectionDefMacrosStart(const Event &) = 0;
   virtual void genDefMacroStart(const Event &) = 0;
   virtual void genDefMacroEnd(const Event &) = 0;
+  virtual void genSectionRulesStart(const Event &) = 0;
+  virtual void genSectionRulesEnd(const Event &) = 0;
+  virtual void genRuleStart(const Event &) = 0;
+  virtual void genPatternStart(const Event &) = 0;
+  virtual void genPatternEnd(const Event &) = 0;
+  virtual void genPatternItemStart(const Event &, const vector<wstring>&) = 0;
+  virtual void genActionStart(const Event &) = 0;
+  virtual void genActionEnd(const Event &) = 0;
   virtual void genCallMacroStart(const Event &) = 0;
   virtual void genCallMacroEnd(const Event &) = 0;
 

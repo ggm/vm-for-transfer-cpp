@@ -77,6 +77,14 @@ public:
   void handleSectionDefMacrosStart(const Event &);
   void handleDefMacroStart(const Event &);
   void handleDefMacroEnd(const Event &);
+  void handleSectionRulesStart(const Event &);
+  void handleSectionRulesEnd(const Event &);
+  void handleRuleStart(const Event &);
+  void handlePatternStart(const Event &);
+  void handlePatternEnd(const Event &);
+  void handlePatternItemStart(const Event &);
+  void handleActionStart(const Event &);
+  void handleActionEnd(const Event &);
   void handleCallMacroStart(const Event &);
   void handleCallMacroEnd(const Event &);
 

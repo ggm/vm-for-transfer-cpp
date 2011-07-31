@@ -316,6 +316,48 @@ void EventHandler::handleDefMacroEnd(const Event &event) {
   codeGenerator->genDefMacroEnd(event);
 }
 
+void EventHandler::handleSectionRulesStart(const Event &event) {
+  codeGenerator->genSectionRulesStart(event);
+}
+
+void EventHandler::handleSectionRulesEnd(const Event &event) {
+  codeGenerator->genSectionRulesEnd(event);
+}
+
+void EventHandler::handleRuleStart(const Event &event) {
+  codeGenerator->genRuleStart(event);
+}
+
+void EventHandler::handlePatternStart(const Event &event) {
+  codeGenerator->genPatternStart(event);
+}
+
+void EventHandler::handlePatternEnd(const Event &event) {
+  codeGenerator->genPatternEnd(event);
+}
+
+void EventHandler::handlePatternItemStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring catName = event.getAttribute(L"n");
+
+  if (defCats.find(catName) == defCats.end()) {
+    wstringstream msg;
+    msg << L"cat '" << catName << L"' doesn't exist.";
+    throwError(event, msg.str());
+  } else {
+    vector<wstring> cats = defCats[catName];
+    codeGenerator->genPatternItemStart(event, cats);
+  }
+}
+
+void EventHandler::handleActionStart(const Event &event) {
+  codeGenerator->genActionStart(event);
+}
+
+void EventHandler::handleActionEnd(const Event &event) {
+  codeGenerator->genActionEnd(event);
+}
+
 void EventHandler::handleCallMacroStart(const Event &event) {
   checkAttributeExists(event, L"n");
   codeGenerator->genCallMacroStart(event);

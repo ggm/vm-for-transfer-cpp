@@ -91,6 +91,14 @@ public:
   void genSectionDefMacrosStart(const Event &);
   void genDefMacroStart(const Event &);
   void genDefMacroEnd(const Event &);
+  void genSectionRulesStart(const Event &);
+  void genSectionRulesEnd(const Event &);
+  void genRuleStart(const Event &);
+  void genPatternStart(const Event &);
+  void genPatternEnd(const Event &);
+  void genPatternItemStart(const Event &);
+  void genActionStart(const Event &);
+  void genActionEnd(const Event &);
   void genCallMacroStart(const Event &);
   void genCallMacroEnd(const Event &);
 

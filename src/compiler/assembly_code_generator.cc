@@ -116,6 +116,38 @@ void AssemblyCodeGenerator::genDefMacroEnd(const Event &) {
 
 }
 
+void AssemblyCodeGenerator::genSectionRulesStart(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genSectionRulesEnd(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genRuleStart(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genPatternStart(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genPatternEnd(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genPatternItemStart(const Event & event,
+    const vector<wstring> &cats) {
+}
+
+void AssemblyCodeGenerator::genActionStart(const Event & event)
+{
+}
+
+void AssemblyCodeGenerator::genActionEnd(const Event & event)
+{
+}
+
 void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
 }
 

@@ -190,6 +190,11 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
   else if (name == L"list-item") eventHandler.handleDefListItemStart(event);
   else if (name == L"section-def-macros") eventHandler.handleSectionDefMacrosStart(event);
   else if (name == L"def-macro") eventHandler.handleDefMacroStart(event);
+  else if (name == L"section-rules") eventHandler.handleSectionRulesStart(event);
+  else if (name == L"rule") eventHandler.handleRuleStart(event);
+  else if (name == L"pattern") eventHandler.handlePatternStart(event);
+  else if (name == L"pattern-item") eventHandler.handlePatternItemStart(event);
+  else if (name == L"action") eventHandler.handleActionStart(event);
   else if (name == L"call-macro") eventHandler.handleCallMacroStart(event);
 }
 
@@ -214,5 +219,8 @@ void XmlParser::handleEndElement(const wstring &name) {
   else if (name == L"def-attr") eventHandler.handleDefAttrEnd(event);
   else if (name == L"def-list") eventHandler.handleDefListEnd(event);
   else if (name == L"def-macro") eventHandler.handleDefMacroEnd(event);
+  else if (name == L"section-rules") eventHandler.handleSectionRulesEnd(event);
+  else if (name == L"pattern") eventHandler.handlePatternEnd(event);
+  else if (name == L"action") eventHandler.handleActionEnd(event);
   else if (name == L"call-macro") eventHandler.handleCallMacroEnd(event);
 }
