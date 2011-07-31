@@ -19,16 +19,20 @@
 #define WSTRING_UTILS_H_
 
 #include <string>
+#include <vector>
+
 #include <libxml/xmlreader.h>
 
 using namespace std;
 
-/// Abstraction of xml_utils found in lttoolbox.
+/// Abstraction of xml_utils found in lttoolbox and some utils added.
 class WstringUtils {
 
 public:
+  static wstring replace(wstring &, const wstring &, const wstring &);
   static wstring towstring(const xmlChar *);
   static wstring stows(const string &);
+  static vector<wstring> wsplit(const wstring &, const wchar_t&);
 };
 
 #endif /* WSTRING_UTILS_H_ */

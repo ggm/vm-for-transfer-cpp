@@ -20,6 +20,26 @@
 #include <lttoolbox/xml_parse_util.h>
 
 /**
+ * Replace a wide substring with another wide substring.
+ *
+ * @param wstr the wide string with the content
+ * @param replaced the wide string to be replaced
+ * @param replacement the wide string to put in the replaced place
+ *
+ * @return the wide string with the replacement done
+ */
+wstring WstringUtils::replace(wstring &wstr, const wstring &replaced,
+    const wstring &replacement) {
+  unsigned int pos = wstr.find(replaced);
+
+  if (pos != string::npos) {
+    wstr.replace(pos, replaced.size(), replacement);
+  }
+
+  return wstr;
+}
+
+/**
  * Convert a character sequence used by xml parser to a wide string.
  *
  * @param input the character sequence to convert
@@ -40,3 +60,33 @@ wstring WstringUtils::towstring(const xmlChar *input) {
 wstring WstringUtils::stows(const string &str) {
   return XMLParseUtil::stows(str);
 }
+
+/**
+ * Split a wide string in several words using a delimiter.
+ *
+ * @param wstr the wide string to split
+ * @param delimiter the wide char to use as delimiter
+ *
+ * @return a vector with a word in each position
+ */
+vector<wstring> WstringUtils::wsplit(const wstring &wstr,
+    const wchar_t &delimiter) {
+  vector<wstring> tokens;
+  wstring token = L"";
+  wchar_t ch;
+
+  for (unsigned int i = 0; i < wstr.length(); i++) {
+    ch = wstr[i];
+    if (ch == delimiter) {
+      tokens.push_back(token);
+      token = L"";
+    } else {
+      token += ch;
+    }
+  }
+
+  tokens.push_back(token);
+
+  return tokens;
+}
+
