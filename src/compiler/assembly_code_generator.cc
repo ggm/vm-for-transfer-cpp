@@ -116,36 +116,29 @@ void AssemblyCodeGenerator::genDefMacroEnd(const Event &) {
 
 }
 
-void AssemblyCodeGenerator::genSectionRulesStart(const Event & event)
-{
+void AssemblyCodeGenerator::genSectionRulesStart(const Event & event) {
 }
 
-void AssemblyCodeGenerator::genSectionRulesEnd(const Event & event)
-{
+void AssemblyCodeGenerator::genSectionRulesEnd(const Event & event) {
 }
 
-void AssemblyCodeGenerator::genRuleStart(const Event & event)
-{
+void AssemblyCodeGenerator::genRuleStart(const Event & event) {
 }
 
-void AssemblyCodeGenerator::genPatternStart(const Event & event)
-{
+void AssemblyCodeGenerator::genPatternStart(const Event & event) {
 }
 
-void AssemblyCodeGenerator::genPatternEnd(const Event & event)
-{
+void AssemblyCodeGenerator::genPatternEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genPatternItemStart(const Event & event,
     const vector<wstring> &cats) {
 }
 
-void AssemblyCodeGenerator::genActionStart(const Event & event)
-{
+void AssemblyCodeGenerator::genActionStart(const Event & event) {
 }
 
-void AssemblyCodeGenerator::genActionEnd(const Event & event)
-{
+void AssemblyCodeGenerator::genActionEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
@@ -153,3 +146,123 @@ void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
 
 void AssemblyCodeGenerator::genCallMacroEnd(const Event & event) {
 }
+
+void AssemblyCodeGenerator::genWithParamStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genChooseStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genChooseEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genWhenStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genWhenEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genOtherwiseStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genTestEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genBStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genLitStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genLitTagStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genTagsEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genLuEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genMluEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genLuCountStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genChunkStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genChunkEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genEqualEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genAndEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genOrEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genNotEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genOutEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genVarStart(const Event & event, bool) {
+}
+
+void AssemblyCodeGenerator::genInEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genClipStart(const Event & event,
+    const vector<wstring> &, bool, bool) {
+}
+
+void AssemblyCodeGenerator::genListStart(const Event & event,
+    const vector<wstring> &) {
+}
+
+void AssemblyCodeGenerator::genLetEnd(const Event & event,
+    const Event *container) {
+}
+
+void AssemblyCodeGenerator::genConcatEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genAppendStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genAppendEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genGetCaseFromStart(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genGetCaseFromEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genCaseOfStart(const Event & event,
+    const vector<wstring> &partAttrs) {
+}
+
+void AssemblyCodeGenerator::genModifyCaseEnd(const Event & event,
+    const Event *container) {
+}
+
+void AssemblyCodeGenerator::genBeginsWithEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genBeginsWithListEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genEndsWithEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genEndsWithListEnd(const Event & event) {
+}
+
+void AssemblyCodeGenerator::genContainsSubstringEnd(const Event & event) {
+}
+

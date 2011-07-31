@@ -54,7 +54,9 @@ public:
   void checkAttributeExists(const Event &, wstring) const;
   void checkMacro(const Event &) const;
   bool isContainer(const Event &) const;
+  vector<wstring> getPartAttribute(const Event &);
   wstring unEscape(wstring &) const;
+
   void handleEndOfParsing();
 
   // Handlers for each of the xml elements.
@@ -87,6 +89,44 @@ public:
   void handleActionEnd(const Event &);
   void handleCallMacroStart(const Event &);
   void handleCallMacroEnd(const Event &);
+  void handleWithParamStart(const Event &);
+  void handleChooseStart(const Event &);
+  void handleChooseEnd(const Event &);
+  void handleWhenStart(const Event &);
+  void handleWhenEnd(const Event &);
+  void handleOtherwiseStart(const Event &);
+  void handleTestEnd(const Event &);
+  void handleBStart(const Event &);
+  void handleLitStart(const Event &);
+  void handleLitTagStart(const Event &);
+  void handleTagsEnd(const Event &);
+  void handleLuEnd(const Event &);
+  void handleMluEnd(const Event &);
+  void handleLuCountStart(const Event &);
+  void handleChunkStart(const Event &);
+  void handleChunkEnd(const Event &);
+  void handleEqualEnd(const Event &);
+  void handleAndEnd(const Event &);
+  void handleOrEnd(const Event &);
+  void handleNotEnd(const Event &);
+  void handleOutEnd(const Event &);
+  void handleVarStart(const Event &);
+  void handleInEnd(const Event &);
+  void handleClipStart(const Event &);
+  void handleListStart(const Event &);
+  void handleLetEnd(const Event &);
+  void handleConcatEnd(const Event &);
+  void handleAppendStart(const Event &);
+  void handleAppendEnd(const Event &);
+  void handleGetCaseFromStart(const Event &);
+  void handleGetCaseFromEnd(const Event &);
+  void handleCaseOfStart(const Event &);
+  void handleModifyCaseEnd(const Event &);
+  void handleBeginsWithEnd(const Event &);
+  void handleBeginsWithListEnd(const Event &);
+  void handleEndsWithEnd(const Event &);
+  void handleEndsWithListEnd(const Event &);
+  void handleContainsSubstringEnd(const Event &);
 
 private:
   /// Store the current transfer stage.

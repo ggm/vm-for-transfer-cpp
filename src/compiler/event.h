@@ -46,6 +46,7 @@ public:
   const Event *getParent() const;
   void setParent(const Event *);
   void addChild(const Event *);
+  const Event* getChild(unsigned int) const;
 
 private:
   /// The line number of the event in the XML original file.

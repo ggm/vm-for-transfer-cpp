@@ -96,11 +96,50 @@ public:
   void genRuleStart(const Event &);
   void genPatternStart(const Event &);
   void genPatternEnd(const Event &);
-  void genPatternItemStart(const Event &);
+  void genPatternItemStart(const Event &, const vector<wstring> &);
   void genActionStart(const Event &);
   void genActionEnd(const Event &);
   void genCallMacroStart(const Event &);
   void genCallMacroEnd(const Event &);
+  void genWithParamStart(const Event &);
+  void genChooseStart(const Event &);
+  void genChooseEnd(const Event &);
+  void genWhenStart(const Event &);
+  void genWhenEnd(const Event &);
+  void genOtherwiseStart(const Event &);
+  void genTestEnd(const Event &);
+  void genBStart(const Event &);
+  void genLitStart(const Event &);
+  void genLitTagStart(const Event &);
+  void genTagsEnd(const Event &);
+  void genLuEnd(const Event &);
+  void genMluEnd(const Event &);
+  void genLuCountStart(const Event &);
+  void genChunkStart(const Event &);
+  void genChunkEnd(const Event &);
+  void genEqualEnd(const Event &);
+  void genAndEnd(const Event &);
+  void genOrEnd(const Event &);
+  void genNotEnd(const Event &);
+  void genOutEnd(const Event &);
+  void genVarStart(const Event &, bool);
+  void genInEnd(const Event &);
+  void genClipStart(const Event &, const vector<wstring> &, bool, bool);
+  void genListStart(const Event &, const vector<wstring> &);
+  void genLetEnd(const Event &, const Event *);
+  void genConcatEnd(const Event &);
+  void genAppendStart(const Event &);
+  void genAppendEnd(const Event &);
+  void genGetCaseFromStart(const Event &);
+  void genGetCaseFromEnd(const Event &);
+  void genCaseOfStart(const Event &, const vector<wstring> &);
+  void genModifyCaseEnd(const Event &, const Event *);
+  void genBeginsWithEnd(const Event &);
+  void genBeginsWithListEnd(const Event &);
+  void genEndsWithEnd(const Event &);
+  void genEndsWithListEnd(const Event &);
+  void genContainsSubstringEnd(const Event &);
+
 
 private:
   /// Used to get the next address of an instruction if needed.

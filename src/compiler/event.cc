@@ -17,6 +17,10 @@
 
 #include <event.h>
 
+#include <sstream>
+
+#include <compiler_exception.h>
+
 Event::Event() {
   this->lineNumber = 0;
   name = L"";
@@ -151,3 +155,19 @@ void Event::addChild(const Event *event) {
   children.push_back(event);
 }
 
+/**
+ * Get a child of the event.
+ *
+ * @param pos the index of the child to get
+ *
+ * @return the reference to the child Event
+ */
+const Event* Event::getChild(unsigned int pos) const {
+  if (pos < children.size()) {
+    return children[pos];
+  } else {
+    wstringstream msg;
+    msg << L"Event '" << name << L"' doesn't have a child in pos " << pos;
+    throw CompilerException(msg.str());
+  }
+}

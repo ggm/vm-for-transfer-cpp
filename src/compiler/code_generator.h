@@ -18,6 +18,7 @@
 #ifndef CODE_GENERATOR_H_
 #define CODE_GENERATOR_H_
 
+#include <vector>
 #include <string>
 
 #include <event.h>
@@ -47,6 +48,45 @@ public:
   virtual void genActionEnd(const Event &) = 0;
   virtual void genCallMacroStart(const Event &) = 0;
   virtual void genCallMacroEnd(const Event &) = 0;
+  virtual void genWithParamStart(const Event &) = 0;
+  virtual void genChooseStart(const Event &) = 0;
+  virtual void genChooseEnd(const Event &) = 0;
+  virtual void genWhenStart(const Event &) = 0;
+  virtual void genWhenEnd(const Event &) = 0;
+  virtual void genOtherwiseStart(const Event &) = 0;
+  virtual void genTestEnd(const Event &) = 0;
+  virtual void genBStart(const Event &) = 0;
+  virtual void genLitStart(const Event &) = 0;
+  virtual void genLitTagStart(const Event &) = 0;
+  virtual void genTagsEnd(const Event &) = 0;
+  virtual void genLuEnd(const Event &) = 0;
+  virtual void genMluEnd(const Event &) = 0;
+  virtual void genLuCountStart(const Event &) = 0;
+  virtual void genChunkStart(const Event &) = 0;
+  virtual void genChunkEnd(const Event &) = 0;
+  virtual void genEqualEnd(const Event &) = 0;
+  virtual void genAndEnd(const Event &) = 0;
+  virtual void genOrEnd(const Event &) = 0;
+  virtual void genNotEnd(const Event &) = 0;
+  virtual void genOutEnd(const Event &) = 0;
+  virtual void genVarStart(const Event &, bool) = 0;
+  virtual void genInEnd(const Event &) = 0;
+  virtual
+    void genClipStart(const Event &, const vector<wstring> &, bool, bool) = 0;
+  virtual void genListStart(const Event &, const vector<wstring> &) = 0;
+  virtual void genLetEnd(const Event &, const Event *) = 0;
+  virtual void genConcatEnd(const Event &) = 0;
+  virtual void genAppendStart(const Event &) = 0;
+  virtual void genAppendEnd(const Event &) = 0;
+  virtual void genGetCaseFromStart(const Event &) = 0;
+  virtual void genGetCaseFromEnd(const Event &) = 0;
+  virtual void genCaseOfStart(const Event &, const vector<wstring> &) = 0;
+  virtual void genModifyCaseEnd(const Event &, const Event *) = 0;
+  virtual void genBeginsWithEnd(const Event &) = 0;
+  virtual void genBeginsWithListEnd(const Event &) = 0;
+  virtual void genEndsWithEnd(const Event &) = 0;
+  virtual void genEndsWithListEnd(const Event &) = 0;
+  virtual void genContainsSubstringEnd(const Event &) = 0;
 
 private:
 

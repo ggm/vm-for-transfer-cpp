@@ -144,6 +144,33 @@ bool EventHandler::isContainer(const Event &event) const {
 }
 
 /**
+ * Get the part attribute from an event. If the part is one of the predefined
+ * (lem, lemq, ...) return that. If it's the name of one attr defined in a
+ * def-attr, return its content. In other case, throw an exception.
+ *
+ * @param event the event to extract the part attribute
+ *
+ * @return a vector with the part or the def-attr content
+ */
+vector<wstring> EventHandler::getPartAttribute(const Event &event) {
+  vector<wstring> partAttrs;
+  wstring part = event.getAttribute(L"part");
+
+  if (part == L"lem" || part == L"lemh" || part == L"lemq" || part == L"whole"
+      || part == L"tags" || part == L"chcontent") {
+    partAttrs.push_back(part);
+  } else if (defAttrs.find(part) != defAttrs.end()) {
+    partAttrs = defAttrs[part];
+  } else {
+    wstringstream msg;
+    msg << L"attr '" << part << L"' doesn't exist.";
+    throwError(event, msg.str());
+  }
+
+  return partAttrs;
+}
+
+/**
  * Unescape values of the xml files (<, >) and leaves them on tag form.
  *
  * @param wstr the wide string containing &amp;lt; &amp;gt;
@@ -376,4 +403,196 @@ void EventHandler::handleCallMacroEnd(const Event &event) {
   }
 
   codeGenerator->genCallMacroEnd(event);
+}
+
+void EventHandler::handleWithParamStart(const Event &event) {
+  codeGenerator->genWithParamStart(event);
+}
+
+void EventHandler::handleChooseStart(const Event &event) {
+  codeGenerator->genChooseStart(event);
+}
+
+void EventHandler::handleChooseEnd(const Event &event) {
+  codeGenerator->genChooseEnd(event);
+}
+
+void EventHandler::handleWhenStart(const Event &event) {
+  codeGenerator->genWhenStart(event);
+}
+
+void EventHandler::handleWhenEnd(const Event &event) {
+  codeGenerator->genWhenEnd(event);
+}
+
+void EventHandler::handleOtherwiseStart(const Event &event) {
+  codeGenerator->genOtherwiseStart(event);
+}
+
+void EventHandler::handleTestEnd(const Event &event) {
+  codeGenerator->genTestEnd(event);
+}
+
+void EventHandler::handleBStart(const Event &event) {
+  codeGenerator->genBStart(event);
+}
+
+void EventHandler::handleLitStart(const Event &event) {
+  codeGenerator->genLitStart(event);
+}
+
+void EventHandler::handleLitTagStart(const Event &event) {
+  codeGenerator->genLitTagStart(event);
+}
+
+void EventHandler::handleTagsEnd(const Event &event) {
+  codeGenerator->genTagsEnd(event);
+}
+
+void EventHandler::handleLuEnd(const Event &event) {
+  codeGenerator->genLuEnd(event);
+}
+
+void EventHandler::handleMluEnd(const Event &event) {
+  codeGenerator->genMluEnd(event);
+}
+
+void EventHandler::handleLuCountStart(const Event &event) {
+  codeGenerator->genLuCountStart(event);
+}
+
+void EventHandler::handleChunkStart(const Event &event) {
+  if (transferStage == TRANSFER && transferDefault != CHUNK) {
+    throwError(event,
+        L"Unexpected '<chunk>' element in a non '<transfer default=chunk>'");
+  }
+  codeGenerator->genChunkStart(event);
+}
+
+void EventHandler::handleChunkEnd(const Event &event) {
+  codeGenerator->genChunkEnd(event);
+}
+
+void EventHandler::handleEqualEnd(const Event &event) {
+  codeGenerator->genEqualEnd(event);
+}
+
+void EventHandler::handleAndEnd(const Event &event) {
+  codeGenerator->genAndEnd(event);
+}
+
+void EventHandler::handleOrEnd(const Event &event) {
+  codeGenerator->genOrEnd(event);
+}
+
+void EventHandler::handleNotEnd(const Event &event) {
+  codeGenerator->genNotEnd(event);
+}
+
+void EventHandler::handleOutEnd(const Event &event) {
+  codeGenerator->genOutEnd(event);
+}
+
+void EventHandler::handleVarStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring varName = event.getAttribute(L"n");
+
+  if (defVars.find(varName) != defVars.end()) {
+    // Check if this var acts as a container.
+    bool isContainer = this->isContainer(event);
+    codeGenerator->genVarStart(event, isContainer);
+  } else {
+    wstringstream msg;
+    msg << L"var '" << varName << L"' doesn't exist.";
+    throwError(event, msg.str());
+  }
+}
+
+void EventHandler::handleInEnd(const Event &event) {
+  codeGenerator->genInEnd(event);
+}
+
+void EventHandler::handleClipStart(const Event &event) {
+  bool linkTo = event.hasAttribute(L"link-to");
+
+  checkAttributeExists(event, L"part");
+  wstring part = event.getAttribute(L"part");
+  vector<wstring> partAttrs = getPartAttribute(event);
+
+  // Check if this clip acts as a container.
+  bool isContainer = this->isContainer(event);
+
+  codeGenerator->genClipStart(event, partAttrs, isContainer, linkTo);
+}
+
+void EventHandler::handleListStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring listName = event.getAttribute(L"n");
+
+  if (defLists.find(listName) != defAttrs.end()) {
+    vector<wstring> list = defLists[listName];
+    codeGenerator->genListStart(event, list);
+  } else {
+    wstringstream msg;
+    msg << L"list '" << listName << L"' doesn't exist.";
+    throwError(event, msg.str());
+  }
+}
+
+void EventHandler::handleLetEnd(const Event &event) {
+  const Event *container = event.getChild(0);
+  codeGenerator->genLetEnd(event, container);
+}
+
+void EventHandler::handleConcatEnd(const Event &event) {
+  codeGenerator->genConcatEnd(event);
+}
+
+void EventHandler::handleAppendStart(const Event &event) {
+  codeGenerator->genAppendStart(event);
+}
+
+void EventHandler::handleAppendEnd(const Event &event) {
+  codeGenerator->genAppendEnd(event);
+}
+
+void EventHandler::handleGetCaseFromStart(const Event &event) {
+  codeGenerator->genGetCaseFromStart(event);
+}
+
+void EventHandler::handleGetCaseFromEnd(const Event &event) {
+  codeGenerator->genGetCaseFromEnd(event);
+}
+
+void EventHandler::handleCaseOfStart(const Event &event) {
+  checkAttributeExists(event, L"part");
+  wstring part = event.getAttribute(L"part");
+  vector<wstring> partAttrs = getPartAttribute(event);
+
+  codeGenerator->genCaseOfStart(event, partAttrs);
+}
+
+void EventHandler::handleModifyCaseEnd(const Event &event) {
+  const Event *container = event.getChild(0);
+  codeGenerator->genModifyCaseEnd(event, container);
+}
+
+void EventHandler::handleBeginsWithEnd(const Event &event) {
+  codeGenerator->genBeginsWithEnd(event);
+}
+
+void EventHandler::handleBeginsWithListEnd(const Event &event) {
+  codeGenerator->genBeginsWithListEnd(event);
+}
+
+void EventHandler::handleEndsWithEnd(const Event &event) {
+  codeGenerator->genEndsWithEnd(event);
+}
+
+void EventHandler::handleEndsWithListEnd(const Event &event) {
+  codeGenerator->genEndsWithListEnd(event);
+}
+
+void EventHandler::handleContainsSubstringEnd(const Event &event) {
+  codeGenerator->genContainsSubstringEnd(event);
 }

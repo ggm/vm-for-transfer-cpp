@@ -30,7 +30,7 @@
  */
 wstring WstringUtils::replace(wstring &wstr, const wstring &replaced,
     const wstring &replacement) {
-  unsigned int pos = wstr.find(replaced);
+  size_t pos = wstr.find(replaced);
 
   if (pos != string::npos) {
     wstr.replace(pos, replaced.size(), replacement);
