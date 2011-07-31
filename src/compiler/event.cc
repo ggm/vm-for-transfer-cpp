@@ -125,6 +125,15 @@ int Event::getNumChildren() const {
 }
 
 /**
+ * Return the parent of the node.
+ *
+ * @return the parent of the node
+ */
+const Event* Event::getParent() const {
+  return parent;
+}
+
+/**
  * Set a reference to the parent of the event.
  *
  * @param event the parent of the event

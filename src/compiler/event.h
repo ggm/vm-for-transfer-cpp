@@ -43,6 +43,7 @@ public:
   bool hasAttribute(const wstring &) const;
   int getNumChildren() const;
 
+  const Event *getParent() const;
   void setParent(const Event *);
   void addChild(const Event *);
 

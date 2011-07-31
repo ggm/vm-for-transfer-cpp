@@ -124,6 +124,26 @@ void EventHandler::checkMacro(const Event &event) const {
 }
 
 /**
+ * Check if the event passed as parameter acts as a container.
+ *
+ * @param event the event to be checked
+ *
+ * @return true if acts as a container, false in other case.
+ */
+bool EventHandler::isContainer(const Event &event) const {
+  const Event *parent = event.getParent();
+
+  if (parent->getName() == L"let") {
+    // If it's the first child, it's on the left, so it's a container.
+    if (parent->getNumChildren() == 1) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
  * Unescape values of the xml files (<, >) and leaves them on tag form.
  *
  * @param wstr the wide string containing &amp;lt; &amp;gt;

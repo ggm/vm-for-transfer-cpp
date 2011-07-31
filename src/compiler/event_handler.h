@@ -53,6 +53,7 @@ public:
   void throwError(const Event &, const wstring &) const;
   void checkAttributeExists(const Event &, wstring) const;
   void checkMacro(const Event &) const;
+  bool isContainer(const Event &) const;
   wstring unEscape(wstring &) const;
   void handleEndOfParsing();
 
