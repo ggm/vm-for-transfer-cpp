@@ -18,6 +18,7 @@
 #ifndef EVENT_HANDLER_H_
 #define EVENT_HANDLER_H_
 
+#include <map>
 #include <vector>
 
 #include <event.h>
@@ -52,6 +53,7 @@ public:
   void throwError(const Event &, const wstring &) const;
   void checkAttributeExists(const Event &, wstring) const;
   void checkMacro(const Event &) const;
+  wstring unEscape(wstring &) const;
   void handleEndOfParsing();
 
   // Handlers for each of the xml elements.
@@ -61,6 +63,17 @@ public:
   void handleInterchunkEnd(const Event &);
   void handlePostchunkStart(const Event &);
   void handlePostchunkEnd(const Event &);
+  void handleDefCatStart(const Event &);
+  void handleDefCatEnd(const Event &);
+  void handleCatItemStart(const Event &);
+  void handleDefAttrStart(const Event &);
+  void handleDefAttrEnd(const Event &);
+  void handleAttrItemStart(const Event &);
+  void handleDefVarStart(const Event &);
+  void handleDefListStart(const Event &);
+  void handleDefListEnd(const Event &);
+  void handleDefListItemStart(const Event &);
+  void handleSectionDefMacrosStart(const Event &);
   void handleDefMacroStart(const Event &);
   void handleDefMacroEnd(const Event &);
   void handleCallMacroStart(const Event &);
@@ -81,6 +94,21 @@ private:
 
   /// Store copies of the macros which aren't already defined, to check later.
   vector<Event> uncheckedMacros;
+
+  /// Store category definitions and a reference to the current one.
+  map<wstring, vector<wstring> > defCats;
+  vector<wstring> *currentDefCat;
+
+  /// Store attributes definitions and a reference to the current one.
+  map<wstring, vector<wstring> > defAttrs;
+  vector<wstring> *currentDefAttr;
+
+  /// Store variables definitions and their default values.
+  map<wstring, wstring> defVars;
+
+  /// Store list definitions and a reference to the current one.
+  map<wstring, vector<wstring> > defLists;
+  vector<wstring> *currentDefList;
 };
 
 #endif /* EVENT_HANDLER_H_ */

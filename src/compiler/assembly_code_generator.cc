@@ -99,6 +99,15 @@ void AssemblyCodeGenerator::genPostchunkStart(const Event &event) {
   genHeader(event);
 }
 
+void AssemblyCodeGenerator::genDefVarStart(const Event &event,
+    const wstring &defaultValue) {
+
+}
+
+void AssemblyCodeGenerator::genSectionDefMacrosStart(const Event &event) {
+
+}
+
 void AssemblyCodeGenerator::genDefMacroStart(const Event &) {
 
 }

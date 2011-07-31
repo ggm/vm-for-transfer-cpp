@@ -87,6 +87,8 @@ public:
   void genTransferStart(const Event &);
   void genInterchunkStart(const Event &);
   void genPostchunkStart(const Event &);
+  void genDefVarStart(const Event &, const wstring &);
+  void genSectionDefMacrosStart(const Event &);
   void genDefMacroStart(const Event &);
   void genDefMacroEnd(const Event &);
   void genCallMacroStart(const Event &);

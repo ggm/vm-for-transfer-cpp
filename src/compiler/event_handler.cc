@@ -21,6 +21,7 @@
 #include <sstream>
 
 #include <compiler_exception.h>
+#include <wstring_utils.h>
 
 EventHandler::EventHandler() {
   codeGenerator = NULL;
@@ -46,6 +47,13 @@ void EventHandler::copy(const EventHandler &e) {
   transferStage = e.transferStage;
   transferDefault = e.transferDefault;
   codeGenerator = e.codeGenerator;
+  defCats = e.defCats;
+  currentDefCat = e.currentDefCat;
+  defAttrs = e.defAttrs;
+  currentDefAttr = e.currentDefAttr;
+  defVars = e.defVars;
+  defLists = e.defLists;
+  currentDefList = e.currentDefList;
 }
 
 /**
@@ -116,6 +124,20 @@ void EventHandler::checkMacro(const Event &event) const {
 }
 
 /**
+ * Unescape values of the xml files (<, >) and leaves them on tag form.
+ *
+ * @param wstr the wide string containing &amp;lt; &amp;gt;
+ *
+ * @return the wide string with the correct symbols (<, >)
+ */
+wstring EventHandler::unEscape(wstring &wstr) const {
+  wstr = WstringUtils::replace(wstr, L"&lt;", L"<");
+  wstr = WstringUtils::replace(wstr, L"&gt;", L">");
+  wstr = WstringUtils::replace(wstr, L"&amp;", L"");
+  return wstr;
+}
+
+/**
  * Do all the necessary operations and the end of parsing. For now, check all
  * remaining macros.
  */
@@ -159,14 +181,115 @@ void EventHandler::handlePostchunkEnd(const Event &event) {
   handleEndOfParsing();
 }
 
+void EventHandler::handleDefCatStart(const Event & event) {
+  checkAttributeExists(event, L"n");
+  wstring defCatId = event.getAttribute(L"n");
+  currentDefCat = &(defCats[defCatId]);
+}
+
+void EventHandler::handleDefCatEnd(const Event & event) {
+  currentDefCat = NULL;
+}
+
+void EventHandler::handleCatItemStart(const Event & event) {
+  wstring catItem = L"";
+
+  if (transferStage == POSTCHUNK) {
+    checkAttributeExists(event, L"name");
+    catItem = event.getAttribute(L"name");
+  } else {
+    // lemma attribute is optional.
+    if (event.hasAttribute(L"lemma")) {
+      catItem = event.getAttribute(L"lemma");
+    }
+
+    if (event.hasAttribute(L"tags")) {
+      wstring tagsAttr = event.getAttribute(L"tags");
+      vector<wstring> tags = WstringUtils::wsplit(tagsAttr, L'.');
+      for (unsigned int i = 0; i < tags.size(); i++) {
+        catItem += L'<';
+        catItem += tags[i];
+        catItem += L'>';
+      }
+    }
+  }
+
+  currentDefCat->push_back(catItem);
+}
+
+void EventHandler::handleDefAttrStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring defAttrId = event.getAttribute(L"n");
+  currentDefAttr = &(defAttrs[defAttrId]);
+}
+
+void EventHandler::handleDefAttrEnd(const Event &event) {
+  currentDefAttr = NULL;
+}
+
+void EventHandler::handleAttrItemStart(const Event &event) {
+  checkAttributeExists(event, L"tags");
+  wstring attrItem = L"";
+
+  wstring tagsAttr = event.getAttribute(L"tags");
+  vector<wstring> tags = WstringUtils::wsplit(tagsAttr, L'.');
+  for (unsigned int i = 0; i < tags.size(); i++) {
+    attrItem += L'<';
+    attrItem += tags[i];
+    attrItem += L'>';
+  }
+
+  currentDefAttr->push_back(attrItem);
+}
+
+void EventHandler::handleDefVarStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring varName = event.getAttribute(L"n");
+
+  wstring defaultValue = L"";
+  if (event.hasAttribute(L"v")) {
+    defaultValue = event.getAttribute(L"v");
+    if (defaultValue.find(L';') != string::npos) {
+      defaultValue = unEscape(defaultValue);
+    }
+    codeGenerator->genDefVarStart(event, defaultValue);
+  }
+
+  defVars[varName] = defaultValue;
+}
+
+void EventHandler::handleDefListStart(const Event &event) {
+  checkAttributeExists(event, L"n");
+  wstring defListId = event.getAttribute(L"n");
+  currentDefList = &(defLists[defListId]);
+}
+
+void EventHandler::handleDefListEnd(const Event &event) {
+  currentDefList = NULL;
+}
+
+void EventHandler::handleDefListItemStart(const Event &event) {
+  checkAttributeExists(event, L"v");
+
+  wstring listItem = event.getAttribute(L"v");
+  currentDefList->push_back(listItem);
+}
+
+void EventHandler::handleSectionDefMacrosStart(const Event &event) {
+
+}
+
 void EventHandler::handleDefMacroStart(const Event &event) {
   checkAttributeExists(event, L"n");
   wstring name = event.getAttribute(L"n");
+
   checkAttributeExists(event, L"npar");
   int npar;
   wstringstream ws(event.getAttribute(L"npar"));
   ws >> npar;
+
   symbolTable.addMacro(name, npar);
+
   codeGenerator->genDefMacroStart(event);
 }
 void EventHandler::handleDefMacroEnd(const Event &event) {

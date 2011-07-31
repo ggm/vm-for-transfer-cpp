@@ -178,16 +178,19 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
 
   callStack.push_back(event);
 
-  if (name == L"transfer")
-    eventHandler.handleTransferStart(event);
-  else if (name == L"interchunk")
-    eventHandler.handleInterchunkStart(event);
-  else if (name == L"postchunk")
-    eventHandler.handlePostchunkStart(event);
-  else if (name == L"def-macro")
-    eventHandler.handleDefMacroStart(event);
-  else if (name == L"call-macro")
-    eventHandler.handleCallMacroStart(event);
+  if (name == L"transfer") eventHandler.handleTransferStart(event);
+  else if (name == L"interchunk") eventHandler.handleInterchunkStart(event);
+  else if (name == L"postchunk") eventHandler.handlePostchunkStart(event);
+  else if (name == L"def-cat") eventHandler.handleDefCatStart(event);
+  else if (name == L"cat-item") eventHandler.handleCatItemStart(event);
+  else if (name == L"def-attr") eventHandler.handleDefAttrStart(event);
+  else if (name == L"attr-item") eventHandler.handleAttrItemStart(event);
+  else if (name == L"def-var") eventHandler.handleDefVarStart(event);
+  else if (name == L"def-list") eventHandler.handleDefListStart(event);
+  else if (name == L"list-item") eventHandler.handleDefListItemStart(event);
+  else if (name == L"section-def-macros") eventHandler.handleSectionDefMacrosStart(event);
+  else if (name == L"def-macro") eventHandler.handleDefMacroStart(event);
+  else if (name == L"call-macro") eventHandler.handleCallMacroStart(event);
 }
 
 /**
@@ -204,14 +207,12 @@ void XmlParser::handleEndElement(const wstring &name) {
     callStack.pop_back();
   }
 
-  if (name == L"transfer")
-    eventHandler.handleTransferEnd(event);
-  else if (name == L"interchunk")
-    eventHandler.handleInterchunkEnd(event);
-  else if (name == L"postchunk")
-    eventHandler.handlePostchunkEnd(event);
-  else if (name == L"def-macro")
-    eventHandler.handleDefMacroEnd(event);
-  else if (name == L"call-macro")
-    eventHandler.handleCallMacroEnd(event);
+  if (name == L"transfer") eventHandler.handleTransferEnd(event);
+  else if (name == L"interchunk") eventHandler.handleInterchunkEnd(event);
+  else if (name == L"postchunk") eventHandler.handlePostchunkEnd(event);
+  else if (name == L"def-cat") eventHandler.handleDefCatEnd(event);
+  else if (name == L"def-attr") eventHandler.handleDefAttrEnd(event);
+  else if (name == L"def-list") eventHandler.handleDefListEnd(event);
+  else if (name == L"def-macro") eventHandler.handleDefMacroEnd(event);
+  else if (name == L"call-macro") eventHandler.handleCallMacroEnd(event);
 }
