@@ -51,9 +51,30 @@ void AssemblyCodeGenerator::copy(const AssemblyCodeGenerator &c) {
   this->code = c.code;
 }
 
+/**
+ * Add the generated assembly code, modifying the next available address.
+ *
+ * @param code the assembly code to add
+ */
 void AssemblyCodeGenerator::addCode(const wstring &code) {
   this->code.push_back(code);
   nextAddress++;
+}
+
+/**
+ * Add the generated assembly code for the patterns section. As we can't know
+ * which is the last rule, we need to pop the footer and  append it at the end
+ * for every new pattern instruction.
+ *
+ * @param code the assembly code to add
+ */
+void AssemblyCodeGenerator::addPatternsCode(const wstring &code) {
+  wstring footer = patternsCode.back();
+  patternsCode.pop_back();
+  patternsCode.push_back(code);
+  patternsCode.push_back(footer);
+  nextAddress++;
+
 }
 
 /**
@@ -64,9 +85,18 @@ void AssemblyCodeGenerator::addCode(const wstring &code) {
 wstring AssemblyCodeGenerator::getWritableCode() const {
   wstring writableCode = L"";
 
-  for (unsigned int i = 0; i < code.size(); i++) {
+  for (unsigned int i = 0; i < patternSection; i++) {
     writableCode += code[i] + L"\n";
   }
+
+  for (unsigned int i = 0; i < patternsCode.size(); i++) {
+    writableCode += patternsCode[i] + L"\n";
+  }
+
+  for (unsigned int i = patternSection; i < code.size(); i++) {
+    writableCode += code[i] + L"\n";
+  }
+
   writableCode += L"\n";
 
   return writableCode;
@@ -206,6 +236,7 @@ void AssemblyCodeGenerator::genDefMacroEnd(const Event &event) {
 
 void AssemblyCodeGenerator::genSectionRulesStart(const Event & event) {
   addCode(L"section_rules_start:");
+  patternSection = nextAddress;
 }
 
 void AssemblyCodeGenerator::genSectionRulesEnd(const Event & event) {
@@ -217,13 +248,39 @@ void AssemblyCodeGenerator::genRuleStart(Event & event) {
 }
 
 void AssemblyCodeGenerator::genPatternStart(const Event & event) {
+  // First time, add the header and footer of the patterns section.
+  if (patternsCode.size() == 0) {
+    patternsCode.push_back(L"patterns_start:");
+    patternsCode.push_back(L"patterns_end:");
+  }
 }
 
 void AssemblyCodeGenerator::genPatternEnd(const Event & event) {
+  // Push the number of patterns to add to the trie.
+  wstringstream ws;
+  ws << event.getNumChildren();
+  addPatternsCode(PUSH_OP + INSTR_SEP + ws.str());
+
+  // Push the trie instruction with destination address as operand.
+  wstring numLabel = event.getParent()->getVariable(L"label");
+  addPatternsCode(ADDTRIE_OP + INSTR_SEP + L"action_" + numLabel + L"_start");
 }
 
 void AssemblyCodeGenerator::genPatternItemStart(const Event & event,
     const vector<wstring> &cats) {
+
+  // Push the contents of the category.
+  wstring catsStr = L"";
+  if (cats.size() > 0) {
+    catsStr = L"\"" + cats[0];
+    for (unsigned int i = 1; i < cats.size(); i++) {
+      catsStr += L"|";
+      catsStr += cats[i];
+    }
+    catsStr += L"\"";
+  }
+
+  addPatternsCode(PUSH_OP + INSTR_SEP + catsStr);
 }
 
 void AssemblyCodeGenerator::genActionStart(const Event & event) {

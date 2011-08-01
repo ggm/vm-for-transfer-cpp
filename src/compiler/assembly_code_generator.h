@@ -85,6 +85,7 @@ public:
   void copy(const AssemblyCodeGenerator&);
 
   void addCode(const wstring &);
+  void addPatternsCode(const wstring &);
   wstring getNextLabel(unsigned int);
   wstring getWritableCode() const;
   wstring genStoreInstr(const Event &container) const;
@@ -154,6 +155,12 @@ private:
 
   /// The assembly code generated.
   vector<wstring> code;
+
+  /// The assembly code generated for the patterns section.
+  vector<wstring> patternsCode;
+
+  /// Indicates the start position of the pattern section.
+  unsigned int patternSection;
 
   /// Used to generate the next label, based on the element type.
   unsigned int nextLabel[3];
