@@ -97,8 +97,6 @@ wstring AssemblyCodeGenerator::getWritableCode() const {
     writableCode += code[i] + L"\n";
   }
 
-  writableCode += L"\n";
-
   return writableCode;
 }
 
