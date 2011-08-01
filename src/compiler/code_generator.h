@@ -29,6 +29,9 @@ class CodeGenerator {
 public:
 
   virtual ~CodeGenerator() {}
+
+  virtual void setDebug(bool) = 0;
+
   virtual wstring getWritableCode() const = 0;
 
   virtual void genTransferStart(const Event &) = 0;

@@ -84,6 +84,8 @@ public:
   AssemblyCodeGenerator& operator=(const AssemblyCodeGenerator&);
   void copy(const AssemblyCodeGenerator&);
 
+  void setDebug(bool);
+
   void addCode(const wstring &);
   void addPatternsCode(const wstring &);
   wstring getNextLabel(unsigned int);
@@ -93,6 +95,7 @@ public:
   void genHeader(const Event &);
   void genClipCode(const Event &, const vector<wstring> &);
   void genClipInstr(const Event &, bool);
+  void genDebugCode(const Event &);
 
   void genTransferStart(const Event &);
   void genInterchunkStart(const Event &);
@@ -164,6 +167,9 @@ private:
 
   /// Used to generate the next label, based on the element type.
   unsigned int nextLabel[3];
+
+  /// If debug is on, debug messages will be added to the code generated.
+  bool debug;
 };
 
 #endif /* ASSEMBLY_CODE_GENERATOR_H_ */

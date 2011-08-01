@@ -49,6 +49,18 @@ AssemblyCodeGenerator::operator=(const AssemblyCodeGenerator &c) {
 void AssemblyCodeGenerator::copy(const AssemblyCodeGenerator &c) {
   this->nextAddress = c.nextAddress;
   this->code = c.code;
+  this->patternsCode = c.patternsCode;
+  this->patternSection = c.patternSection;
+  this->debug = c.debug;
+}
+
+/**
+ * Set the output of debug messages on or off.
+ *
+ * @param mode true if debug is activated, false in other case.
+ */
+void AssemblyCodeGenerator::setDebug(bool mode) {
+  debug = mode;
 }
 
 /**
@@ -211,6 +223,8 @@ void AssemblyCodeGenerator::genPostchunkStart(const Event &event) {
 
 void AssemblyCodeGenerator::genDefVarStart(const Event &event,
     const wstring &defaultValue) {
+  genDebugCode(event);
+
   // Push the default value and store it in var.
   wstring varName = event.getAttribute(L"n");
   addCode(PUSH_OP + INSTR_SEP + L"\"" + varName + L"\"");
@@ -224,6 +238,7 @@ void AssemblyCodeGenerator::genSectionDefMacrosStart(const Event &event) {
 }
 
 void AssemblyCodeGenerator::genDefMacroStart(const Event &event) {
+  genDebugCode(event);
   addCode(L"macro_" + event.getAttribute(L"n") + L"_start:");
 }
 
@@ -233,6 +248,7 @@ void AssemblyCodeGenerator::genDefMacroEnd(const Event &event) {
 }
 
 void AssemblyCodeGenerator::genSectionRulesStart(const Event & event) {
+  genDebugCode(event);
   addCode(L"section_rules_start:");
   patternSection = nextAddress;
 }
@@ -292,6 +308,7 @@ void AssemblyCodeGenerator::genActionEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
+  genDebugCode(event);
 }
 
 void AssemblyCodeGenerator::genCallMacroEnd(const Event & event) {
@@ -327,6 +344,7 @@ void AssemblyCodeGenerator::genWhenEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genOtherwiseStart(const Event & event) {
+  genDebugCode(event);
 }
 
 void AssemblyCodeGenerator::genTestEnd(const Event & event) {
@@ -343,6 +361,8 @@ void AssemblyCodeGenerator::genBStart(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genLitStart(const Event & event) {
+  genDebugCode(event);
+
   wstring value = event.getAttribute(L"v");
   wstringstream ws(value);
   int numericValue;
@@ -389,6 +409,8 @@ void AssemblyCodeGenerator::genLuCountStart(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genChunkStart(Event & event) {
+  genDebugCode(event);
+
   wstring chunkName = L""; // Name is optional.
 
   // If there is a fromname, we push the var name.
@@ -450,6 +472,8 @@ void AssemblyCodeGenerator::genOutEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genVarStart(const Event & event, bool isContainer) {
+  genDebugCode(event);
+
   wstring varName = event.getAttribute(L"n");
 
   // If it's a container push its name as a quoted string.
@@ -513,6 +537,7 @@ void AssemblyCodeGenerator::genClipInstr(const Event &event, bool linkTo) {
 
 void AssemblyCodeGenerator::genClipStart(const Event & event,
     const vector<wstring> &partAttrs, bool isContainer, bool linkTo) {
+  genDebugCode(event);
 
   genClipCode(event, partAttrs);
 
@@ -530,6 +555,8 @@ void AssemblyCodeGenerator::genClipStart(const Event & event,
 
 void AssemblyCodeGenerator::genListStart(const Event & event,
     const vector<wstring> &list) {
+  genDebugCode(event);
+
   wstring processedList = L"";
 
   // Push the contents of the list to the stack.
@@ -557,6 +584,8 @@ void AssemblyCodeGenerator::genConcatEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genAppendStart(const Event & event) {
+  genDebugCode(event);
+
   wstring varName = L"\"" + event.getAttribute(L"n") + L"\"";
   addCode(PUSH_OP + INSTR_SEP + varName);
 }
@@ -568,6 +597,7 @@ void AssemblyCodeGenerator::genAppendEnd(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genGetCaseFromStart(const Event & event) {
+  genDebugCode(event);
 }
 
 void AssemblyCodeGenerator::genGetCaseFromEnd(const Event & event) {
@@ -582,6 +612,7 @@ void AssemblyCodeGenerator::genGetCaseFromEnd(const Event & event) {
 
 void AssemblyCodeGenerator::genCaseOfStart(const Event & event,
     const vector<wstring> &partAttrs) {
+  genDebugCode(event);
 
   // Generate the code of the clip we are going to get the case from.
   genClipCode(event, partAttrs);
@@ -610,3 +641,26 @@ void AssemblyCodeGenerator::genContainsSubstringEnd(const Event & event) {
   addCode(getIgnoreCaseInstr(event, CMP_SUBSTR_OP, CMPI_SUBSTR_OP));
 }
 
+/**
+ * Generate a debug message for a given event.
+ *
+ * @param event the event to generated the debug message from
+ */
+void AssemblyCodeGenerator::genDebugCode(const Event &event) {
+  if (!debug)
+    return;
+
+  wstring debugMsg = L"#<" + event.getName();
+  wstringstream ws;
+
+  map<wstring, wstring>::iterator it;
+  map<wstring, wstring> attributes = event.getAttributes();
+
+  for ( it=attributes.begin() ; it != attributes.end(); it++ ) {
+    ws <<  L" " << it->first << L"=\"" << it->second << L"\"";
+  }
+  debugMsg += ws.str();
+
+  debugMsg += L">";
+  addCode(debugMsg);
+}

@@ -133,5 +133,8 @@ void Compiler::createParser() {
   } else {
     parser = XmlParser(STDIN_FILENO);
   }
+
+  bool debug = debugFile.is_open();
+  codeGenerator->setDebug(debug);
   parser.setCodeGenerator(codeGenerator);
 }
