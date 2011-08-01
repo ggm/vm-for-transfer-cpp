@@ -436,7 +436,7 @@ void AssemblyCodeGenerator::genChunkStart(Event & event) {
 void AssemblyCodeGenerator::genChunkEnd(const Event & event) {
   int numOps = event.getNumChildren();
 
-  if (event.hasAttribute(L"name")) {
+  if (event.getVariable(L"name") != L"") {
     numOps++;
   }
 
