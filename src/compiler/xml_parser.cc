@@ -255,10 +255,13 @@ void XmlParser::handleEndElement(const wstring &name) {
   else if (name == L"in") eventHandler.handleInEnd(*event);
   else if (name == L"let") eventHandler.handleLetEnd(*event);
   else if (name == L"concat") eventHandler.handleConcatEnd(*event);
+  else if (name == L"append") eventHandler.handleAppendEnd(*event);
   else if (name == L"get-case-from") eventHandler.handleGetCaseFromEnd(*event);
   else if (name == L"modify-case") eventHandler.handleModifyCaseEnd(*event);
   else if (name == L"begins-with") eventHandler.handleBeginsWithEnd(*event);
   else if (name == L"begins-with-list") eventHandler.handleBeginsWithListEnd(*event);
+  else if (name == L"ends-with") eventHandler.handleEndsWithEnd(*event);
+  else if (name == L"ends-with-list") eventHandler.handleEndsWithListEnd(*event);
   else if (name == L"contains-substring") eventHandler.handleContainsSubstringEnd(*event);
 
   delete event;
