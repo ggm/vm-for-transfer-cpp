@@ -51,6 +51,7 @@ push "lema_SV"
 push "_enc"
 append 1
 #<var n="lema_SV">
+push "lema_SV"
 push lema_SV
 #<lit v="aa">
 push "aa"
