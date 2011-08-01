@@ -32,8 +32,9 @@ wstring WstringUtils::replace(wstring &wstr, const wstring &replaced,
     const wstring &replacement) {
   size_t pos = wstr.find(replaced);
 
-  if (pos != string::npos) {
+  while (pos != string::npos) {
     wstr.replace(pos, replaced.size(), replacement);
+    pos = wstr.find(replaced);
   }
 
   return wstr;
