@@ -357,8 +357,10 @@ void AssemblyCodeGenerator::genLitStart(const Event & event) {
 }
 
 void AssemblyCodeGenerator::genLitTagStart(const Event & event) {
+  genDebugCode(event);
+
   // Convert <det.ind> to <det><ind> format.
-  wstring litTag = L"<" + event.getAttribute(L"v") + L">";
+  wstring litTag = L"\"<" + event.getAttribute(L"v") + L">\"";
   litTag = WstringUtils::replace(litTag, L".", L"><");
   addCode(PUSH_OP + INSTR_SEP + litTag);
 }
