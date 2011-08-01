@@ -150,7 +150,9 @@ map<wstring, wstring> XmlParser::parseAttributes() const {
  */
 void XmlParser::detectSelfClosingElements() {
   if (lastElementWasEmpty) {
+    Event * event = callStack.back();
     callStack.pop_back();
+    delete event;
   }
   lastElementWasEmpty =
       (xmlTextReaderIsEmptyElement(reader) == 1) ? true : false;
@@ -166,51 +168,51 @@ void XmlParser::detectSelfClosingElements() {
  */
 void XmlParser::handleStartElement(const wstring &name, int lineNumber,
     map<wstring, wstring> attributes) {
-  Event event(lineNumber, name, attributes);
+  Event *event = new Event(lineNumber, name, attributes);
 
   // Add the event as a child of the current top.
   if (!callStack.empty()) {
     detectSelfClosingElements();
-    const Event *top = &(callStack.back());
-    callStack.back().addChild(&event);
-    event.setParent(top);
+    const Event *top = callStack.back();
+    callStack.back()->addChild(*event);
+    event->setParent(top);
   }
 
-  callStack.push_back(event);
+  if (name == L"transfer") eventHandler.handleTransferStart(*event);
+  else if (name == L"interchunk") eventHandler.handleInterchunkStart(*event);
+  else if (name == L"postchunk") eventHandler.handlePostchunkStart(*event);
+  else if (name == L"def-cat") eventHandler.handleDefCatStart(*event);
+  else if (name == L"cat-item") eventHandler.handleCatItemStart(*event);
+  else if (name == L"def-attr") eventHandler.handleDefAttrStart(*event);
+  else if (name == L"attr-item") eventHandler.handleAttrItemStart(*event);
+  else if (name == L"def-var") eventHandler.handleDefVarStart(*event);
+  else if (name == L"def-list") eventHandler.handleDefListStart(*event);
+  else if (name == L"list-item") eventHandler.handleDefListItemStart(*event);
+  else if (name == L"section-def-macros") eventHandler.handleSectionDefMacrosStart(*event);
+  else if (name == L"def-macro") eventHandler.handleDefMacroStart(*event);
+  else if (name == L"section-rules") eventHandler.handleSectionRulesStart(*event);
+  else if (name == L"rule") eventHandler.handleRuleStart(*event);
+  else if (name == L"pattern") eventHandler.handlePatternStart(*event);
+  else if (name == L"pattern-item") eventHandler.handlePatternItemStart(*event);
+  else if (name == L"action") eventHandler.handleActionStart(*event);
+  else if (name == L"call-macro") eventHandler.handleCallMacroStart(*event);
+  else if (name == L"with-param") eventHandler.handleWithParamStart(*event);
+  else if (name == L"choose") eventHandler.handleChooseStart(*event);
+  else if (name == L"when") eventHandler.handleWhenStart(*event);
+  else if (name == L"otherwise") eventHandler.handleOtherwiseStart(*event);
+  else if (name == L"b") eventHandler.handleBStart(*event);
+  else if (name == L"lit") eventHandler.handleLitStart(*event);
+  else if (name == L"lit-tag") eventHandler.handleLitTagStart(*event);
+  else if (name == L"lu-count") eventHandler.handleLuCountStart(*event);
+  else if (name == L"chunk") eventHandler.handleChunkStart(*event);
+  else if (name == L"var") eventHandler.handleVarStart(*event);
+  else if (name == L"clip") eventHandler.handleClipStart(*event);
+  else if (name == L"list") eventHandler.handleListStart(*event);
+  else if (name == L"append") eventHandler.handleAppendStart(*event);
+  else if (name == L"get-case-from") eventHandler.handleGetCaseFromStart(*event);
+  else if (name == L"case-of") eventHandler.handleCaseOfStart(*event);
 
-  if (name == L"transfer") eventHandler.handleTransferStart(event);
-  else if (name == L"interchunk") eventHandler.handleInterchunkStart(event);
-  else if (name == L"postchunk") eventHandler.handlePostchunkStart(event);
-  else if (name == L"def-cat") eventHandler.handleDefCatStart(event);
-  else if (name == L"cat-item") eventHandler.handleCatItemStart(event);
-  else if (name == L"def-attr") eventHandler.handleDefAttrStart(event);
-  else if (name == L"attr-item") eventHandler.handleAttrItemStart(event);
-  else if (name == L"def-var") eventHandler.handleDefVarStart(event);
-  else if (name == L"def-list") eventHandler.handleDefListStart(event);
-  else if (name == L"list-item") eventHandler.handleDefListItemStart(event);
-  else if (name == L"section-def-macros") eventHandler.handleSectionDefMacrosStart(event);
-  else if (name == L"def-macro") eventHandler.handleDefMacroStart(event);
-  else if (name == L"section-rules") eventHandler.handleSectionRulesStart(event);
-  else if (name == L"rule") eventHandler.handleRuleStart(event);
-  else if (name == L"pattern") eventHandler.handlePatternStart(event);
-  else if (name == L"pattern-item") eventHandler.handlePatternItemStart(event);
-  else if (name == L"action") eventHandler.handleActionStart(event);
-  else if (name == L"call-macro") eventHandler.handleCallMacroStart(event);
-  else if (name == L"with-param") eventHandler.handleWithParamStart(event);
-  else if (name == L"choose") eventHandler.handleChooseStart(event);
-  else if (name == L"when") eventHandler.handleWhenStart(event);
-  else if (name == L"otherwise") eventHandler.handleOtherwiseStart(event);
-  else if (name == L"b") eventHandler.handleBStart(event);
-  else if (name == L"lit") eventHandler.handleLitStart(event);
-  else if (name == L"lit-tag") eventHandler.handleLitTagStart(event);
-  else if (name == L"lu-count") eventHandler.handleLuCountStart(event);
-  else if (name == L"chunk") eventHandler.handleChunkStart(event);
-  else if (name == L"var") eventHandler.handleVarStart(event);
-  else if (name == L"clip") eventHandler.handleClipStart(event);
-  else if (name == L"list") eventHandler.handleListStart(event);
-  else if (name == L"append") eventHandler.handleAppendStart(event);
-  else if (name == L"get-case-from") eventHandler.handleGetCaseFromStart(event);
-  else if (name == L"case-of") eventHandler.handleCaseOfStart(event);
+  callStack.push_back(event);
 }
 
 /**
@@ -220,42 +222,44 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
  * @param the name of the event
  */
 void XmlParser::handleEndElement(const wstring &name) {
-  Event event;
+  Event *event;
   if (!callStack.empty()) {
     detectSelfClosingElements();
     event = callStack.back();
     callStack.pop_back();
   }
 
-  if (name == L"transfer") eventHandler.handleTransferEnd(event);
-  else if (name == L"interchunk") eventHandler.handleInterchunkEnd(event);
-  else if (name == L"postchunk") eventHandler.handlePostchunkEnd(event);
-  else if (name == L"def-cat") eventHandler.handleDefCatEnd(event);
-  else if (name == L"def-attr") eventHandler.handleDefAttrEnd(event);
-  else if (name == L"def-list") eventHandler.handleDefListEnd(event);
-  else if (name == L"def-macro") eventHandler.handleDefMacroEnd(event);
-  else if (name == L"section-rules") eventHandler.handleSectionRulesEnd(event);
-  else if (name == L"pattern") eventHandler.handlePatternEnd(event);
-  else if (name == L"action") eventHandler.handleActionEnd(event);
-  else if (name == L"call-macro") eventHandler.handleCallMacroEnd(event);
-  else if (name == L"choose") eventHandler.handleChooseEnd(event);
-  else if (name == L"when") eventHandler.handleWhenEnd(event);
-  else if (name == L"test") eventHandler.handleTestEnd(event);
-  else if (name == L"tags") eventHandler.handleTagsEnd(event);
-  else if (name == L"lu") eventHandler.handleLuEnd(event);
-  else if (name == L"mlu") eventHandler.handleMluEnd(event);
-  else if (name == L"chunk") eventHandler.handleChunkEnd(event);
-  else if (name == L"equal") eventHandler.handleEqualEnd(event);
-  else if (name == L"and") eventHandler.handleAndEnd(event);
-  else if (name == L"or") eventHandler.handleOrEnd(event);
-  else if (name == L"not") eventHandler.handleNotEnd(event);
-  else if (name == L"out") eventHandler.handleOutEnd(event);
-  else if (name == L"in") eventHandler.handleInEnd(event);
-  else if (name == L"let") eventHandler.handleLetEnd(event);
-  else if (name == L"concat") eventHandler.handleConcatEnd(event);
-  else if (name == L"get-case-from") eventHandler.handleGetCaseFromEnd(event);
-  else if (name == L"modify-case") eventHandler.handleModifyCaseEnd(event);
-  else if (name == L"begins-with") eventHandler.handleBeginsWithEnd(event);
-  else if (name == L"begins-with-list") eventHandler.handleBeginsWithListEnd(event);
-  else if (name == L"contains-substring") eventHandler.handleContainsSubstringEnd(event);
+  if (name == L"transfer") eventHandler.handleTransferEnd(*event);
+  else if (name == L"interchunk") eventHandler.handleInterchunkEnd(*event);
+  else if (name == L"postchunk") eventHandler.handlePostchunkEnd(*event);
+  else if (name == L"def-cat") eventHandler.handleDefCatEnd(*event);
+  else if (name == L"def-attr") eventHandler.handleDefAttrEnd(*event);
+  else if (name == L"def-list") eventHandler.handleDefListEnd(*event);
+  else if (name == L"def-macro") eventHandler.handleDefMacroEnd(*event);
+  else if (name == L"section-rules") eventHandler.handleSectionRulesEnd(*event);
+  else if (name == L"pattern") eventHandler.handlePatternEnd(*event);
+  else if (name == L"action") eventHandler.handleActionEnd(*event);
+  else if (name == L"call-macro") eventHandler.handleCallMacroEnd(*event);
+  else if (name == L"choose") eventHandler.handleChooseEnd(*event);
+  else if (name == L"when") eventHandler.handleWhenEnd(*event);
+  else if (name == L"test") eventHandler.handleTestEnd(*event);
+  else if (name == L"tags") eventHandler.handleTagsEnd(*event);
+  else if (name == L"lu") eventHandler.handleLuEnd(*event);
+  else if (name == L"mlu") eventHandler.handleMluEnd(*event);
+  else if (name == L"chunk") eventHandler.handleChunkEnd(*event);
+  else if (name == L"equal") eventHandler.handleEqualEnd(*event);
+  else if (name == L"and") eventHandler.handleAndEnd(*event);
+  else if (name == L"or") eventHandler.handleOrEnd(*event);
+  else if (name == L"not") eventHandler.handleNotEnd(*event);
+  else if (name == L"out") eventHandler.handleOutEnd(*event);
+  else if (name == L"in") eventHandler.handleInEnd(*event);
+  else if (name == L"let") eventHandler.handleLetEnd(*event);
+  else if (name == L"concat") eventHandler.handleConcatEnd(*event);
+  else if (name == L"get-case-from") eventHandler.handleGetCaseFromEnd(*event);
+  else if (name == L"modify-case") eventHandler.handleModifyCaseEnd(*event);
+  else if (name == L"begins-with") eventHandler.handleBeginsWithEnd(*event);
+  else if (name == L"begins-with-list") eventHandler.handleBeginsWithListEnd(*event);
+  else if (name == L"contains-substring") eventHandler.handleContainsSubstringEnd(*event);
+
+  delete event;
 }

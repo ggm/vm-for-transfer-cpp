@@ -53,7 +53,7 @@ private:
   EventHandler eventHandler;
 
   /// The call stack with the parsed events.
-  list<Event> callStack;
+  list<Event*> callStack;
 
   /// Store if the last element was empty (self-closing) to pop it from stack.
   bool lastElementWasEmpty;

@@ -133,7 +133,7 @@ void EventHandler::checkMacro(const Event &event) const {
 bool EventHandler::isContainer(const Event &event) const {
   const Event *parent = event.getParent();
 
-  if (parent->getName() == L"let") {
+  if (parent->getName() == L"let" || parent->getName() == L"modify-case") {
     // If it's the first child, it's on the left, so it's a container.
     if (parent->getNumChildren() == 1) {
       return true;
@@ -323,7 +323,7 @@ void EventHandler::handleDefListItemStart(const Event &event) {
 }
 
 void EventHandler::handleSectionDefMacrosStart(const Event &event) {
-
+  codeGenerator->genSectionDefMacrosStart(event);
 }
 
 void EventHandler::handleDefMacroStart(const Event &event) {
@@ -351,7 +351,7 @@ void EventHandler::handleSectionRulesEnd(const Event &event) {
   codeGenerator->genSectionRulesEnd(event);
 }
 
-void EventHandler::handleRuleStart(const Event &event) {
+void EventHandler::handleRuleStart(Event &event) {
   codeGenerator->genRuleStart(event);
 }
 
@@ -377,7 +377,8 @@ void EventHandler::handlePatternItemStart(const Event &event) {
   }
 }
 
-void EventHandler::handleActionStart(const Event &event) {
+void EventHandler::handleActionStart(Event &event) {
+  event.setVariable(L"label", event.getParent()->getVariable(L"label"));
   codeGenerator->genActionStart(event);
 }
 
@@ -409,7 +410,7 @@ void EventHandler::handleWithParamStart(const Event &event) {
   codeGenerator->genWithParamStart(event);
 }
 
-void EventHandler::handleChooseStart(const Event &event) {
+void EventHandler::handleChooseStart(Event &event) {
   codeGenerator->genChooseStart(event);
 }
 
@@ -417,7 +418,7 @@ void EventHandler::handleChooseEnd(const Event &event) {
   codeGenerator->genChooseEnd(event);
 }
 
-void EventHandler::handleWhenStart(const Event &event) {
+void EventHandler::handleWhenStart(Event &event) {
   codeGenerator->genWhenStart(event);
 }
 
@@ -461,7 +462,7 @@ void EventHandler::handleLuCountStart(const Event &event) {
   codeGenerator->genLuCountStart(event);
 }
 
-void EventHandler::handleChunkStart(const Event &event) {
+void EventHandler::handleChunkStart(Event &event) {
   if (transferStage == TRANSFER && transferDefault != CHUNK) {
     throwError(event,
         L"Unexpected '<chunk>' element in a non '<transfer default=chunk>'");
@@ -540,7 +541,7 @@ void EventHandler::handleListStart(const Event &event) {
 }
 
 void EventHandler::handleLetEnd(const Event &event) {
-  const Event *container = event.getChild(0);
+  Event container = event.getChild(0);
   codeGenerator->genLetEnd(event, container);
 }
 
@@ -573,7 +574,7 @@ void EventHandler::handleCaseOfStart(const Event &event) {
 }
 
 void EventHandler::handleModifyCaseEnd(const Event &event) {
-  const Event *container = event.getChild(0);
+  Event container = event.getChild(0);
   codeGenerator->genModifyCaseEnd(event, container);
 }
 
@@ -582,7 +583,7 @@ void EventHandler::handleBeginsWithEnd(const Event &event) {
 }
 
 void EventHandler::handleBeginsWithListEnd(const Event &event) {
-  codeGenerator->genBeginsWithListEnd(event);
+  codeGenerator->genBeginsWithEnd(event);
 }
 
 void EventHandler::handleEndsWithEnd(const Event &event) {
@@ -590,7 +591,7 @@ void EventHandler::handleEndsWithEnd(const Event &event) {
 }
 
 void EventHandler::handleEndsWithListEnd(const Event &event) {
-  codeGenerator->genEndsWithListEnd(event);
+  codeGenerator->genEndsWithEnd(event);
 }
 
 void EventHandler::handleContainsSubstringEnd(const Event &event) {

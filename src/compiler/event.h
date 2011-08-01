@@ -45,8 +45,10 @@ public:
 
   const Event *getParent() const;
   void setParent(const Event *);
-  void addChild(const Event *);
-  const Event* getChild(unsigned int) const;
+  void addChild(Event);
+  Event getChild(unsigned int) const;
+  wstring getVariable(const wstring &) const;
+  void setVariable(const wstring &, const wstring &);
 
 private:
   /// The line number of the event in the XML original file.
@@ -62,7 +64,10 @@ private:
   const Event *parent;
 
   /// Storing references to the event's children gives us a lot of flexibility.
-  vector<const Event*> children;
+  vector<Event> children;
+
+  // Variables map is used to pass information between events.
+  map<wstring, wstring> variables;
 
 };
 

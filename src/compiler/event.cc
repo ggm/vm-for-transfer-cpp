@@ -56,6 +56,7 @@ void Event::copy(const Event &e) {
   attributes = e.attributes;
   parent = e.parent;
   children = e.children;
+  variables = e.variables;
 }
 
 /**
@@ -109,9 +110,9 @@ wstring Event::getAttribute(const wstring &name) const {
  *
  * @return true if the attribute is found, in other case, false.
  */
-bool Event::hasAttribute(const wstring &name) const {
+bool Event::hasAttribute(const wstring &attrName) const {
   map<wstring, wstring>::const_iterator it;
-  it = attributes.find(name);
+  it = attributes.find(attrName);
   if (it != attributes.end()) {
     return true;
   } else {
@@ -151,7 +152,7 @@ void Event::setParent(const Event *event) {
  *
  * @param event the child of the event
  */
-void Event::addChild(const Event *event) {
+void Event::addChild(Event event) {
   children.push_back(event);
 }
 
@@ -162,7 +163,7 @@ void Event::addChild(const Event *event) {
  *
  * @return the reference to the child Event
  */
-const Event* Event::getChild(unsigned int pos) const {
+Event Event::getChild(unsigned int pos) const {
   if (pos < children.size()) {
     return children[pos];
   } else {
@@ -171,3 +172,31 @@ const Event* Event::getChild(unsigned int pos) const {
     throw CompilerException(msg.str());
   }
 }
+
+/**
+ * Get the value of an event's variable.
+ *
+ * @param varName the name of the variable
+ *
+ * @return the value of the variable with name varName, or an empty string
+ */
+wstring Event::getVariable(const wstring &varName) const {
+  map<wstring, wstring>::const_iterator it;
+    it = variables.find(varName);
+    if (it != variables.end()) {
+      return it->second;
+    } else {
+      return L"";
+    }
+}
+
+/**
+ * Set the value of an event's variable.
+ *
+ * @param varName the name of the variable
+ * @param value the new value of the variable
+ */
+void Event::setVariable(const wstring &varName, const wstring &value) {
+  variables[varName] = value;
+}
+

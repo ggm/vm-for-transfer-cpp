@@ -69,6 +69,10 @@ static const wstring STORESL_OP = L"storesl";
 static const wstring STORETL_OP = L"storetl";
 static const wstring STOREV_OP = L"storev";
 
+static const unsigned int RULE = 0;
+static const unsigned int WHEN = 1;
+static const unsigned int CHOOSE = 2;
+
 /// This class generates code as a predefined pseudo-assembly.
 class AssemblyCodeGenerator: public CodeGenerator {
 
@@ -81,8 +85,13 @@ public:
   void copy(const AssemblyCodeGenerator&);
 
   void addCode(const wstring &);
+  wstring getNextLabel(unsigned int);
   wstring getWritableCode() const;
+  wstring genStoreInstr(const Event &container) const;
+  wstring getIgnoreCaseInstr(const Event&, const wstring&, const wstring&);
   void genHeader(const Event &);
+  void genClipCode(const Event &, const vector<wstring> &);
+  void genClipInstr(const Event &, bool);
 
   void genTransferStart(const Event &);
   void genInterchunkStart(const Event &);
@@ -93,7 +102,7 @@ public:
   void genDefMacroEnd(const Event &);
   void genSectionRulesStart(const Event &);
   void genSectionRulesEnd(const Event &);
-  void genRuleStart(const Event &);
+  void genRuleStart(Event &);
   void genPatternStart(const Event &);
   void genPatternEnd(const Event &);
   void genPatternItemStart(const Event &, const vector<wstring> &);
@@ -102,9 +111,9 @@ public:
   void genCallMacroStart(const Event &);
   void genCallMacroEnd(const Event &);
   void genWithParamStart(const Event &);
-  void genChooseStart(const Event &);
+  void genChooseStart(Event &);
   void genChooseEnd(const Event &);
-  void genWhenStart(const Event &);
+  void genWhenStart(Event &);
   void genWhenEnd(const Event &);
   void genOtherwiseStart(const Event &);
   void genTestEnd(const Event &);
@@ -115,7 +124,7 @@ public:
   void genLuEnd(const Event &);
   void genMluEnd(const Event &);
   void genLuCountStart(const Event &);
-  void genChunkStart(const Event &);
+  void genChunkStart(Event &);
   void genChunkEnd(const Event &);
   void genEqualEnd(const Event &);
   void genAndEnd(const Event &);
@@ -126,18 +135,16 @@ public:
   void genInEnd(const Event &);
   void genClipStart(const Event &, const vector<wstring> &, bool, bool);
   void genListStart(const Event &, const vector<wstring> &);
-  void genLetEnd(const Event &, const Event *);
+  void genLetEnd(const Event &, const Event &);
   void genConcatEnd(const Event &);
   void genAppendStart(const Event &);
   void genAppendEnd(const Event &);
   void genGetCaseFromStart(const Event &);
   void genGetCaseFromEnd(const Event &);
   void genCaseOfStart(const Event &, const vector<wstring> &);
-  void genModifyCaseEnd(const Event &, const Event *);
+  void genModifyCaseEnd(const Event &, const Event &);
   void genBeginsWithEnd(const Event &);
-  void genBeginsWithListEnd(const Event &);
   void genEndsWithEnd(const Event &);
-  void genEndsWithListEnd(const Event &);
   void genContainsSubstringEnd(const Event &);
 
 
@@ -147,6 +154,9 @@ private:
 
   /// The assembly code generated.
   vector<wstring> code;
+
+  /// Used to generate the next label, based on the element type.
+  unsigned int nextLabel[3];
 };
 
 #endif /* ASSEMBLY_CODE_GENERATOR_H_ */
