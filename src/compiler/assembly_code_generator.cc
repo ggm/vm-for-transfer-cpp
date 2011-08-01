@@ -213,7 +213,7 @@ void AssemblyCodeGenerator::genDefVarStart(const Event &event,
     const wstring &defaultValue) {
   // Push the default value and store it in var.
   wstring varName = event.getAttribute(L"n");
-  addCode(PUSH_OP + INSTR_SEP + varName);
+  addCode(PUSH_OP + INSTR_SEP + L"\"" + varName + L"\"");
   addCode(PUSH_OP + INSTR_SEP + L"\"" + defaultValue + L"\"");
   addCode(STOREV_OP);
 }
