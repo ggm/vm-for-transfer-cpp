@@ -1,7 +1,7 @@
 #<assembly>
 #<postchunk>
 jmp section_rules_start
-#<def-macro npar="1" n="gen_nbr_determinante">
+#<def-macro n="gen_nbr_determinante" npar="1">
 macro_gen_nbr_determinante_start:
 #<clip part="gen" pos="1">
 push 1
@@ -163,7 +163,7 @@ lu 1
 out 3
 lu-count
 #<lit v="3">
-push "3"
+push 3
 cmp
 jz when_3_end
 pushsb 2

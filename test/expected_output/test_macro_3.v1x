@@ -1,7 +1,7 @@
 #<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
-#<def-macro npar="2" n="canvia_det">
+#<def-macro n="canvia_det" npar="2">
 macro_canvia_det_start:
 #<clip part="lem" pos="1" side="sl">
 push 1

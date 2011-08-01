@@ -1,19 +1,19 @@
 #<assembly>
 #<transfer default="chunk">
-#<def-var v="&lt;m&gt;" n="genere">
+#<def-var n="genere" v="&lt;m&gt;">
 push "genere"
 push "<m>"
 storev
-#<def-var v="&lt;sg&gt;" n="nombre">
+#<def-var n="nombre" v="&lt;sg&gt;">
 push "nombre"
 push "<sg>"
 storev
-#<def-var v="true" n="EOS">
+#<def-var n="EOS" v="true">
 push "EOS"
 push "true"
 storev
 jmp section_rules_start
-#<def-macro npar="1" n="elimina_GDND">
+#<def-macro n="elimina_GDND" npar="1">
 macro_elimina_GDND_start:
 #<clip part="gen" pos="1" side="tl">
 push 1
@@ -50,7 +50,7 @@ jmp choose_1_end
 when_1_end:
 choose_1_end:
 macro_elimina_GDND_end: ret
-#<def-macro npar="1" n="posa_GDND">
+#<def-macro n="posa_GDND" npar="1">
 macro_posa_GDND_start:
 #<clip part="gen" pos="1" side="tl">
 push 1
@@ -128,7 +128,7 @@ jmp choose_2_end
 when_3_end:
 choose_2_end:
 macro_posa_GDND_end: ret
-#<def-macro npar="1" n="genere_nombre">
+#<def-macro n="genere_nombre" npar="1">
 macro_genere_nombre_start:
 #<clip part="gen" pos="1" side="tl">
 push 1
@@ -175,7 +175,7 @@ push "<sg>"
 storev
 choose_4_end:
 macro_genere_nombre_end: ret
-#<def-macro npar="2" n="f_concord2">
+#<def-macro n="f_concord2" npar="2">
 macro_f_concord2_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -573,7 +573,7 @@ when_22_end:
 choose_14_end:
 choose_13_end:
 macro_f_concord2_end: ret
-#<def-macro npar="3" n="f_concord3">
+#<def-macro n="f_concord3" npar="3">
 macro_f_concord3_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -1178,7 +1178,7 @@ jmp choose_31_end
 when_47_end:
 choose_31_end:
 macro_f_concord3_end: ret
-#<def-macro npar="4" n="f_concord4">
+#<def-macro n="f_concord4" npar="4">
 macro_f_concord4_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -2004,7 +2004,7 @@ jmp choose_56_end
 when_83_end:
 choose_56_end:
 macro_f_concord4_end: ret
-#<def-macro npar="5" n="f_concord5">
+#<def-macro n="f_concord5" npar="5">
 macro_f_concord5_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -3051,7 +3051,7 @@ jmp choose_88_end
 when_129_end:
 choose_88_end:
 macro_f_concord5_end: ret
-#<def-macro npar="2" n="f_bcond">
+#<def-macro n="f_bcond" npar="2">
 macro_f_bcond_start:
 pushsb 1
 #<lit v=" ">
@@ -3065,7 +3065,7 @@ jmp choose_90_end
 when_131_end:
 choose_90_end:
 macro_f_bcond_end: ret
-#<def-macro npar="1" n="million">
+#<def-macro n="million" npar="1">
 macro_million_start:
 #<clip part="lem" pos="1" side="tl">
 push 1
@@ -3134,7 +3134,7 @@ jmp choose_92_end
 when_135_end:
 choose_92_end:
 macro_million_end: ret
-#<def-macro npar="2" n="flexio_numerals">
+#<def-macro n="flexio_numerals" npar="2">
 macro_flexio_numerals_start:
 #<clip part="lem" pos="2" side="sl">
 push 2
@@ -3166,7 +3166,7 @@ jmp choose_93_end
 when_136_end:
 choose_93_end:
 macro_flexio_numerals_end: ret
-#<def-macro npar="2" n="det_no">
+#<def-macro n="det_no" npar="2">
 macro_det_no_start:
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -3228,7 +3228,7 @@ push ""
 storev
 choose_94_end:
 macro_det_no_end: ret
-#<def-macro npar="1" n="determiner">
+#<def-macro n="determiner" npar="1">
 macro_determiner_start:
 #<clip part="a_det" pos="1" side="tl">
 push 1
@@ -3268,7 +3268,7 @@ push "<DET>"
 storev
 choose_95_end:
 macro_determiner_end: ret
-#<def-macro npar="1" n="comparatiu_adj1">
+#<def-macro n="comparatiu_adj1" npar="1">
 macro_comparatiu_adj1_start:
 #<var n="adjectiu1">
 push "adjectiu1"
@@ -3330,7 +3330,7 @@ push ""
 append 1
 choose_96_end:
 macro_comparatiu_adj1_end: ret
-#<def-macro npar="1" n="comparatiu_adj2">
+#<def-macro n="comparatiu_adj2" npar="1">
 macro_comparatiu_adj2_start:
 #<var n="adjectiu2">
 push "adjectiu2"
@@ -3392,7 +3392,7 @@ push ""
 append 1
 choose_98_end:
 macro_comparatiu_adj2_end: ret
-#<def-macro npar="1" n="firstWord">
+#<def-macro n="firstWord" npar="1">
 macro_firstWord_start:
 #<clip part="a_np_acr" pos="1" side="sl">
 push 1
@@ -3462,7 +3462,7 @@ push "EOS"
 push "false"
 storev
 macro_firstWord_end: ret
-#<def-macro npar="1" n="tipus_verbs">
+#<def-macro n="tipus_verbs" npar="1">
 macro_tipus_verbs_start:
 #<clip part="a_verb" pos="1" side="tl">
 push 1
@@ -3557,7 +3557,7 @@ cliptl
 storev
 choose_103_end:
 macro_tipus_verbs_end: ret
-#<def-macro npar="1" n="tipus_verbs_imp">
+#<def-macro n="tipus_verbs_imp" npar="1">
 macro_tipus_verbs_imp_start:
 #<clip part="a_verb" pos="1" side="tl">
 push 1
@@ -3629,7 +3629,7 @@ cliptl
 storev
 choose_104_end:
 macro_tipus_verbs_imp_end: ret
-#<def-macro npar="1" n="split_verb">
+#<def-macro n="split_verb" npar="1">
 macro_split_verb_start:
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -3649,7 +3649,7 @@ jmp choose_105_end
 when_155_end:
 choose_105_end:
 macro_split_verb_end: ret
-#<def-macro npar="1" n="output_adj">
+#<def-macro n="output_adj" npar="1">
 macro_output_adj_start:
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -3680,7 +3680,7 @@ jmp choose_106_end
 when_156_end:
 choose_106_end:
 macro_output_adj_end: ret
-#<def-macro npar="2" n="output_adj2">
+#<def-macro n="output_adj2" npar="2">
 macro_output_adj2_start:
 #<clip part="nbr" pos="2" side="sl">
 push 2
@@ -3735,7 +3735,7 @@ jmp choose_108_end
 when_158_end:
 choose_108_end:
 macro_output_adj2_end: ret
-#<def-macro npar="1" n="pron">
+#<def-macro n="pron" npar="1">
 macro_pron_start:
 #<var n="pronom">
 push "pronom"
@@ -3770,7 +3770,7 @@ jmp choose_109_end
 when_159_end:
 choose_109_end:
 macro_pron_end: ret
-#<def-macro npar="1" n="pronenc">
+#<def-macro n="pronenc" npar="1">
 macro_pronenc_start:
 #<var n="pronomenc">
 push "pronomenc"
@@ -3803,7 +3803,7 @@ jmp choose_110_end
 when_160_end:
 choose_110_end:
 macro_pronenc_end: ret
-#<def-macro npar="1" n="conj_verb1">
+#<def-macro n="conj_verb1" npar="1">
 macro_conj_verb1_start:
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -4308,7 +4308,7 @@ when_171_end:
 choose_113_end:
 choose_111_end:
 macro_conj_verb1_end: ret
-#<def-macro npar="2" n="conj_verb_compost">
+#<def-macro n="conj_verb_compost" npar="2">
 macro_conj_verb_compost_start:
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -4574,7 +4574,7 @@ concat 6
 storev
 choose_114_end:
 macro_conj_verb_compost_end: ret
-#<def-macro npar="2" n="conj_be_ger">
+#<def-macro n="conj_be_ger" npar="2">
 macro_conj_be_ger_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -4945,7 +4945,7 @@ jmp choose_117_end
 when_183_end:
 choose_117_end:
 macro_conj_be_ger_end: ret
-#<def-macro npar="3" n="conj_going_to_inf">
+#<def-macro n="conj_going_to_inf" npar="3">
 macro_conj_going_to_inf_start:
 #<clip part="temps" pos="1" side="sl">
 push 1
@@ -5159,7 +5159,7 @@ jmp choose_118_end
 when_187_end:
 choose_118_end:
 macro_conj_going_to_inf_end: ret
-#<def-macro npar="1" n="passa_inf_a_pres">
+#<def-macro n="passa_inf_a_pres" npar="1">
 macro_passa_inf_a_pres_start:
 #<clip part="temps" pos="1" side="sl">
 push 1
@@ -5215,7 +5215,7 @@ jmp choose_121_end
 when_190_end:
 choose_121_end:
 macro_passa_inf_a_pres_end: ret
-#<def-macro npar="1" n="passa_pp_a_ifip">
+#<def-macro n="passa_pp_a_ifip" npar="1">
 macro_passa_pp_a_ifip_start:
 #<clip part="temps" pos="1" side="sl">
 push 1
@@ -19930,7 +19930,7 @@ push 1
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -20050,7 +20050,7 @@ push 1
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -20179,7 +20179,7 @@ push 2
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="2" side="sl">
 push 2
@@ -20340,7 +20340,7 @@ push 2
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="2" side="sl">
 push 2
@@ -20540,7 +20540,7 @@ push 1
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -20638,7 +20638,7 @@ push 1
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="1" side="sl">
 push 1
@@ -20790,7 +20790,7 @@ push 2
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="2" side="sl">
 push 2
@@ -20920,7 +20920,7 @@ push 2
 push "lem"
 clipsl
 #<lit v="1">
-push "1"
+push 1
 cmp
 #<clip part="lem" pos="2" side="sl">
 push 2

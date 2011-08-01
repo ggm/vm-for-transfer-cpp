@@ -1,7 +1,7 @@
 #<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
-#<def-macro npar="2" n="f_bcond">
+#<def-macro n="f_bcond" npar="2">
 macro_f_bcond_start:
 pushsb 1
 #<lit v=" ">

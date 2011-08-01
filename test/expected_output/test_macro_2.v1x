@@ -1,15 +1,15 @@
 #<assembly>
 #<transfer default="chunk">
-#<def-var v="&lt;sg&gt;" n="nombre">
+#<def-var n="nombre" v="&lt;sg&gt;">
 push "nombre"
 push "<sg>"
 storev
-#<def-var v="&lt;m&gt;" n="genere">
+#<def-var n="genere" v="&lt;m&gt;">
 push "genere"
 push "<m>"
 storev
 jmp section_rules_start
-#<def-macro npar="1" n="nombre_nom">
+#<def-macro n="nombre_nom" npar="1">
 macro_nombre_nom_start:
 #<var n="nombre">
 push "nombre"

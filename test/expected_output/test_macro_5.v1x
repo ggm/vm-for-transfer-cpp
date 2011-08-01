@@ -1,7 +1,7 @@
 #<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
-#<def-macro npar="2" n="begins_ends_test">
+#<def-macro n="begins_ends_test" npar="2">
 macro_begins_ends_test_start:
 #<clip part="lem" pos="1" side="sl">
 push 1

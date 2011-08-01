@@ -3,6 +3,13 @@ input=test/data/
 output=test/expected_output/
 
 echo "============================================"
+echo "* Building the compiler..."
+echo "============================================"
+
+make clean;
+make;
+
+echo "============================================"
 echo "* Running tests..."
 echo "* input = $input"
 echo "* expected_output = $output"
@@ -13,7 +20,7 @@ for arg in `ls $output` ; do
   inputarg=${inputarg/.v1x/.t1x}
   inputarg=${inputarg/.v2x/.t2x}
   inputarg=${inputarg/.v3x/.t3x}
-  python3 src/compiler/ -i $inputarg -d compiler.log > compiler.out
+  ./apertium-compiler -i $inputarg -d compiler.log > compiler.out
   if diff compiler.out $output$arg > test_results.log ; then
     echo $arg "-- OK"
   else

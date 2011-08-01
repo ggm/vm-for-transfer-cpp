@@ -1,7 +1,7 @@
 #<assembly>
 #<interchunk>
 jmp section_rules_start
-#<def-macro npar="1" n="determina_nbr_gen_SN">
+#<def-macro n="determina_nbr_gen_SN" npar="1">
 macro_determina_nbr_gen_SN_start:
 #<clip part="nbr" pos="1">
 push 1
@@ -78,7 +78,7 @@ push "<m>"
 storev
 choose_1_end:
 macro_determina_nbr_gen_SN_end: ret
-#<def-macro npar="1" n="f_bcond">
+#<def-macro n="f_bcond" npar="1">
 macro_f_bcond_start:
 pushsb 1
 #<lit v=" ">
@@ -92,7 +92,7 @@ jmp choose_2_end
 when_4_end:
 choose_2_end:
 macro_f_bcond_end: ret
-#<def-macro npar="2" n="concord_SN_SV">
+#<def-macro n="concord_SN_SV" npar="2">
 macro_concord_SN_SV_start:
 #<clip part="lem" pos="1">
 push 1
@@ -452,7 +452,7 @@ when_19_end:
 choose_15_end:
 choose_3_end:
 macro_concord_SN_SV_end: ret
-#<def-macro npar="3" n="concord_SNcoo_SV">
+#<def-macro n="concord_SNcoo_SV" npar="3">
 macro_concord_SNcoo_SV_start:
 #<clip part="lem" pos="1">
 push 1
@@ -818,7 +818,7 @@ jmp choose_30_end
 when_36_end:
 choose_30_end:
 macro_concord_SNcoo_SV_end: ret
-#<def-macro npar="1" n="posadet_SN">
+#<def-macro n="posadet_SN" npar="1">
 macro_posadet_SN_start:
 #<clip part="lem" pos="1">
 push 1

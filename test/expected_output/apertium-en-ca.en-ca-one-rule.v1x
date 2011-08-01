@@ -1,19 +1,19 @@
 #<assembly>
 #<transfer default="chunk">
-#<def-var v="&lt;m&gt;" n="genere">
+#<def-var n="genere" v="&lt;m&gt;">
 push "genere"
 push "<m>"
 storev
-#<def-var v="&lt;sg&gt;" n="nombre">
+#<def-var n="nombre" v="&lt;sg&gt;">
 push "nombre"
 push "<sg>"
 storev
-#<def-var v="true" n="EOS">
+#<def-var n="EOS" v="true">
 push "EOS"
 push "true"
 storev
 jmp section_rules_start
-#<def-macro npar="1" n="firstWord">
+#<def-macro n="firstWord" npar="1">
 macro_firstWord_start:
 #<clip part="a_np_acr" pos="1" side="sl">
 push 1
@@ -83,7 +83,7 @@ push "EOS"
 push "false"
 storev
 macro_firstWord_end: ret
-#<def-macro npar="1" n="determiner">
+#<def-macro n="determiner" npar="1">
 macro_determiner_start:
 #<clip part="a_det" pos="1" side="tl">
 push 1
@@ -123,7 +123,7 @@ push "<DET>"
 storev
 choose_3_end:
 macro_determiner_end: ret
-#<def-macro npar="2" n="f_concord2">
+#<def-macro n="f_concord2" npar="2">
 macro_f_concord2_start:
 #<var n="gen_chunk">
 push "gen_chunk"
@@ -521,7 +521,7 @@ when_21_end:
 choose_13_end:
 choose_12_end:
 macro_f_concord2_end: ret
-#<def-macro npar="2" n="det_no">
+#<def-macro n="det_no" npar="2">
 macro_det_no_start:
 #<clip part="lem" pos="1" side="sl">
 push 1

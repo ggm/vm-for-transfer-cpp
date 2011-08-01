@@ -1,7 +1,7 @@
 #<assembly>
 #<postchunk>
 jmp section_rules_start
-#<def-macro npar="1" n="f_bcond">
+#<def-macro n="f_bcond" npar="1">
 macro_f_bcond_start:
 pushsb 1
 #<lit v=" ">
@@ -15,7 +15,7 @@ jmp choose_0_end
 when_0_end:
 choose_0_end:
 macro_f_bcond_end: ret
-#<def-macro npar="1" n="gen_nbr_determinante">
+#<def-macro n="gen_nbr_determinante" npar="1">
 macro_gen_nbr_determinante_start:
 #<clip part="gen" pos="1">
 push 1

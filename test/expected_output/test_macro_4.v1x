@@ -1,7 +1,7 @@
 #<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
-#<def-macro npar="2" n="adv_adj">
+#<def-macro n="adv_adj" npar="2">
 macro_adv_adj_start:
 #<clip part="a_adj" pos="2" side="tl">
 push 2

@@ -1,13 +1,13 @@
 #<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
-#<def-macro npar="1" n="firstWord">
+#<def-macro n="firstWord" npar="1">
 macro_firstWord_start:
 macro_firstWord_end: ret
-#<def-macro npar="2" n="f_concord2">
+#<def-macro n="f_concord2" npar="2">
 macro_f_concord2_start:
 macro_f_concord2_end: ret
-#<def-macro npar="3" n="f_concord3">
+#<def-macro n="f_concord3" npar="3">
 macro_f_concord3_start:
 macro_f_concord3_end: ret
 #<section-rules>

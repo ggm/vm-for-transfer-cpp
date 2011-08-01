@@ -1,7 +1,7 @@
 #<assembly>
 #<interchunk>
 jmp section_rules_start
-#<def-macro npar="1" n="determina_nbr_gen_SN">
+#<def-macro n="determina_nbr_gen_SN" npar="1">
 macro_determina_nbr_gen_SN_start:
 #<clip part="nbr" pos="1">
 push 1
