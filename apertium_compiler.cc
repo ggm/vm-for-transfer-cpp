@@ -66,7 +66,7 @@ int main(int argc, char *argv[] ) {
 		  { 0, 0, 0, 0 }
 		};
 
-	// Set the C++ global locale as the one in current use by the user.
+	// Set the C++ global locale as the one in current used by the user.
 	locale::global(locale(""));
 
 	// Create the compiler to initialize it with the options passed as argument.
@@ -89,7 +89,7 @@ int main(int argc, char *argv[] ) {
 		case 'd': {
 			char *debugFile = optarg;
 			if (!testFile(debugFile, ios::out)) {
-				cerr << "Can't open debug file '" << debugFile << "'" << endl;
+				cerr << "Error: Can't open debug file '" << debugFile << "'" << endl;
 				return EXIT_FAILURE;
 			} else {
 				compiler.setDebug(debugFile);
@@ -99,7 +99,7 @@ int main(int argc, char *argv[] ) {
 		case 'i': {
 			char *inputFile = optarg;
 			if (!testFile(inputFile, ios::in)) {
-				cerr << "Can't open input file '" << inputFile << "'" << endl;
+				cerr << "Error: Can't open input file '" << inputFile << "'" << endl;
 				return EXIT_FAILURE;
 			} else {
 				compiler.setInputFile(inputFile);
@@ -109,7 +109,7 @@ int main(int argc, char *argv[] ) {
 		case 'o': {
 			char *outputFile = optarg;
 			if (!testFile(outputFile, ios::out)) {
-				cerr << "Can't open output file '" << outputFile << "'" << endl;
+				cerr << "Error: Can't open output file '" << outputFile << "'" << endl;
 				return EXIT_FAILURE;
 			} else {
 				compiler.setOutputFile(outputFile);
