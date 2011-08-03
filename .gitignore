@@ -3,4 +3,5 @@
 *.swo
 *.log
 apertium-compiler
+apertium-vm
 doc/

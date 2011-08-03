@@ -1,6 +1,6 @@
 #!/bin/bash
 input=test/data/
-output=test/expected_output/
+output=test/expected_output/compiler/
 
 echo "============================================"
 echo "* Building the compiler..."
