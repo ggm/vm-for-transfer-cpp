@@ -20,6 +20,8 @@
 
 #include <string>
 
+#include "loader.h"
+
 using namespace std;
 
 enum TRANSFER_STAGE {
@@ -27,7 +29,7 @@ enum TRANSFER_STAGE {
 };
 
 enum TRANSFER_DEFAULT {
-  CHUNK, LU
+  TD_CHUNK, TD_LU
 };
 
 /// This class encapsulates all the VM processing.
@@ -48,15 +50,14 @@ public:
 
   void run();
 
+  void printCodeSection() const;
+
 private:
   /// Store the current transfer stage.
   TRANSFER_STAGE transferStage;
 
   /// Store the default unit in the transfer.
   TRANSFER_DEFAULT transferDefault;
-
-  /// Name of the code file to use.
-  char *codeFileName;
 
   /// Name of the input file to use.
   char *inputFileName;
@@ -67,8 +68,29 @@ private:
   /// Store if the debug mode is active or not.
   bool debugMode;
 
-  void setLoader(wstring, char*);
-  void setTransferStage(wstring);
+  /// Program counter: position of the next instruction to execute.
+  unsigned int PC;
+
+  /// End address of the executing code.
+  unsigned int endAddress;
+
+  /// The preprocess code section stores the patterns processing code.
+  CodeUnit preproprocessCode;
+
+  /// Where the main code is stored, e.g. variables initialization.
+  CodeUnit code;
+
+  /// Stores all the rules action code.
+  CodeSection rulesCode;
+
+  /// This section stores all macros and their code.
+  CodeSection macrosCode;
+
+  /// The loader is set dynamically, depending on the code file's type.
+  Loader *loader;
+
+  void setLoader(const wstring &, char*);
+  void setTransferStage(const wstring &);
 };
 
 #endif /* VM_H_ */

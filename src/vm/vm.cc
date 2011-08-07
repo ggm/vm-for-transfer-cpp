@@ -17,10 +17,14 @@
 
 #include "vm.h"
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
-#include <vm_exceptions.h>
+#include "vm_exceptions.h"
+#include "assembly_loader.h"
+
+using namespace std;
 
 VM::VM() {
   debugMode = false;
@@ -31,7 +35,10 @@ VM::VM(const VM &vm) {
 }
 
 VM::~VM() {
-
+  if (loader != NULL) {
+    delete loader;
+    loader = NULL;
+  }
 }
 
 VM& VM::operator=(const VM &vm) {
@@ -45,7 +52,6 @@ VM& VM::operator=(const VM &vm) {
 void VM::copy(const VM &vm) {
   transferStage = vm.transferStage;
   transferDefault = vm.transferDefault;
-  codeFileName = vm.codeFileName;
   inputFileName = vm.inputFileName;
   outputFileName = vm.outputFileName;
   debugMode = vm.debugMode;
@@ -58,8 +64,6 @@ void VM::copy(const VM &vm) {
  * @param fileName code file's name
  */
 void VM::setCodeFile(char *fileName) {
-  codeFileName = fileName;
-
   wfstream file;
   file.open(fileName, ios::in);
 
@@ -80,9 +84,9 @@ void VM::setCodeFile(char *fileName) {
  * @param header the first line of the code file indicates the type of file
  * @param fileName the file name of the code file
  */
-void VM::setLoader(wstring header, char *fileName) {
+void VM::setLoader(const wstring &header, char *fileName) {
   if (header == L"#<assembly>") {
-    // TODO: Add loader instantiation here.
+    loader = new AssemblyLoader(fileName);
   } else {
     wstringstream msg;
     msg << L"The header of the file " << fileName << " is not recognized: "
@@ -97,7 +101,7 @@ void VM::setLoader(wstring header, char *fileName) {
  *
  * @param transferHeader the part of the code file with the stage header
  */
-void VM::setTransferStage(wstring transferHeader) {
+void VM::setTransferStage(const wstring &transferHeader) {
   wstring transfer = L"transfer";
   wstring interchunk = L"interchunk";
   wstring postchunk = L"postchunk";
@@ -106,9 +110,9 @@ void VM::setTransferStage(wstring transferHeader) {
     transferStage = TRANSFER;
     // Set chunker mode, by default 'lu'.
     if (!transferHeader.compare(20, 5, L"chunk")) {
-      transferDefault = CHUNK;
+      transferDefault = TD_CHUNK;
     } else {
-      transferDefault = LU;
+      transferDefault = TD_LU;
     }
   } else if (!transferHeader.compare(2, interchunk.size(), interchunk)) {
     transferStage = INTERCHUNK;
@@ -147,5 +151,19 @@ void VM::setDebugMode() {
  * Load, preprocess and execute the contents of the files.
  */
 void VM::run() {
+  try {
+    loader->load(preproprocessCode, code, rulesCode, macrosCode, endAddress);
+  } catch (LoaderException &le) {
+    wcerr << L"Loader error: " << le.getMessage() << endl;
+  }
 }
 
+/**
+ * Print all the code sections for information or debugging purposes.
+ */
+void VM::printCodeSection() const {
+  loader->printCodeUnit(code, L" Code section ");
+  loader->printCodeUnit(preproprocessCode, L" Preprocess section ");
+  loader->printCodeSection(rulesCode, L" Rules code section ", L"Rule");
+  loader->printCodeSection(macrosCode, L" Macros code section ", L"Macro");
+}
