@@ -16,7 +16,7 @@ COMP_OBJ = $(patsubst %,$(COMPILER_DIR)/%,$(_COMP_OBJ))
 VM_DIR=./src/vm
 VM_CFLAGS=
 VM_LIBS=
-_VM_OBJ= vm.o
+_VM_OBJ= vm.o scope.o assembly_loader.o
 VM_OBJ = $(patsubst %,$(VM_DIR)/%,$(_VM_OBJ))
 
 .PHONY: all clean doc
