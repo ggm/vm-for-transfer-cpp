@@ -36,10 +36,14 @@ private:
 
 /// This class defines an exception for loader specific errors.
 class LoaderException: public VmException {
+public:
+  LoaderException(wstring m) : VmException(m) { }
 };
 
 /// This class defines an exception for interpreter specific errors.
 class InterpreterException: public VmException {
+public:
+  InterpreterException(wstring m) : VmException(m) { }
 };
 
 #endif /* VM_EXCEPTIONS_H_ */
