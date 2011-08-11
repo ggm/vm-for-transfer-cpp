@@ -21,6 +21,9 @@
 #include <string>
 
 #include "loader.h"
+#include "transfer_word.h"
+#include "bilingual_word.h"
+#include "chunk_word.h"
 
 using namespace std;
 
@@ -89,8 +92,13 @@ private:
   /// The loader is set dynamically, depending on the code file's type.
   Loader *loader;
 
+  vector<TransferWord *> words;
+
+  vector<wstring> superblanks;
+
   void setLoader(const wstring &, char*);
   void setTransferStage(const wstring &);
+  void tokenizeInput();
 };
 
 #endif /* VM_H_ */

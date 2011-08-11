@@ -39,6 +39,13 @@ VM::~VM() {
     delete loader;
     loader = NULL;
   }
+
+  for (unsigned int i = 0; i < words.size(); i++) {
+    if (words[i] != NULL) {
+      delete words[i];
+      words[i] = NULL;
+    }
+  }
 }
 
 VM& VM::operator=(const VM &vm) {
@@ -153,6 +160,7 @@ void VM::setDebugMode() {
 void VM::run() {
   try {
     loader->load(preproprocessCode, code, rulesCode, macrosCode, endAddress);
+    tokenizeInput();
   } catch (LoaderException &le) {
     wcerr << L"Loader error: " << le.getMessage() << endl;
   }
@@ -166,4 +174,23 @@ void VM::printCodeSection() const {
   loader->printCodeUnit(preproprocessCode, L" Preprocess section ");
   loader->printCodeSection(rulesCode, L" Rules code section ", L"Rule");
   loader->printCodeSection(macrosCode, L" Macros code section ", L"Macro");
+}
+
+/**
+ * Divide the input in words using the appropriate word type depending on the
+ * transfer stage.
+ */
+void VM::tokenizeInput() {
+  wfstream input;
+  input.open(inputFileName, ios::in);
+
+  if (transferStage == TRANSFER) {
+    BilingualWord::tokenizeInput(input, words, superblanks);
+  } else if (transferStage == INTERCHUNK) {
+    ChunkWord::tokenizeInput(input, words, superblanks, false, false);
+  } else if (transferStage == POSTCHUNK) {
+    ChunkWord::tokenizeInput(input, words, superblanks, true, true);
+  }
+
+  input.close();
 }

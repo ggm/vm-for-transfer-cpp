@@ -1,0 +1,291 @@
+/*Copyright (C) 2011  Gabriel Gregori Manzano
+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+#include "chunk_word.h"
+
+#include <locale>
+#include <sstream>
+
+#include "vm_wstring_utils.h"
+
+ChunkWord::ChunkWord() {
+
+}
+
+ChunkWord::ChunkWord(const ChunkWord &c) {
+  copy(c);
+}
+
+ChunkWord::~ChunkWord() {
+  for (unsigned int i = 0; i < content.size(); i++) {
+    delete content[i];
+    content[i] = NULL;
+  }
+}
+
+ChunkWord& ChunkWord::operator=(const ChunkWord &c) {
+  if (this != &c) {
+    this->~ChunkWord();
+    this->copy(c);
+  }
+  return *this;
+}
+
+void ChunkWord::copy(const ChunkWord &c) {
+  chunk = c.chunk;
+  content = c.content;
+  blanks = c.blanks;
+}
+
+/**
+ * Get the chunk lexical unit of the word.
+ *
+ * @return the lexical unit
+ */
+ChunkLexicalUnit & ChunkWord::getChunk() {
+  return chunk;
+}
+
+/**
+ * Solve the references, inside the chcontent, to the chunk tags.
+ */
+void ChunkWord::solveReferences() {
+  vector<wstring> tagsValues;
+
+  wstring tags = chunk.getPart(TAGS);
+  wstring token = L"";
+  wchar_t ch;
+  for (unsigned int i = 0; i < tags.size(); i++) {
+    ch = tags[i];
+    if (ch == L'>') {
+      token += ch;
+      tagsValues.push_back(token);
+      token = L"";
+    } else {
+      token += ch;
+    }
+  }
+
+  locale loc;
+  wstring chcontent = chunk.getPart(CHCONTENT);
+  wstring newChcontent = chcontent;
+  wstring newWhole = chunk.getPart(WHOLE);
+
+  for (unsigned int i = 0; i < chcontent.size(); i++) {
+    ch = chcontent[i];
+    if (isdigit(ch, loc)) {
+      if (chcontent[i - 1] == L'<' && chcontent[i + 1] == L'>') {
+        unsigned int pos;
+        wstringstream ws;
+        ws << ch;
+        ws >> pos;
+        wstring tag = tagsValues[pos - 1];
+        newWhole = replaceReference(newWhole, ch, tag);
+        newChcontent = replaceReference(newChcontent, ch, tag);
+      }
+    }
+  }
+
+  chunk.changePart(WHOLE, newWhole);
+  chunk.changePart(CHCONTENT, newChcontent);
+}
+
+/**
+ * Replace references to a tag with the actual tag.
+ *
+ * @param container the wide string containing the references
+ * @param pos position of the reference to replace, as found in the container
+ * @param tag the actual tag to put in place
+ *
+ * @return the container with the references replaced
+ */
+wstring ChunkWord::replaceReference(const wstring &container, wchar_t pos,
+    const wstring &tag) {
+  wstring newContainer = container;
+  wstring reference;
+  reference += L'<';
+  reference += pos;
+  reference += L'>';
+
+  newContainer = VMWstringUtils::replace(newContainer, reference, tag);
+
+  return newContainer;
+}
+
+/**
+ * Set the content of the chunk word as a list of lexical units and apply the
+ * postchunk rule of setting the case of the lexical units as the one of the
+ * chunk pseudolemma.
+ */
+void ChunkWord::parseChunkContent() {
+  // Depending on the case, change all cases or just the first lexical unit.
+  CASE pseudoLemmaCase = VMWstringUtils::getCase(chunk.getPart(LEM));
+  bool upperCaseAll = false;
+  bool firstUpper = false;
+  if (pseudoLemmaCase == AA) {
+    upperCaseAll = true;
+  } else if (pseudoLemmaCase == Aa) {
+    firstUpper = true;
+  }
+
+  // The first blank is the one before the chunk name.
+  blanks.push_back(L"");
+  bool firstLu = true;
+
+  wstring token = L"";
+  wstring chcontent = chunk.getPart(CHCONTENT);
+  wchar_t ch;
+  LexicalUnit *lu;
+
+  // Ignore first and last chars '{' and '}'.
+  for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
+    ch = chcontent[i];
+    if (ch == L'/') {
+      continue;
+    } else if (ch == L'^') {
+      // After the first blank, append the blanks between lexical units.
+      if (firstLu) {
+        firstLu = false;
+      } else {
+        blanks.push_back(token);
+      }
+      token = L"";
+    } else if (ch == L'$') {
+      lu = new LexicalUnit(token);
+
+      if (upperCaseAll) {
+        changeLemmaCase(*lu, pseudoLemmaCase);
+      } else if (firstUpper) {
+        changeLemmaCase(*lu, pseudoLemmaCase);
+        firstUpper = false;
+      }
+
+      content.push_back(lu);
+
+      token = L"";
+    } else {
+      token += ch;
+    }
+  }
+}
+
+/**
+ * Update the chcontent when a lu inside the chunk changes.
+ *
+ * @param odlLu the lexical unit being replaced
+ * @param newLu the new lexical unit
+ */
+void ChunkWord::updateChunkContent(const wstring & oldLu,
+    const wstring & newLu) {
+
+  wstring chcontent = chunk.getPart(CHCONTENT);
+  wstring ch = chcontent.replace(chcontent.find(oldLu), oldLu.size(), newLu);
+  chunk.changePart(CHCONTENT, ch);
+}
+
+/**
+ * Tokenize the input in ^name<tags>{^...$} tokens and create corresponding
+ * ChunkWords.
+ *
+ * @param input the input stream to parse
+ * @param words a collection of words to be filled.
+ * @param blanks a collection of blanks to be filled.
+ * @param solveRefs if references to chunk tags should be solved or not
+ * @param parseContent if chunk content should be parsed and lus created or not
+ */
+void ChunkWord::tokenizeInput(wfstream &input, vector<TransferWord*> &words,
+    vector<wstring> &blanks, bool solveRefs, bool parseContent) {
+  wstring token = L"";
+  bool chunkStart = true;
+
+  wchar_t ch;
+  ChunkWord *word = new ChunkWord();
+
+  while (input.get(ch)) {
+    // Read the ^ and $ of the lexical units but not of the chunks.
+    if (ch == L'^') {
+      if (!chunkStart) {
+        token += ch;
+      } else {
+        // Characters between chunks are treated like superblanks.
+        blanks.push_back(token);
+        token = L"";
+        chunkStart = false;
+      }
+    } else if (ch == L'$') {
+      if (!chunkStart) {
+        token += ch;
+      }
+    } else if (ch == L'}') {
+      token += ch;
+      word->chunk = ChunkLexicalUnit(token);
+
+      if (solveRefs) {
+        word->solveReferences();
+      }
+      if (parseContent) {
+        word->parseChunkContent();
+      }
+
+      words.push_back(word);
+
+      chunkStart = true;
+      token = L"";
+      word = new ChunkWord();
+    } else {
+      token += ch;
+    }
+  }
+
+  // Append the last superblank of the input, usually the '\n'.
+  blanks.push_back(token);
+
+  if (word != NULL) {
+    delete word;
+  }
+}
+
+/**
+ * Change the case of the lemma to the passed as parameter.
+ *
+ * @param lu the lexical unit to change the case from
+ * @param luCase the new case to apply.
+ */
+void ChunkWord::changeLemmaCase(LexicalUnit &lu, CASE luCase) {
+  wstring oldLem = lu.getPart(LEM);
+  wstring newLem = VMWstringUtils::changeCase(oldLem, luCase);
+
+  lu.changePart(LEM, newLem);
+
+  // Also, update the chcontent attribute of the chunk.
+  updateChunkContent(oldLem, newLem);
+}
+
+wostream& operator<<(wostream &wos, const ChunkWord &cw) {
+  wstring chunkWhole = cw.chunk.getWhole();
+
+  wos << L"^" << chunkWhole << L"$: " << cw.chunk << L", content = [";
+
+  for (unsigned int i = 0; i < cw.content.size(); i++) {
+    wos << L"^" << cw.content[i]->getWhole() << L"$: " << *cw.content[i]
+        << L" ";
+  }
+
+  wos << L"]";
+
+  return wos;
+}
