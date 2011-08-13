@@ -123,6 +123,24 @@ int SystemTrie::getRuleNumber(const wstring &pattern) {
 /**
  * Add a pattern, as a list of string(s), to the trie.
  *
+ * Options are stored in a list of curNodes and the next part is inserted after
+ * each option, for example, given the input:
+ *
+ * \code
+ * Pattern: ["<det><nom>", "<adj>|<adj><sint>|<adj><comp>", "<adv_pp>"]
+ * Rule number: 12
+ *
+ * The output trie would be:
+ *                                   /~~<adv_pp> -> 12
+ *                                  |
+ *               <det><nom>~~<adj>~~|~~<sint>~~<adv_pp> -> 12
+ *                                  |
+ *                                   \~~<comp>~~<adv_pp> -> 12
+ * \endcode
+ *
+ * Note: if a pattern starts directly with tags, we need to add a node that
+ * matches every alphabetic char (*), so it can accept patterns with lemmas.
+ *
  * @param pattern the pattern to add, a vector with one or more strings to add
  * @param ruleNumber the rule number to associate to this pattern.
  */
