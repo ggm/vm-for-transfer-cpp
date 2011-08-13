@@ -46,11 +46,11 @@ bool VMWstringUtils::iswlower(const wstring &wstr) {
  * @return the wide string with the changed case
  */
 wstring VMWstringUtils::wtolower(const wstring &wstr) {
-  locale loc;
+  locale loc("");
   wstring wstrLower = L"";
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrLower += tolower(wstr, loc);
+    wstrLower += tolower(wstr[i], loc);
   }
 
   return wstrLower;
@@ -68,7 +68,7 @@ wstring VMWstringUtils::wtoupper(const wstring &wstr) {
   wstring wstrUpper = L"";
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrUpper += toupper(wstr, loc);
+    wstrUpper += toupper(wstr[i], loc);
   }
 
   return wstrUpper;
