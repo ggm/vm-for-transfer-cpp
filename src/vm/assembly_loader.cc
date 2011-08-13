@@ -219,8 +219,8 @@ void AssemblyLoader::load(CodeUnit &preprocessCode, CodeUnit &code,
  * Load the first code section of the vm (which is called code section) until
  * we reach the end of the section.
  *
- * @file the opened file with the assembly instructions
- * @code the main code unit of the vm
+ * @param file the opened file with the assembly instructions
+ * @param code the main code unit of the vm
  */
 void AssemblyLoader::loadCodeSection(wfstream &file, CodeUnit &code) {
   wstring line = L"";
@@ -468,8 +468,8 @@ AssemblyLoader::endsWith(const wstring &str, const wstring &suffix) const {
  * assembly representation.
  *
  * @param section the section with the code units to print
- * @param a header to show, usually the name of the section
- * @param a header for each of the code units (e.g. "Rule" or "Macro")
+ * @param header a header to show, usually the name of the section
+ * @param unitHeader a header for each of the code units, e.g. "Rule" or "Macro"
  */
 void AssemblyLoader::printCodeSection(const CodeSection &section,
     const wstring &header, const wstring &unitHeader) {
@@ -504,7 +504,7 @@ void AssemblyLoader::printCodeSection(const CodeSection &section,
  * representation.
  *
  * @param codeUnit the unit with the instructions to print
- * @param a header to show, usually the name of the code unit
+ * @param header a header to show, usually the name of the code unit
  */
 void AssemblyLoader::printCodeUnit(const CodeUnit &codeUnit,
     const wstring &header) {
@@ -573,6 +573,8 @@ void AssemblyLoader::createReversedOpCodesMap() {
  * creates the reversedMacroNumber map if it's not already created.
  *
  * @param number the number to get the macro name asociated with
+ *
+ * @return the name of the macro associated to the number passed as parameter
  */
 wstring AssemblyLoader::getMacroNameFromNumber(const wstring &number) {
   if (reversedMacroNumber.size() == 0) {

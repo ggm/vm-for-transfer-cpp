@@ -186,7 +186,7 @@ void ChunkWord::parseChunkContent() {
 /**
  * Update the chcontent when a lu inside the chunk changes.
  *
- * @param odlLu the lexical unit being replaced
+ * @param oldLu the lexical unit being replaced
  * @param newLu the new lexical unit
  */
 void ChunkWord::updateChunkContent(const wstring & oldLu,
@@ -198,8 +198,8 @@ void ChunkWord::updateChunkContent(const wstring & oldLu,
 }
 
 /**
- * Tokenize the input in ^name<tags>{^...$} tokens and create corresponding
- * ChunkWords.
+ * Tokenize the input in \verbatim ^name<tags>{^...$} \endverbatim tokens and
+ * create corresponding ChunkWords.
  *
  * @param input the input stream to parse
  * @param words a collection of words to be filled.

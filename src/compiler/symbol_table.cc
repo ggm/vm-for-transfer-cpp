@@ -65,7 +65,7 @@ void SymbolTable::addMacro(wstring name, int numParams) {
 /**
  * Check if a macro exists in the symbol table.
  *
- * @name the name of the macro to check
+ * @param name the name of the macro to check
  *
  * @return true if exists, otherwise false
  */
@@ -83,7 +83,7 @@ bool SymbolTable::macroExists(wstring name) const {
 /**
  * Get a macro from the symbol table.
  *
- * @name the name of the macro to get
+ * @param name the name of the macro to get
  *
  * @return the symbol from the symbol table or an empty one if it isn't found
  */
@@ -102,9 +102,9 @@ Symbol SymbolTable::getMacro(wstring name) const {
 /**
  * Add a symbol to the symbol table, it will assign a unique id.
  *
- * @name the name of the symbol
- * @numParams the number of parameters of the symbol
- * @type the symbol type
+ * @param name the name of the symbol
+ * @param numParams the number of parameters of the symbol
+ * @param type the symbol type
  */
 void SymbolTable::addSymbol(wstring name, int numParams, SYMBOL_TYPE type) {
   Symbol s(nextId, name, numParams, type);

@@ -106,7 +106,7 @@ wstring Event::getAttribute(const wstring &name) const {
 /**
  * Check if the event has an attribute with the name passed as parameter.
  *
- * @param name the name of the attribute
+ * @param attrName the name of the attribute
  *
  * @return true if the attribute is found, in other case, false.
  */

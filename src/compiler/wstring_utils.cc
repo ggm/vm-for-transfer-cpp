@@ -54,7 +54,7 @@ wstring WstringUtils::towstring(const xmlChar *input) {
 /**
  * Convert a string to a wide string.
  *
- * @param the string to convert
+ * @param str the string to convert
  *
  * @return the resulting wide string
  */

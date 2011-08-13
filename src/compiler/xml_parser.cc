@@ -219,7 +219,7 @@ void XmlParser::handleStartElement(const wstring &name, int lineNumber,
  * Pop the last event from the stack and call the appropriate eventhandler's
  * method.
  *
- * @param the name of the event
+ * @param name the name of the event
  */
 void XmlParser::handleEndElement(const wstring &name) {
   Event *event;
