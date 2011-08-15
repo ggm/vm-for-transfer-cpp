@@ -19,11 +19,13 @@
 #define VM_H_
 
 #include <string>
+#include <vector>
 
 #include "loader.h"
 #include "transfer_word.h"
 #include "bilingual_word.h"
 #include "chunk_word.h"
+#include "call_stack.h"
 
 using namespace std;
 
@@ -50,6 +52,9 @@ public:
   void setInputFile(char *);
   void setOutputFile(char *);
   void setDebugMode();
+
+  void setCurrentCodeUnit(const TCALL &);
+  void setPC(int);
 
   void run();
 
@@ -89,12 +94,29 @@ private:
   /// This section stores all macros and their code.
   CodeSection macrosCode;
 
+  /// Current code unit in execution (preprocessCode, a macro, a rule...).
+  CodeUnit *currentCodeUnit;
+
   /// The loader is set dynamically, depending on the code file's type.
   Loader *loader;
 
+  /// A call stack to track calls to macros and returns from them.
+  CallStack *callStack;
+
+  /// Input will be divided in words with their patterns information.
   vector<TransferWord *> words;
 
+  /// Superblanks between words are stored in this vector.
   vector<wstring> superblanks;
+
+  /** The current words is a vector of indices of the words vector ordered by
+   * position in the current code unit.
+   * \code
+   {Position in this vector and codeUnit: index of the word in the words vector}
+   {0: Word2, 1: Word1, 2: Word5}
+   * \endcode
+   */
+  vector<int> currentWords;
 
   void setLoader(const wstring &, char*);
   void setTransferStage(const wstring &);

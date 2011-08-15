@@ -28,6 +28,7 @@ using namespace std;
 
 VM::VM() {
   debugMode = false;
+  callStack = new CallStack(this);
 }
 
 VM::VM(const VM &vm) {
@@ -45,6 +46,11 @@ VM::~VM() {
       delete words[i];
       words[i] = NULL;
     }
+  }
+
+  if (callStack != NULL) {
+    delete callStack;
+    callStack = NULL;
   }
 }
 
@@ -85,7 +91,7 @@ void VM::setCodeFile(char *fileName) {
   file.close();
 }
 
-/*
+/**
  * Set the loader to use depending on the header of the code file.
  *
  * @param header the first line of the code file indicates the type of file
@@ -103,7 +109,7 @@ void VM::setLoader(const wstring &header, char *fileName) {
   }
 }
 
-/*
+/**
  * Set the transfer stage to process by the vm.
  *
  * @param transferHeader the part of the code file with the stage header
@@ -152,6 +158,38 @@ void VM::setOutputFile(char *fileName) {
 void VM::setDebugMode() {
   debugMode = true;
   // TODO: Create the debugger proxy and its components.
+}
+
+/**
+ * Set the current code unit as the one passed as parameter.
+ *
+ * @param call the call containing the code unit to set as the current one
+ */
+void VM::setCurrentCodeUnit(const TCALL &call) {
+  currentWords = call.words;
+  setPC(call.PC);
+
+  int numCodeUnit = call.number;
+
+  switch (call.section) {
+  case RULES_SECTION:
+    currentCodeUnit = &(rulesCode.units[numCodeUnit]);
+    break;
+  case MACROS_SECTION:
+    currentCodeUnit = &(macrosCode.units[numCodeUnit]);
+    break;
+  }
+
+  endAddress = currentCodeUnit->code.size();
+}
+
+/**
+ * Set the program counter to one passed as parameter.
+ *
+ * @param PC the program counter to set as the current one
+ */
+void VM::setPC(int PC) {
+  this->PC = PC;
 }
 
 /**
