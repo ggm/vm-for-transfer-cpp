@@ -180,6 +180,11 @@ void VM::setCurrentCodeUnit(const TCALL &call) {
     break;
   }
 
+  // If the code unit hasn't been fully loaded, we need to process it now.
+  if (!currentCodeUnit->loaded) {
+    loader->loadCodeUnit(*currentCodeUnit);
+  }
+
   endAddress = currentCodeUnit->code.size();
 }
 
