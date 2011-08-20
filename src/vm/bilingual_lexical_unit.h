@@ -15,36 +15,35 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef CHUNK_LEXICAL_UNIT_H_
-#define CHUNK_LEXICAL_UNIT_H_
+#ifndef BILINGUAL_LEXICAL_UNIT_H_
+#define BILINGUAL_LEXICAL_UNIT_H_
 
-#include <iostream>
-#include <vector>
 #include <string>
+#include <iostream>
 
 #include "lexical_unit.h"
 
 using namespace std;
 
 /**
- *  Represent a chunk and all its attributes for the inter/postchunk stage.
+ *  Represent a lexical unit and all its attributes for the transfer stage.
  *  The attributes will be parsed on demand, that is, when the lexical unit
  *  is created, only the attribute whole, with the entire content of the
  *  lexical unit, will be stored. Only if one of the other attributes its
  *  needed the whole content will be parsed and split between components.
  */
-class ChunkLexicalUnit: public LexicalUnit {
+class BilingualLexicalUnit: public LexicalUnit {
 
-  friend wostream& operator<<(wostream &, const ChunkLexicalUnit &);
+  friend wostream& operator<<(wostream &, const BilingualLexicalUnit &);
 
 public:
 
-  ChunkLexicalUnit();
-  ChunkLexicalUnit(const wstring &);
-  ChunkLexicalUnit(const ChunkLexicalUnit &);
-  virtual ~ChunkLexicalUnit();
-  ChunkLexicalUnit& operator=(const ChunkLexicalUnit &);
-  void copy(const ChunkLexicalUnit &);
+  BilingualLexicalUnit();
+  BilingualLexicalUnit(const wstring &);
+  BilingualLexicalUnit(const BilingualLexicalUnit &);
+  virtual ~BilingualLexicalUnit();
+  BilingualLexicalUnit& operator=(const BilingualLexicalUnit &);
+  void copy(const BilingualLexicalUnit &);
 
   void parse();
   wstring getWhole() const;
@@ -53,20 +52,28 @@ public:
   void modifyTag(const wstring &, const wstring &);
 
 private:
+
   /// The whole content of the lexical unit.
   wstring whole;
 
-  /// The pseudolemma of the chunk.
-  wstring pseudolemma;
+  /// The lemma of the lexical unit.
+  wstring lem;
+
+  /// The lemma's head of the lexical unit.
+  wstring lemh;
+
+  /// The lemma's queue of the lexical unit.
+  wstring lemq;
 
   /// The tags of the lexical unit.
   wstring tags;
 
-  /// The content of the chunk.
-  wstring chcontent;
-
   /// If the lexical unit is parsed, its individual components are filled.
   bool isParsed;
+
+  /// Store if the queue is stored before or after the tags.
+  bool lemqBeforeTags;
+
 };
 
-#endif /* CHUNK_LEXICAL_UNIT_H_ */
+#endif /* LEXICAL_UNIT_H_ */

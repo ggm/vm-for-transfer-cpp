@@ -24,7 +24,7 @@
 #include <iostream>
 
 #include "transfer_word.h"
-#include "lexical_unit.h"
+#include "bilingual_lexical_unit.h"
 #include "chunk_lexical_unit.h"
 #include "vm_wstring_utils.h"
 
@@ -41,7 +41,11 @@ public:
   ChunkWord& operator=(const ChunkWord &);
   void copy(const ChunkWord &);
 
-  ChunkLexicalUnit& getChunk();
+  ChunkLexicalUnit* getChunk();
+  BilingualLexicalUnit* getContentLexicalUnit(int);
+  int getLuCount();
+  wstring getBlank(unsigned int);
+
   void solveReferences();
   wstring replaceReference(const wstring &, wchar_t, const wstring &);
   void parseChunkContent();
@@ -56,12 +60,12 @@ private:
   ChunkLexicalUnit chunk;
 
   /// Content represented as a collection of lexical units.
-  vector<LexicalUnit *> content;
+  vector<BilingualLexicalUnit *> content;
 
   /// Blanks inside the chunk content (between lexical units) have to be stored.
   vector<wstring> blanks;
 
-  void changeLemmaCase(LexicalUnit &, CASE);
+  void changeLemmaCase(BilingualLexicalUnit &, CASE);
 };
 
 #endif /* CHUNK_WORD_H_ */

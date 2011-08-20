@@ -42,12 +42,12 @@ void BilingualWord::copy(const BilingualWord &bw) {
   target = bw.target;
 }
 
-LexicalUnit & BilingualWord::getSource() {
-  return source;
+BilingualLexicalUnit* BilingualWord::getSource() {
+  return &source;
 }
 
-LexicalUnit& BilingualWord::getTarget() {
-  return target;
+BilingualLexicalUnit* BilingualWord::getTarget() {
+  return &target;
 }
 
 /**
@@ -94,14 +94,14 @@ void BilingualWord::tokenizeInput(wfstream &input,
       }
       token = L"";
     } else if (ch == L'$') {
-      word->target = LexicalUnit(token);
+      word->target = BilingualLexicalUnit(token);
       words.push_back(word);
       token = L"";
       ignoreMultipleTargets = false;
       sourceSet = false;
     } else if (ch == L'/') {
       if (!sourceSet) {
-        word->source = LexicalUnit(token);
+        word->source = BilingualLexicalUnit(token);
         token = L"";
         sourceSet = true;
       } else {

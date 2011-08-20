@@ -19,7 +19,6 @@
 #define LEXICAL_UNIT_H_
 
 #include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -27,54 +26,20 @@ enum LU_PART {
   WHOLE, LEM, LEMH, LEMQ, TAGS, CHCONTENT
 };
 
-/**
- *  Represent a lexical unit and all its attributes for the transfer stage.
- *  The attributes will be parsed on demand, that is, when the lexical unit
- *  is created, only the attribute whole, with the entire content of the
- *  lexical unit, will be stored. Only if one of the other attributes its
- *  needed the whole content will be parsed and split between components.
- */
+/// Define an interface for a lexical unit.
 class LexicalUnit {
-
-  friend wostream& operator<<(wostream &, const LexicalUnit &);
 
 public:
 
-  LexicalUnit();
-  LexicalUnit(const wstring &);
-  LexicalUnit(const LexicalUnit &);
-  ~LexicalUnit();
-  LexicalUnit& operator=(const LexicalUnit &);
-  void copy(const LexicalUnit &);
+  virtual ~LexicalUnit() { };
 
-  void parse();
-  wstring getWhole() const;
-  wstring getPart(LU_PART);
-  void changePart(LU_PART, const wstring &);
-  void modifyTag(const wstring &, const wstring &);
+  virtual void parse() = 0;
+  virtual wstring getWhole() const = 0;
+  virtual wstring getPart(LU_PART) = 0;
+  virtual void changePart(LU_PART, const wstring &) = 0;
+  virtual void modifyTag(const wstring &, const wstring &) = 0;
 
 private:
-
-  /// The whole content of the lexical unit.
-  wstring whole;
-
-  /// The lemma of the lexical unit.
-  wstring lem;
-
-  /// The lemma's head of the lexical unit.
-  wstring lemh;
-
-  /// The lemma's queue of the lexical unit.
-  wstring lemq;
-
-  /// The tags of the lexical unit.
-  wstring tags;
-
-  /// If the lexical unit is parsed, its individual components are filled.
-  bool isParsed;
-
-  /// Store if the queue is stored before or after the tags.
-  bool lemqBeforeTags;
 
 };
 

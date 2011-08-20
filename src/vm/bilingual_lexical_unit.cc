@@ -15,9 +15,9 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "lexical_unit.h"
+#include "bilingual_lexical_unit.h"
 
-LexicalUnit::LexicalUnit() {
+BilingualLexicalUnit::BilingualLexicalUnit() {
   whole = L"";
   lem = L"";
   lemh = L"";
@@ -27,7 +27,7 @@ LexicalUnit::LexicalUnit() {
   lemqBeforeTags = false;
 }
 
-LexicalUnit::LexicalUnit(const wstring &whole) {
+BilingualLexicalUnit::BilingualLexicalUnit(const wstring &whole) {
   lem = L"";
   lemh = L"";
   lemq = L"";
@@ -38,23 +38,23 @@ LexicalUnit::LexicalUnit(const wstring &whole) {
   this->whole = whole;
 }
 
-LexicalUnit::LexicalUnit(const LexicalUnit &lu) {
+BilingualLexicalUnit::BilingualLexicalUnit(const BilingualLexicalUnit &lu) {
   copy(lu);
 }
 
-LexicalUnit::~LexicalUnit() {
+BilingualLexicalUnit::~BilingualLexicalUnit() {
 
 }
 
-LexicalUnit& LexicalUnit::operator=(const LexicalUnit &lu) {
+BilingualLexicalUnit& BilingualLexicalUnit::operator=(const BilingualLexicalUnit &lu) {
   if (this != &lu) {
-    this->~LexicalUnit();
+    this->~BilingualLexicalUnit();
     this->copy(lu);
   }
   return *this;
 }
 
-void LexicalUnit::copy(const LexicalUnit &lu) {
+void BilingualLexicalUnit::copy(const BilingualLexicalUnit &lu) {
   whole = lu.whole;
   lem = lu.lem;
   lemh = lu.lemh;
@@ -68,7 +68,7 @@ void LexicalUnit::copy(const LexicalUnit &lu) {
  * Parse the content of the whole attribute and fill all the individual
  * components.
  */
-void LexicalUnit::parse() {
+void BilingualLexicalUnit::parse() {
   // Get the positions of the key characters.
   size_t tag = whole.find(L'<');
   size_t head = whole.find(L'#');
@@ -117,7 +117,7 @@ void LexicalUnit::parse() {
  *
  * @return the whole lexical unit
  */
-wstring LexicalUnit::getWhole() const {
+wstring BilingualLexicalUnit::getWhole() const {
   if (!isParsed) {
     return whole;
   } else {
@@ -136,7 +136,7 @@ wstring LexicalUnit::getWhole() const {
  *
  * @return the part
  */
-wstring LexicalUnit::getPart(LU_PART part) {
+wstring BilingualLexicalUnit::getPart(LU_PART part) {
   // If we want a part but the lu is not parsed, we need to parse it.
   if (part != WHOLE && !isParsed) {
     parse();
@@ -164,7 +164,7 @@ wstring LexicalUnit::getPart(LU_PART part) {
  * @param part the part to change
  * @param value the new value to set
  */
-void LexicalUnit::changePart(LU_PART part, const wstring &value) {
+void BilingualLexicalUnit::changePart(LU_PART part, const wstring &value) {
   // If we want to change a part but the lu is not parsed, we need to parse it.
   if (part != WHOLE && !isParsed) {
     parse();
@@ -199,7 +199,7 @@ void LexicalUnit::changePart(LU_PART part, const wstring &value) {
  * @param tag the tag or combination of tags to replace
  * @param value the new value to store in its place
  */
-void LexicalUnit::modifyTag(const wstring &tag, const wstring &value) {
+void BilingualLexicalUnit::modifyTag(const wstring &tag, const wstring &value) {
   // If we want to change a tag but the lu is not parsed, we need to parse it.
   if (!isParsed) {
     parse();
@@ -208,7 +208,7 @@ void LexicalUnit::modifyTag(const wstring &tag, const wstring &value) {
   tags.replace(tags.find(tag), tag.size(), value);
 }
 
-wostream& operator<<(wostream &wos, const LexicalUnit &lu) {
+wostream& operator<<(wostream &wos, const BilingualLexicalUnit &lu) {
   wos << L"[" << L"'lem': '" << lu.lem << L"', 'lemh': '" << lu.lemh;
   wos << L"', 'lemq': '" << lu.lemq << L"', 'tags': '" << lu.tags << L"'}";
   return wos;

@@ -168,7 +168,7 @@ void ChunkLexicalUnit::modifyTag(const wstring &tag, const wstring &value) {
 }
 
 wostream& operator<<(wostream &wos, const ChunkLexicalUnit &clu) {
-  wos << L"{" <<L"'lem': '" << clu.pseudolemma << L"', 'tags': '" << clu.tags;
+  wos << L"{" << L"'lem': '" << clu.pseudolemma << L"', 'tags': '" << clu.tags;
   wos << L"', 'chcontent': '" << clu.chcontent << L"'}" ;
   return wos;
 }

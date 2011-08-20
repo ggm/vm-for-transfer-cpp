@@ -24,12 +24,12 @@
 #include <iostream>
 
 #include "transfer_word.h"
-#include "lexical_unit.h"
+#include "bilingual_lexical_unit.h"
 
 using namespace std;
 
 /// Represent a word as a source/target language pair.
-class BilingualWord: TransferWord {
+class BilingualWord: public TransferWord {
 
   friend wostream& operator<<(wostream &, const BilingualWord &);
 
@@ -41,8 +41,8 @@ public:
   BilingualWord& operator=(const BilingualWord &);
   void copy(const BilingualWord &);
 
-  LexicalUnit& getSource();
-  LexicalUnit& getTarget();
+  BilingualLexicalUnit* getSource();
+  BilingualLexicalUnit* getTarget();
 
   static void tokenizeInput(wfstream &, vector<TransferWord *> &,
       vector<wstring> &);
@@ -50,10 +50,10 @@ public:
 private:
 
   /// The source language lexical unit.
-  LexicalUnit source;
+  BilingualLexicalUnit source;
 
   /// The target language lexical unit.
-  LexicalUnit target;
+  BilingualLexicalUnit target;
 };
 
 #endif /* BILINGUAL_WORD_H_ */

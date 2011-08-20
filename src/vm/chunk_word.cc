@@ -56,8 +56,8 @@ void ChunkWord::copy(const ChunkWord &c) {
  *
  * @return the lexical unit
  */
-ChunkLexicalUnit & ChunkWord::getChunk() {
-  return chunk;
+ChunkLexicalUnit* ChunkWord::getChunk() {
+  return &chunk;
 }
 
 /**
@@ -149,7 +149,7 @@ void ChunkWord::parseChunkContent() {
   wstring token = L"";
   wstring chcontent = chunk.getPart(CHCONTENT);
   wchar_t ch;
-  LexicalUnit *lu;
+  BilingualLexicalUnit *lu;
 
   // Ignore first and last chars '{' and '}'.
   for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
@@ -165,7 +165,7 @@ void ChunkWord::parseChunkContent() {
       }
       token = L"";
     } else if (ch == L'$') {
-      lu = new LexicalUnit(token);
+      lu = new BilingualLexicalUnit(token);
 
       if (upperCaseAll) {
         changeLemmaCase(*lu, pseudoLemmaCase);
@@ -195,6 +195,46 @@ void ChunkWord::updateChunkContent(const wstring & oldLu,
   wstring chcontent = chunk.getPart(CHCONTENT);
   wstring ch = chcontent.replace(chcontent.find(oldLu), oldLu.size(), newLu);
   chunk.changePart(CHCONTENT, ch);
+}
+
+/**
+ * Get a reference to one of the lexical units of the chunk content.
+ *
+ * @param pos the position of the lexical unit
+ *
+ * @return the reference to the lexical unit inside the chunk content.
+ */
+BilingualLexicalUnit* ChunkWord::getContentLexicalUnit(int pos) {
+  if (content.size() == 0) {
+    parseChunkContent();
+  }
+
+  return content[pos];
+}
+
+/**
+ * Get the number of lexical units inside the chunk.
+ *
+ * @return the number of lexical units inside the chunk.
+ */
+int ChunkWord::getLuCount() {
+  return content.size();
+}
+
+/**
+ * Get the blank in the specified position. These blanks are the ones between
+ * lexical units inside the chunk and are used in the postchunk stage.
+ *
+ * @param pos the position of the blank
+ *
+ * @return the blank in position pos or "" if the position is past the end
+ */
+wstring ChunkWord::getBlank(unsigned int pos) {
+  if (pos < blanks.size()) {
+    return blanks[pos];
+  } else {
+    return L"";
+  }
 }
 
 /**
@@ -265,7 +305,7 @@ void ChunkWord::tokenizeInput(wfstream &input, vector<TransferWord*> &words,
  * @param lu the lexical unit to change the case from
  * @param luCase the new case to apply.
  */
-void ChunkWord::changeLemmaCase(LexicalUnit &lu, CASE luCase) {
+void ChunkWord::changeLemmaCase(BilingualLexicalUnit &lu, CASE luCase) {
   wstring oldLem = lu.getPart(LEM);
   wstring newLem = VMWstringUtils::changeCase(oldLem, luCase);
 
