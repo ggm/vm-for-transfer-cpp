@@ -33,10 +33,12 @@ class VMWstringUtils {
 public:
 
   static bool iswlower(const wstring &);
+  static bool iswnumeric(const wstring &);
   static wstring wtolower(const wstring &);
   static wstring wtoupper(const wstring &);
   static CASE getCase(const wstring &);
   static wstring changeCase(const wstring &, CASE);
+  static wstring changeCase(const wstring &, const wstring &);
   static wstring replace(wstring &, const wstring &, const wstring &);
 
 private:

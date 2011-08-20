@@ -39,6 +39,25 @@ bool VMWstringUtils::iswlower(const wstring &wstr) {
 }
 
 /**
+ * Check if every character of a wide string is a digit, locale specific.
+ *
+ * @param wstr the wide string to check
+ *
+ * @return true if it's a number, otherwise, false
+ */
+bool VMWstringUtils::iswnumeric(const wstring &wstr) {
+  locale loc;
+
+  for (unsigned int i = 0; i < wstr.size(); i++) {
+    if (!isdigit(wstr[i], loc)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
  * Change the case of a wide string to lower case, locale specific.
  *
  * @param wstr the wide string to change
@@ -125,6 +144,26 @@ wstring VMWstringUtils::changeCase(const wstring &wstr, CASE luCase) {
   }
 
   return wstrNewCase;
+}
+
+/**
+ * Change the case of a wide string to the one passed as parameter.
+ *
+ * @param wstr the wide string to change the case of
+ * @param luCase a wide string representing a case
+ *
+ * @return the wide string with the new case
+ */
+wstring VMWstringUtils::changeCase(const wstring &wstr, const wstring &luCase) {
+  if (luCase == L"aa") {
+    return VMWstringUtils::changeCase(wstr, aa);
+  } else if (luCase == L"Aa") {
+    return VMWstringUtils::changeCase(wstr, Aa);
+  } else if (luCase == L"AA") {
+    return VMWstringUtils::changeCase(wstr, AA);
+  } else {
+    return wstr;
+  }
 }
 
 /**
