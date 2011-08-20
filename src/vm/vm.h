@@ -26,6 +26,8 @@
 #include "bilingual_word.h"
 #include "chunk_word.h"
 #include "call_stack.h"
+#include "system_trie.h"
+#include "interpreter.h"
 
 using namespace std;
 
@@ -37,8 +39,16 @@ enum TRANSFER_DEFAULT {
   TD_CHUNK, TD_LU
 };
 
+enum VM_STATUS {
+  RUNNING,
+  HALTED,
+  FAILED
+};
+
 /// This class encapsulates all the VM processing.
 class VM {
+
+  friend class Interpreter;
 
 public:
 
@@ -56,6 +66,8 @@ public:
   void setCurrentCodeUnit(const TCALL &);
   void setPC(int);
 
+  void writeOutput(wstring);
+
   void run();
 
   void printCodeSection() const;
@@ -70,14 +82,27 @@ private:
   /// Name of the input file to use.
   char *inputFileName;
 
-  /// Name of the output file to use.
-  char *outputFileName;
+  /// Output file to use in case there is one, otherwise stdout will be used.
+  wofstream outputFile;
 
   /// Store if the debug mode is active or not.
   bool debugMode;
 
   /// Program counter: position of the next instruction to execute.
   unsigned int PC;
+
+  /** As a stack-based vm, the operands and results of every instruction are
+   * stored in the system stack. */
+  vector<wstring> systemStack;
+
+  /// The vm also has a trie where all patterns are stored.
+  SystemTrie systemTrie;
+
+  /// The interpreter is the component responsible of instructions execution.
+  Interpreter *interpreter;
+
+  /// Represent the current status of the vm.
+  VM_STATUS status;
 
   /// End address of the executing code.
   unsigned int endAddress;
@@ -117,6 +142,9 @@ private:
    * \endcode
    */
   vector<int> currentWords;
+
+  /// Store variables definitions and their default values.
+  map<wstring, wstring> variables;
 
   void setLoader(const wstring &, char*);
   void setTransferStage(const wstring &);

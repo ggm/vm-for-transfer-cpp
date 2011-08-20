@@ -31,7 +31,7 @@ SystemTrie::SystemTrie(const SystemTrie &c) {
 }
 
 SystemTrie::~SystemTrie() {
-
+  // TODO: Cleanup memory taking into accout circular references and such.
 }
 
 SystemTrie& SystemTrie::operator=(const SystemTrie &c) {

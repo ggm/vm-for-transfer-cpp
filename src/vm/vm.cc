@@ -29,6 +29,7 @@ using namespace std;
 VM::VM() {
   debugMode = false;
   callStack = new CallStack(this);
+  interpreter = new Interpreter(this);
 }
 
 VM::VM(const VM &vm) {
@@ -52,6 +53,15 @@ VM::~VM() {
     delete callStack;
     callStack = NULL;
   }
+
+  if (interpreter != NULL) {
+    delete interpreter;
+    interpreter = NULL;
+  }
+
+  if (outputFile.is_open()) {
+    outputFile.close();
+  }
 }
 
 VM& VM::operator=(const VM &vm) {
@@ -66,7 +76,7 @@ void VM::copy(const VM &vm) {
   transferStage = vm.transferStage;
   transferDefault = vm.transferDefault;
   inputFileName = vm.inputFileName;
-  outputFileName = vm.outputFileName;
+  outputFile = vm.outputFile;
   debugMode = vm.debugMode;
 }
 
@@ -149,7 +159,7 @@ void VM::setInputFile(char *fileName) {
  * @param fileName output file's name
  */
 void VM::setOutputFile(char *fileName) {
-  outputFileName = fileName;
+  outputFile.open(fileName);
 }
 
 /**
@@ -198,14 +208,30 @@ void VM::setPC(int PC) {
 }
 
 /**
+ * Write a wide string to the output already set or stdout by default.
+ *
+ * @param wstr the wide string to output
+ */
+void VM::writeOutput(wstring wstr) {
+  if (outputFile.is_open()) {
+    outputFile << wstr;
+  } else {
+    wcout << wstr;
+  }
+}
+
+/**
  * Load, preprocess and execute the contents of the files.
  */
 void VM::run() {
   try {
     loader->load(preproprocessCode, code, rulesCode, macrosCode, endAddress);
+    interpreter->preprocess();
     tokenizeInput();
   } catch (LoaderException &le) {
     wcerr << L"Loader error: " << le.getMessage() << endl;
+  } catch (InterpreterException &ie) {
+    wcerr << L"Interpreter error: " << ie.getMessage() << endl;
   }
 }
 
