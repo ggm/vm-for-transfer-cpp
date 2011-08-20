@@ -72,7 +72,8 @@ int main(int argc, char *argv[] ) {
 		};
 
 	// Set the C++ global locale as the one in current used by the user.
-  locale::global(locale(""));
+  locale loc = locale("");
+  locale::global(loc);
 
   // Create the vm to initialize it with the options passed as argument.
   VM vm;
@@ -140,6 +141,8 @@ int main(int argc, char *argv[] ) {
   }
 
   vm.run();
+
+  loc.~locale();
 
   return EXIT_SUCCESS;
 }
