@@ -31,7 +31,7 @@ class LexicalUnit {
 
 public:
 
-  virtual ~LexicalUnit() { };
+//  virtual ~LexicalUnit() { };
 
   virtual void parse() = 0;
   virtual wstring getWhole() const = 0;

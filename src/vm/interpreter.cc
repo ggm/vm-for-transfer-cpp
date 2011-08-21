@@ -118,7 +118,7 @@ LexicalUnit* Interpreter::getSourceLexicalUnit(int relativePos) {
  */
 LexicalUnit* Interpreter::getTargetLexicalUnit(int relativePos) {
   int realPos = vm->currentWords[relativePos - 1];
-  return ((ChunkWord *) vm->words[realPos])->getChunk();
+  return ((BilingualWord *) vm->words[realPos])->getTarget();
 }
 
 /**
@@ -309,6 +309,7 @@ void Interpreter::executeAnd(const Instruction &instr) {
   for (unsigned int i = 0; i < operands.size(); i++) {
     if (operands[i] == FALSE_WSTR) {
       vm->systemStack.push_back(FALSE_WSTR);
+      return;
     }
   }
 
@@ -323,6 +324,7 @@ void Interpreter::executeOr(const Instruction &instr) {
   for (unsigned int i = 0; i < operands.size(); i++) {
     if (operands[i] == TRUE_WSTR) {
       vm->systemStack.push_back(TRUE_WSTR);
+      return;
     }
   }
 
@@ -331,7 +333,7 @@ void Interpreter::executeOr(const Instruction &instr) {
 }
 
 void Interpreter::executeNot(const Instruction &instr) {
-  wstring op1 = instr.op1;
+  wstring op1 = popSystemStack();
 
   if (op1 == FALSE_WSTR) {
     vm->systemStack.push_back(TRUE_WSTR);
@@ -513,6 +515,10 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
     for (unsigned int i = 0; i < parts.size(); i++) {
       ch = parts[i];
 
+      if (i == parts.size() - 1) {
+        part += ch;
+      }
+
       if (ch == L'|' || i == parts.size() - 1) {
         if (lemmaAndTags.find(part) != wstring::npos) {
           if (notLinkTo) {
@@ -637,7 +643,7 @@ void Interpreter::executeChunk(const Instruction &instr) {
       for (unsigned int i = 2; i < numOperands; i++) {
         chunk += operands[i];
       }
-      if (vm->transferStage == TRANSFER) chunk += L'{';
+      if (vm->transferStage == TRANSFER) chunk += L'}';
     }
 
     chunk += L'$';
@@ -913,6 +919,10 @@ void Interpreter::handleStoreClipInstruction(const wstring &parts,
 
     for (unsigned int i = 0; i < parts.size(); i++) {
       ch = parts[i];
+
+      if (i == parts.size() - 1) {
+        part += ch;
+      }
 
       if (ch == L'|' || i == parts.size() - 1) {
         if (lemmaAndTags.find(part) != wstring::npos) {
