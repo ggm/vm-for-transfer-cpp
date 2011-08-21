@@ -50,9 +50,21 @@ void SystemTrie::copy(const SystemTrie &c) {
  * Get the last nodes of the sequence representing the pattern.
  *
  * @param pattern the pattern to match
+ *
+ * @return if the pattern is matched, the last nodes of the match, otherwise
+ * an empty vector.
+ */
+vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
+  return getPatternNodes(pattern, root);
+}
+
+/**
+ * Get the last nodes of the sequence representing the pattern.
+ *
+ * @param pattern the pattern to match
  * @param startNode the start of the matching process
  *
- * @return if the pattern is matched, the last nodes of the matching, otherwise
+ * @return if the pattern is matched, the last nodes of the match, otherwise
  * an empty vector.
  */
 vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
@@ -63,7 +75,7 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
     return curNodes;
   }
 
-  wstring patternLowered = lemmaToLower(pattern);
+  wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
 
   curNodes.push_back(startNode);
 
@@ -251,36 +263,6 @@ vector<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
 }
 
 /**
- * Convert the case of the lemma of a pattern to lowercase.
- *
- * @param pattern to convert the lemma of
- *
- * @return the pattern with the lemma to lower
- */
-wstring SystemTrie::lemmaToLower(const wstring &pattern) const {
-  wstring lemma = L"";
-  wchar_t ch;
-
-  unsigned int i = 0;
-  for (; i < pattern.size(); i++) {
-    ch = pattern[i];
-    if (ch == L'<') {
-      break;
-    } else {
-      lemma += ch;
-    }
-  }
-
-  lemma = VMWstringUtils::wtolower(lemma);
-
-  for (; i < pattern.size(); i++) {
-    lemma += pattern[i];
-  }
-
-  return lemma;
-}
-
-/**
  * Return the child with character ch transition or create a new default child
  * with a ch transition and return it. This method is similar to Python's
  * setdefault() of dicts.
@@ -360,7 +342,7 @@ TrieNode *SystemTrie::insertTagStar(TrieNode *node) {
  */
 TrieNode *SystemTrie::insertPattern(const wstring &pattern, int ruleNumber,
     TrieNode *node) {
-  wstring patternLowered = lemmaToLower(pattern);
+  wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
 
   TrieNode *curNode = node;
 

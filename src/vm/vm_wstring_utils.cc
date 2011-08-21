@@ -95,6 +95,37 @@ wstring VMWstringUtils::wtoupper(const wstring &wstr) {
 
 
 /**
+ * Convert the case of the lemma of a pattern to lowercase.
+ *
+ * @param pattern to convert the lemma of
+ *
+ * @return the pattern with the lemma to lower
+ */
+wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
+  wstring lemma = L"";
+  wchar_t ch;
+
+  unsigned int i = 0;
+  for (; i < pattern.size(); i++) {
+    ch = pattern[i];
+    if (ch == L'<') {
+      break;
+    } else {
+      lemma += ch;
+    }
+  }
+
+  lemma = VMWstringUtils::wtolower(lemma);
+
+  for (; i < pattern.size(); i++) {
+    lemma += pattern[i];
+  }
+
+  return lemma;
+}
+
+
+/**
  * Get the case of a wide string as defined by Apertium.
  *
  * @param wstr the wide string to get the case from

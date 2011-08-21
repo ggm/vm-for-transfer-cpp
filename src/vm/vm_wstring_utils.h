@@ -36,6 +36,7 @@ public:
   static bool iswnumeric(const wstring &);
   static wstring wtolower(const wstring &);
   static wstring wtoupper(const wstring &);
+  static wstring lemmaToLower(const wstring &);
   static CASE getCase(const wstring &);
   static wstring changeCase(const wstring &, CASE);
   static wstring changeCase(const wstring &, const wstring &);

@@ -50,6 +50,7 @@ public:
   SystemTrie& operator=(const SystemTrie &);
   void copy(const SystemTrie &);
 
+  vector<TrieNode *> getPatternNodes(const wstring &);
   vector<TrieNode *> getPatternNodes(const wstring &, TrieNode*);
   int getRuleNumber(const wstring &);
   void addPattern(const vector<wstring> &, int);
@@ -61,7 +62,6 @@ private:
 
   bool canSkipChar(wchar_t) const;
   vector<TrieNode *> getNextNodes(wchar_t, TrieNode *) const;
-  wstring lemmaToLower(const wstring &) const;
   TrieNode* setDefaultChild(TrieNode *, wchar_t);
   TrieNode* insertStar(TrieNode *);
   TrieNode* insertTagStar(TrieNode *);
