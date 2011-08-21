@@ -44,7 +44,7 @@ public:
   BilingualLexicalUnit* getSource();
   BilingualLexicalUnit* getTarget();
 
-  static void tokenizeInput(wfstream &, vector<TransferWord *> &,
+  static void tokenizeInput(wistream &, vector<TransferWord *> &,
       vector<wstring> &);
 
 private:

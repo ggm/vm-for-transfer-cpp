@@ -247,7 +247,7 @@ wstring ChunkWord::getBlank(unsigned int pos) {
  * @param solveRefs if references to chunk tags should be solved or not
  * @param parseContent if chunk content should be parsed and lus created or not
  */
-void ChunkWord::tokenizeInput(wfstream &input, vector<TransferWord*> &words,
+void ChunkWord::tokenizeInput(wistream &input, vector<TransferWord*> &words,
     vector<wstring> &blanks, bool solveRefs, bool parseContent) {
   wstring token = L"";
   bool chunkStart = true;

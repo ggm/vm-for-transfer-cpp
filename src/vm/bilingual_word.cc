@@ -57,7 +57,7 @@ BilingualLexicalUnit* BilingualWord::getTarget() {
  * @param words a collection of words to be filled.
  * @param blanks a collection of blanks to be filled.
  */
-void BilingualWord::tokenizeInput(wfstream &input,
+void BilingualWord::tokenizeInput(wistream &input,
     vector<TransferWord *> &words, vector<wstring> &blanks) {
   wstring token = L"";
   wstring sb = L"";

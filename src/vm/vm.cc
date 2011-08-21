@@ -274,12 +274,22 @@ void VM::tokenizeInput() {
   wfstream input;
   input.open(inputFileName, ios::in);
 
-  if (transferStage == TRANSFER) {
-    BilingualWord::tokenizeInput(input, words, superblanks);
-  } else if (transferStage == INTERCHUNK) {
-    ChunkWord::tokenizeInput(input, words, superblanks, false, false);
-  } else if (transferStage == POSTCHUNK) {
-    ChunkWord::tokenizeInput(input, words, superblanks, true, true);
+  if (input.is_open()) {
+    if (transferStage == TRANSFER) {
+      BilingualWord::tokenizeInput(input, words, superblanks);
+    } else if (transferStage == INTERCHUNK) {
+      ChunkWord::tokenizeInput(input, words, superblanks, false, false);
+    } else if (transferStage == POSTCHUNK) {
+      ChunkWord::tokenizeInput(input, words, superblanks, true, true);
+    }
+  } else {
+    if (transferStage == TRANSFER) {
+      BilingualWord::tokenizeInput(wcin, words, superblanks);
+    } else if (transferStage == INTERCHUNK) {
+      ChunkWord::tokenizeInput(wcin, words, superblanks, false, false);
+    } else if (transferStage == POSTCHUNK) {
+      ChunkWord::tokenizeInput(wcin, words, superblanks, true, true);
+    }
   }
 
   input.close();

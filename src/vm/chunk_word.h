@@ -51,7 +51,7 @@ public:
   void parseChunkContent();
   void updateChunkContent(const wstring &, const wstring &);
 
-  static void tokenizeInput(wfstream &, vector<TransferWord *> &,
+  static void tokenizeInput(wistream &, vector<TransferWord *> &,
       vector<wstring> &, bool, bool);
 
 private:
