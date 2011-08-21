@@ -149,6 +149,7 @@ private:
   void setLoader(const wstring &, char*);
   void setTransferStage(const wstring &);
   void tokenizeInput();
+  void initializeVM();
 };
 
 #endif /* VM_H_ */

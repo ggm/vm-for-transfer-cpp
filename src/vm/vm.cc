@@ -226,6 +226,7 @@ void VM::run() {
   try {
     loader->load(preproprocessCode, code, rulesCode, macrosCode, endAddress);
     interpreter->preprocess();
+    initializeVM();
     tokenizeInput();
   } catch (LoaderException &le) {
     wcerr << L"Loader error: " << le.getMessage() << endl;
@@ -261,4 +262,16 @@ void VM::tokenizeInput() {
   }
 
   input.close();
+}
+
+/**
+ * Execute code to initialize the VM, e.g. default values for vars.
+ */
+void VM::initializeVM() {
+  PC = 0;
+  status = RUNNING;
+
+  while(status == RUNNING && PC < code.code.size()) {
+    interpreter->execute(code.code[PC]);
+  }
 }
