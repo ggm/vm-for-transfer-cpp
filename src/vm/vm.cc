@@ -30,6 +30,8 @@ VM::VM() {
   debugMode = false;
   callStack = new CallStack(this);
   interpreter = new Interpreter(this);
+  nextPattern = 0;
+  lastSuperblank = -1;
 }
 
 VM::VM(const VM &vm) {
@@ -228,6 +230,25 @@ void VM::run() {
     interpreter->preprocess();
     initializeVM();
     tokenizeInput();
+
+    // Select the first rule. If there isn't one, the vm work has ended.
+    if (status == RUNNING) {
+      selectNextRule();
+    }
+
+    while(status == RUNNING) {
+      // Execute the rule selected until it ends.
+      while (status == RUNNING and PC < endAddress) {
+        interpreter->execute(currentCodeUnit->code[PC]);
+      }
+
+      // Process rule ending and select the next one to execute.
+      processRuleEnd();
+      if (status == RUNNING) {
+        selectNextRule();
+      }
+
+    }
   } catch (LoaderException &le) {
     wcerr << L"Loader error: " << le.getMessage() << endl;
   } catch (InterpreterException &ie) {
@@ -275,3 +296,245 @@ void VM::initializeVM() {
     interpreter->execute(code.code[PC]);
   }
 }
+
+/**
+ * Get the part of a source word needed for pattern matching, depending on the
+ * transfer stage.
+ *
+ * @param pos the position of the word to use
+ *
+ * @return the part needed or "" if pos is past the end. Parts needed would be:
+ *  - For transfer: whole (lemma+tags)
+ *  - For interchunk: lemma+tags
+ *  - For the postchunk: just the lemma
+ */
+wstring VM::getSourceWord(unsigned int pos) {
+  if (pos >= words.size()) {
+    return L"";
+  }
+
+  if (transferStage == TRANSFER) {
+    return ((BilingualWord *) words[pos])->getSource()->getWhole();
+  } else if (transferStage == INTERCHUNK) {
+    ChunkLexicalUnit *chunk = ((ChunkWord *) words[pos])->getChunk();
+    return chunk->getPart(LEM) + chunk->getPart(TAGS);
+  } else {
+    return ((ChunkWord *) words[pos])->getChunk()->getPart(LEM);
+  }
+}
+
+/**
+ * Get the next input pattern to analyze, lowering the lemma first.
+ *
+ * @return next pattern with lemma lowered
+ */
+wstring VM::getNextInputPattern() {
+  wstring pattern = VMWstringUtils::lemmaToLower(getSourceWord(nextPattern));
+  nextPattern++;
+
+  return pattern;
+}
+
+/**
+ * Get the superblank at the supplied position avoiding duplicates.
+ *
+ * @param pos the position of the superblank
+ *
+ * @return the superblank at pos or "" if that one was already used
+ */
+wstring VM::getUniqueSuperblank(int pos) {
+  int numBlanks = superblanks.size();
+
+  if (pos < numBlanks) {
+    if (pos != lastSuperblank) {
+      lastSuperblank = pos;
+      return superblanks[pos];
+    }
+  }
+
+  return L"";
+}
+
+/**
+ * Select the next rule to execute depending on the transfer stage.
+ */
+void VM::selectNextRule() {
+  if(transferStage == POSTCHUNK) {
+    selectNextRulePostchunk();
+  } else {
+    selectNextRuleLRLM();
+  }
+}
+
+/**
+ * Select the next rule trying to match patterns one by one.
+ */
+void VM::selectNextRulePostchunk() {
+  // Go through all the patterns until one matches a rule.
+  while (nextPattern < words.size()) {
+    unsigned int startPatternPos = nextPattern;
+    wstring pattern = getNextInputPattern();
+    int ruleNumber = systemTrie.getRuleNumber(pattern);
+
+    if (ruleNumber != NaRuleNumber) {
+      setRuleSelected(ruleNumber, startPatternPos, pattern);
+    } else {
+      processUnmatchedPattern(words[startPatternPos]);
+    }
+  }
+
+  // if there isn't any rule at all to execute, stop the vm.
+  status = HALTED;
+}
+
+/**
+ * Select the next rule to execute matching the LRLM pattern.
+ */
+void VM::selectNextRuleLRLM() {
+  int longestMatch = NaRuleNumber;
+  unsigned int nextPatternToProcess = nextPattern;
+
+  // Go through all the patterns until one matches a rule.
+  while(nextPattern < words.size()) {
+    unsigned int startPatternPos = nextPattern;
+    // Get the next pattern to process.
+    wstring pattern = getNextInputPattern();
+    vector<TrieNode *> curNodes = systemTrie.getPatternNodes(pattern);
+    nextPatternToProcess++;
+
+    // Get the longest match, left to right
+    wstring fullPattern = pattern;
+    while (curNodes.size() > 0) {
+      // Update the longest match if needed.
+      int ruleNumber = systemTrie.getRuleNumber(fullPattern);
+      if (ruleNumber != NaRuleNumber) {
+        longestMatch = ruleNumber;
+        nextPatternToProcess = nextPattern;
+      }
+
+      // Continue trying to match current pattern + the next one.
+      pattern = getNextInputPattern();
+      fullPattern += pattern;
+      vector<TrieNode*> nextNodes;
+      vector<TrieNode*> auxNodes;
+      // For each current node, add every possible transition to the nextNodes.
+      for (unsigned int i = 0; i < curNodes.size(); i++) {
+        auxNodes = systemTrie.getPatternNodes(pattern, curNodes[i]);
+        nextNodes.insert(nextNodes.end(), auxNodes.begin(), auxNodes.end());
+      }
+      curNodes = nextNodes;
+    }
+
+    // If the pattern doesn't match, we will continue with the next one.
+    // If there is a match of a group of patterns, we will continue with
+    // the last unmatched pattern.
+    nextPattern = nextPatternToProcess;
+
+    // Get the full pattern matched by the rule.
+    if (nextPattern < words.size()) {
+      size_t end = fullPattern.find(getSourceWord(nextPattern));
+      if (end != wstring::npos) {
+        fullPattern = fullPattern.substr(0, end);
+      }
+    }
+
+    if (longestMatch != NaRuleNumber) {
+      // If there is a longest match, set the rule to process
+      setRuleSelected(longestMatch, startPatternPos, fullPattern);
+      return;
+    } else {
+      // Otherwise, process the unmatched pattern.
+      processUnmatchedPattern(words[nextPattern - 1]);
+    }
+
+    longestMatch = NaRuleNumber;
+  }
+
+  // if there isn't any rule at all to execute, stop the vm.
+  status = HALTED;
+}
+
+/**
+ * Set a rule and its words as current ones.
+ *
+ * @param ruleNumber the number of the rule selected
+ * @param startPos the index of the first word of the pattern selected
+ * @param pattern the pattern which matched the rule
+ */
+void VM::setRuleSelected(int ruleNumber, unsigned int startPos, const wstring &pattern) {
+  // Output the leading superblank of the matched pattern.
+  writeOutput(getUniqueSuperblank(startPos));
+
+  // Add only a reference to the index pos of words, to avoid copying them.
+  vector<int> wordsIndex;
+  while (startPos != nextPattern) {
+    wordsIndex.push_back(startPos);
+    startPos++;
+  }
+
+  // Create an entry in the call stack with the rule to execute.
+  TCALL rule = {RULES_SECTION, ruleNumber, wordsIndex, 0};
+
+  callStack->pushCall(rule);
+}
+
+/**
+ * Do all the processing needed when rule ends.
+ */
+void VM::processRuleEnd() {
+  // Output the trailing superblank of the matched pattern.
+  writeOutput(getUniqueSuperblank(nextPattern));
+}
+
+/**
+ * Output unmatched patterns as the default form depending on the transfer
+ * stage.
+ */
+void VM::processUnmatchedPattern(TransferWord *word) {
+  wstring defaultOutput = L"";
+
+  // Output the leading superblank of the unmatched pattern.
+  writeOutput(getUniqueSuperblank(nextPattern - 1));
+
+  switch(transferStage) {
+  //For the chunker, output the default version of the unmatched pattern.
+  case TRANSFER: {
+    wstring whole = ((BilingualWord *) word)->getTarget()->getWhole();
+
+    // If the target word is empty, we don't need to output anything.
+    if (whole != L"") {
+      wstring wordTL = L"^" + whole + L"$";
+
+      if (transferDefault == TD_CHUNK) {
+        if (wordTL[1] == L'*') {
+          defaultOutput += L"^unknown<unknown>{" + wordTL + L"}$";
+        } else {
+          defaultOutput += L"^default<default>{" + wordTL + L"}$";
+        }
+      } else {
+        defaultOutput += wordTL;
+      }
+    }
+    break;
+  }
+  // For the interchunk stage only need to output the complete chunk.
+  case INTERCHUNK: {
+    wstring whole = ((ChunkWord *) word)->getChunk()->getWhole();
+    defaultOutput += L"^" + whole + L"$";
+    break;
+  }
+  // Lastly, for the postchunk stage output the lexical units inside chunks
+  // with the case of the chunk pseudolemma, without the { and }.
+  case POSTCHUNK: {
+    wstring chcontent = ((ChunkWord *) word)->getChunk()->getPart(CHCONTENT);
+    defaultOutput += chcontent.substr(1, chcontent.size() - 1);
+    break;
+  }
+  }
+
+  // Output the trailing superblank of the matched pattern.
+  defaultOutput += getUniqueSuperblank(nextPattern);
+
+  writeOutput(defaultOutput);
+}
+

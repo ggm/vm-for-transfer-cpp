@@ -134,6 +134,9 @@ private:
   /// Superblanks between words are stored in this vector.
   vector<wstring> superblanks;
 
+  /// Store the index of the last superblank used to avoid outputting duplicates.
+  int lastSuperblank;
+
   /** The current words is a vector of indices of the words vector ordered by
    * position in the current code unit.
    * \code
@@ -143,6 +146,9 @@ private:
    */
   vector<int> currentWords;
 
+  /// The index of the next input pattern to process.
+  unsigned int nextPattern;
+
   /// Store variables definitions and their default values.
   map<wstring, wstring> variables;
 
@@ -150,6 +156,16 @@ private:
   void setTransferStage(const wstring &);
   void tokenizeInput();
   void initializeVM();
+  wstring getSourceWord(unsigned int);
+  wstring getNextInputPattern();
+  wstring getUniqueSuperblank(int);
+  void selectNextRule();
+  void selectNextRulePostchunk();
+  void selectNextRuleLRLM();
+  void setRuleSelected(int, unsigned int, const wstring &);
+  void processRuleEnd();
+  void processUnmatchedPattern(TransferWord *);
+
 };
 
 #endif /* VM_H_ */
