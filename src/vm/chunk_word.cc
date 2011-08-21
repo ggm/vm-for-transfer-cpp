@@ -191,10 +191,13 @@ void ChunkWord::parseChunkContent() {
  */
 void ChunkWord::updateChunkContent(const wstring & oldLu,
     const wstring & newLu) {
-
   wstring chcontent = chunk.getPart(CHCONTENT);
-  wstring ch = chcontent.replace(chcontent.find(oldLu), oldLu.size(), newLu);
-  chunk.changePart(CHCONTENT, ch);
+
+  size_t pos = chcontent.find(oldLu);
+  if (pos != wstring::npos) {
+    wstring ch = chcontent.replace(pos, oldLu.size(), newLu);
+    chunk.changePart(CHCONTENT, ch);
+  }
 }
 
 /**

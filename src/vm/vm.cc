@@ -537,7 +537,7 @@ void VM::processUnmatchedPattern(TransferWord *word) {
   // with the case of the chunk pseudolemma, without the { and }.
   case POSTCHUNK: {
     wstring chcontent = ((ChunkWord *) word)->getChunk()->getPart(CHCONTENT);
-    defaultOutput += chcontent.substr(1, chcontent.size() - 1);
+    defaultOutput += chcontent.substr(1, chcontent.size() - 2);
     break;
   }
   }

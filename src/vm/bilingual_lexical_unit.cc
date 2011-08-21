@@ -177,6 +177,9 @@ void BilingualLexicalUnit::changePart(LU_PART part, const wstring &value) {
     isParsed = false;
     break;
   case LEM:
+    if (lem == lemh) {
+      lemh = value;
+    }
     lem = value;
     break;
   case LEMH:
