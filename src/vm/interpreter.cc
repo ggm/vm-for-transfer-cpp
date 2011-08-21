@@ -594,22 +594,40 @@ void Interpreter::executeIn(const Instruction &instr) {
   wstring list = popSystemStack();
   wstring value = popSystemStack();
 
-  if (list.find(value) != wstring::npos) {
-    vm->systemStack.push_back(TRUE_WSTR);
-  } else {
-    vm->systemStack.push_back(FALSE_WSTR);
-  }
+  searchValueInList(value, list);
 }
 
 void Interpreter::executeInig(const Instruction &instr) {
   wstring list = VMWstringUtils::wtolower(popSystemStack());
   wstring value = VMWstringUtils::wtolower(popSystemStack());
 
-  if (list.find(value) != wstring::npos) {
-    vm->systemStack.push_back(TRUE_WSTR);
-  } else {
-    vm->systemStack.push_back(FALSE_WSTR);
+  searchValueInList(value, list);
+}
+
+void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
+  wstring part = L"";
+  wchar_t ch;
+  size_t listSize = list.size();
+
+  for (unsigned int i = 0; i < listSize; i++) {
+    ch = list[i];
+
+    if (i == listSize - 1) {
+      part += ch;
+    }
+
+    if (ch == L'|' || i == listSize - 1) {
+      if (part == value) {
+        vm->systemStack.push_back(TRUE_WSTR);
+        return;
+      }
+      part = L"";
+    } else {
+      part += ch;
+    }
   }
+
+  vm->systemStack.push_back(FALSE_WSTR);
 }
 
 void Interpreter::executeConcat(const Instruction &instr) {
@@ -773,11 +791,13 @@ void Interpreter::executeMlu(const Instruction &instr) {
   // Append the lexical units, removing its ^...$
   wstring mlu = L"";
   mlu += L'^';
-  mlu += operands[0].substr(1, operands[0].size() - 1);
+  mlu += operands[0].substr(1, operands[0].size() - 2);
   for (unsigned int i = 1; i < operands.size(); i++) {
-    mlu += L"+" + operands[i].substr(1, operands[0].size() - 1);;
+    mlu += L"+" + operands[i].substr(1, operands[i].size() - 2);
   }
   mlu += L'$';
+
+  vm->systemStack.push_back(mlu);
 }
 
 void Interpreter::executeCaseOf(const Instruction &instr) {

@@ -67,7 +67,7 @@ void ChunkLexicalUnit::parse() {
   size_t tag = whole.find(L'<');
   size_t contentStart = whole.find(L'{');
 
-  if (tag != wstring::npos) {
+  if (tag != wstring::npos and tag < contentStart) {
     // The lemma is everything until the first tag.
     pseudolemma = whole.substr(0, tag);
     tags = whole.substr(tag, contentStart - tag);

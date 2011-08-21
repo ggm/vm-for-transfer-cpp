@@ -90,6 +90,7 @@ private:
   void executeCmpiSubstr(const Instruction&);
   void executeIn(const Instruction&);
   void executeInig(const Instruction&);
+  void searchValueInList(const wstring &, const wstring &);
   void executeConcat(const Instruction&);
   void executeChunk(const Instruction&);
   bool endsWith(const wstring &, const wstring &) const;

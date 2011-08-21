@@ -154,9 +154,7 @@ void ChunkWord::parseChunkContent() {
   // Ignore first and last chars '{' and '}'.
   for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
     ch = chcontent[i];
-    if (ch == L'/') {
-      continue;
-    } else if (ch == L'^') {
+    if (ch == L'^') {
       // After the first blank, append the blanks between lexical units.
       if (firstLu) {
         firstLu = false;
