@@ -76,7 +76,6 @@ void VM::copy(const VM &vm) {
   transferStage = vm.transferStage;
   transferDefault = vm.transferDefault;
   inputFileName = vm.inputFileName;
-  outputFile = vm.outputFile;
   debugMode = vm.debugMode;
 }
 
