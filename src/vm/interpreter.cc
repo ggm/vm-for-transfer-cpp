@@ -230,8 +230,7 @@ vector<int> Interpreter::getNOperands(const Instruction &instr,
 
   int operand;
   while (numOperands > 0) {
-    ws << popSystemStack();
-    ws >> operand;
+    operand = popSystemStackInteger();
     operands.insert(operands.begin(), operand);
     numOperands--;
   }
@@ -286,10 +285,7 @@ void Interpreter::pushCaseToStack(CASE valueCase) {
 }
 
 void Interpreter::executeAddtrie(const Instruction &instr) {
-  wstringstream ws(popSystemStack());
-
-  int numPatterns;
-  ws >> numPatterns;
+  int numPatterns = popSystemStackInteger();
 
   vector<wstring> pattern;
   while (numPatterns > 0) {
@@ -301,8 +297,8 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
 
   // Add the pattern with the rule number to the trie.
   int ruleNumber;
-  wstringstream ws2(instr.op1);
-  ws2 >> ruleNumber;
+  wstringstream ws(instr.op1);
+  ws >> ruleNumber;
   vm->systemTrie.addPattern(pattern, ruleNumber);
 }
 
