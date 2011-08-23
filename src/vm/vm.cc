@@ -32,6 +32,7 @@ VM::VM() {
   interpreter = new Interpreter(this);
   nextPattern = 0;
   lastSuperblank = -1;
+  loader = NULL;
 }
 
 VM::VM(const VM &vm) {

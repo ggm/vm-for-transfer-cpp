@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
       { 0, 0, 0, 0 }
     };
 
-	// Set the C++ global locale as the one in current used by the user.
+	// Set the C++ global locale as the one in current use by the user.
   locale loc = locale("");
   locale::global(loc);
 
