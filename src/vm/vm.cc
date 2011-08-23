@@ -130,11 +130,12 @@ void VM::setTransferStage(const wstring &transferHeader) {
   wstring transfer = L"transfer";
   wstring interchunk = L"interchunk";
   wstring postchunk = L"postchunk";
+  wstring chunk = L"chunk";
 
   if (!transferHeader.compare(2, transfer.size(), transfer)) {
     transferStage = TRANSFER;
     // Set chunker mode, by default 'lu'.
-    if (!transferHeader.compare(20, 5, L"chunk")) {
+    if (transferHeader.size() >= 24 && !transferHeader.compare(20, 5, chunk)) {
       transferDefault = TD_CHUNK;
     } else {
       transferDefault = TD_LU;
