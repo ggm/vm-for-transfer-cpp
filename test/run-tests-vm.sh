@@ -4,7 +4,7 @@ output=test/expected_output/vm/
 code=test/expected_output/compiler
 
 echo "============================================"
-echo "* Compiling..."
+echo "* Building the vm..."
 echo ""
 make vm
 echo "============================================"

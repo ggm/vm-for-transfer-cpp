@@ -1,6 +1,7 @@
 #<assembly>
 #<postchunk>
 #<section-rules>
+jmp section_rules_start
 section_rules_start:
 patterns_start:
 push "num_nom|det_nom|nom_adj"

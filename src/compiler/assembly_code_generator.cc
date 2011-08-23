@@ -27,6 +27,7 @@ AssemblyCodeGenerator::AssemblyCodeGenerator() {
   nextLabel[RULE] = 0;
   nextLabel[WHEN] = 0;
   nextLabel[CHOOSE] = 0;
+  jumpToRulesSection = false;
 }
 
 AssemblyCodeGenerator::AssemblyCodeGenerator(const AssemblyCodeGenerator &c) {
@@ -52,6 +53,7 @@ void AssemblyCodeGenerator::copy(const AssemblyCodeGenerator &c) {
   this->patternsCode = c.patternsCode;
   this->patternSection = c.patternSection;
   this->debug = c.debug;
+  this->jumpToRulesSection = c.jumpToRulesSection;
 }
 
 /**
@@ -209,6 +211,18 @@ void AssemblyCodeGenerator::genHeader(const Event &event) {
   addCode(header.str());
 }
 
+/**
+ * Add, if it wasn't already added, the jump to the start of the rules section
+ * to ignore macros until they are called.
+ */
+void AssemblyCodeGenerator::addJumpToRulesSection() {
+  if (!jumpToRulesSection) {
+    addCode(JMP_OP + INSTR_SEP + L"section_rules_start");
+  }
+
+  jumpToRulesSection = true;
+}
+
 void AssemblyCodeGenerator::genTransferStart(const Event &event) {
   genHeader(event);
 }
@@ -233,8 +247,7 @@ void AssemblyCodeGenerator::genDefVarStart(const Event &event,
 }
 
 void AssemblyCodeGenerator::genSectionDefMacrosStart(const Event &event) {
-  // Jump to the start of the rules, ignoring the macros until called.
-  addCode(JMP_OP + INSTR_SEP + L"section_rules_start");
+  addJumpToRulesSection();
 }
 
 void AssemblyCodeGenerator::genDefMacroStart(const Event &event) {
@@ -249,6 +262,7 @@ void AssemblyCodeGenerator::genDefMacroEnd(const Event &event) {
 
 void AssemblyCodeGenerator::genSectionRulesStart(const Event & event) {
   genDebugCode(event);
+  addJumpToRulesSection();
   addCode(L"section_rules_start:");
   patternSection = nextAddress;
 }

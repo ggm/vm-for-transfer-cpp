@@ -96,6 +96,7 @@ public:
   void genClipCode(const Event &, const vector<wstring> &);
   void genClipInstr(const Event &, bool);
   void genDebugCode(const Event &);
+  void addJumpToRulesSection();
 
   void genTransferStart(const Event &);
   void genInterchunkStart(const Event &);
@@ -170,6 +171,9 @@ private:
 
   /// If debug is on, debug messages will be added to the code generated.
   bool debug;
+
+  /// Flag to check if the jump to the rules section was already added.
+  bool jumpToRulesSection;
 };
 
 #endif /* ASSEMBLY_CODE_GENERATOR_H_ */

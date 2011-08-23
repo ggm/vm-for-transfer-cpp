@@ -4,7 +4,7 @@ output=test/expected_output/compiler/
 
 echo "============================================"
 echo "* Building the compiler..."
-echo "============================================"
+echo ""
 
 make clean;
 make;
