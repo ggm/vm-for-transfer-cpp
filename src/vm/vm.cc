@@ -390,6 +390,7 @@ void VM::selectNextRulePostchunk() {
 
     if (ruleNumber != NaRuleNumber) {
       setRuleSelected(ruleNumber, startPatternPos, pattern);
+      return;
     } else {
       processUnmatchedPattern(words[startPatternPos]);
     }
