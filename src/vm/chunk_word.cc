@@ -252,13 +252,20 @@ void ChunkWord::tokenizeInput(wistream &input, vector<TransferWord*> &words,
     vector<wstring> &blanks, bool solveRefs, bool parseContent) {
   wstring token = L"";
   bool chunkStart = true;
+  bool escapeNextChar = false;
 
   wchar_t ch;
   ChunkWord *word = new ChunkWord();
 
   while (input.get(ch)) {
-    // Read the ^ and $ of the lexical units but not of the chunks.
-    if (ch == L'^') {
+    if (escapeNextChar) {
+      token += ch;
+      escapeNextChar = false;
+    }  else if (ch == L'\\') {
+      token += ch;
+      escapeNextChar = true;
+    } else if (ch == L'^') {
+      // Read the ^ and $ of the lexical units but not of the chunks.
       if (!chunkStart) {
         token += ch;
       } else {

@@ -60,8 +60,6 @@ BilingualLexicalUnit* BilingualWord::getTarget() {
 void BilingualWord::tokenizeInput(wistream &input,
     vector<TransferWord *> &words, vector<wstring> &blanks) {
   wstring token = L"";
-  wstring sb = L"";
-  bool insideSb = false;
   bool escapeNextChar = false;
   bool ignoreMultipleTargets = false;
   bool sourceSet = false;
@@ -72,26 +70,16 @@ void BilingualWord::tokenizeInput(wistream &input,
   while (input.get(ch)) {
     if (ignoreMultipleTargets && ch != L'$') {
       continue;
-    } else if (ch == L'\\') {
-      escapeNextChar = true;
     } else if (escapeNextChar) {
       token += ch;
       escapeNextChar = false;
+    } else if (ch == L'\\') {
+      token += ch;
+      escapeNextChar = true;
     } else if (ch == L'^') {
       word = new BilingualWord();
 
-      if (words.size() == 0 && blanks.size() == 0) {
-        // If there aren't any blanks at the beginning, append an empty.
-        blanks.push_back(token);
-      } else if (words.size() == blanks.size()) {
-        // Any character between lus is treated like a superblank.
-        blanks.push_back(token);
-      } else if (token != L"") {
-        // If there are characters after the superblank, append them.
-        wstring bl = blanks.back() + token;
-        blanks.pop_back();
-        blanks.push_back(bl);
-      }
+      blanks.push_back(token);
       token = L"";
     } else if (ch == L'$') {
       word->target = BilingualLexicalUnit(token);
@@ -107,24 +95,17 @@ void BilingualWord::tokenizeInput(wistream &input,
       } else {
         ignoreMultipleTargets = true;
       }
-    } else if (ch == L'[') {
-      // If there are characters before the superblank, append them.
-      if (token != L"") {
-        sb += token;
-        token = L"";
-      }
-      insideSb = true;
-    } else if (ch == L']') {
-      if (sb != L"") {
-        blanks.push_back(sb);
-      }
-      insideSb = false;
-      sb = L"";
-    } else if (insideSb) {
-      sb += ch;
     } else {
       token += ch;
     }
+  }
+
+  // Add everything at the end until the last ']' as a superblank.
+  size_t pos = token.rfind(L']');
+  if (pos != wstring::npos) {
+    blanks.push_back(token.substr(0, 1 + pos));
+  } else {
+    blanks.push_back(token);
   }
 }
 
