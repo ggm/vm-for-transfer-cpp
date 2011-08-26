@@ -23,7 +23,7 @@
 #include "vm_wstring_utils.h"
 
 ChunkWord::ChunkWord() {
-
+  chunk = NULL;
 }
 
 ChunkWord::ChunkWord(const ChunkWord &c) {
@@ -34,6 +34,11 @@ ChunkWord::~ChunkWord() {
   for (unsigned int i = 0; i < content.size(); i++) {
     delete content[i];
     content[i] = NULL;
+  }
+
+  if (chunk != NULL) {
+    delete chunk;
+    chunk = NULL;
   }
 }
 
@@ -46,7 +51,7 @@ ChunkWord& ChunkWord::operator=(const ChunkWord &c) {
 }
 
 void ChunkWord::copy(const ChunkWord &c) {
-  chunk = c.chunk;
+  chunk = new ChunkLexicalUnit(*c.chunk);
   content = c.content;
   blanks = c.blanks;
 }
@@ -57,7 +62,7 @@ void ChunkWord::copy(const ChunkWord &c) {
  * @return the lexical unit
  */
 ChunkLexicalUnit* ChunkWord::getChunk() {
-  return &chunk;
+  return chunk;
 }
 
 /**
@@ -66,7 +71,7 @@ ChunkLexicalUnit* ChunkWord::getChunk() {
 void ChunkWord::solveReferences() {
   vector<wstring> tagsValues;
 
-  wstring tags = chunk.getPart(TAGS);
+  wstring tags = chunk->getPart(TAGS);
   wstring token = L"";
   wchar_t ch;
   for (unsigned int i = 0; i < tags.size(); i++) {
@@ -81,9 +86,9 @@ void ChunkWord::solveReferences() {
   }
 
   locale loc;
-  wstring chcontent = chunk.getPart(CHCONTENT);
+  wstring chcontent = chunk->getPart(CHCONTENT);
   wstring newChcontent = chcontent;
-  wstring newWhole = chunk.getPart(WHOLE);
+  wstring newWhole = chunk->getPart(WHOLE);
 
   for (unsigned int i = 0; i < chcontent.size(); i++) {
     ch = chcontent[i];
@@ -100,8 +105,8 @@ void ChunkWord::solveReferences() {
     }
   }
 
-  chunk.changePart(WHOLE, newWhole);
-  chunk.changePart(CHCONTENT, newChcontent);
+  chunk->changePart(WHOLE, newWhole);
+  chunk->changePart(CHCONTENT, newChcontent);
 }
 
 /**
@@ -133,7 +138,7 @@ wstring ChunkWord::replaceReference(const wstring &container, wchar_t pos,
  */
 void ChunkWord::parseChunkContent() {
   // Depending on the case, change all cases or just the first lexical unit.
-  CASE pseudoLemmaCase = VMWstringUtils::getCase(chunk.getPart(LEM));
+  CASE pseudoLemmaCase = VMWstringUtils::getCase(chunk->getPart(LEM));
   bool upperCaseAll = false;
   bool firstUpper = false;
   if (pseudoLemmaCase == AA) {
@@ -147,7 +152,7 @@ void ChunkWord::parseChunkContent() {
   bool firstLu = true;
 
   wstring token = L"";
-  wstring chcontent = chunk.getPart(CHCONTENT);
+  wstring chcontent = chunk->getPart(CHCONTENT);
   wchar_t ch;
   BilingualLexicalUnit *lu;
 
@@ -189,12 +194,12 @@ void ChunkWord::parseChunkContent() {
  */
 void ChunkWord::updateChunkContent(const wstring & oldLu,
     const wstring & newLu) {
-  wstring chcontent = chunk.getPart(CHCONTENT);
+  wstring chcontent = chunk->getPart(CHCONTENT);
 
   size_t pos = chcontent.find(oldLu);
   if (pos != wstring::npos) {
     wstring ch = chcontent.replace(pos, oldLu.size(), newLu);
-    chunk.changePart(CHCONTENT, ch);
+    chunk->changePart(CHCONTENT, ch);
   }
 }
 
@@ -280,7 +285,7 @@ void ChunkWord::tokenizeInput(wistream &input, vector<TransferWord*> &words,
       }
     } else if (ch == L'}') {
       token += ch;
-      word->chunk = ChunkLexicalUnit(token);
+      word->chunk = new ChunkLexicalUnit(token);
 
       if (solveRefs) {
         word->solveReferences();
@@ -324,9 +329,9 @@ void ChunkWord::changeLemmaCase(BilingualLexicalUnit &lu, CASE luCase) {
 }
 
 wostream& operator<<(wostream &wos, const ChunkWord &cw) {
-  wstring chunkWhole = cw.chunk.getWhole();
+  wstring chunkWhole = cw.chunk->getWhole();
 
-  wos << L"^" << chunkWhole << L"$: " << cw.chunk << L", content = [";
+  wos << L"^" << chunkWhole << L"$: " << *cw.chunk << L", content = [";
 
   for (unsigned int i = 0; i < cw.content.size(); i++) {
     wos << L"^" << cw.content[i]->getWhole() << L"$: " << *cw.content[i]

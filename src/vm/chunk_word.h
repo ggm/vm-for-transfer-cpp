@@ -57,7 +57,7 @@ public:
 private:
 
   /// The chunk lexical unit.
-  ChunkLexicalUnit chunk;
+  ChunkLexicalUnit *chunk;
 
   /// Content represented as a collection of lexical units.
   vector<BilingualLexicalUnit *> content;

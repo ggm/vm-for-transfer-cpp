@@ -18,7 +18,8 @@
 #include "bilingual_word.h"
 
 BilingualWord::BilingualWord() {
-
+  source = NULL;
+  target = NULL;
 }
 
 BilingualWord::BilingualWord(const BilingualWord &bw) {
@@ -26,7 +27,15 @@ BilingualWord::BilingualWord(const BilingualWord &bw) {
 }
 
 BilingualWord::~BilingualWord() {
+  if (source != NULL) {
+    delete source;
+    source = NULL;
+  }
 
+  if (target != NULL) {
+    delete target;
+    target = NULL;
+  }
 }
 
 BilingualWord& BilingualWord::operator=(const BilingualWord &bw) {
@@ -38,16 +47,16 @@ BilingualWord& BilingualWord::operator=(const BilingualWord &bw) {
 }
 
 void BilingualWord::copy(const BilingualWord &bw) {
-  source = bw.source;
-  target = bw.target;
+  source = new BilingualLexicalUnit(*bw.source);
+  target = new BilingualLexicalUnit(*bw.target);
 }
 
 BilingualLexicalUnit* BilingualWord::getSource() {
-  return &source;
+  return source;
 }
 
 BilingualLexicalUnit* BilingualWord::getTarget() {
-  return &target;
+  return target;
 }
 
 /**
@@ -82,14 +91,15 @@ void BilingualWord::tokenizeInput(wistream &input,
       blanks.push_back(token);
       token = L"";
     } else if (ch == L'$') {
-      word->target = BilingualLexicalUnit(token);
+      word->target = new BilingualLexicalUnit(token);
+
       words.push_back(word);
       token = L"";
       ignoreMultipleTargets = false;
       sourceSet = false;
     } else if (ch == L'/') {
       if (!sourceSet) {
-        word->source = BilingualLexicalUnit(token);
+        word->source = new BilingualLexicalUnit(token);
         token = L"";
         sourceSet = true;
       } else {
@@ -110,11 +120,11 @@ void BilingualWord::tokenizeInput(wistream &input,
 }
 
 wostream& operator<<(wostream &wos, const BilingualWord &bw) {
-  wstring sourceWhole = bw.source.getWhole();
-  wstring targetWhole = bw.target.getWhole();
+  wstring sourceWhole = bw.source->getWhole();
+  wstring targetWhole = bw.target->getWhole();
 
   wos << L"^" << sourceWhole << L"/" << targetWhole << L"$: "
-      << bw.source << L"/" << bw.target;
+      << *bw.source << L"/" << *bw.target;
 
   return wos;
 }

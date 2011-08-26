@@ -50,10 +50,10 @@ public:
 private:
 
   /// The source language lexical unit.
-  BilingualLexicalUnit source;
+  BilingualLexicalUnit *source;
 
   /// The target language lexical unit.
-  BilingualLexicalUnit target;
+  BilingualLexicalUnit *target;
 };
 
 #endif /* BILINGUAL_WORD_H_ */
