@@ -113,7 +113,9 @@ wstring ChunkLexicalUnit::getPart(LU_PART part) {
 
   switch(part) {
   case WHOLE: return getWhole();
-  case LEM: return pseudolemma;
+  case LEM: /*FALL THROUGH*/
+  case LEMH: return pseudolemma;
+  case LEMQ: return L"";
   case TAGS: return tags;
   case CHCONTENT: return chcontent;
   default: return whole;
@@ -138,7 +140,8 @@ void ChunkLexicalUnit::changePart(LU_PART part, const wstring &value) {
     whole = value;
     isParsed = false;
     break;
-  case LEM:
+  case LEM: /*FALL THROUGH*/
+  case LEMH:
     pseudolemma = value;
     break;
   case TAGS:
