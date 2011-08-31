@@ -845,7 +845,8 @@ void Interpreter::executePush(const Instruction &instr) {
     if (vm->variables.find(op1) != vm->variables.end()) {
       vm->systemStack.push_back(vm->variables[op1]);
     } else {
-      throwError(L"Variable " + op1 + L" is not defined.");
+      vm->variables[op1] = L"";
+      vm->systemStack.push_back(L"");
     }
   }
 }
