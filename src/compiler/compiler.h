@@ -44,7 +44,7 @@ public:
   void setInputFile(char *);
   void setOutputFile(char *);
 
-  void compile();
+  bool compile();
   void debugMessage(const wstring &);
   void writeOutput(const wstring &) const;
 

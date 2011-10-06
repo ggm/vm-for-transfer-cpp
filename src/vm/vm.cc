@@ -226,7 +226,7 @@ void VM::writeOutput(wstring wstr) {
 /**
  * Load, preprocess and execute the contents of the files.
  */
-void VM::run() {
+bool VM::run() {
   try {
     loader->load(preproprocessCode, code, rulesCode, macrosCode, endAddress);
     interpreter->preprocess();
@@ -253,9 +253,13 @@ void VM::run() {
     }
   } catch (LoaderException &le) {
     wcerr << L"Loader error: " << le.getMessage() << endl;
+    return false;
   } catch (InterpreterException &ie) {
     wcerr << L"Interpreter error: " << ie.getMessage() << endl;
+    return false;
   }
+
+  return true;
 }
 
 /**

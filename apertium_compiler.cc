@@ -120,9 +120,12 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  compiler.compile();
-
+  bool error = !compiler.compile();
   loc.~locale();
+
+  if (error) {
+    return EXIT_FAILURE;
+  }
 
   return EXIT_SUCCESS;
 }

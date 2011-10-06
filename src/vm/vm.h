@@ -68,7 +68,7 @@ public:
 
   void writeOutput(wstring);
 
-  void run();
+  bool run();
 
   void printCodeSection() const;
 

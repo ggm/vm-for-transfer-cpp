@@ -83,7 +83,7 @@ void Compiler::setOutputFile(char *fileName) {
  * Compile the contents of the transfer file to the chosen intermediate
  * representation.
  */
-void Compiler::compile() {
+bool Compiler::compile() {
   createParser();
 
   try {
@@ -92,10 +92,14 @@ void Compiler::compile() {
   } catch (CompilerException &c) {
     debugMessage(c.getMessage());
     wcerr << L"Error: " << c.getMessage() << endl;
+    return false;
   } catch (exception &e) {
     debugMessage(WstringUtils::stows(e.what()));
     cerr << e.what() << endl;
+    return false;
   }
+
+  return true;
 }
 
 /*
