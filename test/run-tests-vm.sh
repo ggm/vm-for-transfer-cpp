@@ -18,7 +18,7 @@ echo "============================================"
 
 for arg in `ls $output` ; do
   inputarg=$input$arg.txt
-  cat $inputarg | ./apertium-vm -c $code/apertium-en-ca.en-ca.v1x 2> test_warnings.log | ./apertium-vm -c $code/apertium-en-ca.en-ca.v2x 2> test_warnings.log | ./apertium-vm -c $code/apertium-en-ca.en-ca.v3x > vm.out 2> test_warnings.log
+  cat $inputarg | ./apertium-transfervm -c $code/apertium-en-ca.en-ca.v1x 2> test_warnings.log | ./apertium-transfervm -c $code/apertium-en-ca.en-ca.v2x 2> test_warnings.log | ./apertium-transfervm -c $code/apertium-en-ca.en-ca.v3x > vm.out 2> test_warnings.log
   if diff vm.out $output$arg > test_results.log ; then
     echo $arg "-- OK"
   else

@@ -24,13 +24,13 @@ VM_OBJ = $(patsubst %,$(VM_DIR)/%,$(_VM_OBJ))
 all: compiler vm
 
 compiler: apertium_compiler.cc $(COMP_OBJ)
-	$(CC) $(COMP_CFLAGS) -I $(COMPILER_DIR) $(OPTIONS) apertium_compiler.cc $(COMP_OBJ) -o apertium-compiler $(COMP_LIBS)
+	$(CC) $(COMP_CFLAGS) -I $(COMPILER_DIR) $(OPTIONS) apertium_compiler.cc $(COMP_OBJ) -o apertium-transfervm-compiler $(COMP_LIBS)
 
 $(COMPILER_DIR)/%.o : $(COMPILER_DIR)/%.cc $(COMPILER_DIR)/%.h
 	$(CC) $(COMP_CFLAGS) -I $(COMPILER_DIR) $(OPTIONS) -c -o $@ $< $(COMP_LIBS)
 
 vm: apertium_vm.cc $(VM_OBJ)
-	$(CC) $(VM_CFLAGS) -I $(VM_DIR) $(OPTIONS) apertium_vm.cc $(VM_OBJ) -o apertium-vm $(VM_LIBS)
+	$(CC) $(VM_CFLAGS) -I $(VM_DIR) $(OPTIONS) apertium_vm.cc $(VM_OBJ) -o apertium-transfervm $(VM_LIBS)
 
 $(VM_DIR)/%.o : $(VM_DIR)/%.cc $(VM_DIR)/%.h
 	$(CC) $(VM_CFLAGS) -I $(VM_DIR) $(OPTIONS) -c -o $@ $< $(VM_LIBS)
@@ -39,5 +39,5 @@ doc:
 	doxygen
 
 clean:
-	rm -f $(OBJ) apertium-compiler apertium-vm ./src/*~ ./src/*/*.o doxygen.log
+	rm -f $(OBJ) apertium-transfervm-compiler apertium-transfervm ./src/*~ ./src/*/*.o doxygen.log
 	rm -rf doc html 

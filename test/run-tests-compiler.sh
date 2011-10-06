@@ -20,7 +20,7 @@ for arg in `ls $output` ; do
   inputarg=${inputarg/.v1x/.t1x}
   inputarg=${inputarg/.v2x/.t2x}
   inputarg=${inputarg/.v3x/.t3x}
-  ./apertium-compiler -i $inputarg -d compiler.log > compiler.out
+  ./apertium-transfervm-compiler -i $inputarg -d compiler.log > compiler.out
   if diff compiler.out $output$arg > test_results.log ; then
     echo $arg "-- OK"
   else
