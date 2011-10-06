@@ -157,7 +157,7 @@ vector<wstring> EventHandler::getPartAttribute(const Event &event) {
   wstring part = event.getAttribute(L"part");
 
   if (part == L"lem" || part == L"lemh" || part == L"lemq" || part == L"whole"
-      || part == L"tags" || part == L"chcontent") {
+      || part == L"tags" || part == L"chcontent" || part == L"content") {
     partAttrs.push_back(part);
   } else if (defAttrs.find(part) != defAttrs.end()) {
     partAttrs = defAttrs[part];

@@ -23,7 +23,7 @@
 using namespace std;
 
 enum LU_PART {
-  WHOLE, LEM, LEMH, LEMQ, TAGS, CHCONTENT
+  WHOLE, LEM, LEMH, LEMQ, TAGS, CHCONTENT, CONTENT
 };
 
 /// Define an interface for a lexical unit.

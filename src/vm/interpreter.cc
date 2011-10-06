@@ -506,6 +506,9 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
   } else if (notLinkTo && parts == L"chcontent") {
     vm->systemStack.push_back(lu->getPart(CHCONTENT));
     return;
+  } else if (notLinkTo && parts == L"content") {
+    vm->systemStack.push_back(lu->getPart(CONTENT));
+    return;
   } else {
     // Check if one of the parts divided by | matches the lemma or tags.
     wstring longestMatch = L"";

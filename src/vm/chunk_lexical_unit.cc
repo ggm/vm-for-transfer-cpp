@@ -118,6 +118,8 @@ wstring ChunkLexicalUnit::getPart(LU_PART part) {
   case LEMQ: return L"";
   case TAGS: return tags;
   case CHCONTENT: return chcontent;
+  /*jacob's new 'part' (from apertium's interchunk.cc:248) */
+  case CONTENT: return chcontent.substr(1, chcontent.size() - 2);
   default: return whole;
   }
 }
