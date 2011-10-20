@@ -155,11 +155,18 @@ void ChunkWord::parseChunkContent() {
   wstring chcontent = chunk->getPart(CHCONTENT);
   wchar_t ch;
   BilingualLexicalUnit *lu;
+  bool escapeNextChar = false;
 
   // Ignore first and last chars '{' and '}'.
   for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
     ch = chcontent[i];
-    if (ch == L'^') {
+    if (escapeNextChar) {
+      token += ch;
+      escapeNextChar = false;
+    } else if (ch == L'\\') {
+      token += ch;
+      escapeNextChar = true;
+    } else if (ch == L'^') {
       // After the first blank, append the blanks between lexical units.
       if (firstLu) {
         firstLu = false;
