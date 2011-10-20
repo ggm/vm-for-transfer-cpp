@@ -359,6 +359,10 @@ Interpreter::beginsWith(const wstring &word, const wstring &preffixes) const {
   wstring preffix = L"";
   wchar_t ch;
 
+  if (word.size() == 0) {
+    return false;
+  }
+
   for (unsigned int i = 0; i < preffixes.size(); i++) {
     ch = preffixes[i];
 
@@ -677,6 +681,10 @@ bool
 Interpreter::endsWith(const wstring &word, const wstring &suffixes) const {
   wstring suffix = L"";
   wchar_t ch;
+
+  if (word.size() == 0) {
+    return false;
+  }
 
   for (unsigned int i = 0; i < suffixes.size(); i++) {
     ch = suffixes[i];
