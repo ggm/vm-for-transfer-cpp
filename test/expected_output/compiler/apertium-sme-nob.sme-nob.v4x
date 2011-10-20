@@ -1,0 +1,3471 @@
+#<assembly>
+#<postchunk>
+jmp section_rules_start
+#<def-macro c="arg.1: chunk, arg.2: pronoun                   -----                   Put non-GD chunk gender on pronoun.                   Ensure reflexive has right tags (these are a bit odd)" n="clean_pron" npar="2">
+macro_clean_pron_start:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+and 2
+jz when_0_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+storecl
+jmp choose_0_end
+when_0_end:
+choose_0_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_1_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+jmp choose_1_end
+when_1_end:
+choose_1_end:
+#<clip part="case" pos="1">
+push 1
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+jz when_2_end
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+#<clip part="case" pos="1">
+push 1
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+storecl
+jmp choose_2_end
+when_2_end:
+choose_2_end:
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="nom">
+push "<nom>"
+cmp
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="acc">
+push "<acc>"
+cmp
+or 2
+not
+jz when_3_end
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+#<lit-tag v="acc">
+push "<acc>"
+storecl
+jmp choose_3_end
+when_3_end:
+choose_3_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>"
+clip
+#<lit-tag v="p3">
+push "<p3>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="GD">
+push "GD"
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="GD_pers">
+push "GD_pers"
+cmp
+not
+and 5
+jz when_4_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="nt">
+push "<nt>"
+cmp
+and 2
+not
+jz when_5_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storecl
+jmp choose_5_end
+when_5_end:
+choose_5_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="f">
+push "<f>"
+cmp
+jz when_6_end
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+#<get-case-from pos="1">
+#<lit v="hun">
+push "hun"
+push 1
+get-case-from
+modify-case
+storecl
+jmp choose_6_end
+when_6_end:
+choose_6_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="nt">
+push "<nt>"
+cmp
+jz when_7_end
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+#<get-case-from pos="1">
+#<lit v="det">
+push "det"
+push 1
+get-case-from
+modify-case
+storecl
+jmp choose_7_end
+when_7_end:
+choose_7_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="m">
+push "<m>"
+cmp
+jz when_8_end
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+#<get-case-from pos="1">
+#<lit v="han">
+push "han"
+push 1
+get-case-from
+modify-case
+storecl
+jmp choose_8_end
+when_8_end:
+choose_8_end:
+jmp choose_4_end
+when_4_end:
+choose_4_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+or 2
+jz when_9_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="m">
+push "<m>"
+storecl
+jmp choose_9_end
+when_9_end:
+choose_9_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+jz when_10_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="mf">
+push "<mf>"
+storecl
+jmp choose_10_end
+when_10_end:
+choose_10_end:
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<lit v="seg">
+push "seg"
+cmp
+jz when_11_end
+#<clip part="tags" pos="2">
+push 2
+push "tags"
+#<lit-tag v="prn.ref">
+push "<prn><ref>"
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>"
+clip
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+concat 3
+storecl
+jmp choose_11_end
+when_11_end:
+choose_11_end:
+macro_clean_pron_end: ret
+#<def-macro c="arg.1: chunk, arg.2: determiner (including numerals)                   -----                   - if DD, try chunk defnes, default ind                   - if ND, try chunk number, default sg                   - if GD sg, try chunk gender, default m                   - remove gender from plurals / definites                   - remove defnes from plurals                   - remove case/pers (added in t1x since we don't know until interchunk                     if it'll be a determiner or pronoun)" n="clean_det2" npar="2">
+macro_clean_det2_start:
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="DD">
+push "<DD>"
+cmp
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+and 2
+jz when_12_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+clip
+storecl
+jmp choose_12_end
+when_12_end:
+choose_12_end:
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="DD">
+push "<DD>"
+cmp
+jz when_13_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit-tag v="ind">
+push "<ind>"
+storecl
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+#<lit-tag v="ind">
+push "<ind>"
+storecl
+jmp choose_13_end
+when_13_end:
+choose_13_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+and 2
+jz when_14_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+storecl
+jmp choose_14_end
+when_14_end:
+choose_14_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_15_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+jmp choose_15_end
+when_15_end:
+choose_15_end:
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<list n="det.pl">
+push "mange|så mange|hvor mange|begge|samtlige|de fleste"
+inig
+jz when_16_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="pl">
+push "<pl>"
+storecl
+jmp choose_16_end
+when_16_end:
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<list n="det.sg">
+push "en|én"
+inig
+jz when_17_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+jmp choose_16_end
+when_17_end:
+choose_16_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<list n="det.sp.def">
+push "samme|neste|forrige"
+inig
+or 3
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+or 2
+and 2
+jz when_18_end
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+not
+and 3
+jz when_19_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storecl
+jmp choose_18_end
+when_19_end:
+choose_18_end:
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+clip
+#<lit-tag v="det.pos">
+push "<det><pos>"
+cmp
+not
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+and 2
+jz when_20_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="m">
+push "<m>"
+storecl
+jmp choose_19_end
+when_20_end:
+choose_19_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+or 2
+jz when_21_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="m">
+push "<m>"
+storecl
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="m">
+push "<m>"
+storecl
+jmp choose_20_end
+when_21_end:
+choose_20_end:
+jmp choose_17_end
+when_18_end:
+choose_17_end:
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<list n="det.sp.def">
+push "samme|neste|forrige"
+inig
+jz when_22_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sp">
+push "<sp>"
+storecl
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit-tag v="def">
+push "<def>"
+storecl
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+jz when_23_end
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+#<lit-tag v="det.dem.m">
+push "<det><dem><m>"
+storecl
+jmp choose_22_end
+when_23_end:
+choose_22_end:
+jmp choose_21_end
+when_22_end:
+#<otherwise>
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="def">
+push "<def>"
+cmp
+or 2
+jz when_24_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit v="">
+push ""
+storecl
+jmp choose_23_end
+when_24_end:
+choose_23_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="pl">
+push "<pl>"
+cmp
+jz when_25_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit v="">
+push ""
+storecl
+jmp choose_24_end
+when_25_end:
+choose_24_end:
+choose_21_end:
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+#<lit v="">
+push ""
+storecl
+#<clip part="pers" pos="2">
+push 2
+push "<p1>|<p2>|<p3>"
+#<lit v="">
+push ""
+storecl
+macro_clean_det2_end: ret
+#<def-macro c="arg.1: chunk, arg.2: determiner (including numerals), arg.3: determined word                   -----                   - if ND, try number of determined object                   - if GD sg, try gender of determined object                   - call clean_det2" n="clean_det3" npar="3">
+macro_clean_det3_start:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+#<clip part="nbr" pos="3">
+push 3
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+and 2
+jz when_26_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<clip part="nbr" pos="3">
+push 3
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+storecl
+jmp choose_25_end
+when_26_end:
+choose_25_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+or 2
+and 2
+jz when_27_end
+#<clip part="gen" pos="3">
+push 3
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="gen" pos="3">
+push 3
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+not
+#<clip part="gen" pos="3">
+push 3
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+not
+and 3
+jz when_28_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="3">
+push 3
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storecl
+jmp choose_27_end
+when_28_end:
+choose_27_end:
+jmp choose_26_end
+when_27_end:
+choose_26_end:
+#<call-macro n="clean_det2">
+push 1
+push 2
+push 2
+call clean_det2
+macro_clean_det3_end: ret
+#<def-macro c="arg.1: chunk, arg.2: adj                   -----                   - Try to apply chunk nbr/gender if ND/GD, else set to sg/nt.                   - Change m or f to mf.                   - If empty number tag and posi/pp, set to sg.                     - Can we fix this in bidix?                   - Remove defness unless superlatives or posi/pp.sg                    - Remove gender unless posi/pp.sg.ind                   - Make all adj.ord plural                   " n="clean_adj" npar="2">
+macro_clean_adj_start:
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit v="">
+push ""
+cmp
+#<clip part="a_adj" pos="2">
+push 2
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit-tag v="adj.pprs">
+push "<adj><pprs>"
+cmp
+not
+and 2
+jz when_29_end
+#<clip part="a_adj" pos="2">
+push 2
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+#<clip part="a_adj" pos="2">
+push 2
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit-tag v="posi">
+push "<posi>"
+concat 2
+storecl
+jmp choose_28_end
+when_29_end:
+choose_28_end:
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="GD">
+push "GD"
+cmp
+not
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="GD_pers">
+push "GD_pers"
+cmp
+not
+and 3
+jz when_30_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storecl
+jmp choose_29_end
+when_30_end:
+choose_29_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_31_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="nt">
+push "<nt>"
+storecl
+jmp choose_30_end
+when_31_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+jz when_32_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="mf">
+push "<mf>"
+storecl
+jmp choose_30_end
+when_32_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit v="">
+push ""
+cmp
+jz when_33_end
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="nt">
+push "<nt>"
+concat 2
+storecl
+jmp choose_30_end
+when_33_end:
+choose_30_end:
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="GD_pers">
+push "<GD_pers>"
+cmp
+or 2
+jz when_34_end
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storecl
+jmp choose_31_end
+when_34_end:
+choose_31_end:
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="m">
+push "<m>"
+cmp
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="f">
+push "<f>"
+cmp
+or 2
+jz when_35_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit-tag v="mf">
+push "<mf>"
+storecl
+jmp choose_32_end
+when_35_end:
+choose_32_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="du">
+push "<du>"
+cmp
+not
+and 3
+jz when_36_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+storecl
+jmp choose_33_end
+when_36_end:
+choose_33_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_37_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit-tag v="sg">
+push "<sg>"
+storecl
+jmp choose_34_end
+when_37_end:
+choose_34_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit v="">
+push ""
+cmp
+jz when_38_end
+#<clip part="temps" pos="2">
+push 2
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="pp">
+push "<pp>"
+cmp
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="posi">
+push "<posi>"
+cmp
+or 2
+jz when_39_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+concat 2
+storecl
+jmp choose_36_end
+when_39_end:
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="ord">
+push "<ord>"
+begins-with
+jz when_40_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="pl">
+push "<pl>"
+concat 2
+storecl
+jmp choose_36_end
+when_40_end:
+choose_36_end:
+jmp choose_35_end
+when_38_end:
+choose_35_end:
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="sup">
+push "<sup>"
+cmp
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="temps" pos="2">
+push 2
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="pp">
+push "<pp>"
+cmp
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="posi">
+push "<posi>"
+ends-with
+or 2
+and 2
+or 2
+not
+jz when_41_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit v="">
+push ""
+storecl
+jmp choose_37_end
+when_41_end:
+choose_37_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="ind">
+push "<ind>"
+cmp
+#<clip part="temps" pos="2">
+push 2
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="pp">
+push "<pp>"
+cmp
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="posi">
+push "<posi>"
+ends-with
+or 2
+and 3
+not
+jz when_42_end
+#<clip part="gen" pos="2">
+push 2
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+#<lit v="">
+push ""
+storecl
+jmp choose_38_end
+when_42_end:
+choose_38_end:
+#<clip part="temps" pos="2">
+push 2
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="pp">
+push "<pp>"
+cmp
+#<clip part="grau" pos="2">
+push 2
+push "<posi>|<comp>|<sup>|<ord><posi>|<ord><comp>|<ord><sup>"
+clip
+#<lit-tag v="posi">
+push "<posi>"
+ends-with
+or 2
+not
+jz when_43_end
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+#<lit v="">
+push ""
+storecl
+jmp choose_39_end
+when_43_end:
+choose_39_end:
+#<call-macro n="prepend_moremost">
+push 2
+push 1
+call prepend_moremost
+macro_clean_adj_end: ret
+#<def-macro c="arg.1: adj (not the chunk), after having run through clean_adj                   -----                   Prepend 'more'/'most' if adj is non-synthetic and comp/sup;                   also change the main adj tags back to mf.posi.sg.ind.                   By this point, the tags should be completely 'cleaned',                   so we shouldn't have to worry about inconsistencies.                   " n="prepend_moremost" npar="1">
+macro_prepend_moremost_start:
+#<var n="defnes">
+push "defnes"
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+clip
+storev
+#<var n="defnes">
+push defnes
+#<lit v="">
+push ""
+cmp
+jz when_44_end
+#<var n="defnes">
+push "defnes"
+#<lit-tag v="ind">
+push "<ind>"
+storev
+jmp choose_40_end
+when_44_end:
+choose_40_end:
+#<clip part="a_adj" pos="1">
+push 1
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit-tag v="adj.sint">
+push "<adj><sint>"
+cmp
+not
+#<clip part="grau-pure" pos="1">
+push 1
+push "<posi>|<comp>|<sup>"
+clip
+#<lit-tag v="comp">
+push "<comp>"
+cmp
+#<clip part="grau-pure" pos="1">
+push 1
+push "<posi>|<comp>|<sup>"
+clip
+#<lit-tag v="sup">
+push "<sup>"
+cmp
+or 2
+and 2
+jz when_45_end
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+#<lit v="mye">
+push "mye"
+#<lit-tag v="adj.sint">
+push "<adj><sint>"
+#<clip part="grau-pure" pos="1">
+push 1
+push "<posi>|<comp>|<sup>"
+clip
+#<clip part="art-ind" pos="1">
+push 1
+push "<ind>"
+clip
+#<lit v="$ ^">
+push "$ ^"
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<clip part="a_adj" pos="1">
+push 1
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit-tag v="posi.mf.sg">
+push "<posi><mf><sg>"
+#<var n="defnes">
+push defnes
+#<clip part="lemq" pos="1">
+push 1
+push "lemq"
+clip
+concat 10
+storecl
+jmp choose_41_end
+when_45_end:
+choose_41_end:
+macro_prepend_moremost_end: ret
+#<def-macro c="arg.1: chunk, arg.2: det/adj/ngen, arg.3: the word after arg.2" n="clean_pre-nominal" npar="3">
+macro_clean_pre-nominal_start:
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+jz when_46_end
+#<call-macro n="clean_det3">
+push 1
+push 2
+push 3
+push 3
+call clean_det3
+jmp choose_42_end
+when_46_end:
+#<clip part="a_adj" pos="2">
+push 2
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+jz when_47_end
+#<call-macro n="clean_adj">
+push 1
+push 2
+push 2
+call clean_adj
+jmp choose_42_end
+when_47_end:
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+and 2
+jz when_48_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit v="">
+push ""
+storecl
+jmp choose_42_end
+when_48_end:
+choose_42_end:
+macro_clean_pre-nominal_end: ret
+#<def-macro c="arg.1: chunk, arg.2: n,np,verb,prn,det (possible prepositional object)                   -----                   Remove object genitive if chunk doesn't have genitive                   Remove defnes if noun is proper.                   Note: also used for verbs (see out_nom in t1x)" n="clean_nominal" npar="2">
+macro_clean_nominal_start:
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+jz when_49_end
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+clip
+#<lit-tag v="det.pos">
+push "<det><pos>"
+cmp
+#<clip part="case" pos="1">
+push 1
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="gen">
+push "<gen>"
+cmp
+not
+and 2
+jz when_50_end
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+#<lit-tag v="prn">
+push "<prn>"
+storecl
+#<call-macro n="clean_pron">
+push 1
+push 2
+push 2
+call clean_pron
+jmp choose_44_end
+when_50_end:
+#<otherwise>
+#<call-macro n="clean_det2">
+push 1
+push 2
+push 2
+call clean_det2
+choose_44_end:
+jmp choose_43_end
+when_49_end:
+#<clip part="a_pron" pos="2">
+push 2
+push "<Pron>|<Pron><Rel>|<Pron><Indef>|<Pron><Dem>|<Pron><Pers>|<prn>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+jz when_51_end
+#<call-macro n="clean_pron">
+push 1
+push 2
+push 2
+call clean_pron
+jmp choose_43_end
+when_51_end:
+#<otherwise c="n,np,verb">
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="gen">
+push "<gen>"
+cmp
+#<clip part="case" pos="1">
+push 1
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="gen">
+push "<gen>"
+cmp
+not
+and 2
+jz when_52_end
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+#<lit v="">
+push ""
+storecl
+jmp choose_45_end
+when_52_end:
+choose_45_end:
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="np">
+push "<np>"
+begins-with
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+or 2
+jz when_53_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit v="">
+push ""
+storecl
+jmp choose_46_end
+when_53_end:
+choose_46_end:
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="n.acr">
+push "<n><acr>"
+cmp
+jz when_54_end
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+#<lit v="">
+push ""
+storecl
+jmp choose_47_end
+when_54_end:
+choose_47_end:
+#<clip part="nbr" pos="2">
+push 2
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+jz when_55_end
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+#<lit v="">
+push ""
+storecl
+jmp choose_48_end
+when_55_end:
+choose_48_end:
+choose_43_end:
+macro_clean_nominal_end: ret
+#<def-macro c="arg.1: chunk, arg.2: first word in nominal chunk                   -----                   For eg. 'det_nom' or 'adj_nom', to make sure we say 'den andre/lyse hunden' (not 'andre/lyse hunden')                   If pre-nominal is indefinite and nominal definite, we do not output a determiner,                   since it's most likely a compound (eg. ovttaskasolbmui => enslig.adj.ind mennesket.n.def).                   Ignores chunks where pre-nominal is np or genitive.                   No determiner if it already has some determiner other than 'annen',                   or has a genitive before it" n="maybe_out_det2" npar="2">
+macro_maybe_out_det2_start:
+#<clip part="syn_label" pos="1">
+push 1
+push "<@→A>|<@A←>|<@←ADVL>|<@→ADVL>|<@ADVL>|<@ADVL←>|<@ADVL→>|<@ADVL→CS>|<@ADVL←OBJ>|<@ADVL→SUBJ>|<@APP>|<@APP-ADVL←>|<@APP-N←>|<@APP-Num←>|<@APP-Pron←>|<@APP→Pron>|<@→CC>|<@CNP>|<@COMP-CS←>|<@CVP>|<@-F←ADVL>|<@-FADVL>|<@-FADVL→>|<@-FAUXV>|<@\+FAUXV>|<@+FAUXV>|<@-FMAINV>|<@\+FMAINV>|<@+FMAINV>|<@-F←OBJ>|<@-FOBJ>|<@-FOBJ→>|<@-F←OPRED>|<@-FOPRED→>|<@-F←SPRED>|<@-FSPRED→>|<@-FSUBJ→>|<@HAB>|<@HNOUN>|<@INTERJ>|<@→N>|<@N←>|<@→Num;>|<@→Num>|<@Num←>|<@←OBJ>|<@OBJ>|<@OBJ→>|<@OBJ→SPRED>|<@-OPRED→>|<@←OPRED>|<@OPRED>|<@OPRED→>|<@→P>|<@P←>|<@PCLE>|<@←PPRED>|<@PPRED>|<@→Pron>|<@Pron←>|<@-SPRED→>|<@←SPRED>|<@SPRED>|<@SPRED→>|<@SPRED←OBJ>|<@←SUBJ>|<@SUBJ>|<@SUBJ→>|<@SUBJ←ADVL>|<@SUBJ←OBJ>|<@VOC>|<@X>"
+clip
+#<list n="no-determiner">
+push "<@←PPRED>"
+in
+not
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="np">
+push "<np>"
+begins-with
+not
+#<clip part="lemh" pos="1">
+push 1
+push "lemh"
+clip
+#<lit v="nom">
+push "nom"
+cmp
+#<clip part="a_adj" pos="2">
+push 2
+push "<A>|<adj>|<adj><pp>|<adj><pprs>|<adj><sint>|<adj><sint><pp>|<adj><sint><pprs>"
+clip
+#<lit v="">
+push ""
+cmp
+not
+and 2
+not
+#<clip part="case" pos="2">
+push 2
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="gen">
+push "<gen>"
+cmp
+not
+#<clip part="a_pron" pos="2">
+push 2
+push "<Pron>|<Pron><Rel>|<Pron><Indef>|<Pron><Dem>|<Pron><Pers>|<prn>"
+clip
+#<lit v="">
+push ""
+cmp
+#<clip part="a_det" pos="2">
+push 2
+push "<det>|<det><emph>|<det><dem>|<det><itg>|<det><qnt>|<det><pos>"
+clip
+#<lit v="">
+push ""
+cmp
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<lit v="annen">
+push "annen"
+cmp
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+clip
+#<list n="det.sp.def">
+push "samme|neste|forrige"
+inig
+or 3
+and 6
+jz when_56_end
+#<var n="gender">
+push "gender"
+#<lit-tag v="m">
+push "<m>"
+storev
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="m">
+push "<m>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="f">
+push "<f>"
+cmp
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+#<lit-tag v="nt">
+push "<nt>"
+cmp
+or 3
+jz when_57_end
+#<var n="gender">
+push "gender"
+#<clip part="gen" pos="1">
+push 1
+push "<m>|<f>|<mf>|<nt>|<GD>|<GD_pers>"
+clip
+storev
+jmp choose_50_end
+when_57_end:
+choose_50_end:
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="n">
+push "<n>"
+begins-with
+not
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="def">
+push "<def>"
+cmp
+#<clip part="art" pos="2">
+push 2
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="ind">
+push "<ind>"
+cmp
+not
+and 3
+jz when_58_end
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+jz when_59_end
+#<get-case-from pos="1">
+#<lit v="den">
+push "den"
+push 1
+get-case-from
+modify-case
+#<lit-tag v="det.dem">
+push "<det><dem>"
+#<var n="gender">
+push gender
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+lu 4
+pushbl
+out 2
+jmp choose_52_end
+when_59_end:
+#<otherwise>
+#<get-case-from pos="1">
+#<lit v="den">
+push "den"
+push 1
+get-case-from
+modify-case
+#<lit-tag v="det.dem.pl">
+push "<det><dem><pl>"
+lu 2
+pushbl
+out 2
+choose_52_end:
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+push 2
+push "lemh"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_51_end
+when_58_end:
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+#<lit-tag v="sg">
+push "<sg>"
+cmp
+#<clip part="art" pos="1">
+push 1
+push "<def>|<ind>|<DD>"
+clip
+#<lit-tag v="ind">
+push "<ind>"
+cmp
+#<clip part="case" pos="1">
+push 1
+push "<Nom>|<Acc>|<Gen>|<Com>|<Ess>|<Ill>|<Loc>|<Ine>|<Ela>|<nom>|<acc>|<gen>|<com>|<ess>|<ill>|<loc>|<ine>|<ela>"
+clip
+#<lit-tag v="ess">
+push "<ess>"
+cmp
+not
+#<clip part="a_count" pos="1">
+push 1
+push "<Coll>|<unc>"
+clip
+#<lit-tag v="unc">
+push "<unc>"
+cmp
+not
+and 4
+jz when_60_end
+#<get-case-from pos="1">
+#<lit v="en">
+push "en"
+push 1
+get-case-from
+modify-case
+#<lit-tag v="det.qnt">
+push "<det><qnt>"
+#<var n="gender">
+push gender
+#<clip part="nbr" pos="1">
+push 1
+push "<Sg>|<Du>|<Pl>|<sg>|<du>|<pl>|<ND>|<sp>|<Sg1>|<Du1>|<Pl1>|<Sg2>|<Du2>|<Pl2>|<Sg3>|<Du3>|<Pl3>"
+clip
+lu 4
+pushbl
+out 2
+#<clip part="lemh" pos="2">
+push 2
+push "lemh"
+push 2
+push "lemh"
+clip
+#<lit v="aa">
+push "aa"
+modify-case
+storecl
+jmp choose_51_end
+when_60_end:
+choose_51_end:
+jmp choose_49_end
+when_56_end:
+choose_49_end:
+macro_maybe_out_det2_end: ret
+#<def-macro c="arg.1: chunk, arg.2: determiner or other pre-nominal, arg.3: head-nominal of chunk                   -----                   Don't add determiner if chunk ends in np" n="maybe_out_det3" npar="3">
+macro_maybe_out_det3_start:
+#<clip part="a_nom" pos="2">
+push 2
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="n">
+push "<n>"
+begins-with
+#<clip part="a_nom" pos="3">
+push 3
+push "<n>|<n><acr>|<np>|<np><top>"
+clip
+#<lit-tag v="np">
+push "<np>"
+begins-with
+and 2
+not
+jz when_61_end
+#<call-macro n="maybe_out_det2">
+push 1
+push 2
+push 2
+call maybe_out_det2
+jmp choose_53_end
+when_61_end:
+choose_53_end:
+macro_maybe_out_det3_end: ret
+#<section-rules>
+section_rules_start:
+patterns_start:
+push "pron"
+push 1
+addtrie action_0_start
+push "det"
+push 1
+addtrie action_1_start
+push "verb|vcop"
+push 1
+addtrie action_2_start
+push "nom"
+push 1
+addtrie action_3_start
+push "pre_nom"
+push 1
+addtrie action_4_start
+push "pre_pre_nom"
+push 1
+addtrie action_5_start
+push "pre_pre_pre_nom"
+push 1
+addtrie action_6_start
+push "nom_conj_nom|nom_conj_det|det_conj_nom|nom_conj_pron|pron_conj_nom|det_conj_det|det_conj_pron|pron_conj_det|pron_conj_pron"
+push 1
+addtrie action_7_start
+push "nom_conj_pre_nom|det_conj_pre_nom|pron_conj_pre_nom"
+push 1
+addtrie action_8_start
+push "nom_conj_pre_pre_nom|det_conj_pre_pre_nom|pron_conj_pre_pre_nom"
+push 1
+addtrie action_9_start
+push "nom_conj_pre_pre_pre_nom|det_conj_pre_pre_pre_nom|pron_conj_pre_pre_pre_nom"
+push 1
+addtrie action_10_start
+push "pre_nom_conj_nom|pre_nom_conj_det|pre_nom_conj_pron"
+push 1
+addtrie action_11_start
+push "pre_nom_conj_pre_nom"
+push 1
+addtrie action_12_start
+push "pre_nom_conj_pre_pre_nom"
+push 1
+addtrie action_13_start
+push "pre_nom_conj_pre_pre_pre_nom"
+push 1
+addtrie action_14_start
+push "pre_pre_nom_conj_nom|pre_pre_nom_conj_det|pre_pre_nom_conj_pron"
+push 1
+addtrie action_15_start
+push "pre_pre_nom_conj_pre_nom"
+push 1
+addtrie action_16_start
+push "pre_pre_nom_conj_pre_pre_nom"
+push 1
+addtrie action_17_start
+push "pre_pre_nom_conj_pre_pre_pre_nom"
+push 1
+addtrie action_18_start
+push "pre_pre_pre_nom_conj_nom|pre_pre_pre_nom_conj_det|pre_pre_pre_nom_conj_pron"
+push 1
+addtrie action_19_start
+push "pre_pre_pre_nom_conj_pre_nom"
+push 1
+addtrie action_20_start
+push "pre_pre_pre_nom_conj_pre_pre_nom"
+push 1
+addtrie action_21_start
+push "pre_pre_pre_nom_conj_pre_pre_pre_nom"
+push 1
+addtrie action_22_start
+push "adj"
+push 1
+addtrie action_23_start
+push "pre_adj"
+push 1
+addtrie action_24_start
+push "adj_conj_adj"
+push 1
+addtrie action_25_start
+push "pre_adj_conj_adj"
+push 1
+addtrie action_26_start
+push "adj_conj_pre_adj"
+push 1
+addtrie action_27_start
+push "pre_adj_conj_pre_adj"
+push 1
+addtrie action_28_start
+patterns_end:
+action_0_start:
+#<call-macro n="clean_pron">
+push 0
+push 1
+push 2
+call clean_pron
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_0_end:
+action_1_start:
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_1_end:
+action_2_start:
+#<clip part="temps" pos="1">
+push 1
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+#<clip part="temps" pos="0">
+push 0
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+storecl
+#<clip part="temps" pos="1">
+push 1
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="TD">
+push "<TD>"
+cmp
+jz when_62_end
+#<clip part="temps" pos="1">
+push 1
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+#<lit-tag v="inf">
+push "<inf>"
+storecl
+jmp choose_54_end
+when_62_end:
+choose_54_end:
+#<clip part="temps" pos="1">
+push 1
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit v="">
+push ""
+cmp
+jz when_63_end
+#<clip part="a_verb" pos="1">
+push 1
+push "<V>|<vblex>"
+#<clip part="a_verb" pos="1">
+push 1
+push "<V>|<vblex>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+concat 2
+storecl
+jmp choose_55_end
+when_63_end:
+choose_55_end:
+#<clip part="temps" pos="1">
+push 1
+push "<Prs>|<Prt>|<pres>|<pret>|<Inf>|<inf>|<Imprt>|<imp>|<PrfPrc>|<pp>|<TD>"
+clip
+#<lit-tag v="inf">
+push "<inf>"
+cmp
+#<clip part="modality" pos="0">
+push 0
+push "<Ind>|<Cond>|<Pot>"
+clip
+#<lit-tag v="Cond">
+push "<Cond>"
+cmp
+not
+#<clip part="syn_label" pos="0">
+push 0
+push "<@→A>|<@A←>|<@←ADVL>|<@→ADVL>|<@ADVL>|<@ADVL←>|<@ADVL→>|<@ADVL→CS>|<@ADVL←OBJ>|<@ADVL→SUBJ>|<@APP>|<@APP-ADVL←>|<@APP-N←>|<@APP-Num←>|<@APP-Pron←>|<@APP→Pron>|<@→CC>|<@CNP>|<@COMP-CS←>|<@CVP>|<@-F←ADVL>|<@-FADVL>|<@-FADVL→>|<@-FAUXV>|<@\+FAUXV>|<@+FAUXV>|<@-FMAINV>|<@\+FMAINV>|<@+FMAINV>|<@-F←OBJ>|<@-FOBJ>|<@-FOBJ→>|<@-F←OPRED>|<@-FOPRED→>|<@-F←SPRED>|<@-FSPRED→>|<@-FSUBJ→>|<@HAB>|<@HNOUN>|<@INTERJ>|<@→N>|<@N←>|<@→Num;>|<@→Num>|<@Num←>|<@←OBJ>|<@OBJ>|<@OBJ→>|<@OBJ→SPRED>|<@-OPRED→>|<@←OPRED>|<@OPRED>|<@OPRED→>|<@→P>|<@P←>|<@PCLE>|<@←PPRED>|<@PPRED>|<@→Pron>|<@Pron←>|<@-SPRED→>|<@←SPRED>|<@SPRED>|<@SPRED→>|<@SPRED←OBJ>|<@←SUBJ>|<@SUBJ>|<@SUBJ→>|<@SUBJ←ADVL>|<@SUBJ←OBJ>|<@VOC>|<@X>"
+clip
+#<list n="inf-mark">
+push "<@←SUBJ>|<@←SPRED>|<@SUBJ→>|<@←OBJ>|<@←ADVL>"
+in
+and 3
+jz when_64_end
+#<get-case-from pos="1">
+#<lit v="å">
+push "å"
+push 1
+get-case-from
+modify-case
+#<lit-tag v="part">
+push "<part>"
+lu 2
+pushbl
+out 2
+jmp choose_56_end
+when_64_end:
+choose_56_end:
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_2_end:
+action_3_start:
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<call-macro n="maybe_out_det2">
+push 0
+push 1
+push 2
+call maybe_out_det2
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_3_end:
+action_4_start:
+#<call-macro n="clean_nominal">
+push 0
+push 2
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 2
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+action_4_end:
+action_5_start:
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 3
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+action_5_end:
+action_6_start:
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 4
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_6_end:
+action_7_start:
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<call-macro n="maybe_out_det2">
+push 0
+push 1
+push 2
+call maybe_out_det2
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+action_7_end:
+action_8_start:
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<call-macro n="maybe_out_det2">
+push 0
+push 1
+push 2
+call maybe_out_det2
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_8_end:
+action_9_start:
+#<call-macro n="clean_nominal">
+push 0
+push 5
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<call-macro n="maybe_out_det2">
+push 0
+push 1
+push 2
+call maybe_out_det2
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+action_9_end:
+action_10_start:
+#<call-macro n="clean_nominal">
+push 0
+push 6
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 1
+push 2
+call clean_nominal
+#<call-macro n="maybe_out_det2">
+push 0
+push 1
+push 2
+call maybe_out_det2
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+action_10_end:
+action_11_start:
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_nominal">
+push 0
+push 2
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 2
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_11_end:
+action_12_start:
+#<call-macro n="clean_nominal">
+push 0
+push 5
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 2
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 2
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+action_12_end:
+action_13_start:
+#<call-macro n="clean_nominal">
+push 0
+push 6
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 2
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 2
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+action_13_end:
+action_14_start:
+#<call-macro n="clean_nominal">
+push 0
+push 7
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 2
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 2
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 13
+action_14_end:
+action_15_start:
+#<call-macro n="clean_nominal">
+push 0
+push 5
+push 2
+call clean_nominal
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 3
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+action_15_end:
+action_16_start:
+#<call-macro n="clean_nominal">
+push 0
+push 6
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 3
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+action_16_end:
+action_17_start:
+#<call-macro n="clean_nominal">
+push 0
+push 7
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 3
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 13
+action_17_end:
+action_18_start:
+#<call-macro n="clean_nominal">
+push 0
+push 8
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 7
+push 8
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 5
+push 6
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 3
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 3
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+pushsb 7
+#<clip part="whole" pos="8">
+push 8
+push "whole"
+clip
+lu 1
+out 15
+action_18_end:
+action_19_start:
+#<call-macro n="clean_nominal">
+push 0
+push 6
+push 2
+call clean_nominal
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 4
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+out 11
+action_19_end:
+action_20_start:
+#<call-macro n="clean_nominal">
+push 0
+push 7
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 4
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+out 13
+action_20_end:
+action_21_start:
+#<call-macro n="clean_nominal">
+push 0
+push 8
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 7
+push 8
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 4
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+pushsb 7
+#<clip part="whole" pos="8">
+push 8
+push "whole"
+clip
+lu 1
+out 15
+action_21_end:
+action_22_start:
+#<call-macro n="clean_nominal">
+push 0
+push 9
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 8
+push 9
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 7
+push 8
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 6
+push 7
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_nominal">
+push 0
+push 4
+push 2
+call clean_nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 2
+push 3
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<call-macro n="maybe_out_det3">
+push 0
+push 1
+push 4
+push 3
+call maybe_out_det3
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+pushsb 5
+#<clip part="whole" pos="6">
+push 6
+push "whole"
+clip
+lu 1
+pushsb 6
+#<clip part="whole" pos="7">
+push 7
+push "whole"
+clip
+lu 1
+pushsb 7
+#<clip part="whole" pos="8">
+push 8
+push "whole"
+clip
+lu 1
+pushsb 8
+#<clip part="whole" pos="9">
+push 9
+push "whole"
+clip
+lu 1
+out 17
+action_22_end:
+action_23_start:
+#<call-macro n="clean_adj">
+push 0
+push 1
+push 2
+call clean_adj
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_23_end:
+action_24_start:
+#<call-macro n="clean_adj">
+push 0
+push 2
+push 2
+call clean_adj
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+out 3
+action_24_end:
+action_25_start:
+#<call-macro n="clean_adj">
+push 0
+push 3
+push 2
+call clean_adj
+#<call-macro n="clean_adj">
+push 0
+push 1
+push 2
+call clean_adj
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+out 5
+action_25_end:
+action_26_start:
+#<call-macro n="clean_adj">
+push 0
+push 4
+push 2
+call clean_adj
+#<call-macro n="clean_adj">
+push 0
+push 2
+push 2
+call clean_adj
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_26_end:
+action_27_start:
+#<call-macro n="clean_adj">
+push 0
+push 4
+push 2
+call clean_adj
+#<call-macro n="clean_pre-nominal">
+push 0
+push 3
+push 4
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_adj">
+push 0
+push 1
+push 2
+call clean_adj
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+out 7
+action_27_end:
+action_28_start:
+#<call-macro n="clean_adj">
+push 0
+push 5
+push 2
+call clean_adj
+#<call-macro n="clean_pre-nominal">
+push 0
+push 4
+push 5
+push 3
+call clean_pre-nominal
+#<call-macro n="clean_adj">
+push 0
+push 2
+push 2
+call clean_adj
+#<call-macro n="clean_pre-nominal">
+push 0
+push 1
+push 2
+push 3
+call clean_pre-nominal
+#<clip part="whole" pos="1">
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+#<clip part="whole" pos="2">
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+#<clip part="whole" pos="3">
+push 3
+push "whole"
+clip
+lu 1
+pushsb 3
+#<clip part="whole" pos="4">
+push 4
+push "whole"
+clip
+lu 1
+pushsb 4
+#<clip part="whole" pos="5">
+push 5
+push "whole"
+clip
+lu 1
+out 9
+action_28_end:
+section_rules_end:

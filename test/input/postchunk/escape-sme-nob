@@ -1,0 +1,11 @@
+[<b>]^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$  ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$ ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$[
+]^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$ ^Sport<n><m><sg><ind><cmp>$ ^forening<n><m><sg><3><gen>$}$[<h>][
+]^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$\^ ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$ \^ ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$ \^^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautoke\$ino<np><top><gen>$ ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautoke\^ino<np><top><gen>$ ^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$
+
+^pre_pre_nom<SN><@→N><ind><m><sg><gen>{^Kautokeino<np><top><gen>$[<b>]^Sport<n><m><sg><ind><cmp>$^forening<n><m><sg><3><gen>$}$[][
+]
