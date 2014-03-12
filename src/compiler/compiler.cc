@@ -16,6 +16,7 @@
  */
 
 #include <compiler.h>
+#include <unistd.h>
 
 #include <wstring_utils.h>
 #include <assembly_code_generator.h>
