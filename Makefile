@@ -4,12 +4,12 @@
 
 CC=g++
 OPTIONS= -g -Wall
-PREFIX=/usr
+PREFIX=/usr/local
 
 #Compiler variables
 COMPILER_DIR=./src/compiler
-COMP_CFLAGS=`xml2-config --cflags` -I$(PREFIX)/local/include/lttoolbox-3.2 -I$(PREFIX)/local/lib/lttoolbox-3.2/include
-COMP_LIBS=`xml2-config --libs` -L$(PREFIX)/local/lib -llttoolbox3
+COMP_CFLAGS=`xml2-config --cflags` -I$(PREFIX)/include/lttoolbox-3.2 -I$(PREFIX)/lib/lttoolbox-3.2/include
+COMP_LIBS=`xml2-config --libs` -L$(PREFIX)/lib -llttoolbox3
 _COMP_OBJ= compiler.o xml_parser.o wstring_utils.o event.o event_handler.o assembly_code_generator.o symbol.o symbol_table.o
 COMP_OBJ = $(patsubst %,$(COMPILER_DIR)/%,$(_COMP_OBJ))
 
