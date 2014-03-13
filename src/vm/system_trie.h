@@ -43,12 +43,8 @@ struct TrieNode {
 class SystemTrie {
 
 public:
-
   SystemTrie();
-  SystemTrie(const SystemTrie &);
   ~SystemTrie();
-  SystemTrie& operator=(const SystemTrie &);
-  void copy(const SystemTrie &);
 
   vector<TrieNode *> getPatternNodes(const wstring &);
   vector<TrieNode *> getPatternNodes(const wstring &, TrieNode*);
@@ -56,6 +52,17 @@ public:
   void addPattern(const vector<wstring> &, int);
 
 private:
+  // Hide copy constructor.
+  SystemTrie(const SystemTrie &);
+
+  // Hide move constructor.
+  SystemTrie(SystemTrie&&);
+
+  // Hide assignment operator.
+  SystemTrie& operator=(SystemTrie);
+
+  // Hide move assignment operator.
+  SystemTrie& operator=(SystemTrie&&);
 
   /// The first TrieNode of the trie.
   TrieNode *root;

@@ -26,24 +26,8 @@ SystemTrie::SystemTrie() {
   root->ruleNumber = NaRuleNumber;
 }
 
-SystemTrie::SystemTrie(const SystemTrie &c) {
-  copy(c);
-}
-
 SystemTrie::~SystemTrie() {
   // TODO: Cleanup memory taking into accout circular references and such.
-}
-
-SystemTrie& SystemTrie::operator=(const SystemTrie &c) {
-  if (this != &c) {
-    this->~SystemTrie();
-    this->copy(c);
-  }
-  return *this;
-}
-
-void SystemTrie::copy(const SystemTrie &c) {
-
 }
 
 /**
