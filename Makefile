@@ -36,6 +36,10 @@ vm: apertium_vm.cc $(VM_OBJ)
 $(VM_DIR)/%.o : $(VM_DIR)/%.cc $(VM_DIR)/%.h
 	$(CC) $(VM_CFLAGS) -I $(VM_DIR) $(OPTIONS) -c -o $@ $< $(VM_LIBS)
 
+install:
+	cp apertium-compile-transfer $(PREFIX)/bin
+	cp apertium-xfervm $(PREFIX)/bin
+
 doc:
 	doxygen
 
