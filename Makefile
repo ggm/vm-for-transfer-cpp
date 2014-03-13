@@ -1,5 +1,5 @@
 #Simple Makefile to compile the compiler and vm. Proper autotools support will
-#be added later, following the model already used by the rest of the Apertium 
+#be added later, following the model already used by the rest of the Apertium
 #project.
 
 CC=g++
@@ -41,4 +41,4 @@ doc:
 
 clean:
 	rm -f $(OBJ) apertium-compile-transfer apertium-xfervm ./src/*~ ./src/*/*.o doxygen.log
-	rm -rf doc html 
+	rm -rf doc html
