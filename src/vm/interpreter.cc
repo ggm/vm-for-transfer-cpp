@@ -492,61 +492,62 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
     const wstring &lemmaAndTags, const wstring &linkTo) {
   bool notLinkTo = (linkTo == L"");
 
-  if (notLinkTo && parts == L"whole") {
-    vm->systemStack.push_back(lu->getWhole());
-    return;
-  } else if (notLinkTo && parts == L"lem") {
-    vm->systemStack.push_back(lu->getPart(LEM));
-    return;
-  } else if (notLinkTo && parts == L"lemh") {
-    vm->systemStack.push_back(lu->getPart(LEMH));
-    return;
-  } else if (notLinkTo && parts == L"lemq") {
-    vm->systemStack.push_back(lu->getPart(LEMQ));
-    return;
-  } else if (notLinkTo && parts == L"tags") {
-    vm->systemStack.push_back(lu->getPart(TAGS));
-    return;
-  } else if (notLinkTo && parts == L"chcontent") {
-    vm->systemStack.push_back(lu->getPart(CHCONTENT));
-    return;
-  } else if (notLinkTo && parts == L"content") {
-    vm->systemStack.push_back(lu->getPart(CONTENT));
-    return;
-  } else {
-    // Check if one of the parts divided by | matches the lemma or tags.
-    wstring longestMatch = L"";
-    wstring part = L"";
-    wchar_t ch;
-
-    for (unsigned int i = 0; i < parts.size(); i++) {
-      ch = parts[i];
-
-      if (i == parts.size() - 1) {
-        part += ch;
-      }
-
-      if (ch == L'|' || i == parts.size() - 1) {
-        if (lemmaAndTags.find(part) != wstring::npos) {
-          if (notLinkTo) {
-            if (part.size() > longestMatch.size()) {
-              longestMatch = part;
-            }
-          } else {
-            vm->systemStack.push_back(linkTo);
-            return;
-          }
-        }
-        part = L"";
-      } else {
-        part += ch;
-      }
-    }
-
-    if (longestMatch != L"") {
-      vm->systemStack.push_back(longestMatch);
+  if(notLinkTo) {
+    if (parts == L"whole") {
+      vm->systemStack.push_back(lu->getWhole());
+      return;
+    } else if (parts == L"lem") {
+      vm->systemStack.push_back(lu->getPart(LEM));
+      return;
+    } else if (parts == L"lemh") {
+      vm->systemStack.push_back(lu->getPart(LEMH));
+      return;
+    } else if (parts == L"lemq") {
+      vm->systemStack.push_back(lu->getPart(LEMQ));
+      return;
+    } else if (parts == L"tags") {
+      vm->systemStack.push_back(lu->getPart(TAGS));
+      return;
+    } else if (parts == L"chcontent") {
+      vm->systemStack.push_back(lu->getPart(CHCONTENT));
+      return;
+    } else if (parts == L"content") {
+      vm->systemStack.push_back(lu->getPart(CONTENT));
       return;
     }
+  }
+  // Check if one of the parts divided by | matches the lemma or tags.
+  wstring longestMatch = L"";
+  wstring part = L"";
+  wchar_t ch;
+
+  for (unsigned int i = 0; i < parts.size(); i++) {
+    ch = parts[i];
+
+    if (i == parts.size() - 1) {
+      part += ch;
+    }
+
+    if (ch == L'|' || i == parts.size() - 1) {
+      if (lemmaAndTags.find(part) != wstring::npos) {
+        if (notLinkTo) {
+          if (part.size() > longestMatch.size()) {
+            longestMatch = part;
+          }
+        } else {
+          vm->systemStack.push_back(linkTo);
+          return;
+        }
+      }
+      part.clear();
+    } else {
+      part += ch;
+    }
+  }
+
+  if (longestMatch != L"") {
+    vm->systemStack.push_back(longestMatch);
+    return;
   }
 
   // If the lu doesn't have the part needed, return "".
