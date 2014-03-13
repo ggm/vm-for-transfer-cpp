@@ -101,7 +101,7 @@ void XmlParser::processNode() {
   wstring name = WstringUtils::towstring(xName);
   free(xName);
   int lineNumber = xmlTextReaderGetParserLineNumber(reader);
-  map<wstring, wstring> attributes = parseAttributes();
+  unordered_map<wstring, wstring> attributes = parseAttributes();
 
   switch (xmlTextReaderNodeType(reader)) {
   case XML_READER_TYPE_ELEMENT:
@@ -116,12 +116,12 @@ void XmlParser::processNode() {
 }
 
 /**
- * Parse the atributes of an xml node and convert them to a map of wide strings.
+ * Parse the atributes of an xml node and convert them to a unordered_map of wide strings.
  *
- * @return a map containing attributes pairs of key, value
+ * @return a unordered_map containing attributes pairs of key, value
  */
-map<wstring, wstring> XmlParser::parseAttributes() const {
-  map<wstring, wstring> attributes;
+unordered_map<wstring, wstring> XmlParser::parseAttributes() const {
+  unordered_map<wstring, wstring> attributes;
 
   if (xmlTextReaderHasAttributes(reader) == 1) {
     xmlNodePtr node = xmlTextReaderCurrentNode(reader);
@@ -131,7 +131,7 @@ map<wstring, wstring> XmlParser::parseAttributes() const {
       const xmlChar *xName = attr->name;
       xmlChar *xValue = xmlTextReaderGetAttribute(reader, xName);
 
-      // Convert them to wstring and store them in the map.
+      // Convert them to wstring and store them in the unordered_map.
       wstring name = WstringUtils::towstring(xName);
       wstring value = WstringUtils::towstring(xValue);
       attributes[name] = value;
@@ -167,7 +167,7 @@ void XmlParser::detectSelfClosingElements() {
  * @param attributes the parsed attributes of the event
  */
 void XmlParser::handleStartElement(const wstring &name, int lineNumber,
-    map<wstring, wstring> attributes) {
+    unordered_map<wstring, wstring> attributes) {
   Event *event = new Event(lineNumber, name, attributes);
 
   // Add the event as a child of the current top.

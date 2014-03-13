@@ -150,7 +150,7 @@ private:
   unsigned int nextPattern;
 
   /// Store variables definitions and their default values.
-  map<wstring, wstring> variables;
+  unordered_map<wstring, wstring> variables;
 
   void setLoader(const wstring &, char*);
   void setTransferStage(const wstring &);

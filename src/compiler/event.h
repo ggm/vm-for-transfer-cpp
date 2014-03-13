@@ -19,7 +19,7 @@
 #define EVENT_H_
 
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -30,7 +30,7 @@ class Event {
 public:
 
   Event();
-  Event(int, const wstring &, map<wstring, wstring>);
+  Event(int, const wstring &, unordered_map<wstring, wstring>);
   Event(const Event&);
   ~Event();
   Event& operator=(const Event&);
@@ -38,7 +38,7 @@ public:
 
   int getLineNumber() const;
   wstring getName() const;
-  map<wstring, wstring> getAttributes() const;
+  unordered_map<wstring, wstring> getAttributes() const;
   wstring getAttribute(const wstring&) const;
   bool hasAttribute(const wstring &) const;
   int getNumChildren() const;
@@ -58,7 +58,7 @@ private:
   wstring name;
 
   /// The attributes of the element.
-  map<wstring, wstring> attributes;
+  unordered_map<wstring, wstring> attributes;
 
   /// Store a reference to the parent of the event.
   const Event *parent;
@@ -66,8 +66,8 @@ private:
   /// Storing references to the event's children gives us a lot of flexibility.
   vector<Event> children;
 
-  // Variables map is used to pass information between events.
-  map<wstring, wstring> variables;
+  // Variables unordered_map is used to pass information between events.
+  unordered_map<wstring, wstring> variables;
 
 };
 

@@ -18,7 +18,7 @@
 #ifndef SCOPE_H_
 #define SCOPE_H_
 
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <string>
 
@@ -46,10 +46,10 @@ public:
 private:
 
   /// Each label is converted to an internal address of the vm.
-  map<wstring, wstring> labelAddress;
+  unordered_map<wstring, wstring> labelAddress;
 
   /// Store the labels in need of backpatching.
-  map<wstring, vector<unsigned int> > patchNeeded;
+  unordered_map<wstring, vector<unsigned int> > patchNeeded;
 
   void addLabelToPatch(wstring, unsigned int);
 };

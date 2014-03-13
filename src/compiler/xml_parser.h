@@ -60,8 +60,8 @@ private:
 
   void detectSelfClosingElements();
   void processNode();
-  map<wstring, wstring> parseAttributes() const;
-  void handleStartElement(const wstring &, int, map<wstring, wstring>);
+  unordered_map<wstring, wstring> parseAttributes() const;
+  void handleStartElement(const wstring &, int, unordered_map<wstring, wstring>);
   void handleEndElement(const wstring &);
 };
 

@@ -70,7 +70,7 @@ void SymbolTable::addMacro(wstring name, int numParams) {
  * @return true if exists, otherwise false
  */
 bool SymbolTable::macroExists(wstring name) const {
-  map<wstring, Symbol>::const_iterator it;
+  unordered_map<wstring, Symbol>::const_iterator it;
 
   it = symbols.find(name);
   if (it != symbols.end()) {
@@ -88,7 +88,7 @@ bool SymbolTable::macroExists(wstring name) const {
  * @return the symbol from the symbol table or an empty one if it isn't found
  */
 Symbol SymbolTable::getMacro(wstring name) const {
-  map<wstring, Symbol>::const_iterator it;
+  unordered_map<wstring, Symbol>::const_iterator it;
 
   it = symbols.find(name);
   if (it != symbols.end()) {

@@ -198,8 +198,8 @@ void AssemblyCodeGenerator::genHeader(const Event &event) {
   addCode(L"#<assembly>");
 
   // Add the rest of the header using the first element of the xml.
-  map<wstring, wstring> attributes = event.getAttributes();
-  map<wstring, wstring>::iterator it;
+  unordered_map<wstring, wstring> attributes = event.getAttributes();
+  unordered_map<wstring, wstring>::iterator it;
 
   wstringstream header;
   header << L"#<" << event.getName();
@@ -667,8 +667,8 @@ void AssemblyCodeGenerator::genDebugCode(const Event &event) {
   wstring debugMsg = L"#<" + event.getName();
   wstringstream ws;
 
-  map<wstring, wstring>::iterator it;
-  map<wstring, wstring> attributes = event.getAttributes();
+  unordered_map<wstring, wstring>::iterator it;
+  unordered_map<wstring, wstring> attributes = event.getAttributes();
 
   for ( it=attributes.begin() ; it != attributes.end(); it++ ) {
     ws <<  L" " << it->first << L"=\"" << it->second << L"\"";

@@ -382,7 +382,7 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
   }
 
   // Then, we use the name to get the opCode of the instruction.
-  map<wstring, OP_CODE>::const_iterator it;
+  unordered_map<wstring, OP_CODE>::const_iterator it;
   it = opCodes.find(instrName);
   if (it != opCodes.end()) {
     instr.opCode = it->second;
@@ -559,10 +559,10 @@ void AssemblyLoader::printInstruction(const Instruction & instr,
 }
 
 /**
- * Create a reverse opcodes map only used for debugging purposes.
+ * Create a reverse opcodes unordered_map only used for debugging purposes.
  */
 void AssemblyLoader::createReversedOpCodesMap() {
-  map<wstring, OP_CODE>::const_iterator it;
+  unordered_map<wstring, OP_CODE>::const_iterator it;
   for (it = opCodes.begin(); it != opCodes.end(); ++it) {
     reversedOpCodes[it->second] = it->first;
   }
@@ -570,7 +570,7 @@ void AssemblyLoader::createReversedOpCodesMap() {
 
 /**
  * Get a macro name from the internal number representation. This method
- * creates the reversedMacroNumber map if it's not already created.
+ * creates the reversedMacroNumber unordered_map if it's not already created.
  *
  * @param number the number to get the macro name asociated with
  *
@@ -578,7 +578,7 @@ void AssemblyLoader::createReversedOpCodesMap() {
  */
 wstring AssemblyLoader::getMacroNameFromNumber(const wstring &number) {
   if (reversedMacroNumber.size() == 0) {
-    map<wstring, wstring>::const_iterator it;
+    unordered_map<wstring, wstring>::const_iterator it;
       for (it = macroNumber.begin(); it != macroNumber.end(); ++it) {
         reversedMacroNumber[it->second] = it->first;
       }

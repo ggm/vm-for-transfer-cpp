@@ -18,7 +18,7 @@
 #ifndef SYMBOL_TABLE_H_
 #define SYMBOL_TABLE_H_
 
-#include <map>
+#include <unordered_map>
 #include <string>
 
 #include <symbol.h>
@@ -41,8 +41,8 @@ public:
   Symbol getMacro(wstring) const;
 
 private:
-  /// Store symbols in a map with their name as key.
-  map<wstring, Symbol> symbols;
+  /// Store symbols in a unordered_map with their name as key.
+  unordered_map<wstring, Symbol> symbols;
 
   /// Each symbol has a unique id (order by appearance on the rules files).
   int nextId;

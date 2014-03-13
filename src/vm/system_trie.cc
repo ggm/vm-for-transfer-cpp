@@ -244,7 +244,7 @@ vector<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
     return nextNodes;
   }
 
-  map<wchar_t, TrieNode*>::const_iterator it;
+  unordered_map<wchar_t, TrieNode*>::const_iterator it;
 
   // If the char is skippable, add the transition with a star if there is one.
   if (canSkipChar(ch)) {
@@ -273,7 +273,7 @@ vector<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
  * @return the child if the ch transition existed or the new one created for it
  */
 TrieNode *SystemTrie::setDefaultChild(TrieNode *node, wchar_t ch) {
-  map<wchar_t, TrieNode*>::const_iterator it;
+  unordered_map<wchar_t, TrieNode*>::const_iterator it;
 
   it = node->children.find(ch);
   if (it != node->children.end()) {

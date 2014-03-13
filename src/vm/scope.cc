@@ -51,7 +51,7 @@ void Scope::copy(const Scope &s) {
  * @param codeUnit code unit which has the labels to patch
  */
 void Scope::backPatchLabels(CodeUnit &codeUnit) const {
-  map<wstring, vector<unsigned int> >::const_iterator itPatch;
+  unordered_map<wstring, vector<unsigned int> >::const_iterator itPatch;
 
   for (itPatch = patchNeeded.begin(); itPatch != patchNeeded.end(); ++itPatch) {
     wstring address = labelAddress.find(itPatch->first)->second;
@@ -91,7 +91,7 @@ wstring Scope::createNewLabelAddress(const wstring &label) {
  */
 wstring Scope::getReferenceToLabel(const wstring &label,
     const CodeUnit &codeUnit) {
-  map<wstring, wstring>::iterator it;
+  unordered_map<wstring, wstring>::iterator it;
 
   it = labelAddress.find(label);
   if (it != labelAddress.end()) {
@@ -109,7 +109,7 @@ wstring Scope::getReferenceToLabel(const wstring &label,
  * @param pos the position in its code unit
  */
 void Scope::addLabelToPatch(wstring label, unsigned int pos) {
-  map<wstring, vector<unsigned int> >::iterator it;
+  unordered_map<wstring, vector<unsigned int> >::iterator it;
   it = patchNeeded.find(label);
 
   if (it != patchNeeded.end()) {

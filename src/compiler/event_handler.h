@@ -18,7 +18,7 @@
 #ifndef EVENT_HANDLER_H_
 #define EVENT_HANDLER_H_
 
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 #include <event.h>
@@ -145,18 +145,18 @@ private:
   vector<Event> uncheckedMacros;
 
   /// Store category definitions and a reference to the current one.
-  map<wstring, vector<wstring> > defCats;
+  unordered_map<wstring, vector<wstring> > defCats;
   vector<wstring> *currentDefCat;
 
   /// Store attributes definitions and a reference to the current one.
-  map<wstring, vector<wstring> > defAttrs;
+  unordered_map<wstring, vector<wstring> > defAttrs;
   vector<wstring> *currentDefAttr;
 
   /// Store variables definitions and their default values.
-  map<wstring, wstring> defVars;
+  unordered_map<wstring, wstring> defVars;
 
   /// Store list definitions and a reference to the current one.
-  map<wstring, vector<wstring> > defLists;
+  unordered_map<wstring, vector<wstring> > defLists;
   vector<wstring> *currentDefList;
 };
 

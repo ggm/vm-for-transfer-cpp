@@ -19,7 +19,7 @@
 #define ASSEMBLY_LOADER_H_
 
 #include <string>
-#include <map>
+#include <unordered_map>
 
 #include "loader.h"
 #include "instructions.h"
@@ -59,10 +59,10 @@ private:
   char *codeFileName;
 
   /// Map with the assembly representation as key and the vm opcode as value.
-  map<wstring, OP_CODE> opCodes;
+  unordered_map<wstring, OP_CODE> opCodes;
 
-  /// Reversed opcodes map, only used when debugging is activated.
-  map<OP_CODE, wstring> reversedOpCodes;
+  /// Reversed opcodes unordered_map, only used when debugging is activated.
+  unordered_map<OP_CODE, wstring, hash<int>> reversedOpCodes;
 
   /// The current line number is used in the error messages.
   unsigned int currentLineNumber;
@@ -74,10 +74,10 @@ private:
   Scope *currentScope;
 
   /// Macros' names are converted to a unique identifier.
-  map<wstring, wstring> macroNumber;
+  unordered_map<wstring, wstring> macroNumber;
 
-  /// Reversed macro numbers map only used for debugging purposes.
-  map<wstring, wstring> reversedMacroNumber;
+  /// Reversed macro numbers unordered_map only used for debugging purposes.
+  unordered_map<wstring, wstring> reversedMacroNumber;
 
   /// Each macro name needs a unique number.
   unsigned int nextMacroNumber;

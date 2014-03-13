@@ -28,7 +28,7 @@ Event::Event() {
 }
 
 Event::Event(int lineNumber, const wstring &name,
-    map<wstring, wstring> attributes) {
+    unordered_map<wstring, wstring> attributes) {
   this->lineNumber = lineNumber;
   this->name = name;
   this->attributes = attributes;
@@ -80,9 +80,9 @@ wstring Event::getName() const {
 /**
  * Get the collection of attributes (key, value).
  *
- * @return the map of key, value pairs.
+ * @return the unordered_map of key, value pairs.
  */
-map<wstring, wstring> Event::getAttributes() const {
+unordered_map<wstring, wstring> Event::getAttributes() const {
   return attributes;
 }
 
@@ -94,7 +94,7 @@ map<wstring, wstring> Event::getAttributes() const {
  * @return the value if the attribute is found, in other case, an empty string.
  */
 wstring Event::getAttribute(const wstring &name) const {
-  map<wstring, wstring>::const_iterator it;
+  unordered_map<wstring, wstring>::const_iterator it;
   it = attributes.find(name);
   if (it != attributes.end()) {
     return it->second;
@@ -111,7 +111,7 @@ wstring Event::getAttribute(const wstring &name) const {
  * @return true if the attribute is found, in other case, false.
  */
 bool Event::hasAttribute(const wstring &attrName) const {
-  map<wstring, wstring>::const_iterator it;
+  unordered_map<wstring, wstring>::const_iterator it;
   it = attributes.find(attrName);
   if (it != attributes.end()) {
     return true;
@@ -181,7 +181,7 @@ Event Event::getChild(unsigned int pos) const {
  * @return the value of the variable with name varName, or an empty string
  */
 wstring Event::getVariable(const wstring &varName) const {
-  map<wstring, wstring>::const_iterator it;
+  unordered_map<wstring, wstring>::const_iterator it;
     it = variables.find(varName);
     if (it != variables.end()) {
       return it->second;

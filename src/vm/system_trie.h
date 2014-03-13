@@ -18,7 +18,7 @@
 #ifndef SYSTEM_TRIE_H_
 #define SYSTEM_TRIE_H_
 
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <string>
 
@@ -33,7 +33,7 @@ struct TrieNode {
   int ruleNumber;
 
   /// A collection of children with the next character as key.
-  map<wchar_t, TrieNode *> children;
+  unordered_map<wchar_t, TrieNode *> children;
 };
 
 /**
