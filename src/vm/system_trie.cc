@@ -27,7 +27,7 @@ SystemTrie::SystemTrie() {
 }
 
 SystemTrie::~SystemTrie() {
-  // TODO: Cleanup memory taking into accout circular references and such.
+  // TODO(asfrent): Cleanup memory taking into accout circular references and such.
 }
 
 /**
