@@ -20,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #include "vm_exceptions.h"
 #include "assembly_loader.h"
@@ -416,12 +417,14 @@ void VM::selectNextRuleLRLM() {
     unsigned int startPatternPos = nextPattern;
     // Get the next pattern to process.
     wstring pattern = getNextInputPattern();
-    vector<TrieNode *> curNodes = systemTrie.getPatternNodes(pattern);
+    vector<TrieNode*> curNodes = systemTrie.getPatternNodes(pattern);
+    vector<TrieNode*> nextNodes;
     nextPatternToProcess++;
 
     // Get the longest match, left to right
     wstring fullPattern = pattern;
-    while (curNodes.size() > 0) {
+    vector<TrieNode*> *_nextNodes = &nextNodes, *_curNodes = &curNodes;
+    while (!_curNodes->empty()) {
       // Update the longest match if needed.
       int ruleNumber = systemTrie.getRuleNumber(fullPattern);
       if (ruleNumber != NaRuleNumber) {
@@ -432,14 +435,13 @@ void VM::selectNextRuleLRLM() {
       // Continue trying to match current pattern + the next one.
       pattern = getNextInputPattern();
       fullPattern += pattern;
-      vector<TrieNode*> nextNodes;
-      vector<TrieNode*> auxNodes;
       // For each current node, add every possible transition to the nextNodes.
-      for (unsigned int i = 0; i < curNodes.size(); i++) {
-        auxNodes = systemTrie.getPatternNodes(pattern, curNodes[i]);
-        nextNodes.insert(nextNodes.end(), auxNodes.begin(), auxNodes.end());
+      _nextNodes->clear();
+      for (TrieNode *node : curNodes) {
+        const vector<TrieNode*>& auxNodes = systemTrie.getPatternNodes(pattern, node);
+        _nextNodes->insert(_nextNodes->end(), auxNodes.begin(), auxNodes.end());
       }
-      curNodes = nextNodes;
+      swap(_curNodes, _nextNodes);
     }
 
     // If the pattern doesn't match, we will continue with the next one.

@@ -19,6 +19,7 @@
 #define SYSTEM_TRIE_H_
 
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <string>
 
@@ -34,6 +35,8 @@ struct TrieNode {
 
   /// A collection of children with the next character as key.
   map<wchar_t, TrieNode *> children;
+  unordered_map<wstring, vector<TrieNode *>> fastLinks;
+  unordered_map<wchar_t, vector<TrieNode*>> fastNextNodes;
 };
 
 /**
@@ -46,8 +49,8 @@ public:
   SystemTrie();
   ~SystemTrie();
 
-  vector<TrieNode *> getPatternNodes(const wstring &);
-  vector<TrieNode *> getPatternNodes(const wstring &, TrieNode*);
+  const vector<TrieNode *>& getPatternNodes(const wstring &);
+  const vector<TrieNode *>& getPatternNodes(const wstring &, TrieNode*);
   int getRuleNumber(const wstring &);
   void addPattern(const vector<wstring> &, int);
 
@@ -68,7 +71,7 @@ private:
   TrieNode *root;
 
   bool canSkipChar(wchar_t) const;
-  vector<TrieNode *> getNextNodes(wchar_t, TrieNode *) const;
+  const vector<TrieNode *>& getNextNodes(wchar_t, TrieNode *) const;
   TrieNode* setDefaultChild(TrieNode *, wchar_t);
   TrieNode* insertStar(TrieNode *);
   TrieNode* insertTagStar(TrieNode *);

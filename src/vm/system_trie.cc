@@ -38,7 +38,7 @@ SystemTrie::~SystemTrie() {
  * @return if the pattern is matched, the last nodes of the match, otherwise
  * an empty vector.
  */
-vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
+const vector<TrieNode*>& SystemTrie::getPatternNodes(const wstring &pattern) {
   return getPatternNodes(pattern, root);
 }
 
@@ -51,38 +51,42 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
  * @return if the pattern is matched, the last nodes of the match, otherwise
  * an empty vector.
  */
-vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
+const vector<TrieNode*>& SystemTrie::getPatternNodes(const wstring &pattern,
     TrieNode *startNode) {
-  vector<TrieNode *> curNodes;
-
+  static vector<TrieNode*> noPatternNodes;
   if (pattern == L"") {
-    return curNodes;
+    return noPatternNodes;
   }
 
   wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
 
-  curNodes.push_back(startNode);
+  if(startNode->fastLinks.find(pattern) == startNode->fastLinks.end()) {
 
-  wchar_t ch;
-  for (unsigned int i = 0; i < pattern.size(); i++) {
-    ch = pattern[i];
-    vector<TrieNode *> nextNodes;
+    vector<TrieNode *> curNodes = { startNode} ;
 
-    for (vector<TrieNode *>::iterator itNode = curNodes.begin();
-         itNode != curNodes.end(); itNode++) {
-      // Get the next nodes for every current node and append them to the next.
-      vector<TrieNode *> auxNextNodes = getNextNodes(ch, *itNode);
-      nextNodes.insert(nextNodes.end(), auxNextNodes.begin(),
-          auxNextNodes.end());
+    wchar_t ch;
+    for (unsigned int i = 0; i < pattern.size(); i++) {
+      ch = pattern[i];
+      vector<TrieNode *> nextNodes;
+
+      for (vector<TrieNode *>::iterator itNode = curNodes.begin();
+           itNode != curNodes.end(); itNode++) {
+        // Get the next nodes for every current node and append them to the next.
+        const vector<TrieNode *>& auxNextNodes = getNextNodes(ch, *itNode);
+        nextNodes.insert(nextNodes.end(), auxNextNodes.begin(),
+            auxNextNodes.end());
+      }
+
+      curNodes = nextNodes;
+      if (curNodes.size() == 0) {
+        break;
+      }
     }
 
-    curNodes = nextNodes;
-    if (curNodes.size() == 0) {
-      return curNodes;
-    }
+    startNode->fastLinks[patternLowered] = curNodes;
   }
 
-  return curNodes;
+  return startNode->fastLinks[patternLowered];
 }
 
 /**
@@ -93,27 +97,28 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
  * @return if the pattern is matched, its rule number, otherwise NaRuleNumber.
  */
 int SystemTrie::getRuleNumber(const wstring &pattern) {
-  vector<TrieNode *> curNodes = getPatternNodes(pattern, root);
+  static unordered_map<wstring, int> cache;
 
-  int ruleNumber = NaRuleNumber;
+  if(cache.find(pattern) == cache.end()) {
+    int ruleNumber = NaRuleNumber;
 
-  // If there are several possible rules, return the first which appears on the
-  // rules files.
-  int itRuleNumber;
-  if (curNodes.size() > 0) {
-    for (vector<TrieNode *>::iterator it = curNodes.begin();
-         it != curNodes.end(); it++) {
-      itRuleNumber = (*it)->ruleNumber;
-
-      if (ruleNumber == NaRuleNumber) {
-        ruleNumber = itRuleNumber;
-      } else if (itRuleNumber != NaRuleNumber && itRuleNumber < ruleNumber) {
-        ruleNumber = itRuleNumber;
+    const vector<TrieNode *>& curNodes = getPatternNodes(pattern, root);
+    // If there are several possible rules, return the first which appears on the
+    // rules files.
+    if (curNodes.size() > 0) {
+      for (TrieNode *it : curNodes) {
+        int itRuleNumber = it->ruleNumber;
+        if (ruleNumber == NaRuleNumber) {
+          ruleNumber = itRuleNumber;
+        } else {
+          ruleNumber = min(ruleNumber, itRuleNumber);
+        }
       }
     }
+    cache[pattern] = ruleNumber;
   }
 
-  return ruleNumber;
+  return cache[pattern];
 }
 
 /**
@@ -219,31 +224,34 @@ bool SystemTrie::canSkipChar(wchar_t ch) const {
  *
  * @return a collection of nodes to continue matching a pattern
  */
-vector<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
+const vector<TrieNode*>& SystemTrie::getNextNodes(wchar_t ch,
     TrieNode *startNode) const {
-  vector<TrieNode *> nextNodes;
-
   // If a word is unknown (*lemma) it shouldn't match with anything.
+  static vector<TrieNode*> noNextNodes;
   if (ch == L'*') {
-    return nextNodes;
+    return noNextNodes;
   }
 
-  map<wchar_t, TrieNode*>::const_iterator it;
+  if(startNode->fastNextNodes.find(ch) == startNode->fastNextNodes.end()) {
+    vector<TrieNode *> nextNodes;
+    map<wchar_t, TrieNode*>::const_iterator it;
 
-  // If the char is skippable, add the transition with a star if there is one.
-  if (canSkipChar(ch)) {
-    it = startNode->children.find(L'*');
+    // If the char is skippable, add the transition with a star if there is one.
+    if (canSkipChar(ch)) {
+      it = startNode->children.find(L'*');
+      if (it != startNode->children.end()) {
+        nextNodes.push_back(it->second);
+      }
+    }
+
+    it = startNode->children.find(ch);
     if (it != startNode->children.end()) {
       nextNodes.push_back(it->second);
     }
-  }
 
-  it = startNode->children.find(ch);
-  if (it != startNode->children.end()) {
-    nextNodes.push_back(it->second);
+    startNode->fastNextNodes[ch] = nextNodes;
   }
-
-  return nextNodes;
+  return startNode->fastNextNodes[ch];
 }
 
 /**
@@ -327,12 +335,9 @@ TrieNode *SystemTrie::insertTagStar(TrieNode *node) {
 TrieNode *SystemTrie::insertPattern(const wstring &pattern, int ruleNumber,
     TrieNode *node) {
   wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
-
   TrieNode *curNode = node;
 
-  wchar_t ch;
-  for (unsigned int i = 0; i < patternLowered.size(); i++) {
-    ch = patternLowered[i];
+  for (wchar_t ch : patternLowered) {
     if (ch == L'*') {
       curNode = insertTagStar(curNode);
     } else {
