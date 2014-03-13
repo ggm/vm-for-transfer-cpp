@@ -2,6 +2,6 @@
 *.swp
 *.swo
 *.log
-apertium-compiler
-apertium-vm
+apertium-compile-transfer
+apertium-xfervm
 doc/
