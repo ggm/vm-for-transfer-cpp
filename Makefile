@@ -3,7 +3,7 @@
 #project.
 
 CC=g++
-OPTIONS= -g -Wall
+OPTIONS= --std=c++0x -g -Wall
 PREFIX=/usr/local
 
 #Compiler variables
