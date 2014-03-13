@@ -27,7 +27,7 @@
  * @return true if it's lower case, otherwise, false
  */
 bool VMWstringUtils::iswlower(const wstring &wstr) {
-  locale loc;
+  static locale loc;
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
     if (islower(wstr[i], loc)) {
@@ -46,7 +46,7 @@ bool VMWstringUtils::iswlower(const wstring &wstr) {
  * @return true if it's a number, otherwise, false
  */
 bool VMWstringUtils::iswnumeric(const wstring &wstr) {
-  locale loc;
+  static locale loc;
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
     if (!isdigit(wstr[i], loc)) {
@@ -65,13 +65,9 @@ bool VMWstringUtils::iswnumeric(const wstring &wstr) {
  * @return the wide string with the changed case
  */
 wstring VMWstringUtils::wtolower(const wstring &wstr) {
-  locale loc("");
-  wstring wstrLower = L"";
-
-  for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrLower += tolower(wstr[i], loc);
-  }
-
+  static auto& facet = std::use_facet<std::ctype<wchar_t>>(std::locale());
+  wstring wstrLower(wstr);
+  facet.tolower(&wstrLower[0], &wstrLower[0] + wstrLower.size());
   return wstrLower;
 }
 
@@ -83,13 +79,9 @@ wstring VMWstringUtils::wtolower(const wstring &wstr) {
  * @return the wide string with the changed case
  */
 wstring VMWstringUtils::wtoupper(const wstring &wstr) {
-  locale loc;
-  wstring wstrUpper = L"";
-
-  for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrUpper += toupper(wstr[i], loc);
-  }
-
+  static auto& facet = std::use_facet<std::ctype<wchar_t>>(std::locale());
+  wstring wstrUpper(wstr);
+  facet.toupper(&wstrUpper[0], &wstrUpper[0] + wstrUpper.size());
   return wstrUpper;
 }
 
@@ -102,6 +94,7 @@ wstring VMWstringUtils::wtoupper(const wstring &wstr) {
  * @return the pattern with the lemma to lower
  */
 wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
+  // TODO(asfrent): rewrite.
   wstring lemma = L"";
   wchar_t ch;
 
@@ -133,8 +126,9 @@ wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
  * @return the case of the wide string
  */
 CASE VMWstringUtils::getCase(const wstring &wstr) {
-  locale loc;
+  static locale loc;
   bool isFirstUpper = isupper(wstr[0], loc);
+  // XXX(asfrent) the following line does not look right
   bool isUpper = VMWstringUtils::iswlower(wstr);
 
   // If it's a 1-length string and is upper, capitalize it.
@@ -158,7 +152,7 @@ CASE VMWstringUtils::getCase(const wstring &wstr) {
  * @return the wide string with the new case
  */
 wstring VMWstringUtils::changeCase(const wstring &wstr, CASE luCase) {
-  locale loc;
+  static locale loc;
   wstring wstrNewCase = L"";
 
   switch (luCase) {
