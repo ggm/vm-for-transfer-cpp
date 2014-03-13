@@ -16,8 +16,8 @@ files of Apertium.
 
 You can use the Makefile to compile the compiler, the vm or both.
 
- > make compiler; 
- > make vm; 
+ > make compiler;
+ > make vm;
  > make; (both)
 
 'apertium-transfervm-compiler' and 'apertium-transfervm' binaries will be created.
@@ -38,7 +38,7 @@ generate its assembly representation. For example:
  > ./apertium-transfervm-compiler -i test/data/apertium-en-ca.en-ca.t1x -o output.v1x
 
 You can also use stdin and stdout as input and output, for example:
- 
+
  > cat test/data/apertium-en-ca.en-ca.t1x | ./apertium-transfervm-compiler > output.v1x
 
 Finally, if you want to generate debug information, like comments for some of the
@@ -54,8 +54,8 @@ stage it is and will run it accordingly. For example:
 
  > ./apertium-transfervm -c code_file -i input_file -o output_file
 
- > ./apertium-transfervm -c test/expected_output/compiler/apertium-en-ca.en-ca.v1x 
-   -i test/input/chunker/rule_all_nounplural 
+ > ./apertium-transfervm -c test/expected_output/compiler/apertium-en-ca.en-ca.v1x
+   -i test/input/chunker/rule_all_nounplural
 
 You can also use stdin and stdout as input and output, for example:
 
