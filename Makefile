@@ -20,7 +20,7 @@ VM_LIBS=
 _VM_OBJ= vm.o scope.o assembly_loader.o bilingual_lexical_unit.o bilingual_word.o chunk_lexical_unit.o chunk_word.o vm_wstring_utils.o system_trie.o call_stack.o interpreter.o
 VM_OBJ = $(patsubst %,$(VM_DIR)/%,$(_VM_OBJ))
 
-.PHONY: all clean doc
+.PHONY: all clean doc test
 
 all: compiler vm
 
@@ -42,6 +42,10 @@ install:
 
 doc:
 	doxygen
+
+test: all
+	./run-tests-compiler.sh
+	./run-tests-vm.sh
 
 clean:
 	rm -f $(OBJ) apertium-compile-transfer apertium-xfervm ./src/*~ ./src/*/*.o doxygen.log
