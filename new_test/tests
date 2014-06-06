@@ -227,8 +227,14 @@ function execute_and_time_test() {
   local RULESVM_PATH="${2}"
   local VMPREFIX_PATH="${3}"
 
+  local VMOUT_PATH="${VMPREFIX_PATH}.out"
+  local VMERR_PATH="${VMPREFIX_PATH}.err"
+
+  rm -f "${VMOUT_PATH}" "${VMERR_PATH}"
+
   local T_START="$(date +%s%N)"
-  generate_vm_output "${PRETRANSFER_PATH}" "${RULESVM_PATH}" "${VMPREFIX_PATH}"
+  cat "${PRETRANSFER_PATH}" |\
+    apertium-xfervm -c "${RULESVM_PATH}" > "${VMOUT_PATH}" 2> "${VMERR_PATH}"
   local T_CURRENT="$(date +%s%N)"
 
   TEST_DURATION=$(((T_CURRENT-T_START)/1000000))
