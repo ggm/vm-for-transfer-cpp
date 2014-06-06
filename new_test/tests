@@ -161,10 +161,6 @@ function run_single_pair_single_test_single_stage() {
   execute_and_time_test "${PRETRANSFER_PATH}" "${RULESVM_PATH}" "${VMPREFIX_PATH}"
   validate_test "${VMPREFIX_PATH}" "${EXPECTED_PATH}"
   pretty_print "${TEST_DESCRIPTION}" "${TEST_RESULT}" "${TEST_DURATION}"
-
-  # TODO generate a diff
-  # TODO timing
-  # TODO display result
 }
 
 function pretty_print()
