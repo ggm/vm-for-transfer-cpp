@@ -3,8 +3,13 @@
 readonly TESTFILES_DIR="_testfiles"
 readonly CONFIG_FILE="config.sh"
 readonly USE_COLORS=1
+readonly VALGRIND_MEMCHECK_OUT="memcheck.xml"
+readonly VALGRIND_CALLGRIND_OUT="callgrind.out"
 
 JUST_LIST_TESTS_COMBINATIONS=0
+VALGRIND_PREFIX=""
+VALGRIND_OUT=""
+VALIDATE_TEST_FN=""
 
 # Sets the variable ${LANG_PAIR_DIRS}, one directory per line.
 function find_lang_pairs() {
@@ -159,7 +164,7 @@ function run_single_pair_single_test_single_stage() {
 
   rm -f "${VMPREFIX_PATH}.*"
   execute_and_time_test "${PRETRANSFER_PATH}" "${RULESVM_PATH}" "${VMPREFIX_PATH}"
-  validate_test "${VMPREFIX_PATH}" "${EXPECTED_PATH}"
+  ${VALIDATE_TEST_FN} "${CURRENT_TEST_DIR}" "${VMPREFIX_PATH}" "${EXPECTED_PATH}"
   pretty_print "${TEST_DESCRIPTION}" "${TEST_RESULT}" "${TEST_DURATION}"
 }
 
@@ -171,6 +176,7 @@ function pretty_print()
 
     local readonly COLOR_RED='\e[1;31m';
     local readonly COLOR_GREEN='\e[1;32m';
+    local readonly COLOR_YELLOW='\e[1;33m';
     local readonly COLOR_END='\e[0m';
 
     local readonly PADLENGTH=54
@@ -179,9 +185,11 @@ function pretty_print()
     if [ ${USE_COLORS} -eq 1 ]; then
         local readonly PASS_PATTERN="[${COLOR_GREEN}PASS${COLOR_END}]"
         local readonly FAIL_PATTERN="[${COLOR_RED}FAIL${COLOR_END}]"
+        local readonly NONE_PATTERN="[${COLOR_YELLOW}NONE${COLOR_END}]"
     else
         local readonly PASS_PATTERN="[PASS]"
         local readonly FAIL_PATTERN="[FAIL]"
+        local readonly NONE_PATTERN="[NONE]"
     fi
 
     printf "%s" "${TEST_DESCRIPTION}"
@@ -193,6 +201,9 @@ function pretty_print()
         "fail")
             printf "${FAIL_PATTERN}"
             ;;
+        "none")
+            printf "${NONE_PATTERN}"
+            ;;
     esac
 
     local SECOND_PART=$((${TEST_DURATION}/1000))
@@ -202,9 +213,10 @@ function pretty_print()
     printf "\n"
 }
 
-function validate_test() {
-  local VMPREFIX_PATH="${1}"
-  local EXPECTED_PATH="${2}"
+function validate_output() {
+  local CURRENT_TEST_DIR="${1}"
+  local VMPREFIX_PATH="${2}"
+  local EXPECTED_PATH="${3}"
 
   TEST_RESULT="fail"
 
@@ -215,6 +227,25 @@ function validate_test() {
   if [ $? -eq 0 ]; then
     TEST_RESULT="pass"
   fi
+}
+
+function validate_memcheck() {
+  local CURRENT_TEST_DIR="${1}"
+
+  local MEMCHECK_ERROR_COUNT=$(\
+    cat "${CURRENT_TEST_DIR}/${VALGRIND_MEMCHECK_OUT}" |\
+    grep "<error>" |\
+    wc -l)
+
+  if [ ${MEMCHECK_ERROR_COUNT} -eq 0 ]; then
+    TEST_RESULT="pass"
+  else
+    TEST_RESULT="fail"
+  fi
+}
+
+function validate_callgrind() {
+  TEST_RESULT="none"
 }
 
 # Sets the variable TEST_DURATION
@@ -228,12 +259,48 @@ function execute_and_time_test() {
 
   rm -f "${VMOUT_PATH}" "${VMERR_PATH}"
 
+  if using_valgrind; then
+    local VALGRIND_OUT_PATH="${CURRENT_TEST_DIR}/${VALGRIND_OUT}"
+  else
+    local VALGRIND_OUT_PATH=""
+  fi
+
   local T_START="$(date +%s%N)"
   cat "${PRETRANSFER_PATH}" |\
-    apertium-xfervm -c "${RULESVM_PATH}" > "${VMOUT_PATH}" 2> "${VMERR_PATH}"
+    ${VALGRIND_PREFIX}${VALGRIND_OUT_PATH} \
+      apertium-xfervm -c "${RULESVM_PATH}" > "${VMOUT_PATH}" 2> "${VMERR_PATH}"
   local T_CURRENT="$(date +%s%N)"
 
   TEST_DURATION=$(((T_CURRENT-T_START)/1000000))
+}
+
+function using_valgrind() {
+  if [ -z "${VALGRIND_PREFIX}" ]; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+function action_memcheck() {
+  VALGRIND_PREFIX="valgrind -q --tool=memcheck --xml=yes --xml-file="
+  VALGRIND_OUT=${VALGRIND_MEMCHECK_OUT}
+  VALIDATE_TEST_FN="validate_memcheck"
+  run_tests "$@"
+}
+
+function action_callgrind() {
+  VALGRIND_PREFIX="valgrind -q --tool=callgrind --callgrind-out-file="
+  VALGRIND_OUT=${VALGRIND_CALLGRIND_OUT}
+  VALIDATE_TEST_FN="validate_callgrind"
+  run_tests "$@"
+}
+
+function action_run() {
+  VALGRIND_PREFIX=""
+  VALGRIND_OUT=""
+  VALIDATE_TEST_FN="validate_output"
+  run_tests "$@"
 }
 
 # Runs tests for all language pairs.
@@ -244,7 +311,8 @@ function run_all() {
   done
 }
 
-function action_run() {
+# VALIDATE_TEST_FN must be set before calling this function.
+function run_tests() {
   if [ $# -eq 0 ]; then
     run_all
   elif [ $# -eq 1 ]; then
