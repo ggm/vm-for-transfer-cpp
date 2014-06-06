@@ -1,0 +1,291 @@
+#!/bin/bash
+
+readonly TESTFILES_DIR="_testfiles"
+readonly CONFIG_FILE="config.sh"
+readonly USE_COLORS=1
+
+JUST_LIST_TESTS_COMBINATIONS=0
+
+# Sets the variable ${LANG_PAIR_DIRS}, one directory per line.
+function find_lang_pairs() {
+  find ${TESTFILES_DIR} -mindepth 1 -maxdepth 1 -type d
+}
+
+function load_lang_pair_config() {
+  local LANG_PAIR_CONFIG="${1}"
+  source "${LANG_PAIR_CONFIG}"
+}
+
+function find_lang_pair_txt_files() {
+  local LANG_PAIR_DIR="${1}"
+  local LANG_PAIR_TESTDATA_DIR="${LANG_PAIR_DIR}/test_data"
+
+  find ${LANG_PAIR_TESTDATA_DIR} -mindepth 1 -maxdepth 1 -type f | sort
+}
+
+function create_empty_dir() {
+  if [ -d "${1}" ]; then
+    rm -rf "${1}"
+  fi
+  mkdir "${1}"
+}
+
+function find_all_stages() {
+  local LANG_PAIR_DIR="${1}"
+  local CODE_DIR="${LANG_PAIR_DIR}/code"
+  find "${CODE_DIR}" -mindepth 1 -maxdepth 1 -type d | sort
+}
+
+function build_tests_for_all_stages() {
+  local LANG_PAIR_DIR="${1}"
+  local CURRENT_TEST_DIR="${2}"
+  local TEXTFILE_PATH="${3}"
+
+  local LANG_DATA_DIR="${LANG_PAIR_DIR}/lang_data"
+
+  find_all_stages "${LANG_PAIR_DIR}" |\
+  while read STAGE_DIR; do
+    local STAGE_DIR_BASENAME="$(basename ${STAGE_DIR})"
+    local PRETRANSFER_PATH="${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}/pretransfer"
+    local EXPECTED_PATH="${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}/expected"
+    local RULESXML_PATH="${LANG_PAIR_DIR}/code/${STAGE_DIR_BASENAME}/rules.xml"
+    local RULESXMLBIN_PATH="${LANG_PAIR_DIR}/code/${STAGE_DIR_BASENAME}/rules.xml.bin"
+
+    echo "Writing test to ${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}."
+    create_empty_dir "${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}"
+
+    if [ -z "${LAST_STAGE_DIR}" ]; then
+      generate_${STAGE_DIR_BASENAME}_pretransfer \
+        "${TEXTFILE_PATH}" "${PRETRANSFER_PATH}" "${LANG_DATA_DIR}"
+      generate_${STAGE_DIR_BASENAME}_expected \
+        "${PRETRANSFER_PATH}" "${RULESXML_PATH}" "${RULESXMLBIN_PATH}" "${EXPECTED_PATH}"
+    else
+      cp "${LAST_EXPECTED_PATH}" "${PRETRANSFER_PATH}"
+      generate_${LAST_STAGE_DIR_BASENAME}_to_${STAGE_DIR_BASENAME}_expected \
+        "${PRETRANSFER_PATH}" "${RULESXML_PATH}" "${RULESXMLBIN_PATH}" "${EXPECTED_PATH}"
+    fi
+
+    LAST_STAGE_DIR=${STAGE_DIR}
+    LAST_STAGE_DIR_BASENAME=${STAGE_DIR_BASENAME}
+    LAST_EXPECTED_PATH=${EXPECTED_PATH}
+  done
+}
+
+function build_tests_for_lang_pair() {
+  local LANG_PAIR_DIR="${1}"
+  local LANG_PAIR_CONFIG="${LANG_PAIR_DIR}/${CONFIG_FILE}"
+  local LANG_PAIR_TESTS_DIR="${LANG_PAIR_DIR}/tests"
+
+  create_empty_dir "${LANG_PAIR_TESTS_DIR}"
+  load_lang_pair_config "${LANG_PAIR_CONFIG}"
+
+  find_lang_pair_txt_files "${LANG_PAIR_DIR}" |\
+  while read TEXTFILE_PATH; do
+    local TEXTFILE_BASENAME="$(basename ${TEXTFILE_PATH})"
+    local CURRENT_TEST_DIR="${LANG_PAIR_TESTS_DIR}/${TEXTFILE_BASENAME}"
+
+    create_empty_dir "${CURRENT_TEST_DIR}"
+    build_tests_for_all_stages "${LANG_PAIR_DIR}" "${CURRENT_TEST_DIR}" "${TEXTFILE_PATH}"
+  done
+}
+
+function action_gen() {
+  echo "Building tests."
+
+  find_lang_pairs |\
+  while read LANG_PAIR_DIR; do
+    build_tests_for_lang_pair "${LANG_PAIR_DIR}"
+  done
+}
+
+function check_params() {
+  echo "$# -> $@"
+}
+
+# Runs all tests on a single language pair.
+function run_single_pair() {
+  local LANG_PAIR_BASENAME="${1}"
+  if [ ! -d "${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/tests" ]; then
+    echo "No tests for language pair ${LANG_PAIR_BASENAME}."
+    return
+  fi
+  find "${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/tests" \
+    -mindepth 1 -maxdepth 1 -type d -exec basename {} \; |\
+  sort |\
+  while read TEST_DIR_BASENAME; do
+    run_single_pair_single_test "${LANG_PAIR_BASENAME}" "${TEST_DIR_BASENAME}"
+  done
+}
+
+# Runs a single test from a language pair.
+function run_single_pair_single_test() {
+  local LANG_PAIR_BASENAME="${1}"
+  local TEST_DIR_BASENAME="${2}"
+  find "${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/code" \
+    -mindepth 1 -maxdepth 1 -type d -exec basename {} \; |\
+  sort |\
+  while read STAGE_NAME; do
+    run_single_pair_single_test_single_stage \
+      "${LANG_PAIR_BASENAME}" "${TEST_DIR_BASENAME}" "${STAGE_NAME}"
+  done
+}
+
+# Runs a single stage of a single test of a single language pair.
+function run_single_pair_single_test_single_stage() {
+  local LANG_PAIR_BASENAME="${1}"
+  local TEST_DIR_BASENAME="${2}"
+  local STAGE_NAME="${3}"
+
+  local TEST_DESCRIPTION=$(printf "%-10s %-10s %-10s\n" \
+    "${LANG_PAIR_BASENAME}" \
+    "${TEST_DIR_BASENAME}" \
+    "${STAGE_NAME}")
+
+  if [ ${JUST_LIST_TESTS_COMBINATIONS} -eq 1 ]; then
+    echo "${TEST_DESCRIPTION}"
+    return
+  fi
+
+  local CURRENT_TEST_DIR="${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/tests/${TEST_DIR_BASENAME}/${STAGE_NAME}"
+  local CURRENT_STAGE_CODE_DIR="${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/code/${STAGE_NAME}"
+
+  # FIXME(asfrent): load only once for a certain langage pair.
+  source "${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/${CONFIG_FILE}"
+
+  local PRETRANSFER_PATH="${CURRENT_TEST_DIR}/pretransfer"
+  local RULESVM_PATH="${CURRENT_STAGE_CODE_DIR}/rules.vm"
+  local VMPREFIX_PATH="${CURRENT_TEST_DIR}/vm"
+  local EXPECTED_PATH="${CURRENT_TEST_DIR}/expected"
+
+  rm -f "${VMPREFIX_PATH}.*"
+  execute_and_time_test "${PRETRANSFER_PATH}" "${RULESVM_PATH}" "${VMPREFIX_PATH}"
+  validate_test "${VMPREFIX_PATH}" "${EXPECTED_PATH}"
+  pretty_print "${TEST_DESCRIPTION}" "${TEST_RESULT}" "${TEST_DURATION}"
+
+  # TODO generate a diff
+  # TODO timing
+  # TODO display result
+}
+
+function pretty_print()
+{
+    local TEST_DESCRIPTION="${1}"
+    local TEST_RESULT="${2}"
+    local TEST_DURATION="${3}"
+
+    local readonly COLOR_RED='\e[1;31m';
+    local readonly COLOR_GREEN='\e[1;32m';
+    local readonly COLOR_END='\e[0m';
+
+    local readonly PADLENGTH=54
+    local readonly PADDING=`printf '%0.1s' "."{1..80}`
+
+    if [ ${USE_COLORS} -eq 1 ]; then
+        local readonly PASS_PATTERN="[${COLOR_GREEN}PASS${COLOR_END}]"
+        local readonly FAIL_PATTERN="[${COLOR_RED}FAIL${COLOR_END}]"
+    else
+        local readonly PASS_PATTERN="[PASS]"
+        local readonly FAIL_PATTERN="[FAIL]"
+    fi
+
+    printf "%s" "${TEST_DESCRIPTION}"
+    printf "%*.*s" 0 $((PADLENGTH - ${#TEST_DESCRIPTION})) ${PADDING}
+    case ${TEST_RESULT} in
+        "pass")
+            printf "${PASS_PATTERN}"
+            ;;
+        "fail")
+            printf "${FAIL_PATTERN}"
+            ;;
+    esac
+
+    local SECOND_PART=$((${TEST_DURATION}/1000))
+    local MILLISECOND_PART=$((${TEST_DURATION}%1000))
+
+    printf " [%3d.%03ds]" ${SECOND_PART} ${MILLISECOND_PART}
+    printf "\n"
+}
+
+function validate_test() {
+  local VMPREFIX_PATH="${1}"
+  local EXPECTED_PATH="${2}"
+
+  TEST_RESULT="fail"
+
+  diff "${VMPREFIX_PATH}.out" "${EXPECTED_PATH}" \
+    1> "${VMPREFIX_PATH}.diff.out" \
+    2> "${VMPREFIX_PATH}.diff.err"
+
+  if [ $? -eq 0 ]; then
+    TEST_RESULT="pass"
+  fi
+}
+
+# Sets the variable TEST_DURATION
+function execute_and_time_test() {
+  local PRETRANSFER_PATH="${1}"
+  local RULESVM_PATH="${2}"
+  local VMPREFIX_PATH="${3}"
+
+  local T_START="$(date +%s%N)"
+  generate_vm_output "${PRETRANSFER_PATH}" "${RULESVM_PATH}" "${VMPREFIX_PATH}"
+  local T_CURRENT="$(date +%s%N)"
+
+  TEST_DURATION=$(((T_CURRENT-T_START)/1000000))
+}
+
+# Runs tests for all language pairs.
+function run_all() {
+  find ${TESTFILES_DIR} -mindepth 1 -maxdepth 1 -type d -exec basename {} \; |\
+  while read LANG_PAIR_BASENAME; do
+    run_single_pair "${LANG_PAIR_BASENAME}"
+  done
+}
+
+function action_run() {
+  if [ $# -eq 0 ]; then
+    run_all
+  elif [ $# -eq 1 ]; then
+    run_single_pair "$@"
+  elif [ $# -eq 2 ]; then
+    run_single_pair_single_test "$@"
+  elif [ $# -eq 3 ]; then
+    run_single_pair_single_test_single_stage "$@"
+  else
+    echo "Too many arguments. Way too many. Can't handle that many. Not cool. Not cool, man..."
+    exit -1
+  fi
+}
+
+function action_rm() {
+  find ${TESTFILES_DIR} -mindepth 2 -maxdepth 2 -type d -name 'tests' -exec rm -r {} \;
+}
+
+function action_ls() {
+  JUST_LIST_TESTS_COMBINATIONS=1
+  action_run "$@"
+}
+
+function action_help() {
+  echo "Usage:"
+  echo "  ./tests action action-params"
+  echo "Available actions:"
+  echo "  * ls - list all available tests."
+  echo "  * gen - generate all tests."
+  echo "  * rm - remove all tests."
+  echo "  * run [lang_pair [test_name [stage]]] - run tests."
+  echo "  * help - displays this text."
+}
+
+function test_script_main() {
+  if [ $# -eq 0 ]; then
+    echo "No action specified."
+    action_help
+  else
+    local TEST_SCRIPT_ACTION="${1}"
+    shift
+    action_${TEST_SCRIPT_ACTION} "$@"
+  fi
+}
+
+test_script_main "$@"

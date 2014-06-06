@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<interchunk>
+  <section-def-cats>
+
+    <def-cat n="SN">
+      <cat-item tags="SN"/>
+      <cat-item tags="SN.*"/>
+    </def-cat>
+    
+    <def-cat n="pr">
+      <cat-item tags="PREP"/>
+    </def-cat>
+
+     <def-cat n="SN_nopron">
+      <cat-item tags="SN.DET.*"/>
+      <cat-item tags="SN.UNDET.*"/>
+      <cat-item tags="SN.NUM.*"/>
+    </def-cat>
+
+    <def-cat n="SV"><!--Verb conjugat, i tb infinitiu per quan el tagger s'equivoca. -->
+      <cat-item tags="SV.*"/>
+    </def-cat>
+
+    <def-cat n="vbcop">
+      <cat-item tags="SV.vbser.*"/>
+      <cat-item lemma="estar" tags="SV.vblex.*"/>
+    </def-cat>
+	 
+     <def-cat n="adv">
+      <cat-item tags="adv"/>
+      <cat-item tags="adv.*"/>
+      <cat-item tags="preadv"/>
+      
+    </def-cat>
+
+    <def-cat n="PRNS">
+      <cat-item tags="PRN.subj.*"/>
+    </def-cat>
+
+    <def-cat n="SA">
+      <cat-item tags="SA"/>
+      <cat-item tags="SA.*"/>
+    </def-cat>
+
+    <def-cat n="DET">
+      <cat-item tags="DET.*"/>
+    </def-cat>
+
+    <def-cat n="NUM">
+      <cat-item tags="NUM.*"/>
+    </def-cat>
+
+     <def-cat n="punt">
+      <cat-item tags="sent"/>
+    </def-cat>
+
+    <def-cat n="cnjcoo">
+      <cat-item tags="cnjcoo"/>
+    </def-cat>
+
+
+  </section-def-cats>
+
+  <section-def-attrs>
+
+<def-attr n="pers">
+          <attr-item tags="p1"/>
+	  <attr-item tags="p2"/>
+	  <attr-item tags="p3"/>
+	  <attr-item tags="PD"/>
+</def-attr>
+
+      <def-attr n="gen">
+          <attr-item tags="m"/>
+          <attr-item tags="f"/>
+	  <attr-item tags="mf"/>
+	  <attr-item tags="GD"/>
+	  <attr-item tags="nt"/>
+      </def-attr>
+
+   <def-attr n="nbr">
+          <attr-item tags="sg"/>
+	  <attr-item tags="pl"/>
+	  <attr-item tags="sp"/>
+	  <attr-item tags="ND"/>
+      </def-attr>
+
+      <def-attr n="temps">
+          <attr-item tags="inf"/>
+	  <attr-item tags="pri"/>
+	  <attr-item tags="prs"/>
+	  <attr-item tags="ifi"/>
+	  <attr-item tags="pii"/>
+	  <attr-item tags="pis"/>
+	  <attr-item tags="cni"/>
+	  <attr-item tags="fti"/>
+	  <attr-item tags="pp"/>
+	  <attr-item tags="ger"/>
+	  <attr-item tags="imp"/>
+	  
+      </def-attr>
+
+       <def-attr n="a_verb">
+      <attr-item tags="vblex"/>	  
+      <attr-item tags="vblex.pron"/>
+      <attr-item tags="vbhaver"/>
+      <attr-item tags="vbser"/>
+      <attr-item tags="vbmod"/>
+      <attr-item tags="HAVER"/>
+    </def-attr>
+      
+  <def-attr n="a_SN">
+          <attr-item tags="DET"/>
+	  <attr-item tags="UNDET"/>
+	  <attr-item tags="NUM"/>
+	  <attr-item tags="PDET"/>
+      </def-attr>
+
+  </section-def-attrs>
+
+
+  <section-def-vars>
+    <def-var n="nombre_subj"/>
+    <def-var n="pers_subj"/>
+    <def-var n="uno"/>
+    <def-var n="nombre"/>
+    <def-var n="genere"/>
+    <def-var n="concord"/>
+  </section-def-vars>
+
+
+<section-def-lists>
+
+<def-list n="pr_dg">
+<list-item v="asupra"/>
+<list-item v="contra"/>
+<list-item v="împotriva"/>
+<list-item v="înaintea"/>
+<list-item v="dinaintea"/>
+<list-item v="împrejurul"/>
+<list-item v="dinăuntrul"/>
+<list-item v="înapoia"/>
+<list-item v="deasupra"/>
+<list-item v="în fața"/>
+<list-item v="în dosul"/>
+<list-item v="în spatele"/>
+<list-item v="la mijlocul"/>
+<list-item v="în centrul"/>
+<list-item v="în vremea"/>
+<list-item v="pe vremea"/>
+<list-item v="în timpul"/>
+<list-item v="din timpul"/>
+<list-item v="din cauza"/>
+<list-item v="din pricina"/>
+<list-item v="în vederea"/>
+<list-item v="în folosul"/>
+<list-item v="în favoarea"/>
+<list-item v="în defavoarea"/>
+<list-item v="în detrimentul"/>
+<list-item v="în paguba"/>
+<list-item v="în ciuda"/>
+<list-item v="în pofida"/>
+<list-item v="în numele"/>
+<list-item v="la adresa"/>
+<list-item v="cu excepția"/>
+<list-item v="în afara"/>
+<list-item v="datorită"/>
+<list-item v="grație"/>
+<list-item v="mulțumită"/>
+<list-item v="conform"/>
+<list-item v="potrivit"/>
+<list-item v="contrar"/>
+<list-item v="asemenea"/>
+<list-item v="asemeni"/>
+<list-item v="aidoma"/>
+<list-item v="așijderea"/>
+</def-list>
+</section-def-lists>
+
+
+<section-def-macros>
+
+
+
+  <def-macro n="f_bcond" npar="2"><!--Per mirar si el blanc conté o no format. Cal posar aquesta funció en les regles en què desaparegui alguna paraula, per tal de decidir si el blanc de la paraula eliminada s'ha d'eliminar o conservar. Si conté format cal conservar-la, si no en conté cal eliminar-la perquè no apareguin dos espais seguits. -->
+     	<choose>
+     	  <when>
+     	    <test>
+     	      <not>
+     	        <equal>
+     	          <b pos="1"/>
+     	          <lit v=" "/>
+     	        </equal>
+              </not>
+     	    </test>
+            <out>
+              <b pos="1"/>
+            </out>
+          </when>     	    
+     	</choose>
+     </def-macro>
+
+</section-def-macros>
+
+  <section-rules>
+   
+<!--REGLES GENERALS -->
+
+<rule comment="REGLA: SN">
+	<pattern>
+		<pattern-item n="SN"/>
+	</pattern>
+	<action>
+		<out>
+		<chunk>
+				<clip pos="1" part="lem"/>
+				<clip pos="1" part="tags"/>
+				<clip pos="1" part="chcontent"/>
+			</chunk>
+		</out>
+	</action>
+</rule>
+
+
+
+<rule comment="REGLA: PREP SN">
+	<pattern>
+		<pattern-item n="pr"/>
+		<pattern-item n="SN"/>
+	</pattern>
+	<action>
+	  <choose>
+	   <when>
+	     <test>
+	       <in caseless="yes">
+		<clip pos="1" part="lem"/>
+		<list n="pr_dg"/>
+	       </in>
+	     </test>
+	     <let>
+		<clip pos="2" part="tags"/>
+	        <lit-tag v="SN.dg"/>
+	     </let>
+	    </when>
+	   </choose>		
+		<out>
+		<chunk>
+				<clip pos="1" part="lem"/>
+				<clip pos="1" part="tags"/>
+				<clip pos="1" part="chcontent"/>
+		</chunk>
+		<b pos="1"/>
+		<chunk>
+				<clip pos="2" part="lem"/>
+				<clip pos="2" part="tags"/>
+				<clip pos="2" part="chcontent"/>
+		</chunk>
+
+		</out>
+	</action>
+</rule>
+
+
+
+<rule comment="REGLA: PREP SA">
+	<pattern>
+		<pattern-item n="pr"/>
+		<pattern-item n="SA"/>
+	</pattern>
+	<action>
+	  <choose>
+	   <when>
+	     <test>
+	       <in caseless="yes">
+		<clip pos="1" part="lem"/>
+		<list n="pr_dg"/>
+	       </in>
+	     </test>
+	     <let>
+		<clip pos="2" part="tags"/>
+	        <lit-tag v="SN.dg"/>
+	     </let>
+	    </when>
+	   </choose>		
+		<out>
+		<chunk>
+				<clip pos="1" part="lem"/>
+				<clip pos="1" part="tags"/>
+				<clip pos="1" part="chcontent"/>
+		</chunk>
+		<b pos="1"/>
+		<chunk>
+				<clip pos="2" part="lem"/>
+				<clip pos="2" part="tags"/>
+				<clip pos="2" part="chcontent"/>
+		</chunk>
+
+		</out>
+	</action>
+</rule>
+
+
+
+<rule comment="REGLA: SA">
+	<pattern>
+		<pattern-item n="SA"/>
+	</pattern>
+	<action>
+			<out>
+				<chunk>
+					<clip pos="1" part="lem"/>
+					<clip pos="1" part="tags"/>
+					<clip pos="1" part="chcontent"/>
+				</chunk>
+			</out>
+</action>
+</rule>
+
+<rule comment="REGLA: det">
+	<pattern>
+		<pattern-item n="DET"/>
+	</pattern>
+	<action>
+		<out>
+			<chunk>
+				<clip pos="1" part="lem"/>
+				<clip pos="1" part="tags"/>
+				<clip pos="1" part="chcontent"/>
+			</chunk>
+		</out>
+	</action>
+</rule>
+
+
+
+ <rule> <!-- REGLA: reset variables-->
+      <pattern>
+	<pattern-item n="punt"/>
+      </pattern>
+      <action>
+	<let>
+	  <var n="nombre"/>
+	  <lit-tag v="sg"/>
+	</let>
+	<out>
+	  <chunk>
+	    <clip pos="1" part="whole"/>
+	  </chunk>
+	</out>
+      </action>
+</rule>
+
+
+
+  </section-rules>
+</interchunk>

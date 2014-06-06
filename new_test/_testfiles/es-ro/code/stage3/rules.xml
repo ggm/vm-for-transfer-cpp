@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- nxml -*- -->
+<postchunk>
+  <section-def-cats>
+
+    
+    <def-cat n="inf">
+      <cat-item name="inf"/>
+    </def-cat> 
+    
+     <def-cat n="prep">
+      <cat-item name="PREP"/>
+    </def-cat> 
+    
+    <def-cat n="cifra">
+      <cat-item name="cifra"/>
+    </def-cat>
+
+    <def-cat n="qui">
+      <cat-item name="qui"/>
+    </def-cat>
+
+    <def-cat n="nom">
+      <cat-item name="nom"/>
+    </def-cat>
+
+    <def-cat n="nom_nom">
+      <cat-item name="nom_nom"/>
+    </def-cat>
+
+     <def-cat n="det_nom">
+      <cat-item name="det_nom"/>
+    </def-cat>
+
+    <def-cat n="adj_nom">
+      <cat-item name="adj_nom"/>
+    </def-cat>
+    
+    <def-cat n="adv">
+      <cat-item name="adv"/>
+    </def-cat>
+    
+    <def-cat n="partitiu">
+      <cat-item name="partitiu"/>
+    </def-cat>
+
+    <def-cat n="adj_adj_nom">
+      <cat-item name="adj_adj_nom"/>
+    </def-cat>
+
+<def-cat n="nom_i_nom">
+      <cat-item name="nom_conj_nom"/>
+    </def-cat>
+
+	 <def-cat n="pottenirpronom">
+		 <cat-item name="verbcj"/>
+		 <cat-item name="verbcj_perif"/>
+		 <cat-item name="pro_verbcj"/>
+		 <cat-item name="pro_verbcj_perif"/>
+		 <cat-item name="auxmod_inf"/>
+		 <cat-item name="mod_inf"/>
+		 <cat-item name="have_pp"/>
+		 <cat-item name="be_ger"/> 
+		 <cat-item name="auxmod_mod_inf"/>
+		 <cat-item name="mod_inf_perif"/>
+		 <cat-item name="pro_be_ger"/>
+		 <cat-item name="pro_auxmod_inf"/>
+		 <cat-item name="pro_mod_inf"/>
+		 <cat-item name="pro_have_pp"/>
+		 <cat-item name="pro_do_inf"/> 
+		 <cat-item name="pro_mod_inf_perif"/>
+		 <cat-item name="pro_auxmod_mod_inf"/>
+	 </def-cat>
+	 
+  </section-def-cats>
+
+  <section-def-attrs>
+
+<def-attr n="pers">
+          <attr-item tags="p1"/>
+          <attr-item tags="p2"/>
+          <attr-item tags="p3"/>
+          <attr-item tags="PD"/>
+</def-attr>
+
+<def-attr n="a_adv">
+          <attr-item tags="adv"/>
+</def-attr>
+
+      <def-attr n="gen">
+          <attr-item tags="m"/>
+          <attr-item tags="f"/>
+          <attr-item tags="mf"/>
+          <attr-item tags="GD"/>
+          <attr-item tags="nt"/>
+      </def-attr>
+
+   <def-attr n="nbr">
+          <attr-item tags="sg"/>
+          <attr-item tags="pl"/>
+          <attr-item tags="sp"/>
+          <attr-item tags="ND"/>
+      </def-attr>
+
+		<def-attr n="tipus_verb">
+          <attr-item tags="SV.pron"/>
+			 <attr-item tags="SV"/>
+		 </def-attr>
+		 
+      <def-attr n="temps">
+          <attr-item tags="inf"/>
+          <attr-item tags="pres"/>
+          <attr-item tags="past"/>
+          <attr-item tags="pri"/>
+          <attr-item tags="pp"/>
+          <attr-item tags="ger"/>
+          <attr-item tags="pprs"/>
+          <attr-item tags="subs"/>
+      </def-attr>
+
+<def-attr n="a_SN">
+          <attr-item tags="DET"/>
+	  <attr-item tags="UNDET"/>
+	  <attr-item tags="NUM"/>
+	  <attr-item tags="PDET"/><!--'Per determinar', per a SN UNDET que han de passar a determinats, transformaciï¿½que farï¿½el postchunk detectant els PDET. -->
+</def-attr>
+
+
+<def-attr n="a_verb">
+      <attr-item tags="vblex"/>	  
+      <attr-item tags="vblex.pron"/>
+      <attr-item tags="vbhaver"/>
+      <attr-item tags="vbser"/>
+      <attr-item tags="vbmod"/>
+      <attr-item tags="HAVER"/>
+</def-attr>
+
+ <def-attr n="a_nom">
+      <attr-item tags="n"/>
+      <attr-item tags="np"/> 
+    </def-attr> 
+   
+   <def-attr n="a_num">
+      <attr-item tags="num"/>
+    </def-attr>
+		
+<def-attr n="a_rel">
+      <attr-item tags="rel"/>
+    </def-attr>
+
+<def-attr n="a_np">
+      <attr-item tags="np.ant"/>
+      <attr-item tags="np.cog"/>
+      <attr-item tags="np.al"/> 
+    </def-attr>
+
+    <def-attr n="a_prnpro">
+      <attr-item tags="prn.pro"/>
+    </def-attr>
+
+  </section-def-attrs>
+  
+<section-def-vars>
+    <def-var n="paraula"/>
+  </section-def-vars>
+
+  
+<section-def-macros>
+
+  <def-macro n="f_bcond" npar="2">
+        <choose>
+          <when>
+            <test>
+              <not>
+                <equal>
+                  <b pos="1"/>   
+                  <lit v=" "/>
+                </equal>
+              </not>
+            </test>
+            <out>
+              <b pos="1"/>
+            </out>  
+          </when>     
+        </choose>
+     </def-macro>
+
+		 
+</section-def-macros>
+
+  <section-rules>
+		
+		<rule comment="CHUNK: arregla en cv de relatiu que/qui">
+			<pattern>
+				<pattern-item n="qui"/>
+			</pattern>
+			<action>
+				<out>
+					<lu>
+						<lit v="qui"/>
+						<clip pos="1" part="a_rel"/>
+						<clip pos="1" part="gen"/>
+						<clip pos="1" part="nbr"/>
+					</lu>
+				</out>   
+			</action>
+		</rule> 
+		<rule comment="CHUNK: lleva genere i nombre a les xifres">
+			<pattern>
+				<pattern-item n="cifra"/>
+			</pattern>
+			<action>
+				<out>
+					<lu>
+						<clip pos="1" part="lem"/>
+						<clip pos="1" part="a_num"/>
+					</lu>
+				</out>   
+			</action>
+		</rule> 
+
+</section-rules>
+</postchunk>
