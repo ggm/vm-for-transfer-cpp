@@ -14,13 +14,16 @@ echo ""
 #Full tests.
 for arg in `ls $output` ; do
   inputarg=$input$arg.txt
-  cat $inputarg | ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v1x 2> test_warnings.log | ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v2x 2> test_warnings.log | ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v3x > vm.out 2> test_warnings.log
+  cat $inputarg |\
+    ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v1x 2> test_warnings.log |\
+    ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v2x 2> test_warnings.log |\
+    ./apertium-xfervm -c $code/apertium-en-ca.en-ca.v3x > vm.out 2> test_warnings.log
   if diff vm.out $output$arg > test_results.log ; then
     echo "+" $arg "-- OK"
   else
     echo "-" $arg "-- Error"
-    #cat test_results.log
-    fi
+    # cat test_results.log
+  fi
 done
 
 echo "============================================"
