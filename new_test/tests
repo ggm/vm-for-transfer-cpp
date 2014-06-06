@@ -283,6 +283,7 @@ function using_valgrind() {
 }
 
 function action_memcheck() {
+  echo "Running tests under valgrind with memcheck tool."
   VALGRIND_PREFIX="valgrind -q --tool=memcheck --xml=yes --xml-file="
   VALGRIND_OUT=${VALGRIND_MEMCHECK_OUT}
   VALIDATE_TEST_FN="validate_memcheck"
@@ -290,6 +291,7 @@ function action_memcheck() {
 }
 
 function action_callgrind() {
+  echo "Running tests under valgrind with callgrind tool."
   VALGRIND_PREFIX="valgrind -q --tool=callgrind --callgrind-out-file="
   VALGRIND_OUT=${VALGRIND_CALLGRIND_OUT}
   VALIDATE_TEST_FN="validate_callgrind"
@@ -297,6 +299,7 @@ function action_callgrind() {
 }
 
 function action_run() {
+  echo "Running normal tests."
   VALGRIND_PREFIX=""
   VALGRIND_OUT=""
   VALIDATE_TEST_FN="validate_output"
@@ -329,23 +332,38 @@ function run_tests() {
 
 function action_rm() {
   find ${TESTFILES_DIR} -mindepth 2 -maxdepth 2 -type d -name 'tests' -exec rm -r {} \;
+  echo "Removed tests."
 }
 
 function action_ls() {
+  echo "Available tests:"
   JUST_LIST_TESTS_COMBINATIONS=1
-  action_run "$@"
+  run_tests "$@"
+}
+
+function action_full() {
+  echo "Performing full testing, this might take a while."
+  action_rm
+  action_gen
+  action_ls
+
+  JUST_LIST_TESTS_COMBINATIONS=0
+  action_run
+  action_memcheck
+  action_callgrind
 }
 
 function action_help() {
   echo "Usage:"
   echo "  ./tests action action-params"
   echo "Available actions:"
-  echo "  * ls - list all available tests."
-  echo "  * gen - generate all tests."
   echo "  * rm - remove all tests."
+  echo "  * gen - generate all tests."
+  echo "  * ls - list all available tests."
   echo "  * run [lang_pair [test_name [stage]]] - run tests."
   echo "  * memcheck [lang_pair [test_name [stage]]] - run valgrind with memcheck tool."
   echo "  * callgrind [lang_pair [test_name [stage]]] - run valgrind with callgrind tool."
+  echo "  * full - clean, generate and run all tests in all possible modes."
   echo "  * help - displays this text."
 }
 
