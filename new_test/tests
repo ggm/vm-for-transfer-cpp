@@ -344,6 +344,8 @@ function action_help() {
   echo "  * gen - generate all tests."
   echo "  * rm - remove all tests."
   echo "  * run [lang_pair [test_name [stage]]] - run tests."
+  echo "  * memcheck [lang_pair [test_name [stage]]] - run valgrind with memcheck tool."
+  echo "  * callgrind [lang_pair [test_name [stage]]] - run valgrind with callgrind tool."
   echo "  * help - displays this text."
 }
 
