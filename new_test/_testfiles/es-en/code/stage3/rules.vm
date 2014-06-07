@@ -1,0 +1,655 @@
+#<assembly>
+#<postchunk>
+jmp section_rules_start
+section_rules_start:
+patterns_start:
+push "haver_pp|haver_pp_enc"
+push 1
+addtrie action_0_start
+push "aux_verb"
+push 1
+addtrie action_1_start
+push "aux_haver_pp|aux_haver_pp_enc"
+push 1
+addtrie action_2_start
+push "verbcj|verbcj_enc"
+push 1
+addtrie action_3_start
+push "subj"
+push 1
+addtrie action_4_start
+push "haverhi"
+push 1
+addtrie action_5_start
+push "haverhi_pp"
+push 1
+addtrie action_6_start
+patterns_end:
+action_0_start:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_0_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push "not"
+push "<adv>"
+lu 2
+pushbl
+push 2
+push "whole"
+clip
+lu 1
+out 5
+jmp choose_0_end
+when_0_end:
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "whole"
+clip
+lu 1
+out 3
+choose_0_end:
+action_0_end:
+action_1_start:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_1_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push "not"
+push "<adv>"
+lu 2
+pushbl
+push 2
+push "whole"
+clip
+lu 1
+out 5
+jmp choose_1_end
+when_1_end:
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "whole"
+clip
+lu 1
+out 3
+choose_1_end:
+action_1_end:
+action_2_start:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_2_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push "not"
+push "<adv>"
+lu 2
+pushsb 2
+push 2
+push "whole"
+clip
+lu 1
+pushbl
+push 3
+push "whole"
+clip
+lu 1
+out 7
+jmp choose_2_end
+when_2_end:
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+push 3
+push "whole"
+clip
+lu 1
+out 5
+choose_2_end:
+action_2_end:
+action_3_start:
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pri>"
+cmp
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+clip
+push "<p3><sg>"
+cmp
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+clip
+push "<p1><sg>"
+cmp
+or 2
+not
+and 2
+jz when_3_end
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+push "<pres>"
+storecl
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+push ""
+storecl
+jmp choose_3_end
+when_3_end:
+choose_3_end:
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<past>"
+cmp
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+clip
+push "<p3><sg>"
+cmp
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+clip
+push "<p1><sg>"
+cmp
+or 2
+not
+and 2
+jz when_4_end
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+push "<past>"
+storecl
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+push ""
+storecl
+jmp choose_4_end
+when_4_end:
+choose_4_end:
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pii>"
+cmp
+jz when_5_end
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+push "<past>"
+storecl
+push 1
+push "<p1><sg>|<p1><pl>|<p2><sg>|<p2><pl>|<p2><sp>|<p3><sg>|<p3><pl>"
+push ""
+storecl
+jmp choose_5_end
+when_5_end:
+choose_5_end:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_6_end
+push 0
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push "<vbser>"
+cmp
+push 0
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push "<vaux>"
+cmp
+or 2
+jz when_7_end
+push 1
+push "whole"
+clip
+lu 1
+pushbl
+push "not"
+push "<adv>"
+lu 2
+out 3
+jmp choose_7_end
+when_7_end:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pri>"
+cmp
+push 0
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sg>"
+cmp
+and 3
+jz when_8_end
+push "temps_aux"
+push "<pri><p3><sg>"
+storev
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+push "<inf>"
+storecl
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+push ""
+storecl
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push ""
+storecl
+jmp choose_8_end
+when_8_end:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pri>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<prs>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<imp>"
+cmp
+or 3
+jz when_9_end
+push "temps_aux"
+push "<pres>"
+storev
+jmp choose_8_end
+when_9_end:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<cni>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<ifi>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pii>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pis>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<past>"
+cmp
+or 5
+jz when_10_end
+push "temps_aux"
+push "<past>"
+storev
+push 1
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+push "<inf>"
+storecl
+jmp choose_8_end
+when_10_end:
+choose_8_end:
+push "do"
+push 1
+get-case-from
+modify-case
+push "<vbdo>"
+push temps_aux
+lu 3
+pushbl
+push "not"
+push "<adv>"
+lu 2
+pushbl
+out 4
+push 1
+push "lem"
+clip
+case-of
+push "Aa"
+cmp
+jz when_11_end
+push 1
+push "lem"
+push 1
+push "lem"
+clip
+push "aa"
+modify-case
+storecl
+jmp choose_9_end
+when_11_end:
+choose_9_end:
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_7_end:
+jmp choose_6_end
+when_6_end:
+push 1
+push "whole"
+clip
+lu 1
+out 1
+choose_6_end:
+action_3_end:
+action_4_start:
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sg>"
+cmp
+and 2
+jz when_12_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<nt>"
+storecl
+jmp choose_10_end
+when_12_end:
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p2>"
+cmp
+jz when_13_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sp>"
+storecl
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<mf>"
+storecl
+jmp choose_10_end
+when_13_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<mf>"
+storecl
+choose_10_end:
+push 1
+push "whole"
+clip
+lu 1
+out 1
+action_4_end:
+action_5_start:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pri>"
+cmp
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+and 2
+jz when_14_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "lem"
+clip
+push 2
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push "<pres>"
+lu 3
+out 3
+jmp choose_11_end
+when_14_end:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<past>"
+cmp
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+and 2
+jz when_15_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "lem"
+clip
+push 2
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push 2
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+lu 3
+out 3
+jmp choose_11_end
+when_15_end:
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "whole"
+clip
+lu 1
+out 3
+choose_11_end:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_16_end
+pushbl
+push "not"
+push "<adv>"
+lu 2
+out 2
+jmp choose_12_end
+when_16_end:
+choose_12_end:
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<cni>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<fti>"
+cmp
+or 2
+jz when_17_end
+pushsb 2
+push 3
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_13_end
+when_17_end:
+choose_13_end:
+action_5_end:
+action_6_start:
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<pri>"
+cmp
+and 2
+jz when_18_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "lem"
+clip
+push 2
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push "<pres>"
+lu 3
+pushsb 2
+out 4
+jmp choose_14_end
+when_18_end:
+push 0
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<past>"
+cmp
+and 2
+jz when_19_end
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "lem"
+clip
+push 2
+push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
+clip
+push 2
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+lu 3
+pushsb 2
+out 4
+jmp choose_14_end
+when_19_end:
+push 1
+push "whole"
+clip
+lu 1
+pushsb 1
+push 2
+push "whole"
+clip
+lu 1
+pushsb 2
+out 4
+choose_14_end:
+push 0
+push "<SVneg>|<SV>"
+clip
+push "<SVneg>"
+cmp
+jz when_20_end
+push "not"
+push "<adv>"
+lu 2
+pushbl
+out 2
+jmp choose_15_end
+when_20_end:
+choose_15_end:
+push 3
+push "whole"
+clip
+lu 1
+out 1
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<cni>"
+cmp
+push 0
+push "<inf>|<pres>|<past>|<pri>|<prs>|<imp>|<pii>|<cni>|<ifi>|<pis>|<pp>|<ger>|<pprs>|<subs>|<fti>"
+clip
+push "<fti>"
+cmp
+or 2
+jz when_21_end
+pushsb 3
+push 4
+push "whole"
+clip
+lu 1
+out 2
+jmp choose_16_end
+when_21_end:
+choose_16_end:
+action_6_end:
+section_rules_end:
