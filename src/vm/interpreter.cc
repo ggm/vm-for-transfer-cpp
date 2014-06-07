@@ -117,6 +117,7 @@ LexicalUnit* Interpreter::getSourceLexicalUnit(int relativePos) {
  * @return a reference to the lexical unit
  */
 LexicalUnit* Interpreter::getTargetLexicalUnit(int relativePos) {
+  // TODO(asfrent): check relativePos, this makes a memcheck test fail.
   int realPos = vm->currentWords[relativePos - 1];
   return ((BilingualWord *) vm->words[realPos])->getTarget();
 }

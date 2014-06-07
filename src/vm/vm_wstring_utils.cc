@@ -135,14 +135,14 @@ wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
 CASE VMWstringUtils::getCase(const wstring &wstr) {
   locale loc;
   bool isFirstUpper = isupper(wstr[0], loc);
-  bool isUpper = VMWstringUtils::iswupper(wstr);
+  bool isAllUpper = VMWstringUtils::iswupper(wstr);
 
   // If it's a 1-length string and is upper, capitalize it.
-  if (isUpper && wstr.size() == 1) {
+  if (isAllUpper && wstr.size() == 1) {
     return Aa;
-  } else if (isFirstUpper && !isUpper) {
+  } else if (isFirstUpper && !isAllUpper) {
     return Aa;
-  } else if (isUpper) {
+  } else if (isAllUpper) {
     return AA;
   } else {
     return aa;
