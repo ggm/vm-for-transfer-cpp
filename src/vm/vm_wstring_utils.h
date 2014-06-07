@@ -43,6 +43,7 @@ public:
   static wstring replace(wstring &, const wstring &, const wstring &);
 
 private:
+  static const std::locale _loc;
 
 };
 
