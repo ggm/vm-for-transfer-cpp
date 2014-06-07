@@ -80,7 +80,7 @@ private:
   TRANSFER_DEFAULT transferDefault;
 
   /// Name of the input file to use.
-  char *inputFileName;
+  string inputFileName;
 
   /// Output file to use in case there is one, otherwise stdout will be used.
   wofstream outputFile;

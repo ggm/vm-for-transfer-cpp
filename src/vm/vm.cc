@@ -20,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 
 #include "vm_exceptions.h"
 #include "assembly_loader.h"
@@ -153,7 +154,7 @@ void VM::setTransferStage(const wstring &transferHeader) {
  * @param fileName input file's name
  */
 void VM::setInputFile(char *fileName) {
-  inputFileName = fileName;
+  inputFileName = string(fileName);
 }
 
 /**
@@ -278,7 +279,7 @@ void VM::printCodeSection() const {
  */
 void VM::tokenizeInput() {
   wfstream input;
-  input.open(inputFileName, ios::in);
+  input.open(inputFileName.c_str(), ios::in);
 
   if (input.is_open()) {
     if (transferStage == TRANSFER) {
