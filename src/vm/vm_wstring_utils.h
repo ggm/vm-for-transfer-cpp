@@ -32,7 +32,7 @@ class VMWstringUtils {
 
 public:
 
-  static bool iswlower(const wstring &);
+  static bool iswupper(const wstring &);
   static bool iswnumeric(const wstring &);
   static wstring wtolower(const wstring &);
   static wstring wtoupper(const wstring &);

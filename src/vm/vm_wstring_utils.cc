@@ -26,7 +26,7 @@
  *
  * @return true if it's lower case, otherwise, false
  */
-bool VMWstringUtils::iswlower(const wstring &wstr) {
+bool VMWstringUtils::iswupper(const wstring &wstr) {
   locale loc;
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
@@ -135,7 +135,7 @@ wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
 CASE VMWstringUtils::getCase(const wstring &wstr) {
   locale loc;
   bool isFirstUpper = isupper(wstr[0], loc);
-  bool isUpper = VMWstringUtils::iswlower(wstr);
+  bool isUpper = VMWstringUtils::iswupper(wstr);
 
   // If it's a 1-length string and is upper, capitalize it.
   if (isUpper && wstr.size() == 1) {
