@@ -1,0 +1,7903 @@
+#<assembly>
+#<interchunk>
+push "nombre"
+push "<sg>"
+storev
+jmp section_rules_start
+macro_determina_nbr_gen_SN_start:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sg>"
+cmp
+jz when_0_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_0_end
+when_0_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+jz when_1_end
+push "nombre"
+push "<pl>"
+storev
+jmp choose_0_end
+when_1_end:
+push "nombre"
+push "<sg>"
+storev
+choose_0_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+jz when_2_end
+push "genere"
+push "<m>"
+storev
+jmp choose_1_end
+when_2_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<f>"
+cmp
+jz when_3_end
+push "genere"
+push "<f>"
+storev
+jmp choose_1_end
+when_3_end:
+push "genere"
+push "<m>"
+storev
+choose_1_end:
+macro_determina_nbr_gen_SN_end: ret
+macro_f_bcond_start:
+pushsb 1
+push " "
+cmp
+not
+jz when_4_end
+pushsb 1
+out 1
+jmp choose_2_end
+when_4_end:
+choose_2_end:
+macro_f_bcond_end: ret
+macro_concord_SN_SV_start:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_5_end
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 2
+push "lem"
+clip
+push "pro_verbcj"
+cmpi
+and 2
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+or 2
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_6_end
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+storecl
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sg>"
+cmp
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+and 2
+jz when_7_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<prs>"
+storecl
+jmp choose_5_end
+when_7_end:
+choose_5_end:
+jmp choose_4_end
+when_6_end:
+choose_4_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_8_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_6_end
+when_8_end:
+choose_6_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_9_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+jz when_10_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_8_end
+when_10_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_8_end:
+jmp choose_7_end
+when_9_end:
+choose_7_end:
+jmp choose_3_end
+when_5_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_11_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_9_end
+when_11_end:
+choose_9_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_12_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 2
+jz when_13_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_11_end
+when_13_end:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+jz when_14_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_11_end
+when_14_end:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ifip>"
+cmp
+push 2
+push "lem"
+clip
+push "be"
+cmpi
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 3
+jz when_15_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_11_end
+when_15_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_11_end:
+jmp choose_10_end
+when_12_end:
+choose_10_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_16_end
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_12_end
+when_16_end:
+choose_12_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_17_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_18_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_14_end
+when_18_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_14_end:
+jmp choose_13_end
+when_17_end:
+choose_13_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_19_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+jz when_20_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_16_end
+when_20_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_16_end:
+jmp choose_15_end
+when_19_end:
+choose_15_end:
+choose_3_end:
+macro_concord_SN_SV_end: ret
+macro_concord_SNcoo_SV_start:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_21_end
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_22_end
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+storecl
+jmp choose_18_end
+when_22_end:
+choose_18_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_23_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_19_end
+when_23_end:
+choose_19_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_24_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+cmp
+and 2
+jz when_25_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_21_end
+when_25_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_21_end:
+jmp choose_20_end
+when_24_end:
+choose_20_end:
+jmp choose_17_end
+when_21_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_26_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_22_end
+when_26_end:
+choose_22_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_27_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 2
+jz when_28_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_24_end
+when_28_end:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+jz when_29_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_24_end
+when_29_end:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ifip>"
+cmp
+push 3
+push "lem"
+clip
+push "be"
+cmpi
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 3
+jz when_30_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_24_end
+when_30_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_24_end:
+jmp choose_23_end
+when_27_end:
+choose_23_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_31_end
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_25_end
+when_31_end:
+choose_25_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+not
+and 2
+jz when_32_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_26_end
+when_32_end:
+choose_26_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_33_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+cmp
+and 2
+jz when_34_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_28_end
+when_34_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_28_end:
+jmp choose_27_end
+when_33_end:
+choose_27_end:
+choose_17_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_35_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_29_end
+when_35_end:
+choose_29_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_36_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_30_end
+when_36_end:
+choose_30_end:
+macro_concord_SNcoo_SV_end: ret
+macro_posadet_SN_start:
+push 1
+push "lem"
+clip
+push "nom"
+cmpi
+push 1
+push "lem"
+clip
+push "nom_adj"
+cmpi
+push 1
+push "lem"
+clip
+push "nom_'adj'"
+cmpi
+push 1
+push "lem"
+clip
+push "'nom'_adj"
+cmpi
+push 1
+push "lem"
+clip
+push "nom_conj_nom"
+cmpi
+push 1
+push "lem"
+clip
+push "nom_adj_adj"
+cmpi
+or 6
+jz when_37_end
+push 1
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+jmp choose_31_end
+when_37_end:
+choose_31_end:
+macro_posadet_SN_end: ret
+section_rules_start:
+patterns_start:
+push "<SN><*>|relnom<REL><*>"
+push "<SV><like><*>"
+push "<SN><*>"
+push 3
+addtrie action_0_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<SV><like><*>"
+push "<SN><*>"
+push 4
+addtrie action_1_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "<SV><like><*>"
+push "<SN><*>"
+push 5
+addtrie action_2_start
+push "<SN><*>|relnom<REL><*>"
+push "pro_verbcj<SV><like><*>|pro_auxmod_inf<SV><like><*>|pro_mod_inf<SV><like><*>|pro_auxmod_mod_inf<SV><like><*>|pro_have_pp<SV><like><*>|pro_be_ger<SV><like><*>|pro_do_inf<SV><like><*>"
+push 2
+addtrie action_3_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "pro_verbcj<SV><like><*>|pro_auxmod_inf<SV><like><*>|pro_mod_inf<SV><like><*>|pro_auxmod_mod_inf<SV><like><*>|pro_have_pp<SV><like><*>|pro_be_ger<SV><like><*>|pro_do_inf<SV><like><*>"
+push 3
+addtrie action_4_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "pro_verbcj<SV><like><*>|pro_auxmod_inf<SV><like><*>|pro_mod_inf<SV><like><*>|pro_auxmod_mod_inf<SV><like><*>|pro_have_pp<SV><like><*>|pro_be_ger<SV><like><*>|pro_do_inf<SV><like><*>"
+push 4
+addtrie action_5_start
+push "<SN><*>|relnom<REL><*>"
+push "<SV><like><*>"
+push 2
+addtrie action_6_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<SV><like><*>"
+push 3
+addtrie action_7_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "<SV><like><*>"
+push 4
+addtrie action_8_start
+push "there<adv>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push "<SN><*>"
+push 3
+addtrie action_9_start
+push "there<adv>"
+push "<adv>|<adv><*>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push "<SN><*>"
+push 4
+addtrie action_10_start
+push "there<adv>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push "<SN><*>"
+push 5
+addtrie action_11_start
+push "there<adv>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push 2
+addtrie action_12_start
+push "there<adv>"
+push "<adv>|<adv><*>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push 3
+addtrie action_13_start
+push "there<adv>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "be<Vcop><*>|verbcj<SV><vbser><*>|auxmod_inf<SV><vbser><*>|auxmod_mod_inf<SV><vbser><*>|auxmod_have_pp<SV><vbser><*>|mod_inf<SV><vbser><*>|have_pp<SV><vbser><*>"
+push 4
+addtrie action_14_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 2
+addtrie action_15_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 4
+addtrie action_16_start
+push "<SN><*>"
+push "<GEN>"
+push "<SN><UNDET><*>|<SN><UNDEF><*>|<SN><NUM><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 4
+addtrie action_17_start
+push "<SN><*>"
+push "<GEN>"
+push "<SN><UNDET><*>|<SN><UNDEF><*>|<SN><NUM><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 5
+addtrie action_18_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 3
+addtrie action_19_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 4
+addtrie action_20_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 5
+addtrie action_21_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 6
+addtrie action_22_start
+push "<SN><*>"
+push "<GEN>"
+push "<SN><UNDET><*>|<SN><UNDEF><*>|<SN><NUM><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 5
+addtrie action_23_start
+push "<SN><*>"
+push "<GEN>"
+push "<SN><UNDET><*>|<SN><UNDEF><*>|<SN><NUM><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 6
+addtrie action_24_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 3
+addtrie action_25_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 5
+addtrie action_26_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push "<cnjcoo>"
+push "<SA><*>"
+push 5
+addtrie action_27_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 4
+addtrie action_28_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<adv>|<adv><*>"
+push "<SA><*>"
+push 4
+addtrie action_29_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 5
+addtrie action_30_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 6
+addtrie action_31_start
+push "<SN><*>"
+push "cnj<cnjcoo>"
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 7
+addtrie action_32_start
+push "<SN><*>|relnom<REL><*>"
+push "<Vcop><*>|<SV><vbser><*>"
+push "<SN><*>|relnom<REL><*>"
+push 3
+addtrie action_33_start
+push "<SN><*>|relnom<REL><*>"
+push "<Vcop><*>|<SV><vbser><*>"
+push "<adv>|<adv><*>"
+push "<SN><*>|relnom<REL><*>"
+push 4
+addtrie action_34_start
+push "<SN><*>|relnom<REL><*>"
+push "<PREP>"
+push "<SN><*>"
+push "<Vcop><*>|<SV><vbser><*>"
+push "<SN><*>|relnom<REL><*>"
+push 5
+addtrie action_35_start
+push "<SN><*>|relnom<REL><*>"
+push "<PREP>"
+push "<SN><*>"
+push "<Vcop><*>|<SV><vbser><*>"
+push "<adv>|<adv><*>"
+push "<SN><*>|relnom<REL><*>"
+push 6
+addtrie action_36_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "prnref<SNref><*>"
+push 3
+addtrie action_37_start
+push "<SN><*>|relnom<REL><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "prnref<SNref><*>"
+push 4
+addtrie action_38_start
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "prnref<SNref><*>"
+push 2
+addtrie action_39_start
+push "<SN><*>|relnom<REL><*>"
+push "<SV><reporting><*>"
+push "<SN><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 4
+addtrie action_40_start
+push "<SN><*>|relnom<REL><*>"
+push "<PREP>"
+push "<SN><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 4
+addtrie action_41_start
+push "<SN><*>|relnom<REL><*>"
+push "<PREP>"
+push "<SN><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push 5
+addtrie action_42_start
+push "<SN><*>|relnom<REL><*>"
+push "<PREP>"
+push "<SN><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SA><*>"
+push "<cnjcoo>"
+push "<SA><*>"
+push 7
+addtrie action_43_start
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SN><DET><*><*><negacio>"
+push 3
+addtrie action_44_start
+push "<SN><DET><*>|<SN><UNDET><*>|<SN><NUM><*>"
+push "ger<SV><*>|ger_enc<SV><*>|ger_enc_enc<SV><*>"
+push 2
+addtrie action_45_start
+push "<SN><DET><*>|<SN><UNDET><*>|<SN><NUM><*>"
+push "pp<SA><*>|adj<SA><*>"
+push 2
+addtrie action_46_start
+push "<SN><DET><*>|<SN><UNDET><*>|<SN><NUM><*>"
+push "<adv>|<adv><*>"
+push "pp<SA><*>|adj<SA><*>"
+push 3
+addtrie action_47_start
+push "<SN><*>|relnom<REL><*>"
+push "<REL><an><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push "<SN><*>|relnom<REL><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 5
+addtrie action_48_start
+push "<REL><an><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 2
+addtrie action_49_start
+push "<REL><an><*>"
+push "<adv>|<adv><*>"
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 3
+addtrie action_50_start
+push "adj<SA><*>|pp_pr_np<SA><*>|adv_ger<SA><*>|adj_ger<SA><*>|nom_ger<SA><*>"
+push "<SN><UNDET><*>"
+push 2
+addtrie action_51_start
+push "<DET><*>"
+push "adj<SA><*>|pp_pr_np<SA><*>|adv_ger<SA><*>|adj_ger<SA><*>|nom_ger<SA><*>"
+push "<SN><UNDET><*>"
+push 3
+addtrie action_52_start
+push "<SN><*>"
+push "<GEN>"
+push "<SN><UNDET><*>|<SN><UNDEF><*>|<SN><NUM><*>"
+push 3
+addtrie action_53_start
+push "<SA><*>"
+push 1
+addtrie action_54_start
+push "<SN><*>|relnom<REL><*>"
+push 1
+addtrie action_55_start
+push "<DET><*>"
+push 1
+addtrie action_56_start
+push "verbcj<SV><*>|<Vcop><*>|mod<SV><*>|auxmod_inf<SV><*>|auxmod_inf_inf<SV><*>|be_ger_inf<SV><*>|verbcj_inf<SV><*>|inf_inf<SV><*>|verbcj_inf_enc<SV><*>|inf_inf_enc<SV><*>|auxmod_mod_inf<SV><*>|do_inf<SV><*>|mod_inf<SV><*>|aux_mod<SV><*>|have_pp<SV><*>|have_just_pp<SV><*>|have_pp_ger<SV><*>|have_pp_inf<SV><*>|auxmod_have_pp<SV><*>|auxmod_have_pp_ger<SV><*>|pro_auxmod_have_pp<SV><*>|pro_auxmod_have_pp_ger<SV><*>|auxmod_have_pp_inf<SV><*>|be_ger<SV><*>|be_ger_enc<SV><*>|<SV><vblex><inf><*>|<SV><pron><inf><*>|<SV><vbmod><inf><*>|pro_verbcj<SV><*>|pro_auxmod_inf<SV><*>|pro_mod_inf<SV><*>|pro_auxmod_mod_inf<SV><*>|pro_have_pp<SV><*>|pro_have_pp_ger<SV><*>|pro_be_ger<SV><*>|pro_do_inf<SV><*>|<SV><reporting><inf><*>|<SV><reporting><pri><*>|<SV><reporting><cni><*>|<SV><reporting><fti*>|<SV><reporting><pii*>|going_to_inf<SV><*>|pro_going_to_inf<SV><*>"
+push 1
+addtrie action_57_start
+push "<NUM><*>"
+push 1
+addtrie action_58_start
+push "<REL><nn><*>"
+push 1
+addtrie action_59_start
+push "<sent>"
+push 1
+addtrie action_60_start
+patterns_end:
+action_0_start:
+push 3
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_38_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_32_end
+when_38_end:
+choose_32_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_39_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_33_end
+when_39_end:
+choose_33_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_40_end
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 1
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 1
+out 2
+jmp choose_34_end
+when_40_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_41_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_35_end
+when_41_end:
+choose_35_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_42_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_36_end
+when_42_end:
+push "nombre"
+push "<pl>"
+storev
+choose_36_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_43_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_37_end
+when_43_end:
+choose_37_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 6
+choose_34_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_44_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_38_end
+when_44_end:
+choose_38_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_45_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_39_end
+when_45_end:
+choose_39_end:
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 3
+push 3
+push 1
+call determina_nbr_gen_SN
+action_0_end:
+action_1_start:
+push 4
+push 1
+call posadet_SN
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_46_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_40_end
+when_46_end:
+choose_40_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_47_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_41_end
+when_47_end:
+choose_41_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_48_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 1
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 2
+out 4
+jmp choose_42_end
+when_48_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_49_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_43_end
+when_49_end:
+choose_43_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_50_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_44_end
+when_50_end:
+push "nombre"
+push "<pl>"
+storev
+choose_44_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_51_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_45_end
+when_51_end:
+choose_45_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 8
+choose_42_end:
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_52_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_46_end
+when_52_end:
+choose_46_end:
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_53_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_47_end
+when_53_end:
+choose_47_end:
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 3
+push 4
+push 1
+call determina_nbr_gen_SN
+action_1_end:
+action_2_start:
+push 5
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_54_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_48_end
+when_54_end:
+choose_48_end:
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_55_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_49_end
+when_55_end:
+choose_49_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_56_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 1
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 3
+out 6
+jmp choose_50_end
+when_56_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_57_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_51_end
+when_57_end:
+choose_51_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_58_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_52_end
+when_58_end:
+push "nombre"
+push "<pl>"
+storev
+choose_52_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_59_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_53_end
+when_59_end:
+choose_53_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 4
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 10
+choose_50_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_60_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_54_end
+when_60_end:
+choose_54_end:
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_61_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_55_end
+when_61_end:
+choose_55_end:
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 3
+push 5
+push 1
+call determina_nbr_gen_SN
+action_2_end:
+action_3_start:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_62_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_56_end
+when_62_end:
+choose_56_end:
+push 2
+push "lem"
+clip
+push "pro_verbcj"
+cmpi
+jz when_63_end
+push 2
+push "lem"
+push "pro_vblike"
+storecl
+jmp choose_57_end
+when_63_end:
+push 2
+push "lem"
+clip
+push "pro_auxmod_inf"
+cmpi
+push 2
+push "lem"
+clip
+push "pro_mod_inf"
+cmpi
+push 2
+push "lem"
+clip
+push "pro_have_pp"
+cmpi
+push 2
+push "lem"
+clip
+push "pro_be_ger"
+cmpi
+push 2
+push "lem"
+clip
+push "pro_do_inf"
+cmpi
+or 5
+jz when_64_end
+push 2
+push "lem"
+push "pro_vblike2"
+storecl
+jmp choose_58_end
+when_64_end:
+push 2
+push "lem"
+clip
+push "pro_auxmod_mod_inf"
+cmpi
+jz when_65_end
+push 2
+push "lem"
+push "pro_vblike3"
+storecl
+jmp choose_59_end
+when_65_end:
+choose_59_end:
+choose_58_end:
+choose_57_end:
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_66_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_60_end
+when_66_end:
+choose_60_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_67_end
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 1
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 1
+out 2
+jmp choose_61_end
+when_67_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_68_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_62_end
+when_68_end:
+choose_62_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_69_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_63_end
+when_69_end:
+push "nombre"
+push "<pl>"
+storev
+choose_63_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_70_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_64_end
+when_70_end:
+choose_64_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 6
+choose_61_end:
+push 2
+push "whole"
+clip
+chunk 1
+out 1
+action_3_end:
+action_4_start:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_71_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_65_end
+when_71_end:
+choose_65_end:
+push 3
+push "lem"
+clip
+push "pro_verbcj"
+cmpi
+jz when_72_end
+push 3
+push "lem"
+push "pro_vblike"
+storecl
+jmp choose_66_end
+when_72_end:
+push 3
+push "lem"
+clip
+push "pro_auxmod_inf"
+cmpi
+push 3
+push "lem"
+clip
+push "pro_mod_inf"
+cmpi
+push 3
+push "lem"
+clip
+push "pro_have_pp"
+cmpi
+push 3
+push "lem"
+clip
+push "pro_be_ger"
+cmpi
+push 3
+push "lem"
+clip
+push "pro_do_inf"
+cmpi
+or 5
+jz when_73_end
+push 3
+push "lem"
+push "pro_vblike2"
+storecl
+jmp choose_67_end
+when_73_end:
+push 3
+push "lem"
+clip
+push "pro_auxmod_mod_inf"
+cmpi
+jz when_74_end
+push 3
+push "lem"
+push "pro_vblike3"
+storecl
+jmp choose_68_end
+when_74_end:
+choose_68_end:
+choose_67_end:
+choose_66_end:
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_75_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_69_end
+when_75_end:
+choose_69_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_76_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 2
+out 4
+jmp choose_70_end
+when_76_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_77_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_71_end
+when_77_end:
+choose_71_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_78_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_72_end
+when_78_end:
+push "nombre"
+push "<pl>"
+storev
+choose_72_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_79_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_73_end
+when_79_end:
+choose_73_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 8
+choose_70_end:
+push 3
+push "whole"
+clip
+chunk 1
+out 1
+action_4_end:
+action_5_start:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_80_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_74_end
+when_80_end:
+choose_74_end:
+push 4
+push "lem"
+clip
+push "pro_verbcj"
+cmpi
+jz when_81_end
+push 4
+push "lem"
+push "pro_vblike"
+storecl
+jmp choose_75_end
+when_81_end:
+push 4
+push "lem"
+clip
+push "pro_auxmod_inf"
+cmpi
+push 4
+push "lem"
+clip
+push "pro_mod_inf"
+cmpi
+push 4
+push "lem"
+clip
+push "pro_have_pp"
+cmpi
+push 4
+push "lem"
+clip
+push "pro_be_ger"
+cmpi
+push 4
+push "lem"
+clip
+push "pro_do_inf"
+cmpi
+or 5
+jz when_82_end
+push 4
+push "lem"
+push "pro_vblike2"
+storecl
+jmp choose_76_end
+when_82_end:
+push 4
+push "lem"
+clip
+push "pro_auxmod_mod_inf"
+cmpi
+jz when_83_end
+push 4
+push "lem"
+push "pro_vblike3"
+storecl
+jmp choose_77_end
+when_83_end:
+choose_77_end:
+choose_76_end:
+choose_75_end:
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_84_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_78_end
+when_84_end:
+choose_78_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_85_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 3
+out 6
+jmp choose_79_end
+when_85_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_86_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_80_end
+when_86_end:
+choose_80_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_87_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_81_end
+when_87_end:
+push "nombre"
+push "<pl>"
+storev
+choose_81_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_88_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_82_end
+when_88_end:
+choose_82_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 10
+choose_79_end:
+push 4
+push "whole"
+clip
+chunk 1
+out 1
+action_5_end:
+action_6_start:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_89_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_83_end
+when_89_end:
+choose_83_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_90_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_84_end
+when_90_end:
+choose_84_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_91_end
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 1
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 1
+out 2
+jmp choose_85_end
+when_91_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_92_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_86_end
+when_92_end:
+choose_86_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_93_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_87_end
+when_93_end:
+push "nombre"
+push "<pl>"
+storev
+choose_87_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_94_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_88_end
+when_94_end:
+choose_88_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 6
+choose_85_end:
+push 2
+push "whole"
+clip
+chunk 1
+out 1
+action_6_end:
+action_7_start:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_95_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_89_end
+when_95_end:
+choose_89_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_96_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_90_end
+when_96_end:
+choose_90_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_97_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 1
+out 4
+jmp choose_91_end
+when_97_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_98_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_92_end
+when_98_end:
+choose_92_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_99_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_93_end
+when_99_end:
+push "nombre"
+push "<pl>"
+storev
+choose_93_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_100_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_94_end
+when_100_end:
+choose_94_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 2
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 8
+choose_91_end:
+push 3
+push "whole"
+clip
+chunk 1
+out 1
+action_7_end:
+action_8_start:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_101_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_95_end
+when_101_end:
+choose_95_end:
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+jz when_102_end
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+out 4
+jmp choose_96_end
+when_102_end:
+choose_96_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+push 1
+push "lem"
+clip
+push "prnsubj2"
+cmpi
+or 2
+jz when_103_end
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro>"
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<mf>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "$}"
+chunk 9
+pushsb 1
+out 6
+jmp choose_97_end
+when_103_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_104_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_98_end
+when_104_end:
+choose_98_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<pl>"
+cmp
+not
+jz when_105_end
+push "nombre"
+push "<sg>"
+storev
+jmp choose_99_end
+when_105_end:
+push "nombre"
+push "<pl>"
+storev
+choose_99_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_106_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_100_end
+when_106_end:
+choose_100_end:
+push "pr"
+push "<PREP>"
+push "{^"
+push "a"
+push 1
+get-case-from
+modify-case
+push "<pr>"
+push "$}"
+chunk 6
+pushbl
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push "comp_like"
+push "<prn><pro>"
+push "{^"
+push "prpers"
+push 3
+get-case-from
+modify-case
+push "<prn><pro><p3><mf>"
+push nombre
+push "$}"
+chunk 7
+pushbl
+out 10
+choose_97_end:
+push 4
+push "whole"
+clip
+chunk 1
+out 1
+action_8_end:
+action_9_start:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_107_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_101_end
+when_107_end:
+choose_101_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_108_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_102_end
+when_108_end:
+choose_102_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_109_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 2
+jz when_110_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_104_end
+when_110_end:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+jz when_111_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_104_end
+when_111_end:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ifip>"
+cmp
+push 2
+push "lem"
+clip
+push "be"
+cmpi
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 3
+jz when_112_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_104_end
+when_112_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_104_end:
+jmp choose_103_end
+when_109_end:
+choose_103_end:
+push 3
+push "<negacio>"
+clip
+push "<negacio>"
+cmp
+jz when_113_end
+pushsb 1
+push "adv"
+push 1
+get-case-from
+modify-case
+push "<NEG>"
+push "{^"
+push "no"
+push "<adv>"
+push "$}"
+chunk 7
+out 1
+jmp choose_105_end
+when_113_end:
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+push 2
+push "lem"
+clip
+push 1
+push "lem"
+clip
+case-of
+modify-case
+storecl
+choose_105_end:
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 4
+push 3
+push 1
+call determina_nbr_gen_SN
+action_9_end:
+action_10_start:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_114_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_106_end
+when_114_end:
+choose_106_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_115_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_107_end
+when_115_end:
+choose_107_end:
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_116_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 2
+jz when_117_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_109_end
+when_117_end:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+jz when_118_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_109_end
+when_118_end:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ifip>"
+cmp
+push 3
+push "lem"
+clip
+push "be"
+cmpi
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 3
+jz when_119_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_109_end
+when_119_end:
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_109_end:
+jmp choose_108_end
+when_116_end:
+choose_108_end:
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 6
+push 4
+push 1
+call determina_nbr_gen_SN
+action_10_end:
+action_11_start:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_120_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_110_end
+when_120_end:
+choose_110_end:
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_121_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_111_end
+when_121_end:
+choose_111_end:
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_122_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 2
+jz when_123_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_113_end
+when_123_end:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<pri>"
+cmp
+jz when_124_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_113_end
+when_124_end:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ifip>"
+cmp
+push 4
+push "lem"
+clip
+push "be"
+cmpi
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+and 3
+jz when_125_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_113_end
+when_125_end:
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_113_end:
+jmp choose_112_end
+when_122_end:
+choose_112_end:
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 8
+push 5
+push 1
+call determina_nbr_gen_SN
+action_11_end:
+action_12_start:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_126_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_114_end
+when_126_end:
+choose_114_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 2
+action_12_end:
+action_13_start:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_127_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_115_end
+when_127_end:
+choose_115_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 3
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 4
+action_13_end:
+action_14_start:
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_128_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_116_end
+when_128_end:
+choose_116_end:
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+push "<HAY>"
+storecl
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 6
+action_14_end:
+action_15_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_129_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_117_end
+when_129_end:
+choose_117_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_130_end
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+out 2
+jmp choose_118_end
+when_130_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+choose_118_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+action_15_end:
+action_16_start:
+push 1
+push 3
+push 4
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_131_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_119_end
+when_131_end:
+choose_119_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 1
+push 1
+call determina_nbr_gen_SN
+action_16_end:
+action_17_start:
+push 3
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_132_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_120_end
+when_132_end:
+choose_120_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_133_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_121_end
+when_133_end:
+choose_121_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_134_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_122_end
+when_134_end:
+choose_122_end:
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push "pr"
+push 2
+get-case-from
+modify-case
+push "<PREP>"
+push "{^"
+push "de"
+push "<pr>"
+push "$}"
+chunk 6
+pushsb 2
+push 1
+push "lem"
+clip
+push 3
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 3
+push 1
+call determina_nbr_gen_SN
+action_17_end:
+action_18_start:
+push 3
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_135_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_123_end
+when_135_end:
+choose_123_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_136_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_124_end
+when_136_end:
+choose_124_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_137_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_125_end
+when_137_end:
+choose_125_end:
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push "pr"
+push 2
+get-case-from
+modify-case
+push "<PREP>"
+push "{^"
+push "de"
+push "<pr>"
+push "$}"
+chunk 6
+pushsb 2
+push 1
+push "lem"
+clip
+push 3
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 3
+push 1
+call determina_nbr_gen_SN
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_138_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_126_end
+when_138_end:
+choose_126_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_139_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_127_end
+when_139_end:
+choose_127_end:
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 2
+action_18_end:
+action_19_start:
+push 1
+push 3
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_140_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_128_end
+when_140_end:
+choose_128_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_141_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 3
+jmp choose_129_end
+when_141_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+choose_129_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+action_19_end:
+action_20_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_142_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_130_end
+when_142_end:
+choose_130_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_143_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 5
+jmp choose_131_end
+when_143_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+choose_131_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+action_20_end:
+action_21_start:
+push 1
+push 3
+push 5
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_144_end
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_132_end
+when_144_end:
+choose_132_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 9
+push 1
+push 1
+call determina_nbr_gen_SN
+action_21_end:
+action_22_start:
+push 1
+push 3
+push 6
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_145_end
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_133_end
+when_145_end:
+choose_133_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+out 11
+push 1
+push 1
+call determina_nbr_gen_SN
+action_22_end:
+action_23_start:
+push 3
+push 5
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_146_end
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_134_end
+when_146_end:
+choose_134_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_147_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_135_end
+when_147_end:
+choose_135_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_148_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_136_end
+when_148_end:
+choose_136_end:
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push "pr"
+push 2
+get-case-from
+modify-case
+push "<PREP>"
+push "{^"
+push "de"
+push "<pr>"
+push "$}"
+chunk 6
+pushsb 2
+push 1
+push "lem"
+clip
+push 3
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 9
+push 1
+push 1
+call determina_nbr_gen_SN
+action_23_end:
+action_24_start:
+push 3
+push 6
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_149_end
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_137_end
+when_149_end:
+choose_137_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_150_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_138_end
+when_150_end:
+choose_138_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_151_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_139_end
+when_151_end:
+choose_139_end:
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push "pr"
+push 2
+get-case-from
+modify-case
+push "<PREP>"
+push "{^"
+push "de"
+push "<pr>"
+push "$}"
+chunk 6
+pushsb 2
+push 1
+push "lem"
+clip
+push 3
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+out 11
+push 1
+push 1
+call determina_nbr_gen_SN
+action_24_end:
+action_25_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_152_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_140_end
+when_152_end:
+choose_140_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_153_end
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+out 2
+jmp choose_141_end
+when_153_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+choose_141_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_154_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_142_end
+when_154_end:
+choose_142_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_155_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_143_end
+when_155_end:
+choose_143_end:
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 2
+action_25_end:
+action_26_start:
+push 1
+push 3
+push 4
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_156_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_144_end
+when_156_end:
+choose_144_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_157_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+or 4
+jz when_158_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_146_end
+when_158_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<f>"
+storecl
+choose_146_end:
+jmp choose_145_end
+when_157_end:
+choose_145_end:
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_159_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_147_end
+when_159_end:
+choose_147_end:
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 2
+push 1
+push 1
+call determina_nbr_gen_SN
+push "nombre"
+push "<pl>"
+storev
+action_26_end:
+action_27_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_160_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_148_end
+when_160_end:
+choose_148_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_161_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+out 2
+jmp choose_149_end
+when_161_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+out 4
+choose_149_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_162_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_150_end
+when_162_end:
+choose_150_end:
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_163_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_151_end
+when_163_end:
+choose_151_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_164_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_152_end
+when_164_end:
+choose_152_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_165_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_153_end
+when_165_end:
+choose_153_end:
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 5
+action_27_end:
+action_28_start:
+push 1
+push 3
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_166_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_154_end
+when_166_end:
+choose_154_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_167_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+out 4
+jmp choose_155_end
+when_167_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+out 6
+choose_155_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_168_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_156_end
+when_168_end:
+choose_156_end:
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_169_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_157_end
+when_169_end:
+choose_157_end:
+push 4
+push "whole"
+clip
+chunk 1
+out 1
+action_28_end:
+action_29_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_170_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_158_end
+when_170_end:
+choose_158_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_171_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+out 4
+jmp choose_159_end
+when_171_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+out 6
+choose_159_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_172_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_160_end
+when_172_end:
+choose_160_end:
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_173_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_161_end
+when_173_end:
+choose_161_end:
+push 4
+push "whole"
+clip
+chunk 1
+out 1
+action_29_end:
+action_30_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_174_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_162_end
+when_174_end:
+choose_162_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_175_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+out 6
+jmp choose_163_end
+when_175_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+out 8
+choose_163_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_176_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_164_end
+when_176_end:
+choose_164_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_177_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_165_end
+when_177_end:
+choose_165_end:
+push 5
+push "whole"
+clip
+chunk 1
+out 1
+action_30_end:
+action_31_start:
+push 1
+push 3
+push 5
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_178_end
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_166_end
+when_178_end:
+choose_166_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 9
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_179_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+or 4
+jz when_180_end
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_168_end
+when_180_end:
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<f>"
+storecl
+choose_168_end:
+jmp choose_167_end
+when_179_end:
+choose_167_end:
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_181_end
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_169_end
+when_181_end:
+choose_169_end:
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+out 2
+push 1
+push 1
+call determina_nbr_gen_SN
+push "nombre"
+push "<pl>"
+storev
+action_31_end:
+action_32_start:
+push 1
+push 3
+push 6
+push 3
+call concord_SNcoo_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push 1
+call posadet_SN
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_182_end
+push 6
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_170_end
+when_182_end:
+choose_170_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+out 11
+push 7
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_183_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<m>"
+cmp
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+or 4
+jz when_184_end
+push 7
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_172_end
+when_184_end:
+push 7
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<f>"
+storecl
+choose_172_end:
+jmp choose_171_end
+when_183_end:
+choose_171_end:
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_185_end
+push 7
+push "<sg>|<pl>|<sp>|<ND>"
+push "<pl>"
+storecl
+jmp choose_173_end
+when_185_end:
+choose_173_end:
+pushsb 6
+push 7
+push "whole"
+clip
+chunk 1
+out 2
+push 1
+push 1
+call determina_nbr_gen_SN
+push "nombre"
+push "<pl>"
+storev
+action_32_end:
+action_33_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_186_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_174_end
+when_186_end:
+choose_174_end:
+push 3
+push "lem"
+clip
+push "num_yearold"
+cmp
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+push "<vbser>"
+cmp
+and 2
+jz when_187_end
+push 2
+push "lem"
+push "tener"
+storecl
+jmp choose_175_end
+when_187_end:
+choose_175_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_188_end
+push 1
+push 1
+call f_bcond
+pushsb 1
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+out 2
+jmp choose_176_end
+when_188_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+choose_176_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_189_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_177_end
+when_189_end:
+choose_177_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_190_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_178_end
+when_190_end:
+choose_178_end:
+pushbl
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 2
+out 3
+action_33_end:
+action_34_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_191_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_179_end
+when_191_end:
+choose_179_end:
+push 4
+push "lem"
+clip
+push "num_yearold"
+cmp
+push 2
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+push "<vbser>"
+cmp
+and 2
+jz when_192_end
+push 2
+push "lem"
+push "tener"
+storecl
+jmp choose_180_end
+when_192_end:
+choose_180_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_193_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 3
+jmp choose_181_end
+when_193_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+choose_181_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_194_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_182_end
+when_194_end:
+choose_182_end:
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_195_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_183_end
+when_195_end:
+choose_183_end:
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 2
+action_34_end:
+action_35_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_196_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_184_end
+when_196_end:
+choose_184_end:
+push 5
+push "lem"
+clip
+push "num_yearold"
+cmp
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+push "<vbser>"
+cmp
+and 2
+jz when_197_end
+push 4
+push "lem"
+push "tener"
+storecl
+jmp choose_185_end
+when_197_end:
+choose_185_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_198_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<nt>"
+cmp
+or 2
+not
+jz when_199_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_187_end
+when_199_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_187_end:
+jmp choose_186_end
+when_198_end:
+choose_186_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_200_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_201_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_189_end
+when_201_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+choose_189_end:
+jmp choose_188_end
+when_200_end:
+choose_188_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 1
+push 1
+call determina_nbr_gen_SN
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_202_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_190_end
+when_202_end:
+choose_190_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_203_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_191_end
+when_203_end:
+choose_191_end:
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 2
+action_35_end:
+action_36_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_204_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_192_end
+when_204_end:
+choose_192_end:
+push 6
+push "lem"
+clip
+push "num_yearold"
+cmp
+push 4
+push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
+clip
+push "<vbser>"
+cmp
+and 2
+jz when_205_end
+push 4
+push "lem"
+push "tener"
+storecl
+jmp choose_193_end
+when_205_end:
+choose_193_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_206_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<nt>"
+cmp
+or 2
+not
+jz when_207_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_195_end
+when_207_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_195_end:
+jmp choose_194_end
+when_206_end:
+choose_194_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_208_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_209_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_197_end
+when_209_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+choose_197_end:
+jmp choose_196_end
+when_208_end:
+choose_196_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 9
+push 1
+push 1
+call determina_nbr_gen_SN
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_210_end
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_198_end
+when_210_end:
+choose_198_end:
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_211_end
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_199_end
+when_211_end:
+choose_199_end:
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+out 2
+action_36_end:
+action_37_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_212_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_200_end
+when_212_end:
+choose_200_end:
+push 3
+push "<tn>|<obj>|<enc>|<itg>|<pos>"
+push "<pro>"
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_213_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+cmp
+and 3
+jz when_214_end
+push 3
+push "lem"
+push "reflexiu"
+storecl
+jmp choose_202_end
+when_214_end:
+choose_202_end:
+push 1
+push 1
+call f_bcond
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+jmp choose_201_end
+when_213_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+cmp
+and 2
+jz when_215_end
+push 3
+push "lem"
+push "reflexiu"
+storecl
+jmp choose_203_end
+when_215_end:
+choose_203_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 2
+push "whole"
+clip
+chunk 1
+out 5
+choose_201_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+action_37_end:
+action_38_start:
+push 1
+push 3
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_216_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_204_end
+when_216_end:
+choose_204_end:
+push 4
+push "<tn>|<obj>|<enc>|<itg>|<pos>"
+push "<pro>"
+storecl
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_217_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+cmp
+and 3
+jz when_218_end
+push 4
+push "lem"
+push "reflexiu"
+storecl
+jmp choose_206_end
+when_218_end:
+choose_206_end:
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 2
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+jmp choose_205_end
+when_217_end:
+push 4
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+cmp
+and 2
+jz when_219_end
+push 4
+push "lem"
+push "reflexiu"
+storecl
+jmp choose_207_end
+when_219_end:
+choose_207_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 3
+push "whole"
+clip
+chunk 1
+out 7
+choose_205_end:
+push 1
+push 1
+call determina_nbr_gen_SN
+action_38_end:
+action_39_start:
+push 1
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+push 1
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+or 2
+not
+jz when_220_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+jz when_221_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_209_end
+when_221_end:
+choose_209_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_222_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_210_end
+when_222_end:
+choose_210_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_223_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_211_end
+when_223_end:
+choose_211_end:
+jmp choose_208_end
+when_220_end:
+choose_208_end:
+push 2
+push "<tn>|<obj>|<enc>|<itg>|<pos>"
+push "<pro>"
+storecl
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<p3>"
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+cmp
+and 2
+jz when_224_end
+push 2
+push "lem"
+push "reflexiu"
+storecl
+jmp choose_212_end
+when_224_end:
+choose_212_end:
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+out 3
+action_39_end:
+action_40_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_225_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_213_end
+when_225_end:
+choose_213_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_226_end
+push 1
+push 1
+call f_bcond
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushbl
+push "cnjsub"
+push "<PREP>"
+push "{^"
+push "que"
+push 2
+get-case-from
+modify-case
+push "<cnjsub>"
+push "$}"
+chunk 6
+pushsb 2
+out 4
+jmp choose_214_end
+when_226_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushbl
+push "cnjsub"
+push "<PREP>"
+push "{^"
+push "que"
+push 2
+get-case-from
+modify-case
+push "<cnjsub>"
+push "$}"
+chunk 6
+pushsb 2
+out 6
+choose_214_end:
+push 3
+push 4
+push 2
+call concord_SN_SV
+push 3
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_227_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_215_end
+when_227_end:
+choose_215_end:
+push 3
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_228_end
+push 3
+push 1
+call f_bcond
+push 4
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 4
+push "tags"
+clip
+push 4
+push "chcontent"
+clip
+chunk 3
+out 1
+jmp choose_216_end
+when_228_end:
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 3
+push 3
+push 1
+call determina_nbr_gen_SN
+choose_216_end:
+action_40_end:
+action_41_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_229_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_217_end
+when_229_end:
+choose_217_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_230_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<nt>"
+cmp
+or 2
+not
+jz when_231_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_219_end
+when_231_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_219_end:
+jmp choose_218_end
+when_230_end:
+choose_218_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_232_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_233_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_221_end
+when_233_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+choose_221_end:
+jmp choose_220_end
+when_232_end:
+choose_220_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 1
+push 1
+call determina_nbr_gen_SN
+action_41_end:
+action_42_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_234_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_222_end
+when_234_end:
+choose_222_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_235_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<nt>"
+cmp
+or 2
+not
+jz when_236_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_224_end
+when_236_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_224_end:
+jmp choose_223_end
+when_235_end:
+choose_223_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_237_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_238_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_226_end
+when_238_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+choose_226_end:
+jmp choose_225_end
+when_237_end:
+choose_225_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+out 7
+push 1
+push 1
+call determina_nbr_gen_SN
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_239_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_227_end
+when_239_end:
+choose_227_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_240_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_228_end
+when_240_end:
+choose_228_end:
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 2
+action_42_end:
+action_43_start:
+push 1
+push 4
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_241_end
+push 4
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_229_end
+when_241_end:
+choose_229_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_242_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<nt>"
+cmp
+or 2
+not
+jz when_243_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_231_end
+when_243_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_231_end:
+jmp choose_230_end
+when_242_end:
+choose_230_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_244_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_245_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_233_end
+when_245_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+choose_233_end:
+jmp choose_232_end
+when_244_end:
+choose_232_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+out 8
+push 1
+push 1
+call determina_nbr_gen_SN
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_246_end
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_234_end
+when_246_end:
+choose_234_end:
+push 7
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_247_end
+push 7
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_235_end
+when_247_end:
+choose_235_end:
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_248_end
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_236_end
+when_248_end:
+choose_236_end:
+push 7
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_249_end
+push 7
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_237_end
+when_249_end:
+choose_237_end:
+push 5
+push "whole"
+clip
+chunk 1
+pushsb 5
+push 6
+push "whole"
+clip
+chunk 1
+pushsb 6
+push 7
+push "whole"
+clip
+chunk 1
+out 5
+action_43_end:
+action_44_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_250_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_238_end
+when_250_end:
+choose_238_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_251_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_239_end
+when_251_end:
+choose_239_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_252_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_240_end
+when_252_end:
+choose_240_end:
+push 1
+push "lem"
+clip
+push "prnsubj"
+cmpi
+jz when_253_end
+push 1
+push 1
+call f_bcond
+push "adv"
+push 1
+get-case-from
+modify-case
+push "<NEG>"
+push "{^"
+push "no"
+push "<adv>"
+push "$}"
+chunk 6
+pushbl
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+jmp choose_241_end
+when_253_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push "adv"
+push "<NEG>"
+push "{^"
+push "no"
+push 1
+get-case-from
+modify-case
+push "<adv>"
+push "$}"
+chunk 6
+pushbl
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 7
+choose_241_end:
+push 3
+push 1
+call determina_nbr_gen_SN
+action_44_end:
+action_45_start:
+push 1
+push 1
+call posadet_SN
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_254_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_242_end
+when_254_end:
+choose_242_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_255_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_243_end
+when_255_end:
+choose_243_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_256_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_244_end
+when_256_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_244_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushbl
+push "reladj"
+push "<REL>"
+push "{^"
+push "que"
+push 2
+get-case-from
+modify-case
+push "<rel>"
+push "<an>"
+push "<mf>"
+push "<sp>"
+push "$}"
+chunk 9
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 5
+push 1
+push 1
+call determina_nbr_gen_SN
+action_45_end:
+action_46_start:
+push 1
+push 2
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+push 1
+push 1
+call determina_nbr_gen_SN
+action_46_end:
+action_47_start:
+push 1
+push 3
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+push 1
+push 1
+call determina_nbr_gen_SN
+action_47_end:
+action_48_start:
+push 1
+push 5
+push 2
+call concord_SN_SV
+push 1
+push 1
+call posadet_SN
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_257_end
+push 5
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_245_end
+when_257_end:
+choose_245_end:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_258_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_246_end
+when_258_end:
+choose_246_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+jz when_259_end
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_247_end
+when_259_end:
+choose_247_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_260_end
+push nombre
+push ""
+cmp
+not
+jz when_261_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_249_end
+when_261_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_249_end:
+jmp choose_248_end
+when_260_end:
+choose_248_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_262_end
+push genere
+push ""
+cmp
+not
+jz when_263_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_251_end
+when_263_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_251_end:
+jmp choose_250_end
+when_262_end:
+choose_250_end:
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_264_end
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_252_end
+when_264_end:
+choose_252_end:
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_265_end
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_253_end
+when_265_end:
+choose_253_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 3
+push 4
+push "whole"
+clip
+chunk 1
+pushsb 4
+push 5
+push "whole"
+clip
+chunk 1
+out 9
+push 1
+push 1
+call determina_nbr_gen_SN
+push 4
+push 1
+call determina_nbr_gen_SN
+action_48_end:
+action_49_start:
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_266_end
+push 2
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_254_end
+when_266_end:
+choose_254_end:
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+jz when_267_end
+push 2
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_255_end
+when_267_end:
+choose_255_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_268_end
+push nombre
+push ""
+cmp
+not
+jz when_269_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_257_end
+when_269_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_257_end:
+jmp choose_256_end
+when_268_end:
+choose_256_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_270_end
+push genere
+push ""
+cmp
+not
+jz when_271_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_259_end
+when_271_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_259_end:
+jmp choose_258_end
+when_270_end:
+choose_258_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+out 3
+action_49_end:
+action_50_start:
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+jz when_272_end
+push 3
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+push "<pri>"
+storecl
+jmp choose_260_end
+when_272_end:
+choose_260_end:
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+jz when_273_end
+push 3
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_261_end
+when_273_end:
+choose_261_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_274_end
+push nombre
+push ""
+cmp
+not
+jz when_275_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+jmp choose_263_end
+when_275_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_263_end:
+jmp choose_262_end
+when_274_end:
+choose_262_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_276_end
+push genere
+push ""
+cmp
+not
+jz when_277_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push genere
+storecl
+jmp choose_265_end
+when_277_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_265_end:
+jmp choose_264_end
+when_276_end:
+choose_264_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 2
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 3
+push "whole"
+clip
+chunk 1
+out 5
+action_50_end:
+action_51_start:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_278_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_266_end
+when_278_end:
+choose_266_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_279_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_267_end
+when_279_end:
+choose_267_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_280_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+jz when_281_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_269_end
+when_281_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_269_end:
+jmp choose_268_end
+when_280_end:
+choose_268_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_282_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_283_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_271_end
+when_283_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_271_end:
+jmp choose_270_end
+when_282_end:
+choose_270_end:
+push 2
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 2
+push "tags"
+clip
+push 2
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push 1
+push "lem"
+clip
+push 2
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+out 3
+push 2
+push 1
+call determina_nbr_gen_SN
+action_51_end:
+action_52_start:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_284_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_272_end
+when_284_end:
+choose_272_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_285_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+or 2
+not
+jz when_286_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_274_end
+when_286_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_274_end:
+jmp choose_273_end
+when_285_end:
+choose_273_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_287_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+jz when_288_end
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_276_end
+when_288_end:
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_276_end:
+jmp choose_275_end
+when_287_end:
+choose_275_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_289_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_290_end
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_278_end
+when_290_end:
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_278_end:
+jmp choose_277_end
+when_289_end:
+choose_277_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_291_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<mf>"
+cmp
+not
+jz when_292_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+storecl
+jmp choose_280_end
+when_292_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+choose_280_end:
+jmp choose_279_end
+when_291_end:
+choose_279_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_293_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<sp>"
+cmp
+not
+jz when_294_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+storecl
+jmp choose_282_end
+when_294_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+choose_282_end:
+jmp choose_281_end
+when_293_end:
+choose_281_end:
+push 1
+push "whole"
+clip
+chunk 1
+pushsb 1
+push 3
+push "whole"
+clip
+chunk 1
+pushsb 2
+push 2
+push "whole"
+clip
+chunk 1
+out 5
+push 3
+push 1
+call determina_nbr_gen_SN
+action_52_end:
+action_53_start:
+push 1
+push 1
+call posadet_SN
+push 3
+push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
+push "<PDET>"
+storecl
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_295_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_283_end
+when_295_end:
+choose_283_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_296_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_284_end
+when_296_end:
+choose_284_end:
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_297_end
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_285_end
+when_297_end:
+choose_285_end:
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_298_end
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_286_end
+when_298_end:
+choose_286_end:
+push 3
+push "lem"
+clip
+push 1
+get-case-from
+modify-case
+push 3
+push "tags"
+clip
+push 3
+push "chcontent"
+clip
+chunk 3
+pushsb 1
+push "pr"
+push 2
+get-case-from
+modify-case
+push "<PREP>"
+push "{^"
+push "de"
+push "<pr>"
+push "$}"
+chunk 6
+pushsb 2
+push 1
+push "lem"
+clip
+push 3
+get-case-from
+modify-case
+push 1
+push "tags"
+clip
+push 1
+push "chcontent"
+clip
+chunk 3
+out 5
+push 3
+push 1
+call determina_nbr_gen_SN
+action_53_end:
+action_54_start:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_299_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_287_end
+when_299_end:
+choose_287_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+push nombre
+push "<>"
+cmp
+and 2
+jz when_300_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_288_end
+when_300_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push nombre
+storecl
+choose_288_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+action_54_end:
+action_55_start:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_301_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_289_end
+when_301_end:
+choose_289_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_302_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_290_end
+when_302_end:
+choose_290_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+push 1
+push 1
+call determina_nbr_gen_SN
+action_55_end:
+action_56_start:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_303_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_291_end
+when_303_end:
+choose_291_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_304_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_292_end
+when_304_end:
+choose_292_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+action_56_end:
+action_57_start:
+push 1
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<inf>"
+cmp
+push 1
+push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
+clip
+push "<ger>"
+cmp
+or 2
+not
+jz when_305_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+clip
+push "<PD>"
+cmp
+jz when_306_end
+push 1
+push "<p1>|<p2>|<p3>|<PD>"
+push "<p3>"
+storecl
+jmp choose_294_end
+when_306_end:
+choose_294_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_307_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_295_end
+when_307_end:
+choose_295_end:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_308_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_296_end
+when_308_end:
+choose_296_end:
+jmp choose_293_end
+when_305_end:
+choose_293_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+push 1
+push 1
+call determina_nbr_gen_SN
+action_57_end:
+action_58_start:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_309_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_297_end
+when_309_end:
+choose_297_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_310_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_298_end
+when_310_end:
+choose_298_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+action_58_end:
+action_59_start:
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+clip
+push "<GD>"
+cmp
+jz when_311_end
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+push "<m>"
+storecl
+jmp choose_299_end
+when_311_end:
+choose_299_end:
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+clip
+push "<ND>"
+cmp
+jz when_312_end
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+push "<sg>"
+storecl
+jmp choose_300_end
+when_312_end:
+choose_300_end:
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+action_59_end:
+action_60_start:
+push "nombre"
+push "<sg>"
+storev
+push 1
+push "whole"
+clip
+chunk 1
+out 1
+action_60_end:
+section_rules_end:
