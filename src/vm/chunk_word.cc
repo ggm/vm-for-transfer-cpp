@@ -98,7 +98,14 @@ void ChunkWord::solveReferences() {
         wstringstream ws;
         ws << ch;
         ws >> pos;
-        wstring tag = tagsValues[pos - 1];
+        wstring tag;
+        if(pos - 1 < tagsValues.size()) {
+          tag = tagsValues[pos - 1];
+        } else {
+          wcerr << "WARNING: tag linked from position " << pos
+                << " not found in tag string " <<  tags << "." << endl;
+          tag = L"";
+        }
         newWhole = replaceReference(newWhole, ch, tag);
         newChcontent = replaceReference(newChcontent, ch, tag);
       }
