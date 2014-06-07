@@ -18,6 +18,8 @@
 #include "system_trie.h"
 
 #include <iostream>
+#include <unordered_set>
+#include <queue>
 
 #include "vm_wstring_utils.h"
 
@@ -30,8 +32,32 @@ SystemTrie::SystemTrie(const SystemTrie &c) {
   copy(c);
 }
 
+/**
+ * Destructor of SystemTrie. Because of the circular references, we employ a BFS
+ * search in the TrieNode space, marking and accumulating all visited nodes.
+ */
 SystemTrie::~SystemTrie() {
-  // TODO: Cleanup memory taking into accout circular references and such.
+  std::unordered_set<TrieNode*> allNodes;
+  std::queue<TrieNode*> bfsQueue;
+
+  bfsQueue.push(root);
+  allNodes.insert(root);
+
+  while(!bfsQueue.empty()) {
+    TrieNode* currentNode = bfsQueue.front();
+    bfsQueue.pop();
+    for(const auto& it : currentNode->children) {
+      TrieNode* neighbor = it.second;
+      if(allNodes.find(neighbor) == allNodes.end()) {
+        bfsQueue.push(neighbor);
+        allNodes.insert(neighbor);
+      }
+    }
+  }
+
+  for(TrieNode* node : allNodes) {
+    delete node;
+  }
 }
 
 SystemTrie& SystemTrie::operator=(const SystemTrie &c) {
