@@ -13,7 +13,7 @@ VALIDATE_TEST_FN=""
 
 # Sets the variable ${LANG_PAIR_DIRS}, one directory per line.
 function find_lang_pairs() {
-  find ${TESTFILES_DIR} -mindepth 1 -maxdepth 1 -type d
+  find ${TESTFILES_DIR} -mindepth 1 -maxdepth 1 -type d | sort
 }
 
 function load_lang_pair_config() {
