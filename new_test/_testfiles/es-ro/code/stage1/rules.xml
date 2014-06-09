@@ -425,6 +425,7 @@
       <attr-item tags="pos"/>
       <attr-item tags="ref"/>
       <attr-item tags="enc"/>
+      <attr-item tags="enc.ref"/>
       <attr-item tags="pro"/>
       <attr-item tags="tn.pos"/>
     </def-attr>
