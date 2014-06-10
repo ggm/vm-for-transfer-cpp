@@ -21,6 +21,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <list>
 
 #include "vm_exceptions.h"
 #include "assembly_loader.h"
@@ -417,7 +418,7 @@ void VM::selectNextRuleLRLM() {
     unsigned int startPatternPos = nextPattern;
     // Get the next pattern to process.
     wstring pattern = getNextInputPattern();
-    vector<TrieNode *> curNodes = systemTrie.getPatternNodes(pattern);
+    list<TrieNode *> curNodes = systemTrie.getPatternNodes(pattern);
     nextPatternToProcess++;
 
     // Get the longest match, left to right
@@ -433,14 +434,14 @@ void VM::selectNextRuleLRLM() {
       // Continue trying to match current pattern + the next one.
       pattern = getNextInputPattern();
       fullPattern += pattern;
-      vector<TrieNode*> nextNodes;
-      vector<TrieNode*> auxNodes;
+
+      list<TrieNode*> nextNodes;
       // For each current node, add every possible transition to the nextNodes.
-      for (unsigned int i = 0; i < curNodes.size(); i++) {
-        auxNodes = systemTrie.getPatternNodes(pattern, curNodes[i]);
-        nextNodes.insert(nextNodes.end(), auxNodes.begin(), auxNodes.end());
+      for(TrieNode* node : curNodes) {
+        list<TrieNode*> auxNodes = systemTrie.getPatternNodes(pattern, node);
+        nextNodes.splice(nextNodes.end(), auxNodes);
       }
-      curNodes = nextNodes;
+      curNodes = std::move(nextNodes);
     }
 
     // If the pattern doesn't match, we will continue with the next one.

@@ -20,6 +20,9 @@
 #include <iostream>
 #include <unordered_set>
 #include <queue>
+#include <list>
+#include <vector>
+#include <utility>
 
 #include "vm_wstring_utils.h"
 
@@ -78,9 +81,9 @@ void SystemTrie::copy(const SystemTrie &c) {
  * @param pattern the pattern to match
  *
  * @return if the pattern is matched, the last nodes of the match, otherwise
- * an empty vector.
+ * an empty list.
  */
-vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
+list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
   return getPatternNodes(pattern, root);
 }
 
@@ -91,11 +94,11 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
  * @param startNode the start of the matching process
  *
  * @return if the pattern is matched, the last nodes of the match, otherwise
- * an empty vector.
+ * an empty list.
  */
-vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
+list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
     TrieNode *startNode) {
-  vector<TrieNode *> curNodes;
+  list<TrieNode *> curNodes;
 
   if (pattern == L"") {
     return curNodes;
@@ -105,20 +108,15 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
 
   curNodes.push_back(startNode);
 
-  wchar_t ch;
-  for (unsigned int i = 0; i < pattern.size(); i++) {
-    ch = pattern[i];
-    vector<TrieNode *> nextNodes;
+  for (wchar_t ch : pattern) {
+    list<TrieNode *> nextNodes;
 
-    for (vector<TrieNode *>::iterator itNode = curNodes.begin();
-         itNode != curNodes.end(); itNode++) {
+    for(TrieNode* node : curNodes) {
       // Get the next nodes for every current node and append them to the next.
-      vector<TrieNode *> auxNextNodes = getNextNodes(ch, *itNode);
-      nextNodes.insert(nextNodes.end(), auxNextNodes.begin(),
-          auxNextNodes.end());
+      nextNodes.splice(nextNodes.end(), getNextNodes(ch, node));
     }
 
-    curNodes = nextNodes;
+    curNodes = std::move(nextNodes);
     if (curNodes.size() == 0) {
       return curNodes;
     }
@@ -135,17 +133,15 @@ vector<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
  * @return if the pattern is matched, its rule number, otherwise NaRuleNumber.
  */
 int SystemTrie::getRuleNumber(const wstring &pattern) {
-  vector<TrieNode *> curNodes = getPatternNodes(pattern, root);
+  list<TrieNode *> curNodes = getPatternNodes(pattern, root);
 
   int ruleNumber = NaRuleNumber;
 
   // If there are several possible rules, return the first which appears on the
   // rules files.
-  int itRuleNumber;
   if (curNodes.size() > 0) {
-    for (vector<TrieNode *>::iterator it = curNodes.begin();
-         it != curNodes.end(); it++) {
-      itRuleNumber = (*it)->ruleNumber;
+    for (TrieNode* node : curNodes) {
+      int itRuleNumber = node->ruleNumber;
 
       if (ruleNumber == NaRuleNumber) {
         ruleNumber = itRuleNumber;
@@ -261,9 +257,9 @@ bool SystemTrie::canSkipChar(wchar_t ch) const {
  *
  * @return a collection of nodes to continue matching a pattern
  */
-vector<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
+list<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
     TrieNode *startNode) const {
-  vector<TrieNode *> nextNodes;
+  list<TrieNode *> nextNodes;
 
   // If a word is unknown (*lemma) it shouldn't match with anything.
   if (ch == L'*') {
