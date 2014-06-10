@@ -101,7 +101,7 @@ function build_tests_for_lang_pair() {
   done
 }
 
-function fixme_action_gen() {
+function action_fixme_gen() {
   echo "Building tests."
 
   find_lang_pairs |\
@@ -337,7 +337,7 @@ function run_tests() {
   fi
 }
 
-function fixme_action_rm() {
+function action_fixme_rm() {
   find ${TESTFILES_DIR} -mindepth 2 -maxdepth 2 -type d -name 'tests' -exec rm -r {} \;
   echo "Removed tests."
 }
