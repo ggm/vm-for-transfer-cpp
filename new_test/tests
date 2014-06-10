@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TODO Refactor so we can use test indication in rm / gen.
+# TODO Implement test skipping.
+# TODO Implement test tags (for instance small, medium, big).
+# TODO Implement test selection based on tags (run all small tests).
+
 readonly TESTFILES_DIR="_testfiles"
 readonly CONFIG_FILE="config.sh"
 readonly USE_COLORS=1
