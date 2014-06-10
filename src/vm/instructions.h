@@ -40,6 +40,7 @@ enum OP_CODE {
 struct Instruction {
   OP_CODE opCode;
   wstring op1;
+  int lineNumber = -1;
 };
 
 /// A code unit is a collection of instructions like the instructions of a rule.

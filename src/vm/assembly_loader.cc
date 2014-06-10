@@ -182,6 +182,7 @@ void AssemblyLoader::load(CodeUnit &preprocessCode, CodeUnit &code,
       } else if (line.find(L"end:") != wstring::npos) {
         Instruction ret;
         ret.op1 = L"ret";
+        ret.lineNumber = currentLineNumber;
         codeUnit.code.push_back(ret);
 
         codeUnit.loaded = false;
@@ -194,6 +195,7 @@ void AssemblyLoader::load(CodeUnit &preprocessCode, CodeUnit &code,
     // Handle all the simple instructions.
     } else {
       Instruction instr;
+      instr.lineNumber = currentLineNumber;
       if (justPreload) {
         // Just preload means that we don't get the internal representation of
         // instr, just keep the line as the first operand to later process it.
@@ -233,6 +235,7 @@ void AssemblyLoader::loadCodeSection(wfstream &file, CodeUnit &code) {
     }
 
     Instruction instr;
+    instr.lineNumber = currentLineNumber;
     if (getInternalRepresentation(line, code, instr)) {
       addInstructionToCodeUnit(instr, code);
     }
@@ -256,8 +259,9 @@ void AssemblyLoader::loadCodeUnit(CodeUnit &unit) {
 
   for (unsigned int i = 0; i < preloadedUnit.code.size(); i++) {
     Instruction instr;
+    instr.lineNumber = preloadedUnit.code[i].lineNumber;
     if (getInternalRepresentation(preloadedUnit.code[i].op1, unit, instr)) {
-        addInstructionToCodeUnit(instr, unit);
+      addInstructionToCodeUnit(instr, unit);
     }
   }
 
