@@ -4,6 +4,8 @@
 # TODO Implement test skipping.
 # TODO Implement test tags (for instance small, medium, big).
 # TODO Implement test selection based on tags (run all small tests).
+# TODO Fix test generation in order to use apertium-xfervm.
+# TODO Add clean action to clean the tests (remove everything other than pretransfer and expected).
 
 readonly TESTFILES_DIR="_testfiles"
 readonly CONFIG_FILE="config.sh"
@@ -99,7 +101,7 @@ function build_tests_for_lang_pair() {
   done
 }
 
-function action_gen() {
+function fixme_action_gen() {
   echo "Building tests."
 
   find_lang_pairs |\
@@ -335,7 +337,7 @@ function run_tests() {
   fi
 }
 
-function action_rm() {
+function fixme_action_rm() {
   find ${TESTFILES_DIR} -mindepth 2 -maxdepth 2 -type d -name 'tests' -exec rm -r {} \;
   echo "Removed tests."
 }
@@ -348,8 +350,6 @@ function action_ls() {
 
 function action_full() {
   echo "Performing full testing, this might take a while."
-  action_rm
-  action_gen
   action_ls
 
   JUST_LIST_TESTS_COMBINATIONS=0
