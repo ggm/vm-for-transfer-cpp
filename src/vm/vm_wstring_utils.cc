@@ -129,6 +129,10 @@ wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
  * @return the case of the wide string
  */
 CASE VMWstringUtils::getCase(const wstring &wstr) {
+  if(iswnumeric(wstr)) {
+    return aa;
+  }
+
   bool isFirstUpper = isupper(wstr[0], _loc);
   bool isAllUpper = VMWstringUtils::iswupper(wstr);
 
