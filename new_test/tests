@@ -4,7 +4,6 @@
 # TODO Implement test skipping.
 # TODO Implement test tags (for instance small, medium, big).
 # TODO Implement test selection based on tags (run all small tests).
-# TODO Fix test generation in order to use apertium-xfervm.
 # TODO Add clean action to clean the tests (remove everything other than pretransfer and expected).
 
 readonly TESTFILES_DIR="_testfiles"
@@ -60,8 +59,7 @@ function build_tests_for_all_stages() {
     local STAGE_DIR_BASENAME="$(basename ${STAGE_DIR})"
     local PRETRANSFER_PATH="${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}/pretransfer"
     local EXPECTED_PATH="${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}/expected"
-    local RULESXML_PATH="${LANG_PAIR_DIR}/code/${STAGE_DIR_BASENAME}/rules.xml"
-    local RULESXMLBIN_PATH="${LANG_PAIR_DIR}/code/${STAGE_DIR_BASENAME}/rules.xml.bin"
+    local RULESDIR_PATH="${LANG_PAIR_DIR}/code/${STAGE_DIR_BASENAME}"
 
     echo "Writing test to ${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}."
     create_empty_dir "${CURRENT_TEST_DIR}/${STAGE_DIR_BASENAME}"
@@ -70,11 +68,11 @@ function build_tests_for_all_stages() {
       generate_${STAGE_DIR_BASENAME}_pretransfer \
         "${TEXTFILE_PATH}" "${PRETRANSFER_PATH}" "${LANG_DATA_DIR}"
       generate_${STAGE_DIR_BASENAME}_expected \
-        "${PRETRANSFER_PATH}" "${RULESXML_PATH}" "${RULESXMLBIN_PATH}" "${EXPECTED_PATH}"
+        "${PRETRANSFER_PATH}" "${RULESDIR_PATH}" "${EXPECTED_PATH}"
     else
       cp "${LAST_EXPECTED_PATH}" "${PRETRANSFER_PATH}"
       generate_${LAST_STAGE_DIR_BASENAME}_to_${STAGE_DIR_BASENAME}_expected \
-        "${PRETRANSFER_PATH}" "${RULESXML_PATH}" "${RULESXMLBIN_PATH}" "${EXPECTED_PATH}"
+        "${PRETRANSFER_PATH}" "${RULESDIR_PATH}" "${EXPECTED_PATH}"
     fi
 
     LAST_STAGE_DIR=${STAGE_DIR}
@@ -101,7 +99,7 @@ function build_tests_for_lang_pair() {
   done
 }
 
-function action_fixme_gen() {
+function action_gen() {
   echo "Building tests."
 
   find_lang_pairs |\
@@ -337,7 +335,7 @@ function run_tests() {
   fi
 }
 
-function action_fixme_rm() {
+function action_rm() {
   find ${TESTFILES_DIR} -mindepth 2 -maxdepth 2 -type d -name 'tests' -exec rm -r {} \;
   echo "Removed tests."
 }
