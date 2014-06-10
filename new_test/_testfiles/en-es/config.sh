@@ -16,30 +16,27 @@ function generate_stage1_pretransfer() {
 
 function generate_stage1_expected() {
   local PRETRANSFER_PATH="${1}"
-  local RULESXML_PATH="${2}"
-  local RULESXMLBIN_PATH="${3}"
-  local EXPECTED_PATH="${4}"
+  local RULESDIR_PATH="${2}"
+  local EXPECTED_PATH="${3}"
 
   cat "${PRETRANSFER_PATH}" |\
-    apertium-transfer -b ${RULESXML_PATH} ${RULESXMLBIN_PATH} > ${EXPECTED_PATH}
+    apertium-xfervm -c "${RULESDIR_PATH}/rules.vm" > ${EXPECTED_PATH}
 }
 
 function generate_stage1_to_stage2_expected() {
   local LAST_STAGE_EXPECTED="${1}"
-  local RULESXML_PATH="${2}"
-  local RULESXMLBIN_PATH="${3}"
-  local EXPECTED_PATH="${4}"
+  local RULESDIR_PATH="${2}"
+  local EXPECTED_PATH="${3}"
 
   cat "${LAST_STAGE_EXPECTED}" |\
-    apertium-interchunk ${RULESXML_PATH} ${RULESXMLBIN_PATH} > ${EXPECTED_PATH}
+    apertium-xfervm -c "${RULESDIR_PATH}/rules.vm" > ${EXPECTED_PATH}
 }
 
 function generate_stage2_to_stage3_expected() {
   local LAST_STAGE_EXPECTED="${1}"
-  local RULESXML_PATH="${2}"
-  local RULESXMLBIN_PATH="${3}"
-  local EXPECTED_PATH="${4}"
+  local RULESDIR_PATH="${2}"
+  local EXPECTED_PATH="${3}"
 
   cat "${LAST_STAGE_EXPECTED}" |\
-    apertium-postchunk ${RULESXML_PATH} ${RULESXMLBIN_PATH} > ${EXPECTED_PATH}
+    apertium-xfervm -c "${RULESDIR_PATH}/rules.vm" > ${EXPECTED_PATH}
 }
