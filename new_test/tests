@@ -356,6 +356,15 @@ function action_full() {
   action_callgrind
 }
 
+function action_clean() {
+  find _testfiles/ \
+    -mindepth 5 -maxdepth 5 \
+    -not -path "*/pretransfer" \
+    -not -path "*/expected" \
+    -exec rm -rf {} \;
+  echo "Cleaned tests."
+}
+
 function action_help() {
   echo "Usage:"
   echo "  ./tests action action-params"
