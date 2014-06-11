@@ -198,14 +198,8 @@ void SystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
     part = pattern[i];
     wstring option = L"";
 
-    for (vector<TrieNode *>::iterator it = curNodes.begin();
-         it != curNodes.end(); it++) {
-      TrieNode *node = *it;
-
-      wchar_t ch;
-      for (unsigned int j = 0; j < part.size(); j++) {
-        ch = part[j];
-
+    for (TrieNode* node : curNodes) {
+      for (wchar_t ch : part) {
         // If the a part of a pattern has different options (op1|op2|op3).
         if (ch == L'|') {
           // Add each one, inserting a star if it starts with '<'.
@@ -218,7 +212,7 @@ void SystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
 
           option = L"";
         } else {
-          option += part[j];
+          option += ch;
         }
       }
 
