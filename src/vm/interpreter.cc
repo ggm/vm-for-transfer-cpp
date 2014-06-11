@@ -503,30 +503,28 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
     // Check if one of the parts divided by | matches the lemma or tags.
     wstring longestMatch = L"";
     wstring part = L"";
-    wchar_t ch;
 
-    for (unsigned int i = 0; i < parts.size(); i++) {
-      ch = parts[i];
+    size_t pipePos = 0, prevPipePos = -1;
+    while(true) {
+      pipePos = parts.find(L'|', prevPipePos + 1);
+      part = parts.substr(prevPipePos + 1, pipePos - prevPipePos - 1);
 
-      if (i == parts.size() - 1) {
-        part += ch;
-      }
-
-      if (ch == L'|' || i == parts.size() - 1) {
-        if (lemmaAndTags.find(part) != wstring::npos) {
-          if (notLinkTo) {
-            if (part.size() > longestMatch.size()) {
-              longestMatch = part;
-            }
-          } else {
-            vm->systemStack.push_back(linkTo);
-            return;
+      if (lemmaAndTags.find(part) != wstring::npos) {
+        if (notLinkTo) {
+          if (part.size() > longestMatch.size()) {
+            longestMatch = part;
           }
+        } else {
+          vm->systemStack.push_back(linkTo);
+          return;
         }
-        part = L"";
-      } else {
-        part += ch;
       }
+
+      if(pipePos == wstring::npos) {
+        break;
+      }
+
+      prevPipePos = pipePos;
     }
 
     if (longestMatch != L"") {
