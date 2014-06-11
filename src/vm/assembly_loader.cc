@@ -23,6 +23,7 @@
 #include <iomanip>
 
 #include "vm_exceptions.h"
+#include "vm_wstring_utils.h"
 
 using namespace std;
 
@@ -154,9 +155,8 @@ void AssemblyLoader::load(CodeUnit &preprocessCode, CodeUnit &code,
         codeUnit.code.clear();
       // At the end, create an entry on the rules section with the code.
       } else if (endsWith(line, end)) {
-        unsigned int ruleNumber;
-        wstringstream ws(getRuleNumber(line));
-        ws >> ruleNumber;
+        unsigned int ruleNumber = VMWstringUtils::stringTo<unsigned int>(
+            getRuleNumber(line));
         codeUnit.loaded = false;
         rulesCode.units.insert(rulesCode.units.begin() + ruleNumber, codeUnit);
 
@@ -172,8 +172,7 @@ void AssemblyLoader::load(CodeUnit &preprocessCode, CodeUnit &code,
       if (endsWith(line, start)) {
         wstring macroName = getMacroName(line);
         wstring addr = getNextMacroNumber();
-        wstringstream ws(addr);
-        ws >> macroAddr;
+        macroAddr = VMWstringUtils::stringTo<unsigned int>(addr);
         macroNumber[macroName] = addr;
 
         codeUnit.code.clear();

@@ -19,6 +19,8 @@
 
 #include <sstream>
 
+#include "vm_wstring_utils.h"
+
 Scope::Scope() {
   nextAddress = 0;
 }

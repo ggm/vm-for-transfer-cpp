@@ -19,6 +19,7 @@
 #define VM_WSTRING_UTILS_H_
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -31,6 +32,15 @@ enum CASE {
 class VMWstringUtils {
 
 public:
+
+  template<typename T>
+  static T stringTo(const wstring& s) {
+    static std::wstringstream ss;
+    static T value;
+    ss << s << endl;
+    ss >> value;
+    return value;
+  }
 
   static bool iswupper(const wstring &);
   static bool iswnumeric(const wstring &);

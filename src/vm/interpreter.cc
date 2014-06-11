@@ -201,10 +201,7 @@ void Interpreter::execute(const Instruction &instr) {
 vector<wstring> Interpreter::getOperands(const Instruction &instr) {
   vector<wstring> operands;
 
-  wstringstream ws(instr.op1);
-  int numOperands;
-  ws >> numOperands;
-
+  int numOperands = VMWstringUtils::stringTo<int>(instr.op1);
   while (numOperands > 0) {
     operands.insert(operands.begin(), popSystemStack());
     numOperands--;
@@ -225,13 +222,9 @@ vector<int> Interpreter::getNOperands(const Instruction &instr,
     const wstring &n) {
   vector<int> operands;
 
-  wstringstream ws(n);
-  int numOperands;
-  ws >> numOperands;
-
-  int operand;
+  int numOperands = VMWstringUtils::stringTo<int>(n);
   while (numOperands > 0) {
-    operand = popSystemStackInteger();
+    int operand = popSystemStackInteger();
     operands.insert(operands.begin(), operand);
     numOperands--;
   }
@@ -257,12 +250,8 @@ wstring Interpreter::popSystemStack() {
  * @return the top of the stack
  */
 int Interpreter::popSystemStackInteger() {
-  wstringstream top(vm->systemStack.back());
+  int intValue = VMWstringUtils::stringTo<int>(vm->systemStack.back());
   vm->systemStack.pop_back();
-
-  int intValue;
-  top >> intValue;
-
   return intValue;
 }
 
@@ -297,9 +286,7 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
   }
 
   // Add the pattern with the rule number to the trie.
-  int ruleNumber;
-  wstringstream ws(instr.op1);
-  ws >> ruleNumber;
+  int ruleNumber = VMWstringUtils::stringTo<int>(instr.op1);
   vm->systemTrie.addPattern(pattern, ruleNumber);
 }
 
@@ -429,9 +416,7 @@ void Interpreter::executeCall(const Instruction &instr) {
   }
 
   // Create an entry in the call stack with the macro called.
-  wstringstream ws(instr.op1);
-  int macroNumber;
-  ws >> macroNumber;
+  int macroNumber = VMWstringUtils::stringTo<int>(instr.op1);
 
   TCALL call;
   call.PC = 0;
@@ -739,18 +724,14 @@ void Interpreter::executeEndsWithIg(const Instruction &instr) {
 }
 
 void Interpreter::executeJmp(const Instruction &instr) {
-  wstringstream ws(instr.op1);
-  int jmpTo;
-  ws >> jmpTo;
+  int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
   modifyPC(jmpTo);
 }
 
 void Interpreter::executeJz(const Instruction &instr) {
   wstring condition = popSystemStack();
   if (condition == FALSE_WSTR) {
-    wstringstream ws(instr.op1);
-    int jmpTo;
-    ws >> jmpTo;
+    int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
     modifyPC(jmpTo);
   }
 }
@@ -758,9 +739,7 @@ void Interpreter::executeJz(const Instruction &instr) {
 void Interpreter::executeJnz(const Instruction &instr) {
   wstring condition = popSystemStack();
   if (condition != FALSE_WSTR) {
-    wstringstream ws(instr.op1);
-    int jmpTo;
-    ws >> jmpTo;
+    int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
     modifyPC(jmpTo);
   }
 }
@@ -871,9 +850,7 @@ void Interpreter::executePushsb(const Instruction &instr) {
   // The position is relative to the current word(s), so we have to get the
   // actual one. For the postchunk, the relative is the actual one because
   // each chunk stores the blanks in their content.
-  wstringstream ws(instr.op1);
-  unsigned int relativePos;
-  ws >> relativePos;
+  unsigned int relativePos = VMWstringUtils::stringTo<unsigned int>(instr.op1);
 
   if (vm->transferStage == POSTCHUNK) {
     ChunkWord *word = (ChunkWord *) vm->words[vm->currentWords[0]];
