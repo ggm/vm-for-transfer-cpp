@@ -4787,7 +4787,7 @@ Si se quiere empezar a tratar las frase impersonales en el t2x, habría que hace
 		<lu>   
 		  <var n="superlatiu1"/>
 		  <clip pos="4" side="tl" part="lem"/> 
-		  <clip pos="4	" side="tl" part="a_adj"/>
+		  <clip pos="4" side="tl" part="a_adj"/>
 		</lu>
                 <b pos="3"/>
 		<lu>

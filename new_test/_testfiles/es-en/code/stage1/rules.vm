@@ -4618,7 +4618,7 @@ push superlatiu1
 push 4
 push "lem"
 cliptl
-push 4 
+push 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex><pp>"
 cliptl
 lu 3
