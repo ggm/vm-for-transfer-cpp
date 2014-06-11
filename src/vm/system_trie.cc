@@ -179,8 +179,6 @@ int SystemTrie::getRuleNumber(const wstring &pattern) {
  * @param ruleNumber the rule number to associate to this pattern.
  */
 void SystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
-  wstring part = L"";
-
   // Only the last part of the pattern matches to the ruleNumber.
   int rule = NaRuleNumber;
   unsigned int numPatterns = pattern.size();
@@ -189,13 +187,14 @@ void SystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
   curNodes.push_back(root);
 
   for (unsigned int i = 0; i < numPatterns; i++) {
+    const wstring& part = pattern[i];
+
     vector<TrieNode *> lastNodes;
     // If it's the last part of the pattern, insert it with the rule number.
     if (i == numPatterns - 1) {
       rule = ruleNumber;
     }
 
-    part = pattern[i];
     wstring option = L"";
 
     for (TrieNode* node : curNodes) {
