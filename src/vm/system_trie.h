@@ -23,8 +23,6 @@
 #include <string>
 #include <list>
 
-using namespace std;
-
 /// Not a rule number: for the nodes without a rule number.
 const static int NaRuleNumber = -1;
 
@@ -34,7 +32,7 @@ struct TrieNode {
   int ruleNumber;
 
   /// A collection of children with the next character as key.
-  map<wchar_t, TrieNode *> children;
+  std::map<wchar_t, TrieNode *> children;
 };
 
 /**
@@ -44,14 +42,13 @@ struct TrieNode {
 class SystemTrie {
 
 public:
-
   SystemTrie();
   ~SystemTrie();
 
-  list<TrieNode *> getPatternNodes(const wstring &);
-  list<TrieNode *> getPatternNodes(const wstring &, TrieNode*);
-  int getRuleNumber(const wstring &);
-  void addPattern(const vector<wstring> &, int);
+  std::list<TrieNode *> getPatternNodes(const std::wstring &);
+  std::list<TrieNode *> getPatternNodes(const std::wstring &, TrieNode*);
+  int getRuleNumber(const std::wstring &);
+  void addPattern(const std::vector<std::wstring> &, int);
 
 private:
   SystemTrie(const SystemTrie &);
@@ -62,11 +59,11 @@ private:
   TrieNode *root;
 
   bool canSkipChar(wchar_t) const;
-  list<TrieNode *> getNextNodes(wchar_t, TrieNode *) const;
+  std::list<TrieNode *> getNextNodes(wchar_t, TrieNode *) const;
   TrieNode* setDefaultChild(TrieNode *, wchar_t);
   TrieNode* insertStar(TrieNode *);
   TrieNode* insertTagStar(TrieNode *);
-  TrieNode* insertPattern(const wstring &, int ruleNumber, TrieNode *);
+  TrieNode* insertPattern(const std::wstring &, int ruleNumber, TrieNode *);
 
 };
 
