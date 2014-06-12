@@ -46,10 +46,7 @@ class SystemTrie {
 public:
 
   SystemTrie();
-  SystemTrie(const SystemTrie &);
   ~SystemTrie();
-  SystemTrie& operator=(const SystemTrie &);
-  void copy(const SystemTrie &);
 
   list<TrieNode *> getPatternNodes(const wstring &);
   list<TrieNode *> getPatternNodes(const wstring &, TrieNode*);
@@ -57,6 +54,9 @@ public:
   void addPattern(const vector<wstring> &, int);
 
 private:
+  SystemTrie(const SystemTrie &);
+  SystemTrie& operator=(const SystemTrie &);
+  void copy(const SystemTrie &);
 
   /// The first TrieNode of the trie.
   TrieNode *root;
