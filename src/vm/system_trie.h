@@ -22,9 +22,43 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <unordered_map>
+#include <set>
 
 /// Not a rule number: for the nodes without a rule number.
 const static int NaRuleNumber = -1;
+
+struct NTrieNode {
+  int ruleNumber;
+  NTrieNode *starTransition;
+  NTrieNode *starTagTransition;
+  std::unordered_map<std::wstring, NTrieNode*> links;
+
+  NTrieNode();
+  NTrieNode(int ruleNumber);
+  ~NTrieNode();
+
+  NTrieNode *getOrCreateStarTransition();
+  NTrieNode *getOrCreateStarTagTransition();
+  bool containsTransitionBy(const std::wstring& wstr) const;
+  NTrieNode* _insertPattern(const wchar_t* pattern, int ruleNumber);
+  NTrieNode* insertPattern(const std::wstring& pattern, int ruleNumber);
+  void pushNextNodes(const std::wstring&, std::list<NTrieNode*>&) const;
+};
+
+class NSystemTrie {
+ private:
+  NTrieNode *root;
+
+ public:
+  NSystemTrie();
+  ~NSystemTrie();
+
+  std::list<NTrieNode*> getPatternNodes(const std::wstring& pattern, NTrieNode *startNode);
+  std::list<NTrieNode*> getPatternNodes(const std::wstring& pattern);
+  void addPattern(const std::vector<std::wstring> &pattern, int ruleNumber);
+  int getRuleNumber(const std::wstring &pattern);
+};
 
 /// This struct represents a node of the trie data structure.
 struct TrieNode {
@@ -47,8 +81,8 @@ public:
 
   std::list<TrieNode *> getPatternNodes(const std::wstring &);
   std::list<TrieNode *> getPatternNodes(const std::wstring &, TrieNode*);
-  int getRuleNumber(const std::wstring &);
   void addPattern(const std::vector<std::wstring> &, int);
+  int getRuleNumber(const std::wstring &);
 
 private:
   SystemTrie(const SystemTrie &);
@@ -59,7 +93,8 @@ private:
   TrieNode *root;
 
   bool canSkipChar(wchar_t) const;
-  std::list<TrieNode *> getNextNodes(wchar_t, TrieNode *) const;
+
+  void pushNextNodes(wchar_t, TrieNode*, std::list<TrieNode*>&) const;
   TrieNode* setDefaultChild(TrieNode *, wchar_t);
   TrieNode* insertStar(TrieNode *);
   TrieNode* insertTagStar(TrieNode *);

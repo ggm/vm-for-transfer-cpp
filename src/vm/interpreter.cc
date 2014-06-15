@@ -288,6 +288,7 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
   // Add the pattern with the rule number to the trie.
   int ruleNumber = VMWstringUtils::stringTo<int>(instr.op1);
   vm->systemTrie.addPattern(pattern, ruleNumber);
+  vm->n_systemTrie.addPattern(pattern, ruleNumber);
 }
 
 void Interpreter::executeAnd(const Instruction &instr) {

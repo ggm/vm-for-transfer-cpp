@@ -23,8 +23,288 @@
 #include <list>
 #include <vector>
 #include <utility>
+#include <regex>
+#include <unordered_map>
 
 #include "vm_wstring_utils.h"
+
+static bool _checkValidTagging(const wstring& pattern) {
+  int c = 0;
+  for(wchar_t w : pattern) {
+    if(w == L'<') ++c;
+    if(w == L'>') --c;
+    if(c < 0 || c > 1) return false;
+  }
+  return c == 0;
+}
+
+static bool _checkPattern(const wstring& pattern) {
+  // no empty patterns.
+  if(pattern == L"") {
+    return false;
+  }
+
+  // single word is OK (no tags).
+  if(pattern.find('<') == wstring::npos && pattern.find('>') == wstring::npos) {
+    return true;
+  }
+
+  // check tags are properly closed.
+  if(!_checkValidTagging(pattern)) {
+    return false;
+  }
+
+  if(pattern.back() != L'>') return false;
+
+  // count <.
+  int c1 = 0;
+  for(wchar_t w : pattern) if(w == L'<') ++c1;
+
+  // cout ><.
+  int c2 = 0;
+  for(size_t i = 0; i < pattern.size() - 1; ++i) {
+    if(pattern[i] == L'>' && pattern[i + 1] == L'<') {
+      ++c2;
+    }
+  }
+
+  if(c1 != c2 + 1) return false;
+
+  return true;
+}
+
+static void checkPattern(const wstring& pattern) {
+  if(!_checkPattern(pattern)) {
+    wcerr << "offending pattern: " << pattern << endl;
+  }
+}
+
+static size_t getFirstTokenLength(const wchar_t* pattern) {
+  if (pattern[0] == L'\0') return 0;
+
+  wchar_t lookFor = L'<';
+  if(pattern[0] == L'<') {
+    lookFor = L'>';
+  }
+  size_t cnt = 1;
+  while(pattern[cnt] != lookFor && pattern[cnt] != L'\0') {
+    ++cnt;
+  }
+
+  if(lookFor == L'>') ++cnt;
+  return cnt;
+}
+
+NTrieNode::NTrieNode(int ruleNumber) {
+  this->ruleNumber = ruleNumber;
+  this->starTransition = NULL;
+  this->starTagTransition = NULL;
+}
+
+NTrieNode::NTrieNode() {
+  this->ruleNumber = NaRuleNumber;
+  this->starTransition = NULL;
+  this->starTagTransition = NULL;
+}
+
+NTrieNode::~NTrieNode() {
+  // TODO
+}
+
+NTrieNode *NTrieNode::getOrCreateStarTransition() {
+  if(starTransition == NULL) {
+    starTransition = new NTrieNode;
+    starTransition->starTransition = starTransition;
+  }
+  return starTransition;
+}
+
+NTrieNode *NTrieNode::getOrCreateStarTagTransition() {
+  if(starTagTransition == NULL) {
+    starTagTransition = new NTrieNode;
+    starTagTransition->starTagTransition = starTagTransition;
+  }
+  return starTagTransition;
+}
+
+bool NTrieNode::containsTransitionBy(const wstring& wstr) const {
+  return links.find(wstr) != links.end();
+}
+
+NTrieNode* NTrieNode::_insertPattern(const wchar_t* pattern, int ruleNumber) {
+  size_t tokenLength = getFirstTokenLength(pattern);
+  wstring patternToken(pattern, tokenLength);
+
+  if(tokenLength == 0) {
+    int curRuleNumber = this->ruleNumber;
+    if (ruleNumber != NaRuleNumber) {
+      if (curRuleNumber == NaRuleNumber) {
+        this->ruleNumber = ruleNumber;
+      } else {
+        if (curRuleNumber != ruleNumber) {
+          wcerr << L"MY: Paths to rule " << ruleNumber << L" blocked by rule "
+                << curRuleNumber << L"." << endl;
+        }
+        this->ruleNumber = min(curRuleNumber, ruleNumber);
+      }
+    }
+    return this;
+  } else {
+    NTrieNode *nextNode = NULL;
+    if(patternToken == L"<*>") {
+      nextNode = getOrCreateStarTagTransition();
+    } else {
+      if(!containsTransitionBy(patternToken)) {
+        links[patternToken] = new NTrieNode;
+      }
+      nextNode = links[patternToken];
+    }
+    return nextNode->_insertPattern(pattern + tokenLength, ruleNumber);
+  }
+}
+
+NTrieNode* NTrieNode::insertPattern(const wstring& pattern, int ruleNumber) {
+  wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
+  return _insertPattern(patternLowered.c_str(), ruleNumber);
+}
+
+void NTrieNode::pushNextNodes(const wstring& wstr, list<NTrieNode*>& nodes) const {
+  if(wstr[0] == L'*') return;
+
+  // TODO optimize.
+  const auto& it = links.find(wstr);
+  if(it != links.end()) {
+    nodes.push_back(it->second);
+  }
+
+  NTrieNode* whichStarTransition = starTransition;
+  if(wstr[0] == L'<') whichStarTransition = starTagTransition;
+  if(whichStarTransition) {
+    nodes.push_back(whichStarTransition);
+  }
+}
+
+NSystemTrie::NSystemTrie() {
+  root = new NTrieNode;
+}
+
+NSystemTrie::~NSystemTrie() {
+  // TODO
+}
+
+void NSystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
+  // Only the last part of the pattern matches to the ruleNumber.
+  int rule = NaRuleNumber;
+  unsigned int numPatterns = pattern.size();
+
+  vector<NTrieNode *> curNodes;
+  curNodes.push_back(root);
+
+  for (unsigned int i = 0; i < numPatterns; i++) {
+    const wstring& part = pattern[i];
+
+    vector<NTrieNode *> lastNodes;
+    // If it's the last part of the pattern, insert it with the rule number.
+    if (i == numPatterns - 1) {
+      rule = ruleNumber;
+    }
+
+    wstring option = L"";
+
+    for (NTrieNode* node : curNodes) {
+      for (wchar_t ch : part) {
+        // If the a part of a pattern has different options (op1|op2|op3).
+        if (ch == L'|') {
+          // Add each one, inserting a star if it starts with '<'.
+          if (option[0] == L'<') {
+            NTrieNode *starNode = node->getOrCreateStarTransition();
+            lastNodes.push_back(starNode->insertPattern(option, rule));
+          } else {
+            lastNodes.push_back(node->insertPattern(option, rule));
+          }
+          option = L"";
+        } else {
+          option += ch;
+        }
+      }
+
+      // Add the single part or the last of its options.
+      if (option[0] == L'<') {
+        NTrieNode *starNode = node->getOrCreateStarTransition();
+        lastNodes.push_back(starNode->insertPattern(option, rule));
+      } else {
+        lastNodes.push_back(node->insertPattern(option, rule));
+      }
+
+      option = L"";
+    }
+
+    // Continue adding from where we ended.
+    curNodes = lastNodes;
+  }
+}
+
+list<NTrieNode*> NSystemTrie::getPatternNodes(const wstring &pattern, NTrieNode *startNode) {
+  wcerr << L"pattern = " << pattern << endl;
+
+  list<NTrieNode *> curNodes;
+
+  if (pattern.size() == 0) {
+    return curNodes;
+  }
+
+  wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
+
+  const wchar_t *p = patternLowered.c_str();
+  curNodes.push_back(root);
+
+  while(*p != L'\0') {
+    size_t tokenLength = getFirstTokenLength(p);
+    const wstring currentToken(p, tokenLength);
+    p += tokenLength;
+
+    // wcerr << "currentToken = " << currentToken << endl;
+
+    list<NTrieNode*> nextNodes;
+    for(NTrieNode* node : curNodes) {
+      node->pushNextNodes(currentToken, nextNodes);
+    }
+
+    curNodes = std::move(nextNodes);
+
+    if (curNodes.size() == 0) {
+      return curNodes;
+    }
+  }
+
+  return curNodes;
+}
+
+list<NTrieNode*> NSystemTrie::getPatternNodes(const wstring& pattern) {
+  return getPatternNodes(pattern, root);
+}
+
+int NSystemTrie::getRuleNumber(const wstring &pattern) {
+  list<NTrieNode *> curNodes = getPatternNodes(pattern, root);
+
+  int ruleNumber = NaRuleNumber;
+
+  // If there are several possible rules, return the first which appears on the
+  // rules files.
+  if (curNodes.size() > 0) {
+    for (NTrieNode* node : curNodes) {
+      int itRuleNumber = node->ruleNumber;
+
+      if (ruleNumber == NaRuleNumber) {
+        ruleNumber = itRuleNumber;
+      } else if (itRuleNumber != NaRuleNumber && itRuleNumber < ruleNumber) {
+        ruleNumber = itRuleNumber;
+      }
+    }
+  }
+
+  return ruleNumber;
+}
 
 SystemTrie::SystemTrie() {
   root = new TrieNode;
@@ -98,6 +378,8 @@ list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
  */
 list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
     TrieNode *startNode) {
+
+  // wcerr << L"SystemTrie::getPatternNodes(" << pattern << L")" << endl;
   list<TrieNode *> curNodes;
 
   if (pattern == L"") {
@@ -112,8 +394,7 @@ list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
     list<TrieNode *> nextNodes;
 
     for(TrieNode* node : curNodes) {
-      // Get the next nodes for every current node and append them to the next.
-      nextNodes.splice(nextNodes.end(), getNextNodes(ch, node));
+      pushNextNodes(ch, node, nextNodes);
     }
 
     curNodes = std::move(nextNodes);
@@ -250,13 +531,10 @@ bool SystemTrie::canSkipChar(wchar_t ch) const {
  *
  * @return a collection of nodes to continue matching a pattern
  */
-list<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
-    TrieNode *startNode) const {
-  list<TrieNode *> nextNodes;
-
+void SystemTrie::pushNextNodes(wchar_t ch, TrieNode *startNode, list<TrieNode*>& nodesAcc) const {
   // If a word is unknown (*lemma) it shouldn't match with anything.
   if (ch == L'*') {
-    return nextNodes;
+    return;
   }
 
   map<wchar_t, TrieNode*>::const_iterator it;
@@ -265,16 +543,14 @@ list<TrieNode*> SystemTrie::getNextNodes(wchar_t ch,
   if (canSkipChar(ch)) {
     it = startNode->children.find(L'*');
     if (it != startNode->children.end()) {
-      nextNodes.push_back(it->second);
+      nodesAcc.push_back(it->second);
     }
   }
 
   it = startNode->children.find(ch);
   if (it != startNode->children.end()) {
-    nextNodes.push_back(it->second);
+    nodesAcc.push_back(it->second);
   }
-
-  return nextNodes;
 }
 
 /**
@@ -357,7 +633,10 @@ TrieNode *SystemTrie::insertTagStar(TrieNode *node) {
  */
 TrieNode *SystemTrie::insertPattern(const wstring &pattern, int ruleNumber,
     TrieNode *node) {
+  // checkPattern(pattern);
   wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
+  // wcerr << L"SystemTrie::insertPattern(" << patternLowered << ")" << endl;
+
 
   TrieNode *curNode = node;
 
@@ -378,7 +657,7 @@ TrieNode *SystemTrie::insertPattern(const wstring &pattern, int ruleNumber,
       curNode->ruleNumber = ruleNumber;
     } else {
       if (curRuleNumber != ruleNumber) {
-        wcerr << L"Paths to rule " << ruleNumber << L" blocked by rule "
+        wcerr << L"TH: Paths to rule " << ruleNumber << L" blocked by rule "
               << curRuleNumber << L"." << endl;
       }
       curNode->ruleNumber = min(curRuleNumber, ruleNumber);
