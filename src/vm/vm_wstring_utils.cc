@@ -63,10 +63,10 @@ bool VMWstringUtils::iswnumeric(const wstring &wstr) {
  * @return the wide string with the changed case
  */
 wstring VMWstringUtils::wtolower(const wstring &wstr) {
-  wstring wstrLower = L"";
+  wstring wstrLower(wstr);
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrLower += tolower(wstr[i], _loc);
+    wstrLower[i] = tolower(wstr[i], _loc);
   }
 
   return wstrLower;
@@ -80,10 +80,10 @@ wstring VMWstringUtils::wtolower(const wstring &wstr) {
  * @return the wide string with the changed case
  */
 wstring VMWstringUtils::wtoupper(const wstring &wstr) {
-  wstring wstrUpper = L"";
+  wstring wstrUpper(wstr);
 
   for (unsigned int i = 0; i < wstr.size(); i++) {
-    wstrUpper += toupper(wstr[i], _loc);
+    wstrUpper[i] = toupper(wstr[i], _loc);
   }
 
   return wstrUpper;
@@ -98,7 +98,7 @@ wstring VMWstringUtils::wtoupper(const wstring &wstr) {
  * @return the pattern with the lemma to lower
  */
 wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
-  wstring lemma = L"";
+  wstring lemma = pattern;
   wchar_t ch;
 
   unsigned int i = 0;
@@ -107,14 +107,8 @@ wstring VMWstringUtils::lemmaToLower(const wstring &pattern) {
     if (ch == L'<') {
       break;
     } else {
-      lemma += ch;
+      lemma[i] = tolower(ch, _loc);
     }
-  }
-
-  lemma = VMWstringUtils::wtolower(lemma);
-
-  for (; i < pattern.size(); i++) {
-    lemma += pattern[i];
   }
 
   return lemma;
