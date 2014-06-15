@@ -28,6 +28,12 @@
 
 #include "vm_wstring_utils.h"
 
+static bool listHasDuplicates(const list<NTrieNode*>& nodes) {
+  set<NTrieNode*> sNodes;
+  sNodes.insert(nodes.begin(), nodes.end());
+  return sNodes.size() != nodes.size();
+}
+
 static bool _checkValidTagging(const wstring& pattern) {
   int c = 0;
   for(wchar_t w : pattern) {
@@ -245,8 +251,6 @@ void NSystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {
 }
 
 list<NTrieNode*> NSystemTrie::getPatternNodes(const wstring &pattern, NTrieNode *startNode) {
-  wcerr << L"pattern = " << pattern << endl;
-
   list<NTrieNode *> curNodes;
 
   if (pattern.size() == 0) {
@@ -256,14 +260,12 @@ list<NTrieNode*> NSystemTrie::getPatternNodes(const wstring &pattern, NTrieNode 
   wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
 
   const wchar_t *p = patternLowered.c_str();
-  curNodes.push_back(root);
+  curNodes.push_back(startNode);
 
   while(*p != L'\0') {
     size_t tokenLength = getFirstTokenLength(p);
     const wstring currentToken(p, tokenLength);
     p += tokenLength;
-
-    // wcerr << "currentToken = " << currentToken << endl;
 
     list<NTrieNode*> nextNodes;
     for(NTrieNode* node : curNodes) {
@@ -378,8 +380,6 @@ list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern) {
  */
 list<TrieNode*> SystemTrie::getPatternNodes(const wstring &pattern,
     TrieNode *startNode) {
-
-  // wcerr << L"SystemTrie::getPatternNodes(" << pattern << L")" << endl;
   list<TrieNode *> curNodes;
 
   if (pattern == L"") {
@@ -633,11 +633,7 @@ TrieNode *SystemTrie::insertTagStar(TrieNode *node) {
  */
 TrieNode *SystemTrie::insertPattern(const wstring &pattern, int ruleNumber,
     TrieNode *node) {
-  // checkPattern(pattern);
   wstring patternLowered = VMWstringUtils::lemmaToLower(pattern);
-  // wcerr << L"SystemTrie::insertPattern(" << patternLowered << ")" << endl;
-
-
   TrieNode *curNode = node;
 
   wchar_t ch;

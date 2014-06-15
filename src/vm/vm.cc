@@ -27,7 +27,7 @@
 #include "vm_exceptions.h"
 #include "assembly_loader.h"
 
-// #define _USE_N_SYSTEM_TRIE_
+#define _USE_N_SYSTEM_TRIE_
 
 #ifdef _USE_N_SYSTEM_TRIE_
 #define SYSTEM_TRIE_OBJECT      n_systemTrie
