@@ -822,12 +822,6 @@ void Interpreter::executeOut(const Instruction &instr) {
   vm->writeOutput(out);
 }
 
-int cntchr(const wstring& ws, wchar_t c) {
-  int cnt = 0;
-  for(wchar_t w : ws) if(c == w) cnt++;
-  return cnt;
-}
-
 void Interpreter::executePush(const Instruction &instr) {
   const wstring& op1 = instr.op1;
 
