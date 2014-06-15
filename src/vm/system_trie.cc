@@ -23,7 +23,6 @@
 #include <list>
 #include <vector>
 #include <utility>
-#include <regex>
 #include <unordered_map>
 
 #include "vm_wstring_utils.h"
