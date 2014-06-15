@@ -27,16 +27,6 @@
 #include "vm_exceptions.h"
 #include "assembly_loader.h"
 
-#define _USE_N_SYSTEM_TRIE_
-
-#ifdef _USE_N_SYSTEM_TRIE_
-#define SYSTEM_TRIE_OBJECT      n_systemTrie
-#define SYSTEM_TRIE_NODE_TYPE   NTrieNode
-#else
-#define SYSTEM_TRIE_OBJECT      systemTrie
-#define SYSTEM_TRIE_NODE_TYPE   TrieNode
-#endif
-
 using namespace std;
 
 VM::VM() {
@@ -403,7 +393,7 @@ void VM::selectNextRulePostchunk() {
   while (nextPattern < words.size()) {
     unsigned int startPatternPos = nextPattern;
     wstring pattern = getNextInputPattern();
-    int ruleNumber = SYSTEM_TRIE_OBJECT.getRuleNumber(pattern);
+    int ruleNumber = systemTrie.getRuleNumber(pattern);
 
     if (ruleNumber != NaRuleNumber) {
       setRuleSelected(ruleNumber, startPatternPos, pattern);
@@ -430,14 +420,14 @@ void VM::selectNextRuleLRLM() {
     // Get the next pattern to process.
     wstring pattern = getNextInputPattern();
 
-    list<SYSTEM_TRIE_NODE_TYPE *> curNodes = SYSTEM_TRIE_OBJECT.getPatternNodes(pattern);
+    list<TrieNode *> curNodes = systemTrie.getPatternNodes(pattern);
     nextPatternToProcess++;
 
     // Get the longest match, left to right
     wstring fullPattern = pattern;
     while (curNodes.size() > 0) {
       // Update the longest match if needed.
-      int ruleNumber = SYSTEM_TRIE_OBJECT.getRuleNumber(fullPattern);
+      int ruleNumber = systemTrie.getRuleNumber(fullPattern);
       if (ruleNumber != NaRuleNumber) {
         longestMatch = ruleNumber;
         nextPatternToProcess = nextPattern;
@@ -447,10 +437,10 @@ void VM::selectNextRuleLRLM() {
       pattern = getNextInputPattern();
       fullPattern += pattern;
 
-      list<SYSTEM_TRIE_NODE_TYPE*> nextNodes;
+      list<TrieNode*> nextNodes;
       // For each current node, add every possible transition to the nextNodes.
-      for(SYSTEM_TRIE_NODE_TYPE* node : curNodes) {
-        list<SYSTEM_TRIE_NODE_TYPE*> auxNodes = SYSTEM_TRIE_OBJECT.getPatternNodes(pattern, node);
+      for(TrieNode* node : curNodes) {
+        list<TrieNode*> auxNodes = systemTrie.getPatternNodes(pattern, node);
         nextNodes.splice(nextNodes.end(), auxNodes);
       }
       curNodes = std::move(nextNodes);

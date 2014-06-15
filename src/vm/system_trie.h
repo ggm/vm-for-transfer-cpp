@@ -28,78 +28,36 @@
 /// Not a rule number: for the nodes without a rule number.
 const static int NaRuleNumber = -1;
 
-struct NTrieNode {
+struct TrieNode {
   int ruleNumber;
-  NTrieNode *starTransition;
-  NTrieNode *starTagTransition;
-  std::unordered_map<std::wstring, NTrieNode*> links;
+  TrieNode *starTransition;
+  TrieNode *starTagTransition;
+  std::unordered_map<std::wstring, TrieNode*> links;
 
-  NTrieNode();
-  NTrieNode(int ruleNumber);
-  ~NTrieNode();
+  TrieNode();
+  TrieNode(int ruleNumber);
+  ~TrieNode();
 
-  NTrieNode *getOrCreateStarTransition();
-  NTrieNode *getOrCreateStarTagTransition();
+  TrieNode *getOrCreateStarTransition();
+  TrieNode *getOrCreateStarTagTransition();
   bool containsTransitionBy(const std::wstring& wstr) const;
-  NTrieNode* _insertPattern(const wchar_t* pattern, int ruleNumber);
-  NTrieNode* insertPattern(const std::wstring& pattern, int ruleNumber);
-  void pushNextNodes(const std::wstring&, std::list<NTrieNode*>&) const;
+  TrieNode* _insertPattern(const wchar_t* pattern, int ruleNumber);
+  TrieNode* insertPattern(const std::wstring& pattern, int ruleNumber);
+  void pushNextNodes(const std::wstring&, std::list<TrieNode*>&) const;
 };
 
-class NSystemTrie {
+class SystemTrie {
  private:
-  NTrieNode *root;
+  TrieNode *root;
 
  public:
-  NSystemTrie();
-  ~NSystemTrie();
+  SystemTrie();
+  ~SystemTrie();
 
-  std::list<NTrieNode*> getPatternNodes(const std::wstring& pattern, NTrieNode *startNode);
-  std::list<NTrieNode*> getPatternNodes(const std::wstring& pattern);
+  std::list<TrieNode*> getPatternNodes(const std::wstring& pattern, TrieNode *startNode);
+  std::list<TrieNode*> getPatternNodes(const std::wstring& pattern);
   void addPattern(const std::vector<std::wstring> &pattern, int ruleNumber);
   int getRuleNumber(const std::wstring &pattern);
 };
 
-/// This struct represents a node of the trie data structure.
-struct TrieNode {
-  /// The rule's number to apply, if it's the end of a pattern.
-  int ruleNumber;
-
-  /// A collection of children with the next character as key.
-  std::map<wchar_t, TrieNode *> children;
-};
-
-/**
- * This class stores the patterns, used to identify which rules to apply, as
- * a trie for easy retrieval.
- */
-class SystemTrie {
-
-public:
-  SystemTrie();
-  ~SystemTrie();
-
-  std::list<TrieNode *> getPatternNodes(const std::wstring &);
-  std::list<TrieNode *> getPatternNodes(const std::wstring &, TrieNode*);
-  void addPattern(const std::vector<std::wstring> &, int);
-  int getRuleNumber(const std::wstring &);
-
-private:
-  SystemTrie(const SystemTrie &);
-  SystemTrie& operator=(const SystemTrie &);
-  void copy(const SystemTrie &);
-
-  /// The first TrieNode of the trie.
-  TrieNode *root;
-
-  bool canSkipChar(wchar_t) const;
-
-  void pushNextNodes(wchar_t, TrieNode*, std::list<TrieNode*>&) const;
-  TrieNode* setDefaultChild(TrieNode *, wchar_t);
-  TrieNode* insertStar(TrieNode *);
-  TrieNode* insertTagStar(TrieNode *);
-  TrieNode* insertPattern(const std::wstring &, int ruleNumber, TrieNode *);
-
-};
-
-#endif /* SYSTEM_TRIE_H_ */
+#endif

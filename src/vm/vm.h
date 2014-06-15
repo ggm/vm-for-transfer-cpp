@@ -97,7 +97,6 @@ private:
 
   /// The vm also has a trie where all patterns are stored.
   SystemTrie systemTrie;
-  NSystemTrie n_systemTrie;
 
   /// The interpreter is the component responsible of instructions execution.
   Interpreter *interpreter;
