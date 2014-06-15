@@ -3,8 +3,8 @@
 #project.
 
 CC=g++
-# OPTIONS= -mtune=nocona -fomit-frame-pointer -funroll-loops -O3 -Wall --std=c++0x
-OPTIONS= -g -Wall --std=c++0x
+# OPTIONS= -mtune=nocona -fomit-frame-pointer -funroll-loops -O3 -Wall --std=c++11
+OPTIONS= -g -Wall --std=c++11
 PREFIX=/usr/local
 
 #Compiler variables
