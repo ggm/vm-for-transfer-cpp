@@ -3,6 +3,7 @@
 #project.
 
 CC=g++
+# OPTIONS= -mtune=nocona -fomit-frame-pointer -funroll-loops -O3 -Wall --std=c++0x
 OPTIONS= -g -Wall --std=c++0x
 PREFIX=/usr/local
 
