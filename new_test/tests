@@ -151,12 +151,24 @@ function run_single_pair_single_test_single_stage() {
     "${TEST_DIR_BASENAME}" \
     "${STAGE_NAME}")
 
+  local CURRENT_TEST_DIR="${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/tests/${TEST_DIR_BASENAME}/${STAGE_NAME}"
+
+  local CURRENT_TEST_TAGS_PATH="${CURRENT_TEST_DIR}/tags"
+
+  if [ "${TEST_TAG}" != "" ]; then
+    if [ -f "${CURRENT_TEST_TAGS_PATH}" ]; then
+      if [ -z $(grep "^$TEST_TAG\$" "${CURRENT_TEST_TAGS_PATH}") ]; then
+        return
+      fi
+    else
+      return
+    fi
+  fi
   if [ ${JUST_LIST_TESTS_COMBINATIONS} -eq 1 ]; then
     echo "${TEST_DESCRIPTION}"
     return
   fi
 
-  local CURRENT_TEST_DIR="${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/tests/${TEST_DIR_BASENAME}/${STAGE_NAME}"
   local CURRENT_STAGE_CODE_DIR="${TESTFILES_DIR}/${LANG_PAIR_BASENAME}/code/${STAGE_NAME}"
 
   # FIXME(asfrent): load only once for a certain langage pair.
@@ -380,10 +392,21 @@ function action_help() {
 }
 
 function test_script_main() {
+  TEST_TAG=""
   if [ $# -eq 0 ]; then
     echo "No action specified."
     action_help
   else
+    if [ "${1}" = "--tag" ] || [ "${1}" = "-t" ]; then
+      if [ $# -le 2 ]; then
+        echo "No action specified."
+        action_help
+      else
+        TEST_TAG="${2}"
+        shift
+        shift
+      fi
+    fi
     local TEST_SCRIPT_ACTION="${1}"
     shift
     action_${TEST_SCRIPT_ACTION} "$@"
