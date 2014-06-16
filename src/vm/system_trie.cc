@@ -55,10 +55,6 @@ TrieNode::TrieNode() {
   this->starTagTransition = NULL;
 }
 
-TrieNode::~TrieNode() {
-  // TODO
-}
-
 TrieNode *TrieNode::getOrCreateStarTransition() {
   if(starTransition == NULL) {
     starTransition = new TrieNode;
@@ -137,7 +133,35 @@ SystemTrie::SystemTrie() {
 }
 
 SystemTrie::~SystemTrie() {
-  // TODO
+  queue<TrieNode *> q;
+  unordered_set<TrieNode *> allNodes;
+  q.push(root);
+  allNodes.insert(root);
+
+  while (!q.empty()) {
+    TrieNode *node = q.front();
+    q.pop();
+    TrieNode *starTransition = node->starTransition;
+    if (starTransition != NULL && allNodes.find(starTransition) == allNodes.end()) {
+      q.push(starTransition);
+      allNodes.insert(starTransition);
+    }
+    TrieNode *starTagTransition = node->starTagTransition;
+    if (starTagTransition != NULL && allNodes.find(starTagTransition) == allNodes.end()) {
+      q.push(starTagTransition);
+      allNodes.insert(starTagTransition);
+    }
+    for (auto link : node->links) {
+      TrieNode *linkedNode = link.second;
+      if (linkedNode != NULL && allNodes.find(linkedNode) == allNodes.end()) {
+        q.push(linkedNode);
+        allNodes.insert(linkedNode);
+      }
+    }
+  }
+  for ( TrieNode* node : allNodes) {
+    delete node;
+  }
 }
 
 void SystemTrie::addPattern(const vector<wstring> &pattern, int ruleNumber) {

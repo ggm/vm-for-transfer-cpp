@@ -36,7 +36,6 @@ struct TrieNode {
 
   TrieNode();
   TrieNode(int ruleNumber);
-  ~TrieNode();
 
   TrieNode *getOrCreateStarTransition();
   TrieNode *getOrCreateStarTagTransition();
