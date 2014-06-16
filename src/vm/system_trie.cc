@@ -151,7 +151,7 @@ SystemTrie::~SystemTrie() {
       q.push(starTagTransition);
       allNodes.insert(starTagTransition);
     }
-    for (auto link : node->links) {
+    for (const auto& link : node->links) {
       TrieNode *linkedNode = link.second;
       if (linkedNode != NULL && allNodes.find(linkedNode) == allNodes.end()) {
         q.push(linkedNode);
@@ -159,7 +159,7 @@ SystemTrie::~SystemTrie() {
       }
     }
   }
-  for ( TrieNode* node : allNodes) {
+  for (TrieNode *node : allNodes) {
     delete node;
   }
 }
