@@ -373,6 +373,7 @@ function action_clean() {
     -mindepth 5 -maxdepth 5 \
     -not -path "*/pretransfer" \
     -not -path "*/expected" \
+    -not -path "*/tags" \
     -exec rm -rf {} \;
   echo "Cleaned tests."
 }
