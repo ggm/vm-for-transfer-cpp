@@ -2,9 +2,6 @@
 
 # TODO Refactor so we can use test indication in rm / gen.
 # TODO Implement test skipping.
-# TODO Implement test tags (for instance small, medium, big).
-# TODO Implement test selection based on tags (run all small tests).
-# TODO Add clean action to clean the tests (remove everything other than pretransfer and expected).
 
 readonly TESTFILES_DIR="_testfiles"
 readonly CONFIG_FILE="config.sh"
