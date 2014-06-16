@@ -377,7 +377,9 @@ function action_clean() {
 
 function action_help() {
   echo "Usage:"
-  echo "  ./tests action action-params"
+  echo "  ./tests [options] action action-params"
+  echo "Available options:"
+  echo "  * --tag tag (filter tests by tag)"
   echo "Available actions:"
   echo "  * rm - remove all tests."
   echo "  * gen - generate all tests."
