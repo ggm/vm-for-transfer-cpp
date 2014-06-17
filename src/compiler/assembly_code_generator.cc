@@ -495,11 +495,11 @@ void AssemblyCodeGenerator::genVarStart(const Event & event, bool isContainer) {
 
     // If it's a container of a modify-case, we also need its content.
     if (event.getParent()->getName() == L"modify-case") {
-      addCode(PUSH_OP + INSTR_SEP + varName);
+      addCode(PUSH_VAR_OP + INSTR_SEP + varName);
     }
   } else {
     // Otherwise, push it as a symbol (without quotes).
-    addCode(PUSH_OP + INSTR_SEP + varName);
+    addCode(PUSH_VAR_OP + INSTR_SEP + varName);
   }
 
 }

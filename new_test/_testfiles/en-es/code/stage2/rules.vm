@@ -1178,7 +1178,7 @@ push-int 2
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -1395,7 +1395,7 @@ push-int 3
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -1622,7 +1622,7 @@ push-int 4
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -1876,7 +1876,7 @@ push-int 2
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -2106,7 +2106,7 @@ push-int 3
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -2346,7 +2346,7 @@ push-int 3
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -2514,7 +2514,7 @@ push-int 2
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -2692,7 +2692,7 @@ push-int 2
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -2880,7 +2880,7 @@ push-int 3
 get-case-from
 modify-case
 push-str <prn><pro><p3><mf>
-push nombre
+push-var nombre
 push-str $}
 chunk 7
 pushbl
@@ -3750,7 +3750,7 @@ cmp
 jz when_138_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_126_end
 when_138_end:
@@ -3763,7 +3763,7 @@ cmp
 jz when_139_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_127_end
 when_139_end:
@@ -4322,7 +4322,7 @@ cmp
 jz when_154_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_142_end
 when_154_end:
@@ -4335,7 +4335,7 @@ cmp
 jz when_155_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_143_end
 when_155_end:
@@ -4530,7 +4530,7 @@ cmp
 jz when_162_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_150_end
 when_162_end:
@@ -4543,7 +4543,7 @@ cmp
 jz when_163_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_151_end
 when_163_end:
@@ -4556,7 +4556,7 @@ cmp
 jz when_164_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_152_end
 when_164_end:
@@ -4569,7 +4569,7 @@ cmp
 jz when_165_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_153_end
 when_165_end:
@@ -4670,7 +4670,7 @@ cmp
 jz when_168_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_156_end
 when_168_end:
@@ -4683,7 +4683,7 @@ cmp
 jz when_169_end
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_157_end
 when_169_end:
@@ -4774,7 +4774,7 @@ cmp
 jz when_172_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_160_end
 when_172_end:
@@ -4787,7 +4787,7 @@ cmp
 jz when_173_end
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_161_end
 when_173_end:
@@ -4888,7 +4888,7 @@ cmp
 jz when_176_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_164_end
 when_176_end:
@@ -4901,7 +4901,7 @@ cmp
 jz when_177_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_165_end
 when_177_end:
@@ -5241,7 +5241,7 @@ cmp
 jz when_189_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_177_end
 when_189_end:
@@ -5254,7 +5254,7 @@ cmp
 jz when_190_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_178_end
 when_190_end:
@@ -5364,7 +5364,7 @@ cmp
 jz when_194_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_182_end
 when_194_end:
@@ -5377,7 +5377,7 @@ cmp
 jz when_195_end
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_183_end
 when_195_end:
@@ -5526,7 +5526,7 @@ cmp
 jz when_202_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_190_end
 when_202_end:
@@ -5539,7 +5539,7 @@ cmp
 jz when_203_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_191_end
 when_203_end:
@@ -5693,7 +5693,7 @@ cmp
 jz when_210_end
 push-int 6
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_198_end
 when_210_end:
@@ -5706,7 +5706,7 @@ cmp
 jz when_211_end
 push-int 6
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_199_end
 when_211_end:
@@ -6460,7 +6460,7 @@ cmp
 jz when_239_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_227_end
 when_239_end:
@@ -6473,7 +6473,7 @@ cmp
 jz when_240_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_228_end
 when_240_end:
@@ -6604,7 +6604,7 @@ cmp
 jz when_246_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_234_end
 when_246_end:
@@ -6617,7 +6617,7 @@ cmp
 jz when_247_end
 push-int 7
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_235_end
 when_247_end:
@@ -6630,7 +6630,7 @@ cmp
 jz when_248_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_236_end
 when_248_end:
@@ -6643,7 +6643,7 @@ cmp
 jz when_249_end
 push-int 7
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_237_end
 when_249_end:
@@ -6962,14 +6962,14 @@ clip
 push-str <ND>
 cmp
 jz when_260_end
-push nombre
+push-var nombre
 push-str 
 cmp
 not
 jz when_261_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_249_end
 when_261_end:
@@ -6987,14 +6987,14 @@ clip
 push-str <GD>
 cmp
 jz when_262_end
-push genere
+push-var genere
 push-str 
 cmp
 not
 jz when_263_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_251_end
 when_263_end:
@@ -7097,14 +7097,14 @@ clip
 push-str <ND>
 cmp
 jz when_268_end
-push nombre
+push-var nombre
 push-str 
 cmp
 not
 jz when_269_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_257_end
 when_269_end:
@@ -7122,14 +7122,14 @@ clip
 push-str <GD>
 cmp
 jz when_270_end
-push genere
+push-var genere
 push-str 
 cmp
 not
 jz when_271_end
 push-int 2
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_259_end
 when_271_end:
@@ -7185,14 +7185,14 @@ clip
 push-str <ND>
 cmp
 jz when_274_end
-push nombre
+push-var nombre
 push-str 
 cmp
 not
 jz when_275_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 jmp choose_263_end
 when_275_end:
@@ -7210,14 +7210,14 @@ clip
 push-str <GD>
 cmp
 jz when_276_end
-push genere
+push-var genere
 push-str 
 cmp
 not
 jz when_277_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push genere
+push-var genere
 storecl
 jmp choose_265_end
 when_277_end:
@@ -7668,7 +7668,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-str <ND>
 cmp
-push nombre
+push-var nombre
 push-str <>
 cmp
 and 2
@@ -7681,7 +7681,7 @@ jmp choose_288_end
 when_300_end:
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push nombre
+push-var nombre
 storecl
 choose_288_end:
 push-int 1

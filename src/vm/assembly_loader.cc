@@ -64,6 +64,7 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
 
   opCodes[L"push-str"] = PUSH_STR;
   opCodes[L"push-int"] = PUSH_INT;
+  opCodes[L"push-var"] = PUSH_VAR;
 }
 
 AssemblyLoader::AssemblyLoader(const AssemblyLoader &c) {

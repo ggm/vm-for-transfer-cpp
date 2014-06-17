@@ -72,6 +72,7 @@ static const wstring STOREV_OP = L"storev";
 
 static const wstring PUSH_STR_OP = L"push-str";
 static const wstring PUSH_INT_OP = L"push-int";
+static const wstring PUSH_VAR_OP = L"push-var";
 
 static const unsigned int RULE = 0;
 static const unsigned int WHEN = 1;

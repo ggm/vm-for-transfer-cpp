@@ -37,7 +37,7 @@ enum OP_CODE {
 
   // TODO remove PUSH instruction after replacing it with specialized
   // versions in the compiler.
-  PUSH, PUSH_STR, PUSH_INT
+  PUSH, PUSH_STR, PUSH_INT, PUSH_VAR
 };
 
 /// A struct representing a instruction as an opcode and an operand.

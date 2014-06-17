@@ -74,7 +74,7 @@ clipsl
 push-str uno|otro|poco|cuánto|menos|mucho|tanto|demasiado
 inig
 jz when_3_end
-push nombre
+push-var nombre
 push-str <sg_slpl>
 cmp
 push-int 2
@@ -217,7 +217,7 @@ when_12_end:
 choose_4_end:
 jmp choose_3_end
 when_4_end:
-push nombre
+push-var nombre
 push-str <pl_slsg>
 cmp
 push-int 2
@@ -687,7 +687,7 @@ when_43_end:
 choose_14_end:
 macro_elimina_ND_end: ret
 macro_firstWord_start:
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_44_end
@@ -902,7 +902,7 @@ push-int 1
 push-str whole
 cliptl
 push-str $ ^
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lemh
 cliptl
@@ -1067,7 +1067,7 @@ push-int 2
 push-str whole
 cliptl
 push-str $ ^
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lemh
 cliptl
@@ -3433,7 +3433,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 3
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -3485,7 +3485,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 3
-push superlatiu2
+push-var superlatiu2
 push-int 3
 push-str lem
 cliptl
@@ -3494,7 +3494,7 @@ push-str <adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -3561,7 +3561,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -3632,7 +3632,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -3707,7 +3707,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -3716,7 +3716,7 @@ push-str <adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex>
 cliptl
 lu 3
 pushsb 2
-push superlatiu2
+push-var superlatiu2
 push-int 4
 push-str lem
 cliptl
@@ -3787,7 +3787,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu2
+push-var superlatiu2
 push-int 4
 push-str lem
 cliptl
@@ -3796,7 +3796,7 @@ push-str <adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<vblex>
 cliptl
 lu 3
 pushsb 2
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -3853,7 +3853,7 @@ push-str tags
 cliptl
 lu 2
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -3925,7 +3925,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push adv_adjectiu
+push-var adv_adjectiu
 lu 1
 pushsb 2
 push-int 2
@@ -3987,7 +3987,7 @@ push-str tags
 cliptl
 lu 2
 pushsb 1
-push adv_adjectiu
+push-var adv_adjectiu
 lu 1
 pushsb 2
 push-int 2
@@ -4059,7 +4059,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 3
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -4087,7 +4087,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push superlatiu2
+push-var superlatiu2
 push-int 4
 push-str lem
 cliptl
@@ -4130,7 +4130,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 3
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -4144,7 +4144,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 2
-push superlatiu2
+push-var superlatiu2
 push-int 4
 push-str lem
 cliptl
@@ -4222,7 +4222,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 3
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -4236,7 +4236,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 2
-push superlatiu2
+push-var superlatiu2
 push-int 4
 push-str lem
 cliptl
@@ -4317,7 +4317,7 @@ clipsl
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
-push nombre
+push-var nombre
 concat 4
 push-int 1
 push-str lem
@@ -4330,7 +4330,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -4358,7 +4358,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push superlatiu2
+push-var superlatiu2
 push-int 5
 push-str lem
 cliptl
@@ -4413,7 +4413,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -4427,7 +4427,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push superlatiu2
+push-var superlatiu2
 push-int 5
 push-str lem
 cliptl
@@ -4524,7 +4524,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 3
 push-str lem
 cliptl
@@ -4538,7 +4538,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push superlatiu2
+push-var superlatiu2
 push-int 5
 push-str lem
 cliptl
@@ -4614,7 +4614,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 2
-push superlatiu1
+push-var superlatiu1
 push-int 4
 push-str lem
 cliptl
@@ -4628,7 +4628,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push superlatiu2
+push-var superlatiu2
 push-int 6
 push-str lem
 cliptl
@@ -4672,7 +4672,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 clipsl
 concat 3
-push superlatiu1
+push-var superlatiu1
 push-int 1
 push-str lem
 cliptl
@@ -4706,7 +4706,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 clipsl
 concat 3
-push adv_adjectiu
+push-var adv_adjectiu
 lu 1
 chunk 3
 out 1
@@ -4774,7 +4774,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl "<3>"
 lu 3
 pushsb 1
-push superlatiu1
+push-var superlatiu1
 push-int 2
 push-str lem
 cliptl
@@ -4863,7 +4863,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl "<3>"
 lu 3
 pushsb 1
-push adv_adjectiu
+push-var adv_adjectiu
 lu 1
 chunk 5
 out 1
@@ -4944,15 +4944,15 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-str <adv>
 lu 2
 pushbl
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -4998,7 +4998,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5006,7 +5006,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 1
 push-str lemq
 cliptl
@@ -5033,7 +5033,7 @@ storev
 jmp choose_46_end
 when_101_end:
 push-str lema_SV
-push lema_SV
+push-var lema_SV
 storev
 choose_46_end:
 push lema_SV
@@ -5044,7 +5044,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5052,7 +5052,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 1
 push-str lemq
 cliptl
@@ -5082,7 +5082,7 @@ concat 3
 storev
 push-str lema_SV
 push-str adv_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 jmp choose_47_end
@@ -5099,7 +5099,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5107,8 +5107,8 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push modAdv
-push verbfinal
+push-var modAdv
+push-var verbfinal
 lu 1
 chunk 4
 out 1
@@ -5154,7 +5154,7 @@ push-str $
 concat 3
 storev
 push-str lema_SV
-push lema_SV
+push-var lema_SV
 push-str _adv_pp
 concat 2
 storev
@@ -5164,7 +5164,7 @@ push-str modAdv
 push-str 
 storev
 push-str lema_SV
-push lema_SV
+push-var lema_SV
 push-str _pp
 concat 2
 storev
@@ -5177,7 +5177,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5185,10 +5185,10 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
-push modAdv
+push-var modAdv
 push-int 4
 push-str lemh
 cliptl
@@ -5246,9 +5246,9 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 1
@@ -5257,7 +5257,7 @@ modify-case
 push-str <adv>
 lu 2
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushbl
 push-int 2
@@ -5323,7 +5323,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5331,7 +5331,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -5384,7 +5384,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5392,7 +5392,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -5455,9 +5455,9 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 1
@@ -5466,7 +5466,7 @@ modify-case
 push-str <adv>
 lu 2
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -5566,7 +5566,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5574,7 +5574,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -5640,7 +5640,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5648,7 +5648,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -5719,7 +5719,7 @@ storev
 choose_60_end:
 pushsb 2
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 1
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -5779,7 +5779,7 @@ push-str <SV>
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5787,7 +5787,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 4
@@ -5869,7 +5869,7 @@ push-str <SV>
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5877,7 +5877,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 4
@@ -5947,7 +5947,7 @@ push-str <SV>
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -5955,7 +5955,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 4
@@ -6126,9 +6126,9 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 1
@@ -6137,7 +6137,7 @@ modify-case
 push-str <adv>
 lu 2
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 pushbl
@@ -6178,7 +6178,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6186,7 +6186,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 2
 push-str lemq
 cliptl
@@ -6229,7 +6229,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6237,7 +6237,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 push-int 1
 push-str lem
@@ -6281,7 +6281,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6289,7 +6289,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 2
 push-str lemq
 cliptl
@@ -6366,7 +6366,7 @@ storev
 pushbl
 push "pr"
 push-str <PREP>
-push prepo
+push-var prepo
 lu 1
 chunk 3
 out 2
@@ -6379,7 +6379,7 @@ choose_70_end:
 choose_69_end:
 pushsb 1
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 1
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -6417,7 +6417,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6425,7 +6425,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 3
 push-str lemq
 cliptl
@@ -6461,7 +6461,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6469,7 +6469,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 push-int 2
 push-str lem
@@ -6510,7 +6510,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -6518,7 +6518,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 3
 push-str lemq
 cliptl
@@ -6871,9 +6871,9 @@ push-str lemq
 cliptl
 lu 5
 pushbl
-push prepo
+push-var prepo
 lu 1
-push espai
+push-var espai
 push-int 2
 push-str whole
 cliptl
@@ -8221,7 +8221,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 clipsl
@@ -8229,7 +8229,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 clipsl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 2
 push-str lemq
 cliptl
@@ -8287,7 +8287,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 clipsl
@@ -8295,7 +8295,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 clipsl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 2
 push-str lemq
 cliptl
@@ -8375,7 +8375,7 @@ storev
 choose_100_end:
 pushsb 2
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 1
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -8979,7 +8979,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8987,7 +8987,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -9024,7 +9024,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9032,7 +9032,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -9073,7 +9073,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9081,7 +9081,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 4
@@ -9138,7 +9138,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9146,7 +9146,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -9201,7 +9201,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9209,7 +9209,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -9286,7 +9286,7 @@ storev
 choose_112_end:
 pushsb 2
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 1
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -9327,7 +9327,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_113_end
 when_169_end:
@@ -9388,13 +9388,13 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 2
@@ -9403,7 +9403,7 @@ modify-case
 push-str <adv>
 lu 2
 pushbl
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -9426,7 +9426,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_115_end
 when_171_end:
@@ -9476,11 +9476,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9488,7 +9488,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 2
 push-str lemq
 cliptl
@@ -9514,7 +9514,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_117_end
 when_173_end:
@@ -9592,13 +9592,13 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 2
@@ -9607,7 +9607,7 @@ modify-case
 push-str <adv>
 lu 2
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushbl
 push-int 3
@@ -9669,11 +9669,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9681,7 +9681,7 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -9716,7 +9716,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_122_end
 when_178_end:
@@ -9772,11 +9772,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9784,7 +9784,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 4
@@ -9818,7 +9818,7 @@ push-str SVnegatiu
 push-str <SVneg>
 storev
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_124_end
 when_180_end:
@@ -9874,11 +9874,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 5
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 4
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -9886,7 +9886,7 @@ push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 5
@@ -9924,7 +9924,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_126_end
 when_182_end:
@@ -9987,13 +9987,13 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 2
@@ -10002,7 +10002,7 @@ modify-case
 push-str <adv>
 lu 2
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 4
@@ -10098,11 +10098,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10110,7 +10110,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 4
@@ -10172,11 +10172,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10184,7 +10184,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 4
@@ -10255,7 +10255,7 @@ storev
 choose_133_end:
 pushsb 3
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 2
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -10356,7 +10356,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_134_end
 when_190_end:
@@ -10402,13 +10402,13 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str there
 push-int 2
@@ -10417,7 +10417,7 @@ modify-case
 push-str <adv>
 lu 2
 pushbl
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 pushsb 2
@@ -10461,7 +10461,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_135_end
 when_191_end:
@@ -10496,11 +10496,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10508,7 +10508,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 3
 push-str lemq
 cliptl
@@ -10538,7 +10538,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_136_end
 when_192_end:
@@ -10573,11 +10573,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 4
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 4
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10585,7 +10585,7 @@ push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 4
 push-str lemq
 cliptl
@@ -10615,7 +10615,7 @@ push-int 2
 push-int 2
 call f_bcond
 push-str caseSecondWord
-push caseFirstWord
+push-var caseFirstWord
 storev
 jmp choose_137_end
 when_193_end:
@@ -10666,11 +10666,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10678,7 +10678,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 push-int 2
 push-str lem
@@ -10718,11 +10718,11 @@ push lema_SV
 push caseSecondWord
 case-of
 modify-case
-push SVnegatiu
+push-var SVnegatiu
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 3
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -10730,7 +10730,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 push-int 3
 push-str lemq
 cliptl
@@ -10807,7 +10807,7 @@ storev
 pushbl
 push "pr"
 push-str <PREP>
-push prepo
+push-var prepo
 lu 1
 chunk 3
 out 2
@@ -10820,7 +10820,7 @@ choose_141_end:
 choose_140_end:
 pushsb 2
 push lema
-push nom_chunk
+push-var nom_chunk
 push-int 2
 push-str <subj>|<obj>|<tn>|<itg>|<pos>
 cliptl
@@ -10995,9 +10995,9 @@ push-str lemq
 cliptl
 lu 5
 pushbl
-push prepo
+push-var prepo
 lu 1
-push espai
+push-var espai
 push-int 3
 push-str whole
 cliptl
@@ -12421,7 +12421,7 @@ push-str <NEG>
 append 1
 push-int 1
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_159_end
 when_215_end:

@@ -145,6 +145,7 @@ void Interpreter::execute(const Instruction &instr) {
   case PUSH: executePush(instr); break;
   case PUSH_STR: executePushStr(instr); break;
   case PUSH_INT: executePushInt(instr); break;
+  case PUSH_VAR: executePushVar(instr); break;
   case CLIPTL: executeCliptl(instr); break;
   case CLIP: executeClip(instr); break;
   case LU: executeLu(instr); break;
@@ -826,11 +827,17 @@ void Interpreter::executeOut(const Instruction &instr) {
 
 void Interpreter::executePushInt(const Instruction &instr) {
   // FIXME should use the numeric value instead.
-  if (!VMWstringUtils::iswnumeric(instr.op1)) {
-    wcerr << "WARNING: instruction at line " << instr.lineNumber
-          << " does not have a integer value operand." << endl;
-  }
   vm->systemStack.push_back(instr.op1);
+}
+
+void Interpreter::executePushVar(const Instruction &instr) {
+  const wstring& varName = instr.op1;
+  if (vm->variables.find(varName) != vm->variables.end()) {
+    vm->systemStack.push_back(vm->variables[varName]);
+  } else {
+    vm->variables[varName] = L"";
+    vm->systemStack.push_back(L"");
+  }
 }
 
 void Interpreter::executePushStr(const Instruction &instr) {

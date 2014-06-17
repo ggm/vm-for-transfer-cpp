@@ -193,8 +193,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -243,8 +243,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -319,8 +319,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 push-int 1
@@ -342,8 +342,8 @@ push-int 3
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 push-int 3
@@ -398,8 +398,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -488,8 +488,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -548,8 +548,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -643,8 +643,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -713,8 +713,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -788,8 +788,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -888,8 +888,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -976,8 +976,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2
@@ -1056,8 +1056,8 @@ push-int 0
 get-case-from
 modify-case
 push-str <det><def>
-push genero
-push numero
+push-var genero
+push-var numero
 lu 4
 pushbl
 out 2

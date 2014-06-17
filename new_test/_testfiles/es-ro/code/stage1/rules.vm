@@ -112,7 +112,7 @@ push-str
 cmp
 and 2
 jz when_5_end
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_6_end
@@ -208,14 +208,14 @@ when_10_end:
 choose_6_end:
 macro_mod-gen_end: ret
 macro_mod-gen-pp_start:
-push genero_pp
+push-var genero_pp
 push-str <f>
 cmp
-push genero_pp
+push-var genero_pp
 push-str <nt>
 cmp
 or 2
-push numero_pp
+push-var numero_pp
 push-str <pl>
 cmp
 and 2
@@ -225,14 +225,14 @@ push-str <fn>
 storev
 jmp choose_7_end
 when_11_end:
-push genero_pp
+push-var genero_pp
 push-str <m>
 cmp
-push genero_pp
+push-var genero_pp
 push-str <nt>
 cmp
 or 2
-push numero_pp
+push-var numero_pp
 push-str <sg>
 cmp
 and 2
@@ -242,7 +242,7 @@ push-str <mn>
 storev
 jmp choose_7_end
 when_12_end:
-push genero_pp
+push-var genero_pp
 push-str <mf>
 cmp
 jz when_13_end
@@ -317,7 +317,7 @@ cliptl
 push-str <GD>
 cmp
 jz when_19_end
-push genero
+push-var genero
 push-str <f>
 cmp
 jz when_20_end
@@ -327,7 +327,7 @@ push-str <f>
 storetl
 jmp choose_11_end
 when_20_end:
-push genero
+push-var genero
 push-str <m>
 cmp
 jz when_21_end
@@ -351,7 +351,7 @@ cliptl
 push-str <ND>
 cmp
 jz when_22_end
-push numero
+push-var numero
 push-str <pl>
 cmp
 jz when_23_end
@@ -459,7 +459,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -517,7 +517,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -718,7 +718,7 @@ cmp
 jz when_41_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_21_end
 when_41_end:
@@ -731,7 +731,7 @@ cmp
 jz when_42_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_22_end
 when_42_end:
@@ -744,7 +744,7 @@ cmp
 jz when_43_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_23_end
 when_43_end:
@@ -757,7 +757,7 @@ cmp
 jz when_44_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_24_end
 when_44_end:
@@ -899,7 +899,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -932,7 +932,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -990,7 +990,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1023,7 +1023,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -1308,7 +1308,7 @@ cmp
 jz when_71_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_35_end
 when_71_end:
@@ -1321,7 +1321,7 @@ cmp
 jz when_72_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_36_end
 when_72_end:
@@ -1334,7 +1334,7 @@ cmp
 jz when_73_end
 push-int 3
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_37_end
 when_73_end:
@@ -1347,7 +1347,7 @@ cmp
 jz when_74_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_38_end
 when_74_end:
@@ -1360,7 +1360,7 @@ cmp
 jz when_75_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_39_end
 when_75_end:
@@ -1373,7 +1373,7 @@ cmp
 jz when_76_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_40_end
 when_76_end:
@@ -1562,7 +1562,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1595,7 +1595,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -1628,7 +1628,7 @@ cmp
 not
 and 2
 not
-push concTercero
+push-var concTercero
 push-str true
 cmp
 and 3
@@ -1686,7 +1686,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1719,7 +1719,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -1752,7 +1752,7 @@ cmp
 not
 and 2
 not
-push concTercero
+push-var concTercero
 push-str true
 cmp
 and 3
@@ -1961,7 +1961,7 @@ cmp
 jz when_104_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_54_end
 when_104_end:
@@ -1974,7 +1974,7 @@ cmp
 jz when_105_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_55_end
 when_105_end:
@@ -1987,7 +1987,7 @@ cmp
 jz when_106_end
 push-int 3
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_56_end
 when_106_end:
@@ -2000,7 +2000,7 @@ cmp
 jz when_107_end
 push-int 4
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>
-push genero
+push-var genero
 storetl
 jmp choose_57_end
 when_107_end:
@@ -2013,7 +2013,7 @@ cmp
 jz when_108_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_58_end
 when_108_end:
@@ -2026,7 +2026,7 @@ cmp
 jz when_109_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_59_end
 when_109_end:
@@ -2039,7 +2039,7 @@ cmp
 jz when_110_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_60_end
 when_110_end:
@@ -2052,7 +2052,7 @@ cmp
 jz when_111_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_61_end
 when_111_end:
@@ -2085,10 +2085,10 @@ push-str lema_SV
 push-str verbcj
 storev
 push-str genero_pp
-push genero
+push-var genero
 storev
 push-str numero_pp
-push numero
+push-var numero
 storev
 push-int 2
 push-int 1
@@ -2110,8 +2110,8 @@ push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
 push-str <pp>
-push genero_pp
-push numero_pp
+push-var genero_pp
+push-var numero_pp
 push-int 2
 push-str lemq
 cliptl
@@ -2145,10 +2145,10 @@ push-str lema_SV
 push-str verbcj
 storev
 push-str genero_pp
-push genero
+push-var genero
 storev
 push-str numero_pp
-push numero
+push-var numero
 storev
 push-int 2
 push-int 1
@@ -2173,8 +2173,8 @@ push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
 push-str <pp>
-push genero_pp
-push numero_pp
+push-var genero_pp
+push-var numero_pp
 push-int 2
 push-str lemq
 cliptl
@@ -2287,10 +2287,10 @@ push-str lema_SV
 push-str verbcj
 storev
 push-str genero_pp
-push genero
+push-var genero
 storev
 push-str numero_pp
-push numero
+push-var numero
 storev
 push-int 1
 push-int 1
@@ -2312,8 +2312,8 @@ push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
 push-str <pp>
-push genero_pp
-push numero_pp
+push-var genero_pp
+push-var numero_pp
 push-int 1
 push-str lemq
 cliptl
@@ -2765,7 +2765,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -2854,7 +2854,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -2910,8 +2910,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push genero
-push numero
+push-var genero
+push-var numero
 concat 3
 push-int 1
 push-str lem
@@ -2948,7 +2948,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -2991,7 +2991,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -3043,7 +3043,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -3102,7 +3102,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -3163,7 +3163,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -3301,7 +3301,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-str pe
 push-str <pr>
@@ -3342,7 +3342,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 pushsb 1
 push-int 3
@@ -3386,7 +3386,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lem
@@ -3498,7 +3498,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 pushsb 1
 push-int 3
@@ -3542,7 +3542,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lem
@@ -3651,7 +3651,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -3699,7 +3699,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -3818,7 +3818,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 3
 push-str lemh
@@ -3866,7 +3866,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lem
@@ -3988,7 +3988,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 3
 push-str lemh
@@ -4036,7 +4036,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lem
@@ -4165,7 +4165,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4255,7 +4255,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4344,7 +4344,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4451,7 +4451,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4531,7 +4531,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4620,7 +4620,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4725,7 +4725,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4823,7 +4823,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -4930,7 +4930,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -5047,7 +5047,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -5140,7 +5140,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -5242,7 +5242,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -5354,7 +5354,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-str cel
 push-int 1
@@ -5427,7 +5427,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -5587,7 +5587,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-str cel
 push-int 1
@@ -5681,7 +5681,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -5880,7 +5880,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-str cel
 push-int 1
@@ -5974,7 +5974,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6161,7 +6161,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6214,7 +6214,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6285,7 +6285,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6368,7 +6368,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6401,7 +6401,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -6457,7 +6457,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -6518,7 +6518,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -6578,7 +6578,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lemh
@@ -6659,7 +6659,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -6720,7 +6720,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -6869,7 +6869,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 3
 push-str lemh
@@ -6930,7 +6930,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lem
@@ -7079,7 +7079,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -7148,7 +7148,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -7314,7 +7314,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 2
 push-str lemh
@@ -7393,7 +7393,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -7583,7 +7583,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -7649,7 +7649,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -7781,7 +7781,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 3
 push-str lemh
@@ -7857,7 +7857,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -8002,7 +8002,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -8087,7 +8087,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <DET>
-push caso
+push-var caso
 concat 2
 push-str tuturor
 push-str <predet><def><mf><sp><2>
@@ -8144,7 +8144,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8167,7 +8167,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8175,7 +8175,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8190,7 +8190,7 @@ call conj_verb1
 push-int 1
 push-int 1
 call set-case-prep1
-push caso
+push-var caso
 push-str <dg>
 cmp
 not
@@ -8203,7 +8203,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8211,10 +8211,10 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
-push prepfinal
+push-var prepfinal
 lu 1
 chunk 5
 out 1
@@ -8228,7 +8228,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8236,7 +8236,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8258,7 +8258,7 @@ push-str <SV>
 push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8266,7 +8266,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8306,7 +8306,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8314,7 +8314,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8357,7 +8357,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8387,7 +8387,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -8458,7 +8458,7 @@ push-str <SV>
 push-int 3
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8510,7 +8510,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 7
 out 1
@@ -8586,7 +8586,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8594,7 +8594,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -8639,7 +8639,7 @@ push-str <SV>
 push-int 1
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
-push temps_chunk
+push-var temps_chunk
 push-int 1
 push-str <p1>|<p2>|<p3>
 cliptl
@@ -8669,7 +8669,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -8776,8 +8776,8 @@ push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
 push-str <pp>
-push genero
-push numero
+push-var genero
+push-var numero
 push-int 2
 push-str lemq
 cliptl
@@ -8818,8 +8818,8 @@ cliptl
 push-int 2
 push-str <cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>
 cliptl
-push genero_pp
-push numero_pp
+push-var genero_pp
+push-var numero_pp
 push-int 2
 push-str lemq
 cliptl
@@ -8840,8 +8840,8 @@ push-int 2
 push-str <vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>
 cliptl
 push-str <pp>
-push genero
-push numero
+push-var genero
+push-var numero
 push-int 2
 push-str lemq
 cliptl
@@ -8883,8 +8883,8 @@ cliptl
 push-int 2
 push-str <cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>
 cliptl
-push genero_pp
-push numero_pp
+push-var genero_pp
+push-var numero_pp
 push-int 2
 push-str lemq
 cliptl
@@ -8917,7 +8917,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -8969,7 +8969,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9096,7 +9096,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9148,7 +9148,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9466,7 +9466,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9616,7 +9616,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 7
 out 1
@@ -9674,7 +9674,7 @@ push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9805,7 +9805,7 @@ push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str să
@@ -9976,7 +9976,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -10013,7 +10013,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem
@@ -10112,7 +10112,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push caso
+push-var caso
 concat 2
 push-int 1
 push-str lem

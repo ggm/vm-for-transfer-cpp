@@ -278,7 +278,7 @@ push-str
 cmp
 and 2
 jz when_7_end
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_8_end
@@ -297,7 +297,7 @@ choose_4_end:
 push-str caseFirstNewWord
 push-str aa
 storev
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_9_end
@@ -846,7 +846,7 @@ cliptl
 push-str <GD>
 cmp
 jz when_38_end
-push genero
+push-var genero
 push-str <f>
 cmp
 jz when_39_end
@@ -870,7 +870,7 @@ cliptl
 push-str <ND>
 cmp
 jz when_40_end
-push numero
+push-var numero
 push-str <pl>
 cmp
 jz when_41_end
@@ -1011,7 +1011,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1069,7 +1069,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1270,7 +1270,7 @@ cmp
 jz when_59_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_39_end
 when_59_end:
@@ -1283,7 +1283,7 @@ cmp
 jz when_60_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_40_end
 when_60_end:
@@ -1296,7 +1296,7 @@ cmp
 jz when_61_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_41_end
 when_61_end:
@@ -1309,7 +1309,7 @@ cmp
 jz when_62_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_42_end
 when_62_end:
@@ -1515,7 +1515,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1548,7 +1548,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -1606,7 +1606,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -1639,7 +1639,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -1924,7 +1924,7 @@ cmp
 jz when_89_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_53_end
 when_89_end:
@@ -1937,7 +1937,7 @@ cmp
 jz when_90_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_54_end
 when_90_end:
@@ -1950,7 +1950,7 @@ cmp
 jz when_91_end
 push-int 3
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_55_end
 when_91_end:
@@ -1963,7 +1963,7 @@ cmp
 jz when_92_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_56_end
 when_92_end:
@@ -1976,7 +1976,7 @@ cmp
 jz when_93_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_57_end
 when_93_end:
@@ -1989,7 +1989,7 @@ cmp
 jz when_94_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_58_end
 when_94_end:
@@ -2178,7 +2178,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -2211,7 +2211,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -2244,7 +2244,7 @@ cmp
 not
 and 2
 not
-push concTercero
+push-var concTercero
 push-str true
 cmp
 and 3
@@ -2302,7 +2302,7 @@ cmp
 not
 and 2
 not
-push concPrimero
+push-var concPrimero
 push-str true
 cmp
 and 3
@@ -2335,7 +2335,7 @@ cmp
 not
 and 2
 not
-push concSegundo
+push-var concSegundo
 push-str true
 cmp
 and 3
@@ -2368,7 +2368,7 @@ cmp
 not
 and 2
 not
-push concTercero
+push-var concTercero
 push-str true
 cmp
 and 3
@@ -2577,7 +2577,7 @@ cmp
 jz when_122_end
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_72_end
 when_122_end:
@@ -2590,7 +2590,7 @@ cmp
 jz when_123_end
 push-int 2
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_73_end
 when_123_end:
@@ -2603,7 +2603,7 @@ cmp
 jz when_124_end
 push-int 3
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_74_end
 when_124_end:
@@ -2616,7 +2616,7 @@ cmp
 jz when_125_end
 push-int 4
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
-push genero
+push-var genero
 storetl
 jmp choose_75_end
 when_125_end:
@@ -2629,7 +2629,7 @@ cmp
 jz when_126_end
 push-int 1
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_76_end
 when_126_end:
@@ -2642,7 +2642,7 @@ cmp
 jz when_127_end
 push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_77_end
 when_127_end:
@@ -2655,7 +2655,7 @@ cmp
 jz when_128_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_78_end
 when_128_end:
@@ -2668,7 +2668,7 @@ cmp
 jz when_129_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push numero
+push-var numero
 storetl
 jmp choose_79_end
 when_129_end:
@@ -7082,11 +7082,11 @@ push-str aux
 push-str el
 storev
 push-str aux
-push aux
-push caseFirstNewWord
+push-var aux
+push-var caseFirstNewWord
 modify-case
 storev
-push aux
+push-var aux
 push-str <det><def>
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
@@ -7116,11 +7116,11 @@ push-str aux
 push-str el
 storev
 push-str aux
-push aux
-push caseFirstNewWord
+push-var aux
+push-var caseFirstNewWord
 modify-case
 storev
-push aux
+push-var aux
 push-str <det><def>
 push-int 1
 push-str <m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>
@@ -7199,11 +7199,11 @@ push-str aux
 push-str de
 storev
 push-str aux
-push aux
-push caseFirstNewWord
+push-var aux
+push-var caseFirstNewWord
 modify-case
 storev
-push aux
+push-var aux
 push-str <pr>
 lu 2
 pushbl
@@ -7237,11 +7237,11 @@ push-str aux
 push-str de
 storev
 push-str aux
-push aux
-push caseFirstNewWord
+push-var aux
+push-var caseFirstNewWord
 modify-case
 storev
-push aux
+push-var aux
 push-str <pr>
 lu 2
 pushbl

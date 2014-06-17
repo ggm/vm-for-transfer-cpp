@@ -26,7 +26,7 @@ clip
 push-str verbcj|adv_verbcj|aux_verb|adv_aux_verb|haver_pp|haver_adv_pp|haver_pp_enc|aux_haver_pp|aux_haver_adv_pp|aux_haver_pp_enc|verbcj_enc|verbcj_ger|verbcj_ger_enc|tohavevblex
 inig
 jz when_1_end
-push fifrase
+push-var fifrase
 push-str yes
 cmp
 jz when_2_end
@@ -2007,7 +2007,7 @@ push-str no
 storev
 action_28_end:
 action_29_start:
-push que_cnjsub
+push-var que_cnjsub
 push-str yes
 cmp
 jz when_47_end

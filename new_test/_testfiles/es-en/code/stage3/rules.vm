@@ -345,7 +345,7 @@ push-int 1
 get-case-from
 modify-case
 push-str <vbdo>
-push temps_aux
+push-var temps_aux
 lu 3
 pushbl
 push-str not

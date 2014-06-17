@@ -62,7 +62,7 @@ cliptl
 append 4
 push-int 1
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_2_end
 when_2_end:
@@ -88,7 +88,7 @@ cliptl
 append 3
 push-int 1
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_2_end
 when_3_end:
@@ -162,7 +162,7 @@ cliptl
 append 4
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_6_end
 when_7_end:
@@ -188,7 +188,7 @@ cliptl
 append 3
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_6_end
 when_8_end:
@@ -458,7 +458,7 @@ cliptl
 append 4
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_16_end
 when_24_end:
@@ -484,7 +484,7 @@ cliptl
 append 3
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_16_end
 when_25_end:
@@ -521,7 +521,7 @@ cliptl
 append 4
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_18_end
 when_27_end:
@@ -547,7 +547,7 @@ cliptl
 append 3
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_18_end
 when_28_end:
@@ -665,14 +665,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_35_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_36_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_24_end
 when_36_end:
@@ -852,14 +852,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_47_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_48_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_32_end
 when_48_end:
@@ -907,7 +907,7 @@ cliptl
 append 4
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_34_end
 when_50_end:
@@ -933,7 +933,7 @@ cliptl
 append 3
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_34_end
 when_51_end:
@@ -970,7 +970,7 @@ cliptl
 append 4
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_36_end
 when_53_end:
@@ -996,7 +996,7 @@ cliptl
 append 3
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_36_end
 when_54_end:
@@ -1033,7 +1033,7 @@ cliptl
 append 4
 push-int 4
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_38_end
 when_56_end:
@@ -1059,7 +1059,7 @@ cliptl
 append 3
 push-int 4
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_38_end
 when_57_end:
@@ -1183,14 +1183,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_64_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_65_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_44_end
 when_65_end:
@@ -1207,14 +1207,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_66_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_67_end
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_46_end
 when_67_end:
@@ -1441,14 +1441,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_81_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_82_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_55_end
 when_82_end:
@@ -1465,14 +1465,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_83_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_84_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_57_end
 when_84_end:
@@ -1520,7 +1520,7 @@ cliptl
 append 4
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_59_end
 when_86_end:
@@ -1546,7 +1546,7 @@ cliptl
 append 3
 push-int 2
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_59_end
 when_87_end:
@@ -1583,7 +1583,7 @@ cliptl
 append 4
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_61_end
 when_89_end:
@@ -1609,7 +1609,7 @@ cliptl
 append 3
 push-int 3
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_61_end
 when_90_end:
@@ -1646,7 +1646,7 @@ cliptl
 append 4
 push-int 4
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_63_end
 when_92_end:
@@ -1672,7 +1672,7 @@ cliptl
 append 3
 push-int 4
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_63_end
 when_93_end:
@@ -1709,7 +1709,7 @@ cliptl
 append 4
 push-int 5
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_65_end
 when_95_end:
@@ -1735,7 +1735,7 @@ cliptl
 append 3
 push-int 5
 push-str whole
-push paraula1
+push-var paraula1
 storetl
 jmp choose_65_end
 when_96_end:
@@ -1865,14 +1865,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_103_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_104_end
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_71_end
 when_104_end:
@@ -1889,14 +1889,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_105_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_106_end
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_73_end
 when_106_end:
@@ -1913,14 +1913,14 @@ cliptl
 push-str <GD>
 cmp
 jz when_107_end
-push gen_chunk
+push-var gen_chunk
 push-str 
 cmp
 not
 jz when_108_end
 push-int 5
 push-str <m>|<f>|<mf>|<GD>|<nt>
-push gen_chunk
+push-var gen_chunk
 storetl
 jmp choose_75_end
 when_108_end:
@@ -2194,14 +2194,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_125_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_126_end
 push-int 3
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_85_end
 when_126_end:
@@ -2218,14 +2218,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_127_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_128_end
 push-int 4
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_87_end
 when_128_end:
@@ -2242,14 +2242,14 @@ cliptl
 push-str <ND>
 cmp
 jz when_129_end
-push nbr_chunk
+push-var nbr_chunk
 push-str 
 cmp
 not
 jz when_130_end
 push-int 5
 push-str <sg>|<pl>|<sp>|<ND>
-push nbr_chunk
+push-var nbr_chunk
 storetl
 jmp choose_89_end
 when_130_end:
@@ -2515,7 +2515,7 @@ clipsl
 push-str 
 cmp
 jz when_145_end
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_146_end
@@ -2538,7 +2538,7 @@ storev
 choose_101_end:
 jmp choose_100_end
 when_145_end:
-push EOS
+push-var EOS
 push-str true
 cmp
 jz when_147_end
@@ -2654,7 +2654,7 @@ macro_pron_start:
 push-str pronom
 push-str 
 storev
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_154_end
@@ -2676,7 +2676,7 @@ macro_pronenc_start:
 push-str pronomenc
 push-str 
 storev
-push tipus_verb_imp
+push-var tipus_verb_imp
 push-str <pron>
 cmp
 jz when_155_end
@@ -4911,7 +4911,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-str el
 push-str <det><def>
@@ -4978,7 +4978,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-str el
 push-str <det><def>
@@ -5052,7 +5052,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-str el
 push-str <det><def><m><sg>
@@ -5127,7 +5127,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-str el
 push-str <det><def><m><sg>
@@ -5175,7 +5175,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push negative
+push-var negative
 concat 2
 push-str el
 push-str <det><def>
@@ -5214,9 +5214,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -5296,9 +5296,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -5352,7 +5352,7 @@ cliptl
 lu 7
 pushbl
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -5398,10 +5398,10 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
-push negative
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
+push-var negative
 concat 5
 push-int 1
 push-str lem
@@ -5468,8 +5468,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -5533,9 +5533,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -5626,9 +5626,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -5745,8 +5745,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -5838,9 +5838,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -5981,9 +5981,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -6082,7 +6082,7 @@ push-int 2
 push-int 1
 push-int 3
 call f_concord3
-push gen_chunk
+push-var gen_chunk
 push-str <mf>
 cmp
 jz when_194_end
@@ -6092,7 +6092,7 @@ storev
 jmp choose_126_end
 when_194_end:
 choose_126_end:
-push nbr_chunk
+push-var nbr_chunk
 push-str <sp>
 cmp
 jz when_195_end
@@ -6107,9 +6107,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-str un
 push-str <det><ind><3><4>
@@ -6183,8 +6183,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 2
 push-str lemh
@@ -6209,7 +6209,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -6259,9 +6259,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -6306,7 +6306,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -6360,8 +6360,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -6406,7 +6406,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -6450,9 +6450,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -6517,7 +6517,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -6568,9 +6568,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -6635,7 +6635,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -6683,8 +6683,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -6749,7 +6749,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -6796,9 +6796,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -6848,7 +6848,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -6898,8 +6898,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -6949,7 +6949,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -6991,8 +6991,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str lemh
@@ -7022,7 +7022,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -7070,9 +7070,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -7142,7 +7142,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 4
 push-str lemh
 cliptl
@@ -7196,9 +7196,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -7268,7 +7268,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 4
 push-str lemh
 cliptl
@@ -7307,8 +7307,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str lemh
@@ -7388,9 +7388,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -7435,7 +7435,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lem
 cliptl
@@ -7456,7 +7456,7 @@ push-str <sp>
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -7508,9 +7508,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -7575,7 +7575,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lem
 cliptl
@@ -7596,7 +7596,7 @@ push-str <sp>
 cliptl
 lu 7
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lem
 cliptl
@@ -7647,9 +7647,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -7694,7 +7694,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lem
 cliptl
@@ -7720,7 +7720,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lem
 cliptl
@@ -7764,8 +7764,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -7810,7 +7810,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lem
 cliptl
@@ -7836,7 +7836,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lem
 cliptl
@@ -7887,8 +7887,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -7933,7 +7933,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lemh
 cliptl
@@ -7954,7 +7954,7 @@ push-str <sp>
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -8009,9 +8009,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -8076,7 +8076,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lemh
 cliptl
@@ -8097,7 +8097,7 @@ push-str <sp>
 cliptl
 lu 7
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -8140,8 +8140,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str lemh
@@ -8166,7 +8166,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu2
+push-var adjectiu2
 push-int 2
 push-str lemh
 cliptl
@@ -8190,7 +8190,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -8248,9 +8248,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -8315,7 +8315,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 5
 push-str lemh
 cliptl
@@ -8344,7 +8344,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 5
-push adjectiu1
+push-var adjectiu1
 push-int 4
 push-str lemh
 cliptl
@@ -8402,9 +8402,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -8469,7 +8469,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 5
 push-str lemh
 cliptl
@@ -8498,7 +8498,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 5
-push adjectiu1
+push-var adjectiu1
 push-int 4
 push-str lemh
 cliptl
@@ -8544,8 +8544,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -8570,7 +8570,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -8599,7 +8599,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lemh
 cliptl
@@ -8645,8 +8645,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 5
 push-str lemh
@@ -8671,7 +8671,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -8705,7 +8705,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lemh
 cliptl
@@ -8759,9 +8759,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -8806,7 +8806,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -8835,7 +8835,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lemh
 cliptl
@@ -8889,9 +8889,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -8936,7 +8936,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -8970,7 +8970,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 5
-push adjectiu2
+push-var adjectiu2
 push-int 5
 push-str lemh
 cliptl
@@ -9024,9 +9024,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -9076,7 +9076,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -9105,7 +9105,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 5
-push adjectiu2
+push-var adjectiu2
 push-int 5
 push-str lemh
 cliptl
@@ -9159,9 +9159,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -9206,7 +9206,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -9234,7 +9234,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 4
-push adjectiu2
+push-var adjectiu2
 push-int 4
 push-str lemh
 cliptl
@@ -9280,8 +9280,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -9307,7 +9307,7 @@ cliptl
 lu 7
 pushsb 1
 pushbl
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -9336,7 +9336,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lemh
 cliptl
@@ -9378,8 +9378,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -9408,7 +9408,7 @@ push-int 1
 push-str whole
 cliptl
 lu 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -9454,8 +9454,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 2
 push-str whole
@@ -9488,7 +9488,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -9538,9 +9538,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -9593,7 +9593,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -9643,9 +9643,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -9694,7 +9694,7 @@ push-int 2
 push-str whole
 cliptl
 lu 1
-push adjectiu1
+push-var adjectiu1
 push-int 3
 push-str lemh
 cliptl
@@ -9931,9 +9931,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -10014,9 +10014,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -10142,8 +10142,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -10224,8 +10224,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -10621,9 +10621,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -10792,8 +10792,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -11126,9 +11126,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -11321,8 +11321,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -11438,8 +11438,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -11515,8 +11515,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lem
@@ -11612,9 +11612,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -11747,9 +11747,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -11851,9 +11851,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12003,9 +12003,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12107,9 +12107,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12249,9 +12249,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12490,7 +12490,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -12523,8 +12523,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 2
 push-str lemh
@@ -12549,7 +12549,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -12654,9 +12654,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12722,7 +12722,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -12762,9 +12762,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -12809,7 +12809,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -12914,8 +12914,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -12961,7 +12961,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 2
 push-str lemh
 cliptl
@@ -12985,7 +12985,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -13022,8 +13022,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str lemh
@@ -13048,7 +13048,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 1
-push adjectiu2
+push-var adjectiu2
 push-int 2
 push-str lemh
 cliptl
@@ -13072,7 +13072,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -13178,9 +13178,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -13246,7 +13246,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 3
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lemh
 cliptl
@@ -13270,7 +13270,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 4
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -13308,9 +13308,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -13355,7 +13355,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu2
+push-var adjectiu2
 push-int 3
 push-str lemh
 cliptl
@@ -13379,7 +13379,7 @@ push-str lemq
 cliptl
 lu 8
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -13502,8 +13502,8 @@ lu 2
 pushbl
 push-str el
 push-str <det><def>
-push genere
-push nombre
+push-var genere
+push-var nombre
 lu 4
 pushbl
 push-int 1
@@ -13570,8 +13570,8 @@ lu 2
 pushbl
 push-str el
 push-str <det><def>
-push genere
-push nombre
+push-var genere
+push-var nombre
 lu 4
 pushsb 2
 push-int 1
@@ -13724,9 +13724,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -13798,8 +13798,8 @@ lu 2
 pushbl
 push-str el
 push-str <det><def>
-push genere
-push nombre
+push-var genere
+push-var nombre
 lu 4
 pushbl
 push-int 2
@@ -13840,9 +13840,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -13893,8 +13893,8 @@ lu 2
 pushbl
 push-str el
 push-str <det><def>
-push genere
-push nombre
+push-var genere
+push-var nombre
 lu 4
 pushbl
 push-int 2
@@ -13969,8 +13969,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 4
 push-str lemh
@@ -14037,7 +14037,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -14079,8 +14079,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str lemh
@@ -14126,7 +14126,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -14209,9 +14209,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -14298,7 +14298,7 @@ push-str lemq
 cliptl
 lu 5
 pushbl
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -14341,9 +14341,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -14409,7 +14409,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -14598,9 +14598,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -14729,9 +14729,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -14874,7 +14874,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push genere
+push-var genere
 push-str <pl>
 concat 3
 push-int 1
@@ -14957,7 +14957,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push genere
+push-var genere
 push-str <pl>
 concat 3
 push-int 1
@@ -15065,7 +15065,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push genere
+push-var genere
 push-str <pl>
 concat 3
 push-int 4
@@ -15107,7 +15107,7 @@ push-str lemq
 cliptl
 lu 5
 pushsb 3
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -15417,9 +15417,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -15538,9 +15538,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -15683,10 +15683,10 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
-push paraula1
+push-var paraula1
 lu 1
 pushbl
 push-str de
@@ -15865,9 +15865,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -15889,7 +15889,7 @@ push-str <sp>
 cliptl
 lu 6
 pushsb 1
-push paraula1
+push-var paraula1
 lu 1
 pushbl
 push-str de
@@ -15962,9 +15962,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-str de
 push-str <pr>
@@ -16028,10 +16028,10 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SP>
-push tipus_det
-push gen_chunk
-push nbr_chunk
-push negative
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
+push-var negative
 concat 5
 push-int 3
 push-str whole
@@ -16097,8 +16097,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SP><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 3
 push-str whole
@@ -16204,9 +16204,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SP><UNDEF>
-push gen_chunk
-push nbr_chunk
-push negative
+push-var gen_chunk
+push-var nbr_chunk
+push-var negative
 concat 4
 push-str dentro de
 push-str <pr>
@@ -16271,8 +16271,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SP><NUM>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-str dentro de
 push-str <pr>
@@ -16598,9 +16598,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 concat 4
 push-int 1
 push-str lem
@@ -16840,7 +16840,7 @@ push-str lem
 push-str para
 storetl
 choose_189_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_262_end
@@ -16849,9 +16849,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -16928,9 +16928,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17033,7 +17033,7 @@ push-str lem
 push-str para
 storetl
 choose_191_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_264_end
@@ -17042,9 +17042,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17135,9 +17135,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17248,7 +17248,7 @@ push-str lem
 push-str para
 storetl
 choose_193_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_266_end
@@ -17384,7 +17384,7 @@ push-str lem
 push-str para
 storetl
 choose_195_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_268_end
@@ -17568,7 +17568,7 @@ push-str lem
 push-str para
 storetl
 choose_197_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_270_end
@@ -17577,9 +17577,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17625,7 +17625,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -17680,9 +17680,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17728,7 +17728,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -17816,7 +17816,7 @@ push-str lem
 push-str para
 storetl
 choose_199_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_272_end
@@ -17825,9 +17825,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17873,7 +17873,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -17942,9 +17942,9 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push gen_chunk
-push nbr_chunk
+push-var tipus_det
+push-var gen_chunk
+push-var nbr_chunk
 push-str <inf>
 concat 5
 push-int 1
@@ -17990,7 +17990,7 @@ push-str lemq
 cliptl
 lu 7
 pushsb 2
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -18110,7 +18110,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 concat 3
 push-int 2
@@ -18118,7 +18118,7 @@ push-str whole
 cliptl
 lu 1
 pushbl
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -18189,10 +18189,10 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 concat 3
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lemh
 cliptl
@@ -18263,7 +18263,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 concat 3
 push-int 1
@@ -18271,7 +18271,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lemh
 cliptl
@@ -18400,7 +18400,7 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_204_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_283_end
@@ -18409,11 +18409,11 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -18454,11 +18454,11 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -18517,7 +18517,7 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_206_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_285_end
@@ -18526,11 +18526,11 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -18585,11 +18585,11 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
-push adjectiu1
+push-var adjectiu1
 push-int 1
 push-str lem
 cliptl
@@ -18667,7 +18667,7 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_208_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_287_end
@@ -18676,7 +18676,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
@@ -18685,7 +18685,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -18726,7 +18726,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
@@ -18735,7 +18735,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -18794,7 +18794,7 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_210_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_289_end
@@ -18803,7 +18803,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
@@ -18812,7 +18812,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -18867,7 +18867,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 push-str <inf>
 concat 4
@@ -18876,7 +18876,7 @@ push-str whole
 cliptl
 lu 1
 pushsb 1
-push adjectiu1
+push-var adjectiu1
 push-int 2
 push-str lem
 cliptl
@@ -18974,12 +18974,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -19019,13 +19019,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 push-str <GD>
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-str asesinado
@@ -19064,13 +19064,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 push-str <GD>
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -19094,13 +19094,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 push-str <GD>
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -19156,7 +19156,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -19166,12 +19166,12 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <Vcop>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 3
@@ -19206,16 +19206,16 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str lo
 push-str <prn><pro><p3><nt>
 lu 2
 pushbl
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 pushsb 1
@@ -19262,7 +19262,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -19272,12 +19272,12 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 3
@@ -19314,7 +19314,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -19343,16 +19343,16 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
 push-str lo
 push-str <prn><pro><p3><nt>
 lu 2
 pushbl
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 pushsb 2
@@ -19385,13 +19385,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 1
@@ -19414,8 +19414,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
+push-var tipus_verb
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>|<PD>
 cliptl
@@ -19423,10 +19423,10 @@ push-int 2
 push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
-push pronom
+push-var pronom
 push-int 2
 push-str lem
 cliptl
@@ -19459,7 +19459,7 @@ push-int 1
 call conj_verb1
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push lema_SV
@@ -19467,14 +19467,14 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
+push-var tipus_verb
+push-var temps_chunk
 push-int 2
 push-str <p1>|<p2>|<p3>|<PD>
 cliptl
-push nbr_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 2
 push-str lem
 cliptl
@@ -19492,7 +19492,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -19518,12 +19518,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -19553,7 +19553,7 @@ cmpi
 or 3
 not
 jz when_298_end
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_299_end
@@ -19580,7 +19580,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -19596,7 +19596,7 @@ cliptl
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 1
 push-str lemq
 cliptl
@@ -19632,7 +19632,7 @@ cmpi
 or 3
 not
 jz when_300_end
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_301_end
@@ -19659,7 +19659,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -19675,7 +19675,7 @@ cliptl
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 2
 push-str lem
@@ -19741,7 +19741,7 @@ cmpi
 or 3
 not
 jz when_302_end
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_303_end
@@ -19765,7 +19765,7 @@ storev
 choose_224_end:
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -19781,7 +19781,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -19833,7 +19833,7 @@ cmpi
 or 3
 not
 jz when_304_end
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_305_end
@@ -19857,7 +19857,7 @@ storev
 choose_226_end:
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -19873,7 +19873,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 3
 push-str lem
@@ -19905,7 +19905,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_306_end
@@ -19932,7 +19932,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -19944,7 +19944,7 @@ push-int 1
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 push-int 1
 push-str lemq
 cliptl
@@ -19959,7 +19959,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_307_end
@@ -19986,7 +19986,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -19998,7 +19998,7 @@ push-int 1
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 lu 4
 pushsb 1
 push-int 2
@@ -20028,7 +20028,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_308_end
@@ -20055,7 +20055,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -20067,7 +20067,7 @@ push-int 1
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 push-int 1
 push-str lemq
 cliptl
@@ -20082,7 +20082,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_309_end
@@ -20109,7 +20109,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -20121,7 +20121,7 @@ push-int 1
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 lu 4
 pushsb 1
 push-int 2
@@ -20193,7 +20193,7 @@ lu 2
 chunk 3
 pushsb 1
 out 2
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_312_end
@@ -20217,7 +20217,7 @@ storev
 choose_232_end:
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -20233,7 +20233,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -20290,7 +20290,7 @@ lu 2
 chunk 3
 pushsb 1
 out 2
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_315_end
@@ -20314,7 +20314,7 @@ storev
 choose_234_end:
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -20328,7 +20328,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 3
 push-str lem
@@ -20399,7 +20399,7 @@ storetl
 jmp choose_236_end
 when_318_end:
 choose_236_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_319_end
@@ -20435,7 +20435,7 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -20451,7 +20451,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -20507,7 +20507,7 @@ storetl
 jmp choose_238_end
 when_321_end:
 choose_238_end:
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_322_end
@@ -20543,7 +20543,7 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -20559,7 +20559,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -20613,7 +20613,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push tipus_verb
+push-var tipus_verb
 push-int 4
 push-str <m>|<f>|<mf>|<GD>|<nt>
 cliptl
@@ -20678,7 +20678,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
-push tipus_verb
+push-var tipus_verb
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
 cliptl
@@ -20754,11 +20754,11 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SN>
-push tipus_det
-push tipus_verb
-push gen_chunk
-push nbr_chunk
-push negative
+push-var tipus_det
+push-var tipus_verb
+push-var gen_chunk
+push-var nbr_chunk
+push-var negative
 concat 6
 push-int 1
 push-str lem
@@ -20839,7 +20839,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SP><UNDET>
-push tipus_verb
+push-var tipus_verb
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
 cliptl
@@ -20906,7 +20906,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -20947,7 +20947,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -21014,12 +21014,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
 push-str <p3>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 concat 6
 push-str que
@@ -21076,7 +21076,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -21158,7 +21158,7 @@ chunk 3
 pushsb 1
 push "adv_ger"
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 4
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -21245,12 +21245,12 @@ chunk 3
 pushsb 1
 push "adj_ger"
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 4
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
 push-str <p3>
-push gen_chunk
+push-var gen_chunk
 push-str <ND>
 concat 6
 push-str que
@@ -21327,7 +21327,7 @@ chunk 3
 pushsb 1
 push "nom_ger"
 push-str <SA>
-push tipus_verb
+push-var tipus_verb
 push-int 4
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
@@ -21380,7 +21380,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_325_end
@@ -21407,7 +21407,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <inf>
 push-str <PD>
 push-str <ND>
@@ -21421,7 +21421,7 @@ cliptl
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 push-int 1
 push-str lemq
 cliptl
@@ -21436,7 +21436,7 @@ call firstWord
 push-int 1
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmp
 jz when_326_end
@@ -21463,7 +21463,7 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <inf>
 concat 3
 push-int 1
@@ -21475,7 +21475,7 @@ cliptl
 push-int 1
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl "<3>"
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 2
 push-str lem
@@ -21533,8 +21533,8 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SA>
-push gen_chunk
-push nbr_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 3
 push-int 1
 push-str lemh
@@ -21570,13 +21570,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 1
@@ -21601,7 +21601,7 @@ push-int 2
 call conj_verb_compost
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push lema_SV
@@ -21609,12 +21609,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -21632,7 +21632,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -21659,13 +21659,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -21700,12 +21700,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -21723,7 +21723,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -21759,13 +21759,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 1
@@ -21790,7 +21790,7 @@ push-int 2
 call conj_verb_compost
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push lema_SV
@@ -21798,12 +21798,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -21821,7 +21821,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -21857,13 +21857,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -21907,12 +21907,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -21930,7 +21930,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -21991,13 +21991,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 3
@@ -22030,13 +22030,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -22110,12 +22110,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -22133,7 +22133,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -22166,12 +22166,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -22189,7 +22189,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -22260,12 +22260,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 3
 out 1
@@ -22289,12 +22289,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -22367,7 +22367,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -22405,13 +22405,13 @@ when_333_end:
 choose_250_end:
 push "have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushbl
 push-int 4
@@ -22431,7 +22431,7 @@ push "adv"
 push-int 3
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 pushbl
 push-int 3
@@ -22482,13 +22482,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -22553,12 +22553,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -22576,7 +22576,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -22657,12 +22657,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -22684,7 +22684,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -22752,12 +22752,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -22767,7 +22767,7 @@ push-int 3
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 3
 push-str lemq
 cliptl
@@ -22835,12 +22835,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 3
@@ -22850,7 +22850,7 @@ push-int 3
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 4
 push-str lem
@@ -22914,12 +22914,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -22941,7 +22941,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -23004,7 +23004,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -23014,12 +23014,12 @@ chunk 3
 pushsb 1
 push "auxmod_inf_inf"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -23041,7 +23041,7 @@ push-int 5
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 5
 push-str lemq
 cliptl
@@ -23088,12 +23088,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 4
@@ -23103,7 +23103,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -23171,7 +23171,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -23181,12 +23181,12 @@ chunk 3
 pushsb 1
 push "verbcj_inf"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 5
@@ -23196,7 +23196,7 @@ push-int 5
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 5
 push-str lemq
 cliptl
@@ -23247,13 +23247,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 1
@@ -23264,13 +23264,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push gen_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -23282,7 +23282,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -23326,12 +23326,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lem
 cliptl
@@ -23349,7 +23349,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -23360,13 +23360,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push gen_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -23378,7 +23378,7 @@ cliptl
 push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 3
 push-str lem
@@ -23447,7 +23447,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -23468,13 +23468,13 @@ push-int 2
 call f_bcond
 push "verbcj"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 1
@@ -23482,13 +23482,13 @@ jmp choose_268_end
 when_353_end:
 push "be_ger"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push gen_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -23500,7 +23500,7 @@ cliptl
 push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
-push pronomenc
+push-var pronomenc
 push-int 3
 push-str lemq
 cliptl
@@ -23551,7 +23551,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -23572,12 +23572,12 @@ push-int 2
 call f_bcond
 push "pro_verbcj"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -23595,7 +23595,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 3
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 1
@@ -23603,13 +23603,13 @@ jmp choose_270_end
 when_355_end:
 push "be_ger_enc"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push gen_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -23621,7 +23621,7 @@ cliptl
 push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 cliptl
-push pronomenc
+push-var pronomenc
 lu 4
 push-int 4
 push-str lem
@@ -23693,12 +23693,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 4
@@ -23708,7 +23708,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -23722,13 +23722,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push gen_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var gen_chunk
+push-var nbr_chunk
 concat 6
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -23752,7 +23752,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -23789,12 +23789,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 2
 push-str lemh
 cliptl
@@ -23844,7 +23844,7 @@ push-int 3
 call conj_going_to_inf
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push lema_SV
@@ -23852,12 +23852,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -23948,7 +23948,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -23962,12 +23962,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 3
 push-str lemh
 cliptl
@@ -24021,7 +24021,7 @@ push-int 3
 call conj_going_to_inf
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push-int 2
@@ -24046,7 +24046,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24060,12 +24060,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 6
 push-str lem
 cliptl
@@ -24143,13 +24143,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -24159,7 +24159,7 @@ push-int 2
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 2
 push-str lemq
 cliptl
@@ -24188,12 +24188,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 1
 push-int 2
@@ -24215,7 +24215,7 @@ push-int 3
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 3
 push-str lemq
 cliptl
@@ -24249,13 +24249,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -24265,7 +24265,7 @@ push-int 3
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 3
 push-str lemq
 cliptl
@@ -24309,7 +24309,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24319,13 +24319,13 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 3
@@ -24350,7 +24350,7 @@ push-int 2
 call conj_verb_compost
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push-int 2
@@ -24375,7 +24375,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24385,12 +24385,12 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -24408,7 +24408,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 3
@@ -24452,7 +24452,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24462,13 +24462,13 @@ chunk 3
 pushsb 1
 push "auxmod_inf"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -24520,7 +24520,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24530,12 +24530,12 @@ chunk 3
 pushsb 1
 push "pro_auxmod_inf"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -24553,7 +24553,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 3
@@ -24606,7 +24606,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24616,13 +24616,13 @@ chunk 3
 pushsb 1
 push lema_SV
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 out 3
@@ -24647,7 +24647,7 @@ push-int 2
 call conj_verb_compost
 push-str lema_SV
 push-str pro_
-push lema_SV
+push-var lema_SV
 concat 2
 storev
 push-int 2
@@ -24672,7 +24672,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24685,12 +24685,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -24708,7 +24708,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 chunk 5
 out 3
@@ -24749,7 +24749,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24792,13 +24792,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 4
@@ -24831,13 +24831,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -24899,7 +24899,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -24942,12 +24942,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -24965,7 +24965,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 4
@@ -24998,12 +24998,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -25021,7 +25021,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 3
@@ -25100,13 +25100,13 @@ concat 5
 storev
 push "have_just_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-str de
@@ -25150,7 +25150,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -25188,13 +25188,13 @@ when_373_end:
 choose_288_end:
 push "have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -25250,7 +25250,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -25291,12 +25291,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -25314,7 +25314,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 3
@@ -25354,13 +25354,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -25395,13 +25395,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -25453,13 +25453,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-str estar
@@ -25498,13 +25498,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -25556,12 +25556,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -25579,7 +25579,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 3
@@ -25618,12 +25618,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 4
 push-str lem
 cliptl
@@ -25641,7 +25641,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -25688,12 +25688,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -25711,7 +25711,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -25762,12 +25762,12 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -25785,7 +25785,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 1
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 2
 push-int 2
@@ -25857,13 +25857,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -25885,7 +25885,7 @@ push-int 5
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 5
 push-str lemq
 cliptl
@@ -25931,13 +25931,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -25971,7 +25971,7 @@ push-int 5
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <inf>
-push pronomenc
+push-var pronomenc
 push-int 5
 push-str lemq
 cliptl
@@ -26019,7 +26019,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -26029,13 +26029,13 @@ chunk 3
 pushsb 1
 push "have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 4
@@ -26091,7 +26091,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -26101,13 +26101,13 @@ chunk 3
 pushsb 1
 push "auxmod_have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 2
 push-int 3
@@ -26172,7 +26172,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -26182,12 +26182,12 @@ chunk 3
 pushsb 1
 push "pro_have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -26205,7 +26205,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 4
@@ -26261,7 +26261,7 @@ modify-case
 push-int 2
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 2
 push-str whole
@@ -26271,12 +26271,12 @@ chunk 3
 pushsb 1
 push "pro_auxmod_have_pp"
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
+push-var pronom
 push-int 5
 push-str lem
 cliptl
@@ -26294,7 +26294,7 @@ push-str <sg>|<pl>|<sp>|<ND>
 cliptl
 lu 6
 pushsb 2
-push verbfinal
+push-var verbfinal
 lu 1
 pushsb 3
 push-int 3
@@ -26394,13 +26394,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 pushsb 1
 push-int 2
@@ -26447,7 +26447,7 @@ out 4
 push-int 4
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmpi
 jz when_385_end
@@ -26471,7 +26471,7 @@ storev
 choose_300_end:
 push ger
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -26483,7 +26483,7 @@ push-int 4
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 push-int 4
 push-str lemq
 cliptl
@@ -26509,13 +26509,13 @@ push caseFirstWord
 case-of
 modify-case
 push-str <SV>
-push tipus_verb
-push temps_chunk
-push pers_chunk
-push nbr_chunk
+push-var tipus_verb
+push-var temps_chunk
+push-var pers_chunk
+push-var nbr_chunk
 concat 5
-push pronom
-push verbfinal
+push-var pronom
+push-var verbfinal
 lu 2
 chunk 3
 pushsb 1
@@ -26550,7 +26550,7 @@ out 4
 push-int 3
 push-int 1
 call tipus_verbs
-push tipus_verb
+push-var tipus_verb
 push-str <pron>
 cmpi
 jz when_386_end
@@ -26574,7 +26574,7 @@ storev
 choose_301_end:
 push ger
 push-str <SV>
-push tipus_verb
+push-var tipus_verb
 push-str <ger>
 push-str <PD>
 push-str <ND>
@@ -26586,7 +26586,7 @@ push-int 3
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>
 cliptl
 push-str <3>
-push pronomenc
+push-var pronomenc
 push-int 3
 push-str lemq
 cliptl
@@ -26971,7 +26971,7 @@ modify-case
 push-int 1
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
-push neg
+push-var neg
 concat 2
 push-int 1
 push-str whole
