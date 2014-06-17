@@ -3,7 +3,7 @@
 jmp section_rules_start
 macro_f_bcond_start:
 pushsb 1
-push " "
+push-str  
 cmp
 not
 jz when_0_end
@@ -15,39 +15,39 @@ choose_0_end:
 macro_f_bcond_end: ret
 macro_gen_nbr_determinante_start:
 push-int 1
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
 clip
-push "<mf>"
+push-str <mf>
 cmp
 not
 jz when_1_end
-push "genero"
+push-str genero
 push-int 1
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
 clip
 storev
 jmp choose_1_end
 when_1_end:
-push "genero"
-push "<m>"
+push-str genero
+push-str <m>
 storev
 choose_1_end:
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
-push "<sp>"
+push-str <sp>
 cmp
 not
 jz when_2_end
-push "numero"
+push-str numero
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 storev
 jmp choose_2_end
 when_2_end:
-push "numero"
-push "<sg>"
+push-str numero
+push-str <sg>
 storev
 choose_2_end:
 macro_gen_nbr_determinante_end: ret
@@ -170,47 +170,47 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_3_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_3_end
 when_3_end:
 choose_3_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
@@ -220,52 +220,52 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_4_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_4_end
 when_4_end:
 choose_4_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
@@ -275,7 +275,7 @@ cmp
 jz when_5_end
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -285,51 +285,51 @@ choose_5_end:
 action_1_end:
 action_2_start:
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_6_end
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 push-int 1
 push-int 1
 call gen_nbr_determinante
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
@@ -337,34 +337,34 @@ out 6
 push-int 3
 push-int 1
 call gen_nbr_determinante
-push "el"
+push-str el
 push-int 3
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
 jmp choose_6_end
 when_6_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -375,57 +375,57 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_7_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_7_end
 when_7_end:
 choose_7_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -435,7 +435,7 @@ cmp
 jz when_8_end
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -447,12 +447,12 @@ cmp
 jz when_9_end
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 out 4
@@ -465,57 +465,57 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_10_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_9_end
 when_10_end:
 choose_9_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -525,62 +525,62 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_11_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_10_end
 when_11_end:
 choose_10_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 7
@@ -590,7 +590,7 @@ cmp
 jz when_12_end
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -602,12 +602,12 @@ cmp
 jz when_13_end
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 out 4
@@ -620,67 +620,67 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_14_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_12_end
 when_14_end:
 choose_12_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 out 9
@@ -690,72 +690,72 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_15_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_13_end
 when_15_end:
 choose_13_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 out 11
@@ -765,67 +765,67 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_16_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_14_end
 when_16_end:
 choose_14_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 out 9
@@ -835,7 +835,7 @@ cmp
 jz when_17_end
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -847,12 +847,12 @@ cmp
 jz when_18_end
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 6
 push-int 7
-push "whole"
+push-str whole
 clip
 lu 1
 out 4
@@ -865,72 +865,72 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_19_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_16_end
 when_19_end:
 choose_16_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 out 11
@@ -940,7 +940,7 @@ cmp
 jz when_20_end
 pushsb 6
 push-int 7
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -953,77 +953,77 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_21_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_18_end
 when_21_end:
 choose_18_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 5
 push-int 6
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 6
 push-int 7
-push "whole"
+push-str whole
 clip
 lu 1
 out 13
@@ -1033,102 +1033,102 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push "<DET>|<UNDET>|<NUM>|<PDET>"
+push-str <DET>|<UNDET>|<NUM>|<PDET>
 clip
-push "<PDET>"
+push-str <PDET>
 cmp
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<np>"
+push-str <np>
 cmp
 not
 push-int 1
-push "<n>|<np>|<n><acr>"
+push-str <n>|<np>|<n><acr>
 clip
-push "<n><acr>"
+push-str <n><acr>
 cmp
 not
 and 3
 jz when_22_end
-push "el"
+push-str el
 push-int 0
 get-case-from
 modify-case
-push "<det><def>"
+push-str <det><def>
 push genero
 push numero
 lu 4
 pushbl
 out 2
 push-int 1
-push "lem"
+push-str lem
 push-int 1
-push "lem"
+push-str lem
 clip
-push "aa"
+push-str aa
 modify-case
 storecl
 jmp choose_19_end
 when_22_end:
 choose_19_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 7
 action_11_end:
 action_12_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<inf>"
+push-str <inf>
 cmp
 not
 and 2
 jz when_23_end
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 1
 jmp choose_20_end
 when_23_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
@@ -1136,86 +1136,86 @@ choose_20_end:
 action_12_end:
 action_13_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<inf>"
+push-str <inf>
 cmp
 not
 and 2
 jz when_24_end
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 1
 jmp choose_21_end
 when_24_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
 choose_21_end:
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
 action_13_end:
 action_14_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_25_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 jz when_26_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -1223,53 +1223,53 @@ out 1
 jmp choose_23_end
 when_26_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_27_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_24_end
 when_27_end:
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro>
 storecl
 choose_24_end:
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 3
@@ -1277,53 +1277,53 @@ choose_23_end:
 jmp choose_22_end
 when_25_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<inf>"
+push-str <inf>
 cmp
 not
 and 2
 jz when_28_end
 push-int 2
-push "<pro>|<enc>"
-push "<pro>"
+push-str <pro>|<enc>
+push-str <pro>
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 3
 jmp choose_25_end
 when_28_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -1333,43 +1333,43 @@ choose_22_end:
 action_14_end:
 action_15_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_29_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 jz when_30_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -1377,62 +1377,62 @@ out 1
 jmp choose_27_end
 when_30_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_31_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_28_end
 when_31_end:
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro>
 storecl
 choose_28_end:
 push-int 3
-push "<pro>|<enc>"
-push "<pro>"
+push-str <pro>|<enc>
+push-str <pro>
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 5
@@ -1440,66 +1440,66 @@ choose_27_end:
 jmp choose_26_end
 when_29_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<inf>"
+push-str <inf>
 cmp
 not
 and 2
 jz when_32_end
 push-int 2
-push "<pro>|<enc>"
-push "<pro>"
+push-str <pro>|<enc>
+push-str <pro>
 storecl
 push-int 3
-push "<pro>|<enc>"
-push "<pro>"
+push-str <pro>|<enc>
+push-str <pro>
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushbl
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 5
 jmp choose_29_end
 when_32_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -1509,48 +1509,48 @@ choose_26_end:
 action_15_end:
 action_16_start:
 push-int 2
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_33_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 jz when_34_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -1558,57 +1558,57 @@ out 3
 jmp choose_31_end
 when_34_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_35_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_32_end
 when_35_end:
 choose_32_end:
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -1617,42 +1617,42 @@ choose_31_end:
 jmp choose_30_end
 when_33_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<inf>"
+push-str <inf>
 cmp
 not
 and 2
 jz when_36_end
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -1660,16 +1660,16 @@ out 3
 jmp choose_33_end
 when_36_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -1679,32 +1679,32 @@ choose_30_end:
 action_16_end:
 action_17_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_37_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 jz when_38_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_35_end
 when_38_end:
@@ -1713,49 +1713,49 @@ jmp choose_34_end
 when_37_end:
 choose_34_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
 action_17_end:
 action_18_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_39_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 jz when_40_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_37_end
 when_40_end:
@@ -1764,61 +1764,61 @@ jmp choose_36_end
 when_39_end:
 choose_36_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
 action_18_end:
 action_19_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 not
 and 2
 jz when_41_end
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 1
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 1
 jmp choose_38_end
 when_41_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
@@ -1826,114 +1826,114 @@ choose_38_end:
 action_19_end:
 action_20_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 not
 and 2
 jz when_42_end
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_43_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_40_end
 when_43_end:
 choose_40_end:
 push-int 2
-push "lem"
+push-str lem
 clip
-push "<prn><pro>"
+push-str <prn><pro>
 push-int 2
-push "<ref>"
-clip
-push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <ref>
 clip
 push-int 2
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
+clip
+push-int 2
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 lu 6
 pushsb 1
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 2
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 3
 jmp choose_39_end
 when_42_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 and 2
 jz when_44_end
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_45_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_42_end
 when_45_end:
@@ -1942,11 +1942,11 @@ jmp choose_41_end
 when_44_end:
 choose_41_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -1958,129 +1958,129 @@ call f_bcond
 action_20_end:
 action_21_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 not
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 not
 and 2
 jz when_46_end
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_47_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_44_end
 when_47_end:
 choose_44_end:
 push-int 2
-push "lem"
+push-str lem
 clip
-push "<prn><pro>"
+push-str <prn><pro>
 push-int 2
-push "<ref>"
-clip
-push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <ref>
 clip
 push-int 2
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
+clip
+push-int 2
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 lu 6
 pushsb 1
 push-int 3
-push "lem"
+push-str lem
 clip
-push "<prn><pro>"
+push-str <prn><pro>
 push-int 3
-push "<p1>|<p2>|<p3>|<PD>"
-clip
-push-int 3
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
+clip
+push-int 3
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 lu 5
 pushbl
 push-int 1
-push "lemh"
+push-str lemh
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 push-int 0
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 push-int 2
-push "lemq"
+push-str lemq
 clip
 lu 5
 out 5
 jmp choose_43_end
 when_46_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 and 2
 jz when_48_end
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_49_end
 push-int 2
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 2
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_46_end
 when_49_end:
@@ -2089,15 +2089,15 @@ jmp choose_45_end
 when_48_end:
 choose_45_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -2109,66 +2109,66 @@ call f_bcond
 action_21_end:
 action_22_start:
 push-int 0
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<HAY>"
+push-str <HAY>
 cmp
 jz when_50_end
 push-int 1
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<pri>"
+push-str <pri>
 cmp
 jz when_51_end
 push-int 1
-push "lem"
-push "hay"
+push-str lem
+push-str hay
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vblex>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vblex>
 storecl
 jmp choose_48_end
 when_51_end:
 push-int 1
-push "lem"
-push "haber"
+push-str lem
+push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vbhaver>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vbhaver>
 storecl
 choose_48_end:
 jmp choose_47_end
 when_50_end:
 choose_47_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
 action_22_end:
 action_23_start:
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 push-int 1
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
@@ -2178,24 +2178,24 @@ call f_bcond
 action_23_end:
 action_24_start:
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 push-int 1
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
@@ -2205,29 +2205,29 @@ call f_bcond
 action_24_end:
 action_25_start:
 push-int 2
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 push-int 1
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
 storecl
 push-int 2
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -2237,51 +2237,51 @@ call f_bcond
 action_25_end:
 action_26_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_52_end
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ger>"
+push-str <ger>
 cmp
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<PD>"
+push-str <PD>
 cmp
 and 2
 jz when_53_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 1
-push "<p1>|<p2>|<p3>|<PD>"
-push "<p3>"
+push-str <p1>|<p2>|<p3>|<PD>
+push-str <p3>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
 pushsb 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
@@ -2291,52 +2291,52 @@ call f_bcond
 jmp choose_50_end
 when_53_end:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_54_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
 jmp choose_50_end
 when_54_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -2344,32 +2344,32 @@ choose_50_end:
 jmp choose_49_end
 when_52_end:
 push-int 0
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<HAY>"
+push-str <HAY>
 cmp
 jz when_55_end
 push-int 2
-push "lem"
-push "haber"
+push-str lem
+push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 2
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vbhaver>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vbhaver>
 storecl
 jmp choose_51_end
 when_55_end:
 choose_51_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
@@ -2377,43 +2377,43 @@ choose_49_end:
 action_26_end:
 action_27_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_56_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_57_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_53_end
 when_57_end:
 choose_53_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2421,12 +2421,12 @@ out 3
 jmp choose_52_end
 when_56_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
@@ -2434,47 +2434,47 @@ choose_52_end:
 action_27_end:
 action_28_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_58_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_59_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_55_end
 when_59_end:
 choose_55_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -2482,16 +2482,16 @@ out 3
 jmp choose_54_end
 when_58_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2500,48 +2500,48 @@ choose_54_end:
 action_28_end:
 action_29_start:
 push-int 3
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_60_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_61_end
 push-int 4
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 4
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 4
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_57_end
 when_61_end:
 choose_57_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2549,17 +2549,17 @@ out 5
 jmp choose_56_end
 when_60_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 5
@@ -2567,53 +2567,53 @@ choose_56_end:
 action_29_end:
 action_30_start:
 push-int 4
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_62_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_63_end
 push-int 5
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 5
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 5
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_59_end
 when_63_end:
 choose_59_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2621,22 +2621,22 @@ out 7
 jmp choose_58_end
 when_62_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 7
@@ -2644,46 +2644,46 @@ choose_58_end:
 action_30_end:
 action_31_start:
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ifip>"
+push-str <ifip>
 cmp
 not
 jz when_64_end
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_65_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_66_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_62_end
 when_66_end:
 choose_62_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
@@ -2691,51 +2691,51 @@ out 4
 jmp choose_61_end
 when_65_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 out 2
 choose_61_end:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_67_end
 push-int 3
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_68_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_69_end
 push-int 4
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 4
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 4
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_65_end
 when_69_end:
 choose_65_end:
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2743,7 +2743,7 @@ out 1
 jmp choose_64_end
 when_68_end:
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 1
@@ -2752,38 +2752,38 @@ choose_64_end:
 jmp choose_63_end
 when_67_end:
 push-int 2
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_70_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_71_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_67_end
 when_71_end:
 choose_67_end:
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2791,7 +2791,7 @@ out 1
 jmp choose_66_end
 when_70_end:
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 1
@@ -2801,44 +2801,44 @@ choose_63_end:
 jmp choose_60_end
 when_64_end:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_72_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_73_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_69_end
 when_73_end:
 choose_69_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
@@ -2846,56 +2846,56 @@ out 6
 jmp choose_68_end
 when_72_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 out 4
 choose_68_end:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_74_end
 push-int 4
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_75_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_76_end
 push-int 5
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 5
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 5
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_72_end
 when_76_end:
 choose_72_end:
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2903,7 +2903,7 @@ out 1
 jmp choose_71_end
 when_75_end:
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 1
@@ -2912,38 +2912,38 @@ choose_71_end:
 jmp choose_70_end
 when_74_end:
 push-int 3
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_77_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_78_end
 push-int 4
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 4
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 4
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_74_end
 when_78_end:
 choose_74_end:
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -2951,7 +2951,7 @@ out 1
 jmp choose_73_end
 when_77_end:
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 1
@@ -2962,54 +2962,54 @@ choose_60_end:
 action_31_end:
 action_32_start:
 push-int 0
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<ifip>"
+push-str <ifip>
 cmp
 not
 jz when_79_end
 push-int 2
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_80_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_81_end
 push-int 3
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 3
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 3
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_77_end
 when_81_end:
 choose_77_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -3017,16 +3017,16 @@ out 3
 jmp choose_76_end
 when_80_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -3035,52 +3035,52 @@ choose_76_end:
 jmp choose_75_end
 when_79_end:
 push-int 3
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<vblex><pron>"
+push-str <vblex><pron>
 cmp
 jz when_82_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_83_end
 push-int 4
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 4
-push "<prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>"
-push "<prn><enc><ref>"
+push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
+push-str <prn><enc><ref>
 storecl
 push-int 4
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_79_end
 when_83_end:
 choose_79_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 3
@@ -3088,21 +3088,21 @@ out 5
 jmp choose_78_end
 when_82_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 mlu 2
@@ -3112,72 +3112,72 @@ choose_75_end:
 action_32_end:
 action_33_start:
 push-int 0
-push "<SV><pron>|<SV>"
+push-str <SV><pron>|<SV>
 clip
-push "<SV><pron>"
+push-str <SV><pron>
 cmp
 jz when_84_end
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_85_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>
+push-str <prn><pro><ref>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 jmp choose_81_end
 when_85_end:
 choose_81_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 3
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_verbcj"
+push-str pro_verbcj
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_inf"
+push-str auxmod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "mod_inf"
+push-str mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "have_pp"
+push-str have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "be_ger"
+push-str be_ger
 cmpi
 or 5
 jz when_86_end
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -3185,55 +3185,55 @@ jmp choose_82_end
 when_86_end:
 choose_82_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_mod_inf"
+push-str auxmod_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_have_pp"
+push-str auxmod_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_be_ger"
+push-str pro_be_ger
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_inf"
+push-str pro_auxmod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_mod_inf"
+push-str pro_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_have_pp"
+push-str pro_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_do_inf"
+push-str pro_do_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "going_to_inf"
+push-str going_to_inf
 cmpi
 or 8
 jz when_87_end
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 4
@@ -3241,35 +3241,35 @@ jmp choose_83_end
 when_87_end:
 choose_83_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_mod_inf"
+push-str pro_auxmod_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_have_pp"
+push-str pro_auxmod_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_going_to_inf"
+push-str pro_going_to_inf
 cmpi
 or 3
 jz when_88_end
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 4
 push-int 5
-push "whole"
+push-str whole
 clip
 lu 1
 out 6
@@ -3279,96 +3279,96 @@ choose_84_end:
 jmp choose_80_end
 when_84_end:
 push-int 0
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
 clip
-push "<HAY>"
+push-str <HAY>
 cmp
 jz when_89_end
 push-int 0
-push "lem"
+push-str lem
 clip
-push "verbcj"
+push-str verbcj
 cmpi
 jz when_90_end
 push-int 1
-push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>"
+push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
 clip
-push "<pri>"
+push-str <pri>
 cmp
 jz when_91_end
 push-int 1
-push "lem"
-push "hay"
+push-str lem
+push-str hay
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vblex>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vblex>
 storecl
 jmp choose_87_end
 when_91_end:
 push-int 1
-push "lem"
-push "haber"
+push-str lem
+push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vbhaver>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vbhaver>
 storecl
 choose_87_end:
 jmp choose_86_end
 when_90_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_inf"
+push-str auxmod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "mod_inf"
+push-str mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "have_pp"
+push-str have_pp
 cmpi
 or 3
 jz when_92_end
 push-int 2
-push "lem"
-push "haber"
+push-str lem
+push-str haber
 storecl
 push-int 2
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vbhaver>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vbhaver>
 storecl
 jmp choose_86_end
 when_92_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_mod_inf"
+push-str auxmod_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_have_pp"
+push-str auxmod_have_pp
 cmpi
 or 2
 jz when_93_end
 push-int 3
-push "lem"
-push "haber"
+push-str lem
+push-str haber
 storecl
 push-int 3
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vbhaver>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vbhaver>
 storecl
 jmp choose_86_end
 when_93_end:
@@ -3377,40 +3377,40 @@ jmp choose_85_end
 when_89_end:
 choose_85_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_verbcj"
+push-str pro_verbcj
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_inf"
+push-str auxmod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "mod_inf"
+push-str mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "have_pp"
+push-str have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "be_ger"
+push-str be_ger
 cmpi
 or 5
 jz when_94_end
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 out 2
@@ -3418,60 +3418,60 @@ jmp choose_88_end
 when_94_end:
 choose_88_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_mod_inf"
+push-str auxmod_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "auxmod_have_pp"
+push-str auxmod_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_be_ger"
+push-str pro_be_ger
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_inf"
+push-str pro_auxmod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_mod_inf"
+push-str pro_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_have_pp"
+push-str pro_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_be_ger"
+push-str pro_be_ger
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_do_inf"
+push-str pro_do_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "going_to_inf"
+push-str going_to_inf
 cmpi
 or 9
 jz when_95_end
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 out 4
@@ -3479,35 +3479,35 @@ jmp choose_89_end
 when_95_end:
 choose_89_end:
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_mod_inf"
+push-str pro_auxmod_mod_inf
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_auxmod_have_pp"
+push-str pro_auxmod_have_pp
 cmpi
 push-int 0
-push "lem"
+push-str lem
 clip
-push "pro_going_to_inf"
+push-str pro_going_to_inf
 cmpi
 or 3
 jz when_96_end
 pushsb 1
 push-int 2
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 2
 push-int 3
-push "whole"
+push-str whole
 clip
 lu 1
 pushsb 3
 push-int 4
-push "whole"
+push-str whole
 clip
 lu 1
 out 6
@@ -3518,65 +3518,65 @@ choose_80_end:
 action_33_end:
 action_34_start:
 push-int 0
-push "<p1>|<p2>|<p3>|<PD>"
+push-str <p1>|<p2>|<p3>|<PD>
 clip
-push "<p3>"
+push-str <p3>
 cmp
 jz when_97_end
 push-int 1
-push "lem"
-push "se"
+push-str lem
+push-str se
 storecl
 push-int 1
-push "<m>|<f>|<mf>|<GD>|<nt>"
-push "<mf>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
+push-str <mf>
 storecl
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
-push "<sp>"
+push-str <sg>|<pl>|<sp>|<ND>
+push-str <sp>
 storecl
 push-int 1
-push "<prn><pro>|<prn><pro><ref>"
-push "<prn><pro><ref>"
+push-str <prn><pro>|<prn><pro><ref>
+push-str <prn><pro><ref>
 storecl
 jmp choose_91_end
 when_97_end:
 choose_91_end:
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
 action_34_end:
 action_35_start:
 push-int 1
-push "lem"
-push "hi"
+push-str lem
+push-str hi
 storecl
 push-int 1
-push "tags"
-push "<prn><pro><adv>"
+push-str tags
+push-str <prn><pro><adv>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1
 action_35_end:
 action_36_start:
 push-int 1
-push "lem"
-push "tener"
+push-str lem
+push-str tener
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>"
-push "<vblex>"
+push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
+push-str <vblex>
 storecl
 push-int 1
-push "whole"
+push-str whole
 clip
 lu 1
 out 1

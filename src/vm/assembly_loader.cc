@@ -402,14 +402,15 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
       wchar_t ch = line[pos];
       if (ch == L'\n' || ch == '\r') {
         break;
-      } else if (ch == L':' && pos == line.size() - 1) {
-        break;
       } else {
         operand += ch;
       }
     }
 
-  if (operand != L"") {
+  // FIXME rewrite this ugly code.
+
+  bool hasOperand = line.find(L' ') != wstring::npos;
+  if (hasOperand) {
     // If the instruction needs a label.
     switch (instr.opCode) {
     case ADDTRIE:

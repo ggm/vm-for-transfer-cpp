@@ -3,7 +3,7 @@
 jmp section_rules_start
 macro_f_bcond_start:
 pushsb 1
-push " "
+push-str  
 cmp
 not
 jz when_0_end
@@ -38,123 +38,123 @@ addtrie action_5_start
 patterns_end:
 action_0_start:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 1
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 out 1
 action_0_end:
 action_1_start:
 push-int 1
-push "lem"
+push-str lem
 clip
-push "asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea"
+push-str asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea
 inig
 jz when_1_end
 push-int 2
-push "tags"
-push "<SN><dg>"
+push-str tags
+push-str <SN><dg>
 storecl
 jmp choose_1_end
 when_1_end:
 choose_1_end:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 1
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 pushsb 1
 push-int 2
-push "lem"
+push-str lem
 clip
 push-int 2
-push "tags"
+push-str tags
 clip
 push-int 2
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 out 3
 action_1_end:
 action_2_start:
 push-int 1
-push "lem"
+push-str lem
 clip
-push "asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea"
+push-str asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea
 inig
 jz when_2_end
 push-int 2
-push "tags"
-push "<SN><dg>"
+push-str tags
+push-str <SN><dg>
 storecl
 jmp choose_2_end
 when_2_end:
 choose_2_end:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 1
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 pushsb 1
 push-int 2
-push "lem"
+push-str lem
 clip
 push-int 2
-push "tags"
+push-str tags
 clip
 push-int 2
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 out 3
 action_2_end:
 action_3_start:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 1
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 out 1
 action_3_end:
 action_4_start:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "tags"
+push-str tags
 clip
 push-int 1
-push "chcontent"
+push-str chcontent
 clip
 chunk 3
 out 1
 action_4_end:
 action_5_start:
-push "nombre"
-push "<sg>"
+push-str nombre
+push-str <sg>
 storev
 push-int 1
-push "whole"
+push-str whole
 clip
 chunk 1
 out 1

@@ -383,7 +383,7 @@ void AssemblyCodeGenerator::genLitStart(const Event & event) {
   if (ws >> numericValue) {
     addCode(PUSH_INT_OP + INSTR_SEP + value);
   } else {
-    addCode(PUSH_OP + INSTR_SEP + L"\"" + value + L"\"");
+    addCode(PUSH_STR_OP + INSTR_SEP + value);
   }
 }
 
@@ -391,9 +391,9 @@ void AssemblyCodeGenerator::genLitTagStart(const Event & event) {
   genDebugCode(event);
 
   // Convert <det.ind> to <det><ind> format.
-  wstring litTag = L"\"<" + event.getAttribute(L"v") + L">\"";
+  wstring litTag = L"<" + event.getAttribute(L"v") + L">";
   litTag = WstringUtils::replace(litTag, L".", L"><");
-  addCode(PUSH_OP + INSTR_SEP + litTag);
+  addCode(PUSH_STR_OP + INSTR_SEP + litTag);
 }
 
 void AssemblyCodeGenerator::genTagsEnd(const Event & event) {
@@ -491,7 +491,7 @@ void AssemblyCodeGenerator::genVarStart(const Event & event, bool isContainer) {
 
   // If it's a container push its name as a quoted string.
   if (isContainer) {
-    addCode(PUSH_OP + INSTR_SEP + L"\"" + event.getAttribute(L"n") + L"\"");
+    addCode(PUSH_STR_OP + INSTR_SEP + event.getAttribute(L"n"));
 
     // If it's a container of a modify-case, we also need its content.
     if (event.getParent()->getName() == L"modify-case") {
@@ -518,15 +518,14 @@ void AssemblyCodeGenerator::genClipCode(const Event &event,
   // Push the contents of the part attribute.
   wstring partAttrStr = L"";
   if (partAttrs.size() > 0) {
-    partAttrStr = L"\"" + partAttrs[0];
+    partAttrStr = partAttrs[0];
     for (unsigned int i = 1; i < partAttrs.size(); i++) {
       partAttrStr += L"|";
       partAttrStr += partAttrs[i];
     }
-    partAttrStr += L"\"";
   }
 
-  addCode(PUSH_OP + INSTR_SEP + partAttrStr);
+  addCode(PUSH_STR_OP + INSTR_SEP + partAttrStr);
 }
 
 void AssemblyCodeGenerator::genClipInstr(const Event &event, bool linkTo) {
@@ -574,15 +573,14 @@ void AssemblyCodeGenerator::genListStart(const Event & event,
 
   // Push the contents of the list to the stack.
   if (list.size() > 0) {
-    processedList = L"\"" + list[0];
+    processedList = list[0];
     for (unsigned int i = 1; i < list.size(); i++) {
       processedList += L"|";
       processedList += list[i];
     }
-    processedList += L"\"";
   }
 
-  addCode(PUSH_OP + INSTR_SEP + processedList);
+  addCode(PUSH_STR_OP + INSTR_SEP + processedList);
 }
 
 void AssemblyCodeGenerator::genLetEnd(const Event & event,
@@ -599,8 +597,8 @@ void AssemblyCodeGenerator::genConcatEnd(const Event & event) {
 void AssemblyCodeGenerator::genAppendStart(const Event & event) {
   genDebugCode(event);
 
-  wstring varName = L"\"" + event.getAttribute(L"n") + L"\"";
-  addCode(PUSH_OP + INSTR_SEP + varName);
+  wstring varName = event.getAttribute(L"n");
+  addCode(PUSH_STR_OP + INSTR_SEP + varName);
 }
 
 void AssemblyCodeGenerator::genAppendEnd(const Event & event) {

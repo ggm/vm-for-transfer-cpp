@@ -3,7 +3,7 @@
 jmp section_rules_start
 macro_f_bcond_start:
 pushsb 1
-push " "
+push-str  
 cmp
 not
 jz when_0_end
@@ -23,25 +23,25 @@ push-int 1
 addtrie action_1_start
 patterns_end:
 action_0_start:
-push "qui"
+push-str qui
 push-int 1
-push "<rel>"
+push-str <rel>
 clip
 push-int 1
-push "<m>|<f>|<mf>|<GD>|<nt>"
+push-str <m>|<f>|<mf>|<GD>|<nt>
 clip
 push-int 1
-push "<sg>|<pl>|<sp>|<ND>"
+push-str <sg>|<pl>|<sp>|<ND>
 clip
 lu 4
 out 1
 action_0_end:
 action_1_start:
 push-int 1
-push "lem"
+push-str lem
 clip
 push-int 1
-push "<num>"
+push-str <num>
 clip
 lu 2
 out 1
