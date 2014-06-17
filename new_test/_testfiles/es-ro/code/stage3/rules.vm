@@ -16,31 +16,31 @@ macro_f_bcond_end: ret
 section_rules_start:
 patterns_start:
 push "qui"
-push 1
+push-int 1
 addtrie action_0_start
 push "cifra"
-push 1
+push-int 1
 addtrie action_1_start
 patterns_end:
 action_0_start:
 push "qui"
-push 1
+push-int 1
 push "<rel>"
 clip
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 lu 4
 out 1
 action_0_end:
 action_1_start:
-push 1
+push-int 1
 push "lem"
 clip
-push 1
+push-int 1
 push "<num>"
 clip
 lu 2

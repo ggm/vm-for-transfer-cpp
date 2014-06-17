@@ -37,7 +37,7 @@ enum OP_CODE {
 
   // TODO remove PUSH instruction after replacing it with specialized
   // versions in the compiler.
-  PUSH, PUSH_STR
+  PUSH, PUSH_STR, PUSH_INT
 };
 
 /// A struct representing a instruction as an opcode and an operand.
@@ -45,6 +45,7 @@ struct Instruction {
   OP_CODE opCode;
   wstring op1;
   int lineNumber = -1;
+  int intOp1;
 };
 
 /// A code unit is a collection of instructions like the instructions of a rule.

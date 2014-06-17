@@ -63,6 +63,7 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
   opCodes[L"modify-case"] = MODIFY_CASE;
 
   opCodes[L"push-str"] = PUSH_STR;
+  opCodes[L"push-int"] = PUSH_INT;
 }
 
 AssemblyLoader::AssemblyLoader(const AssemblyLoader &c) {

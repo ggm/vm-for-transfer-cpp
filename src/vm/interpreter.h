@@ -116,6 +116,7 @@ private:
       const wstring &, const wstring &);
   void executeStorev(const Instruction&);
   void executePushStr(const Instruction&);
+  void executePushInt(const Instruction&);
 
 };
 

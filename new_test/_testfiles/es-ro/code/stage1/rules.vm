@@ -20,7 +20,7 @@ push-str true
 storev
 jmp section_rules_start
 macro_set-case-prep1_start:
-push 1
+push-int 1
 push "lemh"
 cliptl
 push "da|oferi|spune|explica|permiti"
@@ -31,7 +31,7 @@ push "<dg>"
 storev
 jmp choose_0_end
 when_0_end:
-push 1
+push-int 1
 push "lemh"
 clipsl
 push "acercar|bajar|caminar|correr|dirigir|emigrar|entrar|inmigrar|llegar|llevar|marchar|mover|pasar|regresar|salir|subir|trasladar|venir|viajar|volver|ir"
@@ -56,33 +56,33 @@ choose_0_end:
 macro_set-case-prep1_end: ret
 macro_firstWord_start:
 push "caseFirstWord"
-push 1
+push-int 1
 push "lem"
 clipsl
 case-of
 storev
-push 1
+push-int 1
 push "lem"
 clipsl
 case-of
 push "Aa"
 cmp
 jz when_2_end
-push 1
+push-int 1
 push "<np>|<acr>"
 clipsl
 push ""
 cmp
-push 1
+push-int 1
 push "<num>|<num><percent>"
 clipsl
 push ""
 cmp
 and 2
 jz when_3_end
-push 1
+push-int 1
 push "lem"
-push 1
+push-int 1
 push "lem"
 cliptl
 push "aa"
@@ -93,19 +93,19 @@ when_3_end:
 choose_2_end:
 jmp choose_1_end
 when_2_end:
-push 1
+push-int 1
 push "lem"
 clipsl
 case-of
 push "AA"
 cmp
 jz when_4_end
-push 1
+push-int 1
 push "<np>|<acr>"
 cliptl
 push ""
 cmp
-push 1
+push-int 1
 push "<num>|<num><percent>"
 clipsl
 push ""
@@ -145,61 +145,61 @@ when_7_end:
 choose_5_end:
 macro_f_bcond_end: ret
 macro_mod-gen_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<nt>"
 cmp
 or 2
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
 cmp
 and 2
 jz when_8_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<fn>"
 storetl
 jmp choose_6_end
 when_8_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<nt>"
 cmp
 or 2
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
 cmp
 and 2
 jz when_9_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mn>"
 storetl
 jmp choose_6_end
 when_9_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 jz when_10_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mfn>"
 storetl
@@ -254,7 +254,7 @@ when_13_end:
 choose_7_end:
 macro_mod-gen-pp_end: ret
 macro_f_concord1_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -265,7 +265,7 @@ push "<m>"
 storev
 jmp choose_8_end
 when_14_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -276,7 +276,7 @@ push "<f>"
 storev
 jmp choose_8_end
 when_15_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<nt>"
@@ -288,7 +288,7 @@ storev
 jmp choose_8_end
 when_16_end:
 choose_8_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -299,7 +299,7 @@ push "<sg>"
 storev
 jmp choose_9_end
 when_17_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -311,7 +311,7 @@ storev
 jmp choose_9_end
 when_18_end:
 choose_9_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -321,7 +321,7 @@ push genero
 push "<f>"
 cmp
 jz when_20_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<f>"
 storetl
@@ -331,13 +331,13 @@ push genero
 push "<m>"
 cmp
 jz when_21_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<m>"
 storetl
 jmp choose_11_end
 when_21_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<nt>"
 storetl
@@ -345,7 +345,7 @@ choose_11_end:
 jmp choose_10_end
 when_19_end:
 choose_10_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -355,13 +355,13 @@ push numero
 push "<pl>"
 cmp
 jz when_23_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<pl>"
 storetl
 jmp choose_13_end
 when_23_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
@@ -371,37 +371,37 @@ when_22_end:
 choose_12_end:
 macro_f_concord1_end: ret
 macro_f_concord2_start:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -418,21 +418,21 @@ push "concPrimero"
 push "false"
 storev
 choose_14_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -440,18 +440,18 @@ cmp
 not
 and 3
 jz when_25_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -464,9 +464,9 @@ push "true"
 cmp
 and 3
 jz when_26_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
@@ -476,21 +476,21 @@ choose_16_end:
 jmp choose_15_end
 when_25_end:
 choose_15_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -498,18 +498,18 @@ cmp
 not
 and 3
 jz when_27_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -522,9 +522,9 @@ push "true"
 cmp
 and 3
 jz when_28_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
@@ -534,7 +534,7 @@ choose_18_end:
 jmp choose_17_end
 when_27_end:
 choose_17_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -545,7 +545,7 @@ push "<m>"
 storev
 jmp choose_19_end
 when_29_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -556,7 +556,7 @@ push "<f>"
 storev
 jmp choose_19_end
 when_30_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -567,7 +567,7 @@ push "<m>"
 storev
 jmp choose_19_end
 when_31_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -578,12 +578,12 @@ push "<f>"
 storev
 jmp choose_19_end
 when_32_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
@@ -592,18 +592,18 @@ not
 and 2
 jz when_33_end
 push "genero"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 storev
 jmp choose_19_end
 when_33_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
@@ -612,7 +612,7 @@ not
 and 2
 jz when_34_end
 push "genero"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 storev
@@ -622,7 +622,7 @@ push "genero"
 push "<m>"
 storev
 choose_19_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -633,7 +633,7 @@ push "<sg>"
 storev
 jmp choose_20_end
 when_35_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -644,7 +644,7 @@ push "<pl>"
 storev
 jmp choose_20_end
 when_36_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -655,7 +655,7 @@ push "<sg>"
 storev
 jmp choose_20_end
 when_37_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -666,12 +666,12 @@ push "<pl>"
 storev
 jmp choose_20_end
 when_38_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -680,18 +680,18 @@ not
 and 2
 jz when_39_end
 push "numero"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 storev
 jmp choose_20_end
 when_39_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -700,7 +700,7 @@ not
 and 2
 jz when_40_end
 push "numero"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 storev
@@ -710,52 +710,52 @@ push "numero"
 push "<sg>"
 storev
 choose_20_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_41_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_21_end
 when_41_end:
 choose_21_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_42_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_22_end
 when_42_end:
 choose_22_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_43_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_23_end
 when_43_end:
 choose_23_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_44_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
@@ -764,37 +764,37 @@ when_44_end:
 choose_24_end:
 macro_f_concord2_end: ret
 macro_f_concord3_start:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -811,37 +811,37 @@ push "concPrimero"
 push "false"
 storev
 choose_25_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -858,21 +858,21 @@ push "concSegundo"
 push "false"
 storev
 choose_26_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -880,18 +880,18 @@ cmp
 not
 and 3
 jz when_47_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -904,27 +904,27 @@ push "true"
 cmp
 and 3
 jz when_48_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
 jmp choose_28_end
 when_48_end:
 choose_28_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -937,9 +937,9 @@ push "true"
 cmp
 and 3
 jz when_49_end
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
@@ -949,21 +949,21 @@ choose_29_end:
 jmp choose_27_end
 when_47_end:
 choose_27_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -971,18 +971,18 @@ cmp
 not
 and 3
 jz when_50_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -995,27 +995,27 @@ push "true"
 cmp
 and 3
 jz when_51_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
 jmp choose_31_end
 when_51_end:
 choose_31_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -1028,9 +1028,9 @@ push "true"
 cmp
 and 3
 jz when_52_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
@@ -1040,7 +1040,7 @@ choose_32_end:
 jmp choose_30_end
 when_50_end:
 choose_30_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1051,7 +1051,7 @@ push "<m>"
 storev
 jmp choose_33_end
 when_53_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1062,7 +1062,7 @@ push "<f>"
 storev
 jmp choose_33_end
 when_54_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1073,7 +1073,7 @@ push "<m>"
 storev
 jmp choose_33_end
 when_55_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1084,7 +1084,7 @@ push "<f>"
 storev
 jmp choose_33_end
 when_56_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1095,7 +1095,7 @@ push "<m>"
 storev
 jmp choose_33_end
 when_57_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1106,12 +1106,12 @@ push "<f>"
 storev
 jmp choose_33_end
 when_58_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
@@ -1120,18 +1120,18 @@ not
 and 2
 jz when_59_end
 push "genero"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 storev
 jmp choose_33_end
 when_59_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
@@ -1140,18 +1140,18 @@ not
 and 2
 jz when_60_end
 push "genero"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 storev
 jmp choose_33_end
 when_60_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
@@ -1160,7 +1160,7 @@ not
 and 2
 jz when_61_end
 push "genero"
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 storev
@@ -1170,7 +1170,7 @@ push "genero"
 push "<m>"
 storev
 choose_33_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1181,7 +1181,7 @@ push "<sg>"
 storev
 jmp choose_34_end
 when_62_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1192,7 +1192,7 @@ push "<pl>"
 storev
 jmp choose_34_end
 when_63_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1203,7 +1203,7 @@ push "<sg>"
 storev
 jmp choose_34_end
 when_64_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1214,7 +1214,7 @@ push "<pl>"
 storev
 jmp choose_34_end
 when_65_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1225,7 +1225,7 @@ push "<sg>"
 storev
 jmp choose_34_end
 when_66_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1236,12 +1236,12 @@ push "<pl>"
 storev
 jmp choose_34_end
 when_67_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1250,18 +1250,18 @@ not
 and 2
 jz when_68_end
 push "numero"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 storev
 jmp choose_34_end
 when_68_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1270,18 +1270,18 @@ not
 and 2
 jz when_69_end
 push "numero"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 storev
 jmp choose_34_end
 when_69_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1290,7 +1290,7 @@ not
 and 2
 jz when_70_end
 push "numero"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 storev
@@ -1300,78 +1300,78 @@ push "numero"
 push "<sg>"
 storev
 choose_34_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_71_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_35_end
 when_71_end:
 choose_35_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_72_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_36_end
 when_72_end:
 choose_36_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_73_end
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_37_end
 when_73_end:
 choose_37_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_74_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_38_end
 when_74_end:
 choose_38_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_75_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_39_end
 when_75_end:
 choose_39_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_76_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
@@ -1380,37 +1380,37 @@ when_76_end:
 choose_40_end:
 macro_f_concord3_end: ret
 macro_f_concord4_start:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1427,37 +1427,37 @@ push "concPrimero"
 push "false"
 storev
 choose_41_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1474,37 +1474,37 @@ push "concSegundo"
 push "false"
 storev
 choose_42_end:
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
 or 3
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
@@ -1521,21 +1521,21 @@ push "concTercero"
 push "false"
 storev
 choose_43_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -1543,18 +1543,18 @@ cmp
 not
 and 3
 jz when_80_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -1567,27 +1567,27 @@ push "true"
 cmp
 and 3
 jz when_81_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
 jmp choose_45_end
 when_81_end:
 choose_45_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -1600,27 +1600,27 @@ push "true"
 cmp
 and 3
 jz when_82_end
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
 jmp choose_46_end
 when_82_end:
 choose_46_end:
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
 not
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 clipsl
 push "<mf>"
 cmp
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
@@ -1633,9 +1633,9 @@ push "true"
 cmp
 and 3
 jz when_83_end
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 storetl
@@ -1645,21 +1645,21 @@ choose_47_end:
 jmp choose_44_end
 when_80_end:
 choose_44_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -1667,18 +1667,18 @@ cmp
 not
 and 3
 jz when_84_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -1691,27 +1691,27 @@ push "true"
 cmp
 and 3
 jz when_85_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
 jmp choose_49_end
 when_85_end:
 choose_49_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -1724,27 +1724,27 @@ push "true"
 cmp
 and 3
 jz when_86_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
 jmp choose_50_end
 when_86_end:
 choose_50_end:
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sp>"
 cmp
 not
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "<sp>"
 cmp
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
@@ -1757,9 +1757,9 @@ push "true"
 cmp
 and 3
 jz when_87_end
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storetl
@@ -1769,7 +1769,7 @@ choose_51_end:
 jmp choose_48_end
 when_84_end:
 choose_48_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1780,7 +1780,7 @@ push "<m>"
 storev
 jmp choose_52_end
 when_88_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1791,7 +1791,7 @@ push "<f>"
 storev
 jmp choose_52_end
 when_89_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1802,7 +1802,7 @@ push "<m>"
 storev
 jmp choose_52_end
 when_90_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1813,7 +1813,7 @@ push "<f>"
 storev
 jmp choose_52_end
 when_91_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1824,7 +1824,7 @@ push "<m>"
 storev
 jmp choose_52_end
 when_92_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1835,7 +1835,7 @@ push "<f>"
 storev
 jmp choose_52_end
 when_93_end:
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<m>"
@@ -1846,7 +1846,7 @@ push "<m>"
 storev
 jmp choose_52_end
 when_94_end:
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<f>"
@@ -1861,7 +1861,7 @@ push "genero"
 push "<m>"
 storev
 choose_52_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1872,7 +1872,7 @@ push "<sg>"
 storev
 jmp choose_53_end
 when_96_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1883,7 +1883,7 @@ push "<pl>"
 storev
 jmp choose_53_end
 when_97_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1894,7 +1894,7 @@ push "<sg>"
 storev
 jmp choose_53_end
 when_98_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1905,7 +1905,7 @@ push "<pl>"
 storev
 jmp choose_53_end
 when_99_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1916,7 +1916,7 @@ push "<sg>"
 storev
 jmp choose_53_end
 when_100_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1927,7 +1927,7 @@ push "<pl>"
 storev
 jmp choose_53_end
 when_101_end:
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<sg>"
@@ -1938,7 +1938,7 @@ push "<sg>"
 storev
 jmp choose_53_end
 when_102_end:
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<pl>"
@@ -1953,104 +1953,104 @@ push "numero"
 push "<sg>"
 storev
 choose_53_end:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_104_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_54_end
 when_104_end:
 choose_54_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_105_end
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_55_end
 when_105_end:
 choose_55_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_106_end
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_56_end
 when_106_end:
 choose_56_end:
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<GD>"
 cmp
 jz when_107_end
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push genero
 storetl
 jmp choose_57_end
 when_107_end:
 choose_57_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_108_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_58_end
 when_108_end:
 choose_58_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_109_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_59_end
 when_109_end:
 choose_59_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_110_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
 jmp choose_60_end
 when_110_end:
 choose_60_end:
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 jz when_111_end
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 push numero
 storetl
@@ -2059,17 +2059,17 @@ when_111_end:
 choose_61_end:
 macro_f_concord4_end: ret
 macro_conj_verb2_start:
-push 1
+push-int 1
 push "lemh"
 clipsl
 push "haber"
 cmp
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pri>"
 cmp
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pp>"
@@ -2077,7 +2077,7 @@ cmp
 and 3
 jz when_112_end
 push "temps_chunk"
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2096,40 +2096,40 @@ call mod-gen-pp
 push "verbfinal"
 push "avea"
 push "<vbavea><pri>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pp>"
 push genero_pp
 push numero_pp
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 11
 storev
 jmp choose_62_end
 when_112_end:
-push 1
+push-int 1
 push "lemh"
 clipsl
 push "haber"
 cmp
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<cni>"
 cmp
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pp>"
@@ -2137,7 +2137,7 @@ cmp
 and 3
 jz when_113_end
 push "temps_chunk"
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2156,43 +2156,43 @@ call mod-gen-pp
 push "verbfinal"
 push "avea"
 push "<vbavea><cni>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
 push "fi"
 push "<vblex><inf>"
 push "$ ^"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pp>"
 push genero_pp
 push numero_pp
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 14
 storev
 jmp choose_62_end
 when_113_end:
-push 1
+push-int 1
 push "lemh"
 clipsl
 push "haber"
 cmp
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pii>"
 cmp
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pp>"
@@ -2206,20 +2206,20 @@ push "lema_SV"
 push "verbcj"
 storev
 push "verbfinal"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pper>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 6
@@ -2229,14 +2229,14 @@ when_114_end:
 choose_62_end:
 macro_conj_verb2_end: ret
 macro_conj_verb1_start:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pri>"
 cmp
 jz when_115_end
 push "temps_chunk"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2244,34 +2244,34 @@ push "lema_SV"
 push "verbcj"
 storev
 push "verbfinal"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "lemq"
 cliptl
 concat 6
 storev
 jmp choose_63_end
 when_115_end:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<ifi>"
 cmp
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<pii>"
@@ -2279,7 +2279,7 @@ cmp
 or 2
 jz when_116_end
 push "temps_chunk"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2298,37 +2298,37 @@ call mod-gen-pp
 push "verbfinal"
 push "avea"
 push "<vbavea><pri>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pp>"
 push genero_pp
 push numero_pp
-push 1
+push-int 1
 push "lemq"
 cliptl
 concat 11
 storev
 jmp choose_63_end
 when_116_end:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<fti>"
 cmp
 jz when_117_end
 push "temps_chunk"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2338,35 +2338,35 @@ storev
 push "verbfinal"
 push "vrea"
 push "<vaux><pri>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 push "$ ^"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<inf>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 concat 9
 storev
 jmp choose_63_end
 when_117_end:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 clipsl
 push "<cni>"
 cmp
 jz when_118_end
 push "temps_chunk"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2376,24 +2376,24 @@ storev
 push "verbfinal"
 push "avea"
 push "<vbavea>"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<inf>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 concat 10
@@ -2401,7 +2401,7 @@ storev
 jmp choose_63_end
 when_118_end:
 push "temps_chunk"
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 storev
@@ -2409,22 +2409,22 @@ push "lema_SV"
 push "verbcj"
 storev
 push "verbfinal"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "lemq"
 cliptl
 concat 6
@@ -2434,66 +2434,66 @@ macro_conj_verb1_end: ret
 section_rules_start:
 patterns_start:
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 1
+push-int 1
 addtrie action_0_start
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 1
+push-int 1
 addtrie action_1_start
 push "<adv>|<preadv>"
-push 1
+push-int 1
 addtrie action_2_start
 push "<num><*>"
-push 1
+push-int 1
 addtrie action_3_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 2
+push-int 2
 addtrie action_4_start
 push "todo<predet><*>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_5_start
 push "a<pr>"
 push "<np><ant><*>"
-push 2
+push-int 2
 addtrie action_6_start
 push "a<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_7_start
 push "de<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_8_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "de<pr>"
 push "todo<predet><*>"
-push 4
+push-int 4
 addtrie action_9_start
 push "a<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "de<pr>"
 push "todo<predet><*>"
-push 5
+push-int 5
 addtrie action_10_start
 push "de<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "de<pr>"
 push "todo<predet><*>"
-push 5
+push-int 5
 addtrie action_11_start
 push "todo<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "de<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 5
+push-int 5
 addtrie action_12_start
 push "todo<predet><*>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
@@ -2501,256 +2501,256 @@ push "<n><*>|<np><al><*>|<np><loc><*>"
 push "de<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 6
+push-int 6
 addtrie action_13_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<num><*>|<num>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_14_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<num><*>|<num>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 4
+push-int 4
 addtrie action_15_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<num><*>|<num>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 4
+push-int 4
 addtrie action_16_start
 push "<num><*>|<num>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 2
+push-int 2
 addtrie action_17_start
 push "<num><*>|<num>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_18_start
 push "<num><*>|<num>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 3
+push-int 3
 addtrie action_19_start
 push "<np><ant><*>"
-push 1
+push-int 1
 addtrie action_20_start
 push "<np><loc><*>"
-push 1
+push-int 1
 addtrie action_21_start
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 2
+push-int 2
 addtrie action_22_start
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adv>|<preadv>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 3
+push-int 3
 addtrie action_23_start
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 2
+push-int 2
 addtrie action_24_start
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 3
+push-int 3
 addtrie action_25_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 3
+push-int 3
 addtrie action_26_start
 push "a<pr>"
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 4
+push-int 4
 addtrie action_27_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adv>|<preadv>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 4
+push-int 4
 addtrie action_28_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 4
+push-int 4
 addtrie action_29_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<adv>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 3
+push-int 3
 addtrie action_30_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
 push "<n><*>|<np><al><*>|<np><loc><*>"
-push 3
+push-int 3
 addtrie action_31_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
 push "<adj><*>|<adj><pos><*>|<vblex><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>|<vbser><pp><*>"
-push 2
+push-int 2
 addtrie action_32_start
 push "<det><dem><*>|<det><def><*>|<det><ind><*>|<det><pos><*>|<predet><*>"
-push 1
+push-int 1
 addtrie action_33_start
 push "<vbser><prs><*>|<vbser><fts><*>|<vbser><pis><*>|<vbser><pii><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><fti><*>|<vbser><cni><*>|<vbser><pri><*>"
-push 1
+push-int 1
 addtrie action_34_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
-push 1
+push-int 1
 addtrie action_35_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "a<pr>"
-push 2
+push-int 2
 addtrie action_36_start
 push "<vbhaver><*>"
 push "<vblex><pp><*>|<vbser><pp><*>|<vbmod><pp><*>|<vbhaver><pp><*>"
-push 2
+push-int 2
 addtrie action_37_start
 push "ir<vblex><pri><*>"
 push "a<pr>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 3
+push-int 3
 addtrie action_38_start
 push "ir<vblex><pri><*>"
 push "a<pr>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
-push 4
+push-int 4
 addtrie action_39_start
 push "ir<vblex><pri><*>"
 push "a<pr>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
 push "<prn><enc><*>"
-push 5
+push-int 5
 addtrie action_40_start
 push "<vblex><ger>|<vbser><ger>|<vbhaver><ger>|<vbmod><ger>"
-push 1
+push-int 1
 addtrie action_41_start
 push "estar<vblex><*>"
 push "<vblex><ger>|<vbser><ger>|<vbhaver><ger>|<vbmod><ger>"
-push 2
+push-int 2
 addtrie action_42_start
 push "estar<vblex><*>"
 push "<vblex><ger>|<vbser><ger>|<vbhaver><ger>|<vbmod><ger>"
 push "<prn><enc><*>"
-push 3
+push-int 3
 addtrie action_43_start
 push "<vblex><ger>|<vbser><ger>|<vbhaver><ger>|<vbmod><ger>"
 push "<prn><enc><*>"
-push 2
+push-int 2
 addtrie action_44_start
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 1
+push-int 1
 addtrie action_45_start
 push "que<cnjsub>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 2
+push-int 2
 addtrie action_46_start
 push "de<pr>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 2
+push-int 2
 addtrie action_47_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 2
+push-int 2
 addtrie action_48_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "a<pr>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 3
+push-int 3
 addtrie action_49_start
 push "tener<vblex><*>|tener<vbmod><*>"
 push "que<cnjsub>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 3
+push-int 3
 addtrie action_50_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "que<cnjsub>"
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
-push 3
+push-int 3
 addtrie action_51_start
 push "<vblex><imp><*>|<vbser><imp><*>|<vbhaver><imp><*>|<vbmod><imp><*>"
 push "<prn><enc><*>"
-push 2
+push-int 2
 addtrie action_52_start
 push "<vblex><imp><*>|<vbser><imp><*>|<vbhaver><imp><*>|<vbmod><imp><*>"
 push "<prn><enc><*>"
 push "<prn><enc><*>"
-push 3
+push-int 3
 addtrie action_53_start
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
-push 2
+push-int 2
 addtrie action_54_start
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
 push "<prn><enc><*>"
-push 3
+push-int 3
 addtrie action_55_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
-push 3
+push-int 3
 addtrie action_56_start
 push "<prn><pro><*>"
 push "<prn><pro><*>"
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
-push 3
+push-int 3
 addtrie action_57_start
 push "<prn><pro><*>"
 push "<prn><pro><*>"
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
-push 4
+push-int 4
 addtrie action_58_start
 push "<vblex><cni><*>|<vblex><fti><*>|<vblex><ifi><*>|<vblex><imp><*>|<vblex><pii><*>|<vblex><pis><*>|<vblex><pri><*>|<vblex><prs><*>|<vblex><fts><*>|<vbser><cni><*>|<vbser><fti><*>|<vbser><ifi><*>|<vbser><imp><*>|<vbser><pii><*>|<vbser><pis><*>|<vbser><pri><*>|<vbser><prs><*>|<vbser><fts><*>|<vbhaver><cni><*>|<vbhaver><fti><*>|<vbhaver><ifi><*>|<vbhaver><imp><*>|<vbhaver><pii><*>|<vbhaver><pis><*>|<vbhaver><pri><*>|<vbhaver><prs><*>|<vbhaver><fts><*>|<vbmod><cni><*>|<vbmod><fti><*>|<vbmod><ifi><*>|<vbmod><imp><*>|<vbmod><pii><*>|<vbmod><pis><*>|<vbmod><pri><*>|<vbmod><prs><*>|<vbmod><fts><*>|<vblex><pron><cni><*>|<vblex><pron><fti><*>|<vblex><pron><ifi><*>|<vblex><pron><imp><*>|<vblex><pron><pii><*>|<vblex><pron><pis><*>|<vblex><pron><pri><*>|<vblex><pron><prs><*>"
 push "<vblex><inf>|<vblex><pron><inf>|<vbser><inf>|<vbhaver><inf>|<vbmod><inf>"
 push "<prn><enc><*>"
 push "<prn><enc><*>"
-push 4
+push-int 4
 addtrie action_59_start
 push "<prn><pro><*>"
-push 1
+push-int 1
 addtrie action_60_start
 push "<prn><enc><*>"
-push 1
+push-int 1
 addtrie action_61_start
 push "yo<prn><*>|tú<prn><*>|él<prn><*>|nosotros<prn><*>|vosotros<prn><*>"
-push 1
+push-int 1
 addtrie action_62_start
 push "<prn><tn><*>|quién<prn><itg><*>|que<prn><itg><*>|el cual<prn><itg><*>"
-push 1
+push-int 1
 addtrie action_63_start
 push "<prn><itg><*>"
-push 1
+push-int 1
 addtrie action_64_start
 push "<prn><rel><*>|<rel><*>"
-push 1
+push-int 1
 addtrie action_65_start
 push "y<cnjcoo>|o<cnjcoo>|pero<cnjcoo>"
-push 1
+push-int 1
 addtrie action_66_start
 push "<cnjcoo>|<cnjsub>|<cnjadv>"
-push 1
+push-int 1
 addtrie action_67_start
 push "<pr>"
-push 1
+push-int 1
 addtrie action_68_start
 push "<num>"
-push 1
+push-int 1
 addtrie action_69_start
 push "<sent>"
-push 1
+push-int 1
 addtrie action_70_start
 push "<lquest>"
-push 1
+push-int 1
 addtrie action_71_start
 patterns_end:
 action_0_start:
@@ -2767,20 +2767,20 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
@@ -2797,27 +2797,27 @@ call f_concord1
 push 1
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
 push "<vblex><pp>"
 cmp
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
 push "<vbmod><pp>"
 cmp
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
 push "<vaux><pp>"
 cmp
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
 push "<vbser><pp>"
 cmp
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
 push "<vbhaver><pp>"
@@ -2829,19 +2829,19 @@ push caseFirstWord
 case-of
 modify-case
 push "<SA>"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 5
@@ -2856,20 +2856,20 @@ modify-case
 push "<SA>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
@@ -2885,13 +2885,13 @@ push "adv"
 push caseFirstWord
 case-of
 modify-case
-push 1
+push-int 1
 push "<adv>|<preadv>|<adv><itg>"
 cliptl
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<adv>|<preadv>|<adv><itg>"
 cliptl
 lu 2
@@ -2913,16 +2913,16 @@ push "<SN>"
 push genero
 push numero
 concat 3
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<num>|<num><percent>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
@@ -2937,7 +2937,7 @@ push 2
 push 1
 push 2
 call f_concord2
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -2950,20 +2950,20 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -2971,12 +2971,12 @@ chunk 3
 out 1
 jmp choose_65_end
 when_120_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -2993,35 +2993,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -3029,7 +3029,7 @@ chunk 5
 out 1
 jmp choose_66_end
 when_121_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3045,32 +3045,32 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3091,7 +3091,7 @@ push 3
 push 2
 push 2
 call f_concord2
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3104,38 +3104,38 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3143,12 +3143,12 @@ chunk 5
 out 1
 jmp choose_68_end
 when_123_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -3165,53 +3165,53 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3219,7 +3219,7 @@ chunk 7
 out 1
 jmp choose_69_end
 when_124_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3233,50 +3233,50 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3307,16 +3307,16 @@ push "pe"
 push "<pr>"
 lu 2
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 4
@@ -3331,7 +3331,7 @@ push 3
 push 2
 push 2
 call f_concord2
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3345,20 +3345,20 @@ push "<SN>"
 push caso
 concat 2
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3366,12 +3366,12 @@ chunk 4
 out 1
 jmp choose_71_end
 when_126_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -3388,35 +3388,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3424,7 +3424,7 @@ chunk 5
 out 1
 jmp choose_72_end
 when_127_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3438,32 +3438,32 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3487,7 +3487,7 @@ call f_concord2
 push "caso"
 push "<dg>"
 storev
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3501,20 +3501,20 @@ push "<SN>"
 push caso
 concat 2
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3522,12 +3522,12 @@ chunk 4
 out 1
 jmp choose_74_end
 when_129_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -3544,35 +3544,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3580,7 +3580,7 @@ chunk 5
 out 1
 jmp choose_75_end
 when_130_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3594,32 +3594,32 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3640,7 +3640,7 @@ push 2
 push 1
 push 2
 call f_concord2
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3653,20 +3653,20 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -3679,12 +3679,12 @@ chunk 5
 out 1
 jmp choose_77_end
 when_132_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -3701,35 +3701,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -3742,7 +3742,7 @@ chunk 7
 out 1
 jmp choose_78_end
 when_133_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3756,32 +3756,32 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3807,7 +3807,7 @@ push 3
 push 2
 push 2
 call f_concord2
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3820,20 +3820,20 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3846,12 +3846,12 @@ chunk 5
 out 1
 jmp choose_80_end
 when_135_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -3868,35 +3868,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -3909,7 +3909,7 @@ chunk 7
 out 1
 jmp choose_81_end
 when_136_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -3923,32 +3923,32 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -3977,7 +3977,7 @@ call f_concord2
 push "caso"
 push "<dg>"
 storev
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -3990,20 +3990,20 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -4016,12 +4016,12 @@ chunk 5
 out 1
 jmp choose_83_end
 when_138_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -4038,35 +4038,35 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -4079,7 +4079,7 @@ chunk 7
 out 1
 jmp choose_84_end
 when_139_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -4093,32 +4093,32 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -4154,7 +4154,7 @@ call mod-gen
 push 4
 push 1
 call mod-gen
-push 4
+push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -4167,66 +4167,66 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
 push "al"
 push "<det><def>"
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
 pushsb 3
-push 5
+push-int 5
 push "lemh"
 cliptl
-push 5
+push-int 5
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 5
+push-int 5
 push "lemq"
 cliptl
 lu 6
@@ -4235,12 +4235,12 @@ out 1
 jmp choose_86_end
 when_141_end:
 choose_86_end:
-push 4
+push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
 cmp
-push 4
+push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
@@ -4257,71 +4257,71 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 4
+push-int 4
 push "lem"
 cliptl
-push 4
+push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
 lu 5
 pushsb 3
-push 5
+push-int 5
 push "lemh"
 cliptl
-push 5
+push-int 5
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 5
+push-int 5
 push "lemq"
 cliptl
 lu 6
@@ -4330,7 +4330,7 @@ out 1
 jmp choose_87_end
 when_142_end:
 choose_87_end:
-push 4
+push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -4346,68 +4346,68 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 5
+push-int 5
 push "lemh"
 cliptl
-push 5
+push-int 5
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 5
+push-int 5
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lem"
 cliptl
 push "<adj><pos>"
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -4431,7 +4431,7 @@ push 5
 push 6
 push 2
 call f_concord2
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -4440,7 +4440,7 @@ jz when_144_end
 push 1
 push 1
 call mod-gen
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -4453,56 +4453,56 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -4511,12 +4511,12 @@ out 1
 jmp choose_90_end
 when_145_end:
 choose_90_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
 cmp
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
@@ -4533,71 +4533,71 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 5
+push-int 5
 push "lem"
 cliptl
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
 lu 5
 pushsb 3
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -4606,7 +4606,7 @@ out 1
 jmp choose_91_end
 when_146_end:
 choose_91_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -4622,68 +4622,68 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 5
+push-int 5
 push "lem"
 cliptl
 push "<adj><pos>"
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -4696,12 +4696,12 @@ choose_92_end:
 jmp choose_89_end
 when_144_end:
 choose_89_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
@@ -4714,7 +4714,7 @@ call mod-gen
 push 2
 push 1
 call mod-gen
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -4727,74 +4727,74 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -4803,12 +4803,12 @@ out 1
 jmp choose_94_end
 when_149_end:
 choose_94_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
 cmp
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
@@ -4825,89 +4825,89 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 5
+push-int 5
 push "lem"
 cliptl
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
 lu 5
 pushsb 4
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -4916,7 +4916,7 @@ out 1
 jmp choose_95_end
 when_150_end:
 choose_95_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -4932,86 +4932,86 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
 pushsb 4
-push 5
+push-int 5
 push "lem"
 cliptl
 push "<adj><pos>"
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -5024,7 +5024,7 @@ choose_96_end:
 jmp choose_93_end
 when_148_end:
 choose_93_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -5036,7 +5036,7 @@ call mod-gen
 push 1
 push 1
 call mod-gen
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -5049,69 +5049,69 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 3
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -5120,12 +5120,12 @@ out 1
 jmp choose_98_end
 when_153_end:
 choose_98_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
 cmp
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
@@ -5142,84 +5142,84 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 3
-push 5
+push-int 5
 push "lem"
 cliptl
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
 lu 5
 pushsb 4
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
@@ -5228,7 +5228,7 @@ out 1
 jmp choose_99_end
 when_154_end:
 choose_99_end:
-push 5
+push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -5244,81 +5244,81 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 3
-push 6
+push-int 6
 push "lemh"
 cliptl
-push 6
+push-int 6
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 6
+push-int 6
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 6
+push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg><def>"
-push 6
+push-int 6
 push "lemq"
 cliptl
 lu 6
 pushsb 4
-push 5
+push-int 5
 push "lem"
 cliptl
 push "<adj><pos>"
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -5340,7 +5340,7 @@ push 3
 push 1
 push 2
 call f_concord2
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -5357,49 +5357,49 @@ push "<SN>"
 push caso
 concat 2
 push "cel"
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -5407,12 +5407,12 @@ chunk 7
 out 1
 jmp choose_101_end
 when_156_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -5429,52 +5429,52 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -5482,7 +5482,7 @@ chunk 7
 out 1
 jmp choose_102_end
 when_157_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -5498,58 +5498,58 @@ modify-case
 push "<SN>"
 push "cel"
 push "<det><def>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushbl
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -5570,7 +5570,7 @@ push 4
 push 1
 push 2
 call f_concord2
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -5590,67 +5590,67 @@ push "<SN>"
 push caso
 concat 2
 push "cel"
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -5658,12 +5658,12 @@ chunk 9
 out 1
 jmp choose_104_end
 when_159_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -5683,70 +5683,70 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -5754,7 +5754,7 @@ chunk 9
 out 1
 jmp choose_105_end
 when_160_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -5773,76 +5773,76 @@ modify-case
 push "<SN>"
 push "cel"
 push "<det><def>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
 pushbl
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -5863,7 +5863,7 @@ push 3
 push 1
 push 2
 call f_concord2
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -5883,67 +5883,67 @@ push "<SN>"
 push caso
 concat 2
 push "cel"
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -5951,12 +5951,12 @@ chunk 9
 out 1
 jmp choose_107_end
 when_162_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -5976,70 +5976,70 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -6047,7 +6047,7 @@ chunk 9
 out 1
 jmp choose_108_end
 when_163_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -6066,77 +6066,77 @@ modify-case
 push "<SN>"
 push "cel"
 push "<det><def>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<num>|<num><percent>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushbl
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -6163,34 +6163,34 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<num>|<num><percent>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -6216,52 +6216,52 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<num>|<num><percent>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6287,52 +6287,52 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<num>|<num><percent>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6348,11 +6348,11 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<np><ant>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 lu 3
@@ -6370,14 +6370,14 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<np><loc>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
@@ -6403,38 +6403,38 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -6459,43 +6459,43 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 2
+push-int 2
 push "whole"
 cliptl
 lu 1
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6520,38 +6520,38 @@ modify-case
 push "<SA>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -6580,56 +6580,56 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><ind>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6648,7 +6648,7 @@ call f_concord3
 push 3
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -6661,38 +6661,38 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6700,12 +6700,12 @@ chunk 5
 out 1
 jmp choose_110_end
 when_165_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -6722,53 +6722,53 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6776,7 +6776,7 @@ chunk 7
 out 1
 jmp choose_111_end
 when_166_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -6790,51 +6790,51 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -6858,7 +6858,7 @@ call f_concord3
 push 4
 push 1
 call mod-gen
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -6871,38 +6871,38 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -6910,12 +6910,12 @@ chunk 5
 out 1
 jmp choose_113_end
 when_168_end:
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -6932,53 +6932,53 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lem"
 cliptl
-push 2
+push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -6986,7 +6986,7 @@ chunk 7
 out 1
 jmp choose_114_end
 when_169_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -7000,51 +7000,51 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 2
+push-int 2
 push "lem"
 cliptl
 push "<adj><pos>"
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 2
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7068,7 +7068,7 @@ call f_concord3
 push 4
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -7081,43 +7081,43 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 3
+push-int 3
 push "whole"
 cliptl
 lu 1
 pushsb 2
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7125,12 +7125,12 @@ chunk 7
 out 1
 jmp choose_116_end
 when_171_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -7150,58 +7150,58 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "whole"
 cliptl
 lu 1
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7209,7 +7209,7 @@ chunk 9
 out 1
 jmp choose_117_end
 when_172_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -7226,56 +7226,56 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "whole"
 cliptl
 lu 1
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7303,7 +7303,7 @@ call mod-gen
 push 4
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -7316,56 +7316,56 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7373,12 +7373,12 @@ chunk 7
 out 1
 jmp choose_119_end
 when_174_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -7395,71 +7395,71 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7467,7 +7467,7 @@ chunk 9
 out 1
 jmp choose_120_end
 when_175_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -7481,69 +7481,69 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><def>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 3
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 6
@@ -7566,7 +7566,7 @@ call f_concord2
 push 3
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -7585,40 +7585,40 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "whole"
 cliptl
 lu 1
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -7626,12 +7626,12 @@ chunk 7
 out 1
 jmp choose_122_end
 when_177_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -7651,40 +7651,40 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "whole"
 cliptl
 lu 1
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -7692,7 +7692,7 @@ chunk 7
 out 1
 jmp choose_123_end
 when_178_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -7709,37 +7709,37 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "whole"
 cliptl
 lu 1
 pushsb 1
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -7767,7 +7767,7 @@ call f_concord2
 push 2
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><def>"
@@ -7783,53 +7783,53 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2><def>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 lu 5
 pushsb 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -7837,12 +7837,12 @@ chunk 7
 out 1
 jmp choose_125_end
 when_180_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><dem>"
 cmp
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><ind>"
@@ -7859,53 +7859,53 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -7913,7 +7913,7 @@ chunk 7
 out 1
 jmp choose_126_end
 when_181_end:
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -7927,51 +7927,51 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<n>|<n><acr>|<np><ant>|<np><al>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
 pushsb 1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
 lu 5
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -8004,35 +8004,35 @@ modify-case
 push "<SA>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
 lu 5
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -8049,7 +8049,7 @@ call f_concord1
 push 1
 push 1
 call mod-gen
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 clipsl
 push "<det><pos>"
@@ -8060,14 +8060,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SA>"
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<adj><pos>"
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom><ind>"
@@ -8076,7 +8076,7 @@ chunk 3
 out 1
 jmp choose_128_end
 when_183_end:
-push 1
+push-int 1
 push "lem"
 clipsl
 push "todo"
@@ -8101,16 +8101,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<DET>"
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
@@ -8131,16 +8131,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8164,14 +8164,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8200,14 +8200,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8225,14 +8225,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8255,14 +8255,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8272,22 +8272,22 @@ chunk 3
 out 1
 action_37_end:
 action_38_start:
-push 3
+push-int 3
 push "whole"
-push 3
+push-int 3
 push "lemh"
 clipsl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clipsl
 push "<fti>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 3
+push-int 3
 push "lemq"
 clipsl
 concat 6
@@ -8303,14 +8303,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8320,22 +8320,22 @@ chunk 3
 out 1
 action_38_end:
 action_39_start:
-push 3
+push-int 3
 push "whole"
-push 3
+push-int 3
 push "lemh"
 clipsl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clipsl
 push "<fti>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 3
+push-int 3
 push "lemq"
 clipsl
 concat 6
@@ -8354,35 +8354,35 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<prn>"
 cliptl
 push "<pro>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 8
@@ -8393,22 +8393,22 @@ chunk 5
 out 1
 action_39_end:
 action_40_start:
-push 3
+push-int 3
 push "whole"
-push 3
+push-int 3
 push "lemh"
 clipsl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clipsl
 push "<fti>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 clipsl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
-push 3
+push-int 3
 push "lemq"
 clipsl
 concat 6
@@ -8419,28 +8419,28 @@ call firstWord
 push 3
 push 1
 call conj_verb1
-push 4
+push-int 4
 push "lem"
 cliptl
 push "îl"
 cmp
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 and 3
 jz when_186_end
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mn>"
 storetl
@@ -8455,57 +8455,57 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<prn>"
 cliptl
 push "<pro>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 8
 pushsb 1
-push 5
+push-int 5
 push "lemh"
 cliptl
-push 5
+push-int 5
 push "<prn>"
 cliptl
 push "<pro>"
-push 5
+push-int 5
 push "<p1>|<p2>|<p3>"
 cliptl
-push 5
+push-int 5
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 5
+push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 5
+push-int 5
 push "lemq"
 cliptl
 lu 8
@@ -8523,23 +8523,23 @@ push "ger"
 push caseFirstWord
 case-of
 modify-case
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 4
@@ -8550,24 +8550,24 @@ push "aa"
 storev
 action_41_end:
 action_42_start:
-push 1
+push-int 1
 push "whole"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 6
@@ -8583,14 +8583,14 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8603,24 +8603,24 @@ push "aa"
 storev
 action_42_end:
 action_43_start:
-push 1
+push-int 1
 push "whole"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 6
@@ -8636,35 +8636,35 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push temps_chunk
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<prn>"
 cliptl
 push "<pro>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 8
@@ -8685,46 +8685,46 @@ push "ger"
 push caseFirstWord
 case-of
 modify-case
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 concat 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 4
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<prn>"
 cliptl
-push 2
+push-int 2
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 8
@@ -8744,10 +8744,10 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
@@ -8756,7 +8756,7 @@ push "a"
 push "<pr>"
 lu 2
 pushbl
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -8767,18 +8767,18 @@ action_46_start:
 push 1
 push 1
 call firstWord
-push 2
+push-int 2
 push "whole"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pp>"
 push genero
 push numero
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 6
@@ -8801,26 +8801,26 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
 concat 4
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push genero_pp
 push numero_pp
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -8831,18 +8831,18 @@ action_47_start:
 push 1
 push 1
 call firstWord
-push 2
+push-int 2
 push "whole"
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<pp>"
 push genero
 push numero
-push 2
+push-int 2
 push "lemq"
 cliptl
 concat 6
@@ -8855,7 +8855,7 @@ push caseFirstWord
 case-of
 modify-case
 push "<PREP>"
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -8866,26 +8866,26 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
 concat 4
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 2
+push-int 2
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push genero_pp
 push numero_pp
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -8904,16 +8904,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8924,20 +8924,20 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushbl
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -8956,16 +8956,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -8976,20 +8976,20 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushbl
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -9000,12 +9000,12 @@ action_50_start:
 push 1
 push 1
 call firstWord
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<pii>"
 cmp
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<ifi>"
@@ -9015,10 +9015,10 @@ jz when_187_end
 push "verbfinal"
 push "avea"
 push "<vbavea><pri>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
@@ -9028,7 +9028,7 @@ concat 7
 storev
 jmp choose_131_end
 when_187_end:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<cni>"
@@ -9037,10 +9037,10 @@ jz when_188_end
 push "verbfinal"
 push "avea"
 push "<vbavea><cni>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
@@ -9050,7 +9050,7 @@ concat 7
 storev
 jmp choose_131_end
 when_188_end:
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<fti>"
@@ -9059,10 +9059,10 @@ jz when_189_end
 push "verbfinal"
 push "vrea"
 push "<vaux><pri>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "$ ^"
@@ -9083,16 +9083,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -9103,20 +9103,20 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -9135,16 +9135,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -9155,20 +9155,20 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushbl
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -9184,38 +9184,38 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
 concat 4
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<prn>"
 cliptl
-push 2
+push-int 2
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 8
@@ -9230,28 +9230,28 @@ call firstWord
 push 3
 push 1
 call mod-gen
-push 2
+push-int 2
 push "lem"
 cliptl
 push "îl"
 cmp
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 and 3
 jz when_190_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mfn>"
 storetl
@@ -9263,61 +9263,61 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
 concat 4
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<prn>"
 cliptl
-push 2
+push-int 2
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 8
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<prn>"
 cliptl
-push 3
+push-int 3
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 8
@@ -9334,10 +9334,10 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
@@ -9346,26 +9346,26 @@ push "a"
 push "<pr>"
 lu 2
 pushbl
-push 2
+push-int 2
 push "lemh"
 cliptl
 push "<prn><pro>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 7
 pushbl
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -9381,10 +9381,10 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
 push "<sg>"
@@ -9393,45 +9393,45 @@ push "a"
 push "<pr>"
 lu 2
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
 push "<prn><pro>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 7
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
 push "<prn><pro>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 7
 pushbl
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -9453,16 +9453,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -9473,42 +9473,42 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<prn>"
 cliptl
 push "<pro>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 8
 pushbl
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -9522,28 +9522,28 @@ call firstWord
 push 3
 push 1
 call conj_verb1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "îl"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 and 3
 jz when_191_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mn>"
 storetl
@@ -9555,63 +9555,63 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 3
+push-int 3
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<prn>"
 cliptl
-push 1
+push-int 1
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 8
 pushsb 1
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<prn>"
 cliptl
-push 2
+push-int 2
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 8
@@ -9628,28 +9628,28 @@ call firstWord
 push 3
 push 1
 call conj_verb1
-push 1
+push-int 1
 push "lem"
 cliptl
 push "îl"
 cmp
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 and 3
 jz when_192_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mn>"
 storetl
@@ -9661,16 +9661,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 3
+push-int 3
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -9681,68 +9681,68 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushsb 2
-push 1
+push-int 1
 push "lemh"
 cliptl
-push 1
+push-int 1
 push "<prn>"
 cliptl
-push 1
+push-int 1
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 1
+push-int 1
 push "lemq"
 cliptl
 lu 8
 pushsb 2
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<prn>"
 cliptl
-push 2
+push-int 2
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>"
 cliptl
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 8
 pushbl
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 6
@@ -9759,28 +9759,28 @@ call conj_verb1
 push 4
 push 1
 call mod-gen
-push 3
+push-int 3
 push "lem"
 cliptl
 push "îl"
 cmp
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
 push "<mf>"
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<ND>"
 cmp
 and 3
 jz when_193_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 push "<mn>"
 storetl
@@ -9792,16 +9792,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<SV>"
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
-push 1
+push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 concat 5
@@ -9812,64 +9812,64 @@ push "să"
 push "<cnjsub>"
 lu 2
 pushsb 2
-push 3
+push-int 3
 push "lemh"
 cliptl
-push 3
+push-int 3
 push "<prn>"
 cliptl
 push "<pro>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>"
 cliptl
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<dg>"
-push 3
+push-int 3
 push "lemq"
 cliptl
 lu 8
 pushsb 2
-push 4
+push-int 4
 push "lemh"
 cliptl
-push 4
+push-int 4
 push "<prn>"
 cliptl
 push "<pro>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>"
 cliptl
-push 4
+push-int 4
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
-push 4
+push-int 4
 push "lemq"
 cliptl
 lu 8
 pushbl
-push 2
+push-int 2
 push "lemh"
 cliptl
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 cliptl
 push "<prs>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-push 2
+push-int 2
 push "lemq"
 cliptl
 lu 6
@@ -9888,31 +9888,31 @@ push caseFirstWord
 case-of
 modify-case
 push "<prn><pro>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 concat 5
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<prn><pro>"
-push 1
+push-int 1
 push "<ref>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<6>"
@@ -9932,31 +9932,31 @@ push caseFirstWord
 case-of
 modify-case
 push "<prn><enc>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<nom>"
 concat 5
-push 1
+push-int 1
 push "lem"
 cliptl
 push "<prn><enc>"
-push 1
+push-int 1
 push "<ref>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<6>"
@@ -9978,22 +9978,22 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<prn>"
 cliptl
-push 1
+push-int 1
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
@@ -10015,22 +10015,22 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<prn>"
 cliptl
-push 1
+push-int 1
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
@@ -10050,22 +10050,22 @@ push caseFirstWord
 case-of
 modify-case
 push "<SN>"
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<prn>"
 cliptl
-push 1
+push-int 1
 push "<subj>|<rel>|<rel><adv>|<rel><nn>|<obj>|<tn>|<tn><ref>|<itg>|<pos>|<ref>|<enc>|<enc><ref>|<pro>|<tn><pos>"
 cliptl
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 6
@@ -10082,12 +10082,12 @@ call firstWord
 push 1
 push 1
 call mod-gen
-push 1
+push-int 1
 push "lem"
 clipsl
 push "cuyo"
 cmp
-push 1
+push-int 1
 push "lem"
 clipsl
 push "al cual"
@@ -10100,7 +10100,7 @@ storev
 jmp choose_136_end
 when_194_end:
 choose_136_end:
-push 1
+push-int 1
 push "<rel>|<rel><aa>|<rel><an>|<rel><nn>|<rel><adv>"
 clipsl
 push "<rel><adv>"
@@ -10114,16 +10114,16 @@ modify-case
 push "<SN>"
 push caso
 concat 2
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<rel>|<rel><aa>|<rel><an>|<rel><nn>|<rel><adv>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 push "<2>"
@@ -10137,16 +10137,16 @@ push caseFirstWord
 case-of
 modify-case
 push "<ADV>"
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<rel>|<rel><aa>|<rel><an>|<rel><nn>|<rel><adv>"
 cliptl
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<nt>|<GD>"
 cliptl
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 lu 4
@@ -10165,10 +10165,10 @@ push "cnjcoo"
 push caseFirstWord
 case-of
 modify-case
-push 1
+push-int 1
 push "tags"
 cliptl
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -10183,10 +10183,10 @@ push "cnj"
 push caseFirstWord
 case-of
 modify-case
-push 1
+push-int 1
 push "tags"
 cliptl
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -10201,7 +10201,7 @@ push 1
 push 1
 call firstWord
 push "lema"
-push 1
+push-int 1
 push "lem"
 cliptl
 storev
@@ -10210,7 +10210,7 @@ push caseFirstWord
 case-of
 modify-case
 push "<PREP>"
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1
@@ -10229,10 +10229,10 @@ push "<SN>"
 push "<mf>"
 push "<sp>"
 concat 3
-push 1
+push-int 1
 push "lem"
 cliptl
-push 1
+push-int 1
 push "<num>|<num><percent>"
 cliptl
 lu 2
@@ -10249,12 +10249,12 @@ storev
 push "genero"
 push "<m>"
 storev
-push 1
+push-int 1
 push "lem"
 clipsl
 push ";"
 cmp
-push 1
+push-int 1
 push "lem"
 clipsl
 push ":"
@@ -10270,7 +10270,7 @@ when_196_end:
 choose_138_end:
 push "punt"
 push "<sent>"
-push 1
+push-int 1
 push "whole"
 cliptl
 lu 1

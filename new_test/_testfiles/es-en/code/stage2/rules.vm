@@ -20,7 +20,7 @@ when_0_end:
 choose_0_end:
 macro_f_bcond_end: ret
 macro_generate_subject_start:
-push 1
+push-int 1
 push "lem"
 clip
 push "verbcj|adv_verbcj|aux_verb|adv_aux_verb|haver_pp|haver_adv_pp|haver_pp_enc|aux_haver_pp|aux_haver_adv_pp|aux_haver_pp_enc|verbcj_enc|verbcj_ger|verbcj_ger_enc|tohavevblex"
@@ -30,12 +30,12 @@ push fifrase
 push "yes"
 cmp
 jz when_2_end
-push 1
+push-int 1
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
 cmp
-push 1
+push-int 1
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<inf>"
@@ -44,20 +44,20 @@ or 2
 not
 jz when_3_end
 push "subj"
-push 1
+push-int 1
 get-case-from
 modify-case
 push "<prn><subj>"
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 1
+push-int 1
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -65,16 +65,16 @@ push "$}"
 chunk 9
 pushbl
 out 2
-push 1
+push-int 1
 push "lem"
 clip
 case-of
 push "Aa"
 cmp
 jz when_4_end
-push 1
+push-int 1
 push "lem"
-push 1
+push-int 1
 push "lem"
 clip
 push "aa"
@@ -96,186 +96,186 @@ macro_generate_subject_end: ret
 section_rules_start:
 patterns_start:
 push "<SN><m><*>|<SN><f><*>|<SN><mf><*>|<SN><nt><*>|<SN><subj><*>|<SN><tn><*>|<SN><itg><*>|<SN><pos><*>"
-push 1
+push-int 1
 addtrie action_0_start
 push "<SN><obj><*>"
-push 1
+push-int 1
 addtrie action_1_start
 push "haverhi<SV><*>|haverhi<SVneg><*>|haverhi_pp<SV><*>|haverhi_pp<SVneg><*>|aux_haverhi<SV><*>|aux_haverhi<SVneg><*>|aux_haverhi_pp<SV><*>|aux_haverhi_pp<SVneg><*>"
 push "<SN><*>"
-push 2
+push-int 2
 addtrie action_2_start
 push "<SN><*>"
 push "haverhi<SV><*>|haverhi<SVneg><*>|haverhi_pp<SV><*>|haverhi_pp<SVneg><*>|aux_haverhi<SV><*>|aux_haverhi<SVneg><*>|aux_haverhi_pp<SV><*>|aux_haverhi_pp<SVneg><*>"
 push "<SN><*>"
-push 3
+push-int 3
 addtrie action_3_start
 push "haverhi<SV><*>|haverhi<SVneg><*>|haverhi_pp<SV><*>|haverhi_pp<SVneg><*>|aux_haverhi<SV><*>|aux_haverhi<SVneg><*>|aux_haverhi_pp<SV><*>|aux_haverhi_pp<SVneg><*>"
-push 1
+push-int 1
 addtrie action_4_start
 push "<SN><m><*>|<SN><f><*>|<SN><mf><*>|<SN><nt><*>|<SN><subj><*>|<SN><tn><*>|<SN><itg><*>|<SN><pos><*>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 3
+push-int 3
 addtrie action_5_start
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 2
+push-int 2
 addtrie action_6_start
 push "<SV><*>|<SVneg><*>"
 push "<SA><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 3
+push-int 3
 addtrie action_7_start
 push "<SV><*>|<SVneg><*>"
 push "<SA><*>"
 push "de<PREP>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 4
+push-int 4
 addtrie action_8_start
 push "<SN><m><*>|<SN><f><*>|<SN><mf><*>|<SN><nt><*>|<SN><subj><*>|<SN><tn><*>|<SN><itg><*>|<SN><pos><*>"
 push "<SV><*>|<SVneg><*>"
 push "<SA><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 4
+push-int 4
 addtrie action_9_start
 push "<SN><m><*>|<SN><f><*>|<SN><mf><*>|<SN><nt><*>|<SN><subj><*>|<SN><tn><*>|<SN><itg><*>|<SN><pos><*>"
 push "<SV><*>|<SVneg><*>"
 push "<SA><*>"
 push "de<PREP>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 5
+push-int 5
 addtrie action_10_start
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
-push 1
+push-int 1
 addtrie action_11_start
 push "<cnjsub>|<cnjadv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
-push 2
+push-int 2
 addtrie action_12_start
 push "<cnjsub>|<cnjadv>"
 push "<adv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
-push 3
+push-int 3
 addtrie action_13_start
 push "<cnjsub>|<cnjadv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 3
+push-int 3
 addtrie action_14_start
 push "<cnjsub>|<cnjadv>"
 push "<adv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 4
+push-int 4
 addtrie action_15_start
 push "<cnjsub>|<cnjadv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SA><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 4
+push-int 4
 addtrie action_16_start
 push "<cnjsub>|<cnjadv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SA><*>"
 push "de<PREP>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 5
+push-int 5
 addtrie action_17_start
 push "en<PREP>"
 push "el que<rel><nn>|lo que<rel><nn>|<rel><adv>|cuanto<rel><nn>|que<rel><an>|el cual<rel><nn>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
-push 3
+push-int 3
 addtrie action_18_start
 push "en<PREP>"
 push "el que<rel><nn>|lo que<rel><nn>|<rel><adv>|cuanto<rel><nn>|que<rel><an>|el cual<rel><nn>"
 push "<adv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
-push 4
+push-int 4
 addtrie action_19_start
 push "en<PREP>"
 push "el que<rel><nn>|lo que<rel><nn>|<rel><adv>|cuanto<rel><nn>|que<rel><an>|el cual<rel><nn>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 4
+push-int 4
 addtrie action_20_start
 push "en<PREP>"
 push "el que<rel><nn>|lo que<rel><nn>|<rel><adv>|cuanto<rel><nn>|que<rel><an>|el cual<rel><nn>"
 push "<adv>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 5
+push-int 5
 addtrie action_21_start
 push "en<PREP>"
 push "el que<rel><nn>|lo que<rel><nn>|<rel><adv>|cuanto<rel><nn>|que<rel><an>|el cual<rel><nn>"
 push "verbcj<SV><*>|verbcj<SVneg><*>|adv_verbcj<SV><*>|adv_verbcj<SVneg><*>|aux_verb<SV><*>|aux_verb<SVneg><*>|adv_aux_verb<SV><*>|adv_aux_verb<SVneg><*>|haver_pp<SV><*>|haver_pp<SVneg><*>|haver_adv_pp<SV><*>|haver_adv_pp<SVneg><*>|haver_pp_enc<SV><*>|haver_pp_enc<SVneg><*>|aux_haver_pp<SV><*>|aux_haver_pp<SVneg><*>|aux_haver_adv_pp<SV><*>|aux_haver_adv_pp<SVneg><*>|aux_haver_pp_enc<SV><*>|aux_haver_pp_enc<SVneg><*>|verbcj_enc<SV><*>|verbcj_enc<SVneg><*>|verbcj_ger<SV><*>|verbcj_ger_enc<SV><*>|verbcj_ger<SVneg><*>|verbcj_ger_enc<SVneg><*>|modcj_inf_enc<SV><*>|modcj_inf<SV><*>"
 push "<SA><*>"
 push "<SV><vblex><inf>|<SVneg><vblex><inf>|<SV><vbhaver><inf>|<SVneg><vbhaver><inf>|<SV><vbser><inf>|<SVneg><vbser><inf>|<SV><vbmod><inf>|<SVneg><vbmod><inf>"
-push 5
+push-int 5
 addtrie action_22_start
 push "<sent>"
-push 1
+push-int 1
 addtrie action_23_start
 push "<SV><*>|<SVneg><*>"
-push 1
+push-int 1
 addtrie action_24_start
 push "<SA><*>"
-push 1
+push-int 1
 addtrie action_25_start
 push "<SP><*>"
-push 1
+push-int 1
 addtrie action_26_start
 push "<rel><*>"
-push 1
+push-int 1
 addtrie action_27_start
 push "<DET><*>"
-push 1
+push-int 1
 addtrie action_28_start
 push "que<cnjcoo>|que<cnjsub>"
-push 1
+push-int 1
 addtrie action_29_start
 push "tohavevblex<SV><*>"
 push "num_year<SN><*>"
-push 2
+push-int 2
 addtrie action_30_start
 push "unknown<unknown>"
-push 1
+push-int 1
 addtrie action_31_start
 patterns_end:
 action_0_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_5_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_5_end
 when_5_end:
 choose_5_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_6_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_6_end
 when_6_end:
 choose_6_end:
-push 1
+push-int 1
 push "lem"
 clip
-push 1
+push-int 1
 push "tags"
 clip
-push 1
+push-int 1
 push "chcontent"
 clip
 chunk 3
@@ -288,39 +288,39 @@ push "no"
 storev
 action_0_end:
 action_1_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_7_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_7_end
 when_7_end:
 choose_7_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_8_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_8_end
 when_8_end:
 choose_8_end:
-push 1
+push-int 1
 push "lem"
 clip
-push 1
+push-int 1
 push "tags"
 clip
-push 1
+push-int 1
 push "chcontent"
 clip
 chunk 3
@@ -330,12 +330,12 @@ push "no"
 storev
 action_1_end:
 action_2_start:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<sp>"
@@ -343,51 +343,51 @@ cmp
 or 2
 not
 jz when_9_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 storecl
 jmp choose_9_end
 when_9_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 choose_9_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_10_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_10_end
 when_10_end:
 choose_10_end:
-push 2
+push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_11_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push "<m>"
 storecl
 jmp choose_11_end
 when_11_end:
 choose_11_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
@@ -400,38 +400,38 @@ push "no"
 storev
 action_2_end:
 action_3_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_12_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_12_end
 when_12_end:
 choose_12_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_13_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_13_end
 when_13_end:
 choose_13_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<sp>"
@@ -439,56 +439,56 @@ cmp
 or 2
 not
 jz when_14_end
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 storecl
 jmp choose_14_end
 when_14_end:
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 choose_14_end:
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_15_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_15_end
 when_15_end:
 choose_15_end:
-push 3
+push-int 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_16_end
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 push "<m>"
 storecl
 jmp choose_16_end
 when_16_end:
 choose_16_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -501,20 +501,20 @@ push "no"
 storev
 action_3_end:
 action_4_start:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_17_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_17_end
 when_17_end:
 choose_17_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -527,49 +527,49 @@ push "no"
 storev
 action_4_end:
 action_5_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_18_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_18_end
 when_18_end:
 choose_18_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_19_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_19_end
 when_19_end:
 choose_19_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -578,13 +578,13 @@ or 2
 not
 jz when_20_end
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
@@ -595,7 +595,7 @@ out 2
 jmp choose_20_end
 when_20_end:
 choose_20_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -611,18 +611,18 @@ action_6_start:
 push 1
 push 1
 call generate_subject
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 out 2
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 1
+push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -631,13 +631,13 @@ or 2
 not
 jz when_21_end
 push "to"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<pr>"
@@ -648,7 +648,7 @@ out 2
 jmp choose_21_end
 when_21_end:
 choose_21_end:
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
@@ -661,31 +661,31 @@ action_7_start:
 push 1
 push 1
 call generate_subject
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -701,31 +701,31 @@ action_8_start:
 push 1
 push 1
 call generate_subject
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -738,62 +738,62 @@ push "yes"
 storev
 action_8_end:
 action_9_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_22_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_22_end
 when_22_end:
 choose_22_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_23_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_23_end
 when_23_end:
 choose_23_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -806,62 +806,62 @@ push "yes"
 storev
 action_9_end:
 action_10_start:
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 clip
 push "<GD>"
 cmp
 jz when_24_end
-push 1
+push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
 push "<m>"
 storecl
 jmp choose_24_end
 when_24_end:
 choose_24_end:
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "<ND>"
 cmp
 jz when_25_end
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storecl
 jmp choose_25_end
 when_25_end:
 choose_25_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 5
+push-int 5
 push "whole"
 clip
 chunk 1
@@ -877,7 +877,7 @@ action_11_start:
 push 1
 push 1
 call generate_subject
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -887,13 +887,13 @@ push "yes"
 storev
 action_11_end:
 action_12_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 out 2
-push 2
+push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -901,20 +901,20 @@ cmp
 not
 jz when_26_end
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -925,7 +925,7 @@ out 2
 jmp choose_26_end
 when_26_end:
 choose_26_end:
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
@@ -935,89 +935,89 @@ push "yes"
 storev
 action_12_end:
 action_13_start:
-push 3
+push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
 cmp
 not
 jz when_27_end
-push 2
+push-int 2
 push "lem"
 clip
 push "adv-interc"
 cmp
 jz when_28_end
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
 push "$}"
 chunk 9
 pushbl
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 out 7
 jmp choose_28_end
 when_28_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
 push "$}"
 chunk 9
 pushbl
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1025,17 +1025,17 @@ out 7
 choose_28_end:
 jmp choose_27_end
 when_27_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1046,13 +1046,13 @@ push "yes"
 storev
 action_13_end:
 action_14_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 out 2
-push 2
+push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1060,20 +1060,20 @@ cmp
 not
 jz when_29_end
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1084,18 +1084,18 @@ out 2
 jmp choose_29_end
 when_29_end:
 choose_29_end:
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 2
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 2
+push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -1104,13 +1104,13 @@ or 2
 not
 jz when_30_end
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<pr>"
@@ -1121,7 +1121,7 @@ out 2
 jmp choose_30_end
 when_30_end:
 choose_30_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1131,51 +1131,51 @@ push "yes"
 storev
 action_14_end:
 action_15_start:
-push 3
+push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
 cmp
 not
 jz when_31_end
-push 2
+push-int 2
 push "lem"
 clip
 push "adv-interc"
 cmp
 jz when_32_end
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
 push "$}"
 chunk 9
 pushbl
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1183,38 +1183,38 @@ pushsb 3
 out 8
 jmp choose_32_end
 when_32_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
 push "$}"
 chunk 9
 pushbl
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1223,29 +1223,29 @@ out 8
 choose_32_end:
 jmp choose_31_end
 when_31_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 out 6
 choose_31_end:
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -1254,13 +1254,13 @@ or 2
 not
 jz when_33_end
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
@@ -1271,7 +1271,7 @@ out 2
 jmp choose_33_end
 when_33_end:
 choose_33_end:
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -1281,13 +1281,13 @@ push "yes"
 storev
 action_15_end:
 action_16_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 out 2
-push 2
+push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1295,20 +1295,20 @@ cmp
 not
 jz when_34_end
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1319,31 +1319,31 @@ out 2
 jmp choose_34_end
 when_34_end:
 choose_34_end:
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -1356,13 +1356,13 @@ push "yes"
 storev
 action_16_end:
 action_17_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
 out 2
-push 2
+push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1370,20 +1370,20 @@ cmp
 not
 jz when_35_end
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 2
+push-int 2
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 2
+push-int 2
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1394,31 +1394,31 @@ out 2
 jmp choose_35_end
 when_35_end:
 choose_35_end:
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 5
+push-int 5
 push "whole"
 clip
 chunk 1
@@ -1431,18 +1431,18 @@ push "yes"
 storev
 action_17_end:
 action_18_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 3
+push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1450,20 +1450,20 @@ cmp
 not
 jz when_36_end
 push "subj"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 2
+push-int 2
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1474,7 +1474,7 @@ out 2
 jmp choose_36_end
 when_36_end:
 choose_36_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
@@ -1484,24 +1484,24 @@ push "yes"
 storev
 action_18_end:
 action_19_start:
-push 3
+push-int 3
 push "lem"
 clip
 push "adv-interc"
 cmp
 jz when_37_end
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 4
+push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1509,20 +1509,20 @@ cmp
 not
 jz when_38_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1533,35 +1533,35 @@ out 2
 jmp choose_38_end
 when_38_end:
 choose_38_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
 out 3
 jmp choose_37_end
 when_37_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 out 6
-push 4
+push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1569,20 +1569,20 @@ cmp
 not
 jz when_39_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1593,7 +1593,7 @@ out 2
 jmp choose_39_end
 when_39_end:
 choose_39_end:
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -1604,18 +1604,18 @@ push "yes"
 storev
 action_19_end:
 action_20_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 3
+push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1623,20 +1623,20 @@ cmp
 not
 jz when_40_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1647,18 +1647,18 @@ out 2
 jmp choose_40_end
 when_40_end:
 choose_40_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 out 2
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 3
+push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -1667,13 +1667,13 @@ or 2
 not
 jz when_41_end
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 4
+push-int 4
 get-case-from
 modify-case
 push "<pr>"
@@ -1684,7 +1684,7 @@ out 2
 jmp choose_41_end
 when_41_end:
 choose_41_end:
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -1694,24 +1694,24 @@ push "yes"
 storev
 action_20_end:
 action_21_start:
-push 3
+push-int 3
 push "lem"
 clip
 push "adv-interc"
 cmp
 jz when_42_end
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 4
+push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1719,20 +1719,20 @@ cmp
 not
 jz when_43_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1743,12 +1743,12 @@ out 2
 jmp choose_43_end
 when_43_end:
 choose_43_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
@@ -1756,23 +1756,23 @@ pushsb 4
 out 4
 jmp choose_42_end
 when_42_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
 out 6
-push 4
+push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1780,20 +1780,20 @@ cmp
 not
 jz when_44_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 4
+push-int 4
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 4
+push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1804,19 +1804,19 @@ out 2
 jmp choose_44_end
 when_44_end:
 choose_44_end:
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
 pushsb 4
 out 2
 choose_42_end:
-push 4
+push-int 4
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vbmod>"
 cmp
-push 4
+push-int 4
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 clip
 push "<vaux>"
@@ -1825,13 +1825,13 @@ or 2
 not
 jz when_45_end
 push "to"
-push 5
+push-int 5
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 5
+push-int 5
 get-case-from
 modify-case
 push "<pr>"
@@ -1842,7 +1842,7 @@ out 2
 jmp choose_45_end
 when_45_end:
 choose_45_end:
-push 5
+push-int 5
 push "whole"
 clip
 chunk 1
@@ -1852,18 +1852,18 @@ push "yes"
 storev
 action_21_end:
 action_22_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
 pushsb 2
 out 4
-push 3
+push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
 push "<imp>"
@@ -1871,20 +1871,20 @@ cmp
 not
 jz when_46_end
 push "subj"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj>"
-push 3
+push-int 3
 push "<p1>|<p2>|<p3>|<PD>"
 clip
 push "<GD>"
-push 3
+push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "{^"
 push "prpers"
-push 3
+push-int 3
 get-case-from
 modify-case
 push "<prn><subj><3><4><5>"
@@ -1895,31 +1895,31 @@ out 2
 jmp choose_46_end
 when_46_end:
 choose_46_end:
-push 3
+push-int 3
 push "whole"
 clip
 chunk 1
 pushsb 3
-push 4
+push-int 4
 push "whole"
 clip
 chunk 1
 pushsb 4
 push "to"
-push 5
+push-int 5
 get-case-from
 modify-case
 push "<pr>"
 push "{^"
 push "to"
-push 5
+push-int 5
 get-case-from
 modify-case
 push "<pr>"
 push "$}"
 chunk 6
 pushbl
-push 5
+push-int 5
 push "whole"
 clip
 chunk 1
@@ -1935,14 +1935,14 @@ action_23_start:
 push "fifrase"
 push "yes"
 storev
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
 out 1
 action_23_end:
 action_24_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -1955,7 +1955,7 @@ push "yes"
 storev
 action_24_end:
 action_25_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -1968,7 +1968,7 @@ push "no"
 storev
 action_25_end:
 action_26_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -1981,7 +1981,7 @@ push "no"
 storev
 action_26_end:
 action_27_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -1994,7 +1994,7 @@ push "no"
 storev
 action_27_end:
 action_28_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -2012,13 +2012,13 @@ push "yes"
 cmp
 jz when_47_end
 push "que"
-push 1
+push-int 1
 get-case-from
 modify-case
 push "<cnjsub>"
 push "{^"
 push "that"
-push 1
+push-int 1
 get-case-from
 modify-case
 push "<cnjsub>"
@@ -2027,7 +2027,7 @@ chunk 6
 out 1
 jmp choose_47_end
 when_47_end:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1
@@ -2046,19 +2046,19 @@ push "<SV>"
 push "{^"
 push "be"
 push "<vbser>"
-push 1
+push-int 1
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
 clip
-push 1
+push-int 1
 push "<p1>|<p2>|<p3>|<PD>"
 clip
-push 1
+push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
 clip
 push "$}"
 chunk 9
 pushsb 1
-push 2
+push-int 2
 push "whole"
 clip
 chunk 1
@@ -2074,7 +2074,7 @@ chunk 7
 out 5
 action_30_end:
 action_31_start:
-push 1
+push-int 1
 push "whole"
 clip
 chunk 1

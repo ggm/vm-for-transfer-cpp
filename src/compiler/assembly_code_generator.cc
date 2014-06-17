@@ -287,7 +287,7 @@ void AssemblyCodeGenerator::genPatternEnd(const Event & event) {
   // Push the number of patterns to add to the trie.
   wstringstream ws;
   ws << event.getNumChildren();
-  addPatternsCode(PUSH_OP + INSTR_SEP + ws.str());
+  addPatternsCode(PUSH_INT_OP + INSTR_SEP + ws.str());
 
   // Push the trie instruction with destination address as operand.
   wstring numLabel = event.getParent()->getVariable(L"label");
@@ -382,7 +382,7 @@ void AssemblyCodeGenerator::genLitStart(const Event & event) {
   int numericValue;
 
   if (ws >> numericValue) {
-    addCode(PUSH_OP + INSTR_SEP + value);
+    addCode(PUSH_INT_OP + INSTR_SEP + value);
   } else {
     addCode(PUSH_OP + INSTR_SEP + L"\"" + value + L"\"");
   }
@@ -514,7 +514,7 @@ void AssemblyCodeGenerator::genClipCode(const Event &event,
 
   // Push the position to the stack.
   wstring pos = event.getAttribute(L"pos");
-  addCode(PUSH_OP + INSTR_SEP + pos);
+  addCode(PUSH_INT_OP + INSTR_SEP + pos);
 
   // Push the contents of the part attribute.
   wstring partAttrStr = L"";
@@ -617,7 +617,7 @@ void AssemblyCodeGenerator::genGetCaseFromStart(const Event & event) {
 void AssemblyCodeGenerator::genGetCaseFromEnd(const Event & event) {
   wstring pos = event.getAttribute(L"pos");
 
-  addCode(PUSH_OP + INSTR_SEP + pos);
+  addCode(PUSH_INT_OP + INSTR_SEP + pos);
   addCode(GET_CASE_FROM_OP);
 
   // After getting the case we call modify-case to modify the container.
