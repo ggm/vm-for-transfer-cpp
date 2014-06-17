@@ -375,6 +375,16 @@ function action_clean() {
   echo "Cleaned tests."
 }
 
+function action_compile_rules() {
+  find _testfiles/ -mindepth 3 -maxdepth 3 -path '*/code/*' |\
+  while read CODE_DIR_PATH; do
+    local RULESXML_PATH="${CODE_DIR_PATH}/rules.xml"
+    local RULESVM_PATH="${CODE_DIR_PATH}/rules.vm"
+    echo "Generating code in ${CODE_DIR_PATH}."
+    cat "${RULESXML_PATH}" | apertium-compile-transfer > ${RULESVM_PATH}
+  done
+}
+
 function action_help() {
   echo "Usage:"
   echo "  ./tests [options] action action-params"
