@@ -47,13 +47,17 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
   opCodes[L"in"] = IN;                opCodes[L"inig"] = INIG;
   opCodes[L"jmp"] = JMP;              opCodes[L"jz"] = JZ;
   opCodes[L"jnz"] = JNZ;              opCodes[L"mlu"] = MLU;
-  opCodes[L"push"] = PUSH;            opCodes[L"pushbl"] = PUSHBL;
+  opCodes[L"pushbl"] = PUSHBL;
   opCodes[L"pushsb"] = PUSHSB;        opCodes[L"lu"] = LU;
   opCodes[L"lu-count"] = LU_COUNT;    opCodes[L"not"] = NOT;
   opCodes[L"out"] = OUT;              opCodes[L"or"] = OR;
   opCodes[L"ret"] = RET;              opCodes[L"storecl"] = STORECL;
   opCodes[L"storesl"] = STORESL;      opCodes[L"storetl"] = STORETL;
   opCodes[L"storev"] = STOREV;
+
+  opCodes[L"push-str"] = PUSH_STR;
+  opCodes[L"push-int"] = PUSH_INT;
+  opCodes[L"push-var"] = PUSH_VAR;
 
   opCodes[L"begins-with-ig"] = BEGINS_WITH_IG;
   opCodes[L"cmp-substr"] = CMP_SUBSTR;
@@ -62,9 +66,6 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
   opCodes[L"get-case-from"] = GET_CASE_FROM;
   opCodes[L"modify-case"] = MODIFY_CASE;
 
-  opCodes[L"push-str"] = PUSH_STR;
-  opCodes[L"push-int"] = PUSH_INT;
-  opCodes[L"push-var"] = PUSH_VAR;
 }
 
 AssemblyLoader::AssemblyLoader(const AssemblyLoader &c) {

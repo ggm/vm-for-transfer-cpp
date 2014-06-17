@@ -4904,8 +4904,8 @@ choose_119_end:
 jmp choose_118_end
 when_186_end:
 choose_118_end:
-push "det_weekdays_num_de_months_de_year"
-push caseFirstWord
+push-str det_weekdays_num_de_months_de_year
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -4971,8 +4971,8 @@ action_1_start:
 push-int 1
 push-int 1
 call firstWord
-push "det_weekdays_num"
-push caseFirstWord
+push-str det_weekdays_num
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -5045,8 +5045,8 @@ choose_121_end:
 jmp choose_120_end
 when_188_end:
 choose_120_end:
-push "det_num_de_month"
-push caseFirstWord
+push-str det_num_de_month
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -5120,8 +5120,8 @@ choose_123_end:
 jmp choose_122_end
 when_190_end:
 choose_122_end:
-push "det_num_de_month"
-push caseFirstWord
+push-str det_num_de_month
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -5170,8 +5170,8 @@ action_4_start:
 push-int 1
 push-int 1
 call firstWord
-push "det_nom"
-push caseFirstWord
+push-str det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5209,8 +5209,8 @@ call f_concord2
 push-int 1
 push-int 1
 call firstWord
-push "det_det_nom"
-push caseFirstWord
+push-str det_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5291,8 +5291,8 @@ call firstWord
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "det_det_nom_adj"
-push caseFirstWord
+push-str det_det_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5393,8 +5393,8 @@ call f_concord2
 push-int 1
 push-int 1
 call firstWord
-push "det_nom"
-push caseFirstWord
+push-str det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5463,8 +5463,8 @@ call f_concord2
 push-int 1
 push-int 1
 call firstWord
-push "num_nom"
-push caseFirstWord
+push-str num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -5528,8 +5528,8 @@ call firstWord
 push-int 1
 push-int 1
 call determiner
-push "det_det_nom"
-push caseFirstWord
+push-str det_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5621,8 +5621,8 @@ call f_concord3
 push-int 1
 push-int 1
 call firstWord
-push "det_num_nom"
-push caseFirstWord
+push-str det_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5740,8 +5740,8 @@ call f_concord3
 push-int 1
 push-int 1
 call firstWord
-push "num_num_nom"
-push caseFirstWord
+push-str num_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -5833,8 +5833,8 @@ call f_concord4
 push-int 1
 push-int 1
 call firstWord
-push "det_det_num_nom"
-push caseFirstWord
+push-str det_det_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -5976,8 +5976,8 @@ call f_concord4
 push-int 1
 push-int 1
 call firstWord
-push "det_num_num_nom"
-push caseFirstWord
+push-str det_num_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6102,8 +6102,8 @@ storev
 jmp choose_127_end
 when_195_end:
 choose_127_end:
-push "det_nom_adv_adj"
-push caseFirstWord
+push-str det_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6178,8 +6178,8 @@ push-int 2
 push-int 1
 push-int 2
 call f_concord2
-push "nom_adj"
-push caseFirstWord
+push-str nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -6254,8 +6254,8 @@ call f_concord3
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "det_nom_adj"
-push caseFirstWord
+push-str det_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6355,8 +6355,8 @@ call firstWord
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "num_nom_adj"
-push caseFirstWord
+push-str num_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -6445,8 +6445,8 @@ call f_concord4
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "det_det_nom_adj"
-push caseFirstWord
+push-str det_det_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6563,8 +6563,8 @@ call firstWord
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "det_num_nom_adj"
-push caseFirstWord
+push-str det_num_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6678,8 +6678,8 @@ call firstWord
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "adj_num_nom_adj"
-push caseFirstWord
+push-str adj_num_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -6791,8 +6791,8 @@ call f_concord3
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "det_nom_adv_adj"
-push caseFirstWord
+push-str det_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -6893,8 +6893,8 @@ call firstWord
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "num_nom_adv_adj"
-push caseFirstWord
+push-str num_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -6986,8 +6986,8 @@ call f_concord2
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "nom_adv_adj"
-push caseFirstWord
+push-str nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -7065,8 +7065,8 @@ call f_concord4
 push-int 4
 push-int 1
 call comparatiu_adj1
-push "det_det_nom_adv_adj"
-push caseFirstWord
+push-str det_det_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -7191,8 +7191,8 @@ call firstWord
 push-int 4
 push-int 1
 call comparatiu_adj1
-push "det_num_nom_adv_adj"
-push caseFirstWord
+push-str det_num_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -7302,8 +7302,8 @@ call f_concord2
 push-int 1
 push-int 1
 call firstWord
-push "nom_adj_adv"
-push caseFirstWord
+push-str nom_adj_adv
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -7383,8 +7383,8 @@ call comparatiu_adj1
 push-int 3
 push-int 1
 call comparatiu_adj2
-push "det_nom_adj_adj"
-push caseFirstWord
+push-str det_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -7503,8 +7503,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "det_det_nom_adj_adj"
-push caseFirstWord
+push-str det_det_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -7642,8 +7642,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "det_nom_adj_adv_adj"
-push caseFirstWord
+push-str det_nom_adj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -7759,8 +7759,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "num_nom_adj_adv_adj"
-push caseFirstWord
+push-str num_nom_adj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -7882,8 +7882,8 @@ call comparatiu_adj1
 push-int 3
 push-int 1
 call comparatiu_adj2
-push "num_nom_adj_adj"
-push caseFirstWord
+push-str num_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -8004,8 +8004,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "det_num_nom_adj_adj"
-push caseFirstWord
+push-str det_num_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -8135,8 +8135,8 @@ call comparatiu_adj1
 push-int 2
 push-int 1
 call comparatiu_adj2
-push "nom_adj_adj"
-push caseFirstWord
+push-str nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -8243,8 +8243,8 @@ call comparatiu_adj1
 push-int 5
 push-int 1
 call comparatiu_adj2
-push "det_num_nom_adj_adv_adj"
-push caseFirstWord
+push-str det_num_nom_adj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -8397,8 +8397,8 @@ call comparatiu_adj1
 push-int 5
 push-int 1
 call comparatiu_adj2
-push "det_det_nom_adj_adv_adj"
-push caseFirstWord
+push-str det_det_nom_adj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -8539,8 +8539,8 @@ call comparatiu_adj1
 push-int 3
 push-int 1
 call comparatiu_adj2
-push "nom_adj_conj_adj"
-push caseFirstWord
+push-str nom_adj_conj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -8640,8 +8640,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "nom_adj_conj_adv_adj"
-push caseFirstWord
+push-str nom_adj_conj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -8754,8 +8754,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "det_nom_adj_conj_adj"
-push caseFirstWord
+push-str det_nom_adj_conj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -8884,8 +8884,8 @@ call comparatiu_adj1
 push-int 5
 push-int 1
 call comparatiu_adj2
-push "det_nom_adj_conj_adv_adj"
-push caseFirstWord
+push-str det_nom_adj_conj_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -9019,8 +9019,8 @@ call comparatiu_adj1
 push-int 5
 push-int 1
 call comparatiu_adj2
-push "det_nom_adv_adj_conj_adj"
-push caseFirstWord
+push-str det_nom_adv_adj_conj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -9154,8 +9154,8 @@ call comparatiu_adj1
 push-int 4
 push-int 1
 call comparatiu_adj2
-push "det_nom_adj_cm_adj"
-push caseFirstWord
+push-str det_nom_adj_cm_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -9275,8 +9275,8 @@ call comparatiu_adj1
 push-int 3
 push-int 1
 call comparatiu_adj2
-push "nom_adj_cm_adj"
-push caseFirstWord
+push-str nom_adj_cm_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -9373,8 +9373,8 @@ call firstWord
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "nom_'adj'"
-push caseFirstWord
+push-str nom_'adj'
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -9449,8 +9449,8 @@ call firstWord
 push-int 1
 push-int 1
 call comparatiu_adj1
-push "'nom'_adj"
-push caseFirstWord
+push-str 'nom'_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -9533,8 +9533,8 @@ call firstWord
 push-int 2
 push-int 1
 call comparatiu_adj1
-push "det_'nom'_adj"
-push caseFirstWord
+push-str det_'nom'_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -9638,8 +9638,8 @@ call firstWord
 push-int 3
 push-int 1
 call comparatiu_adj1
-push "det_nom_'adj'"
-push caseFirstWord
+push-str det_nom_'adj'
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -9769,8 +9769,8 @@ jz when_196_end
 push-int 1
 push-int 1
 call elimina_GDND
-push "nom_pr_nom"
-push caseFirstWord
+push-str nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -9825,8 +9825,8 @@ when_196_end:
 push-int 2
 push-int 1
 call elimina_GDND
-push "nom_nom"
-push caseFirstWord
+push-str nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -9926,8 +9926,8 @@ call f_concord2
 push-int 2
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom"
-push caseFirstWord
+push-str det_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -10009,8 +10009,8 @@ call f_concord2
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_nom_nom"
-push caseFirstWord
+push-str det_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -10137,8 +10137,8 @@ call f_concord2
 push-int 2
 push-int 1
 call elimina_GDND
-push "num_nom_pr_nom"
-push caseFirstWord
+push-str num_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -10219,8 +10219,8 @@ call f_concord2
 push-int 3
 push-int 1
 call elimina_GDND
-push "num_nom_nom"
-push caseFirstWord
+push-str num_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -10333,8 +10333,8 @@ choose_132_end:
 jmp choose_131_end
 when_199_end:
 choose_131_end:
-push "nom_pr_num_nom"
-push caseFirstWord
+push-str nom_pr_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -10468,8 +10468,8 @@ choose_136_end:
 jmp choose_135_end
 when_203_end:
 choose_135_end:
-push "nom_pr_nom_adj"
-push caseFirstWord
+push-str nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -10616,8 +10616,8 @@ choose_140_end:
 jmp choose_139_end
 when_207_end:
 choose_139_end:
-push "det_nom_pr_nom_adj"
-push caseFirstWord
+push-str det_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -10787,8 +10787,8 @@ choose_144_end:
 jmp choose_143_end
 when_211_end:
 choose_143_end:
-push "num_nom_pr_nom_adj"
-push caseFirstWord
+push-str num_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -10949,8 +10949,8 @@ choose_148_end:
 jmp choose_147_end
 when_215_end:
 choose_147_end:
-push "nom_pr_nom_pr_nom_adj"
-push caseFirstWord
+push-str nom_pr_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -11121,8 +11121,8 @@ choose_152_end:
 jmp choose_151_end
 when_219_end:
 choose_151_end:
-push "det_nom_pr_nom_pr_nom_adj"
-push caseFirstWord
+push-str det_nom_pr_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -11316,8 +11316,8 @@ choose_156_end:
 jmp choose_155_end
 when_223_end:
 choose_155_end:
-push "num_nom_pr_nom_pr_nom_adj"
-push caseFirstWord
+push-str num_nom_pr_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -11433,8 +11433,8 @@ call f_concord2
 push-int 1
 push-int 1
 call firstWord
-push "nom_adv_adj"
-push caseFirstWord
+push-str nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -11510,8 +11510,8 @@ call f_concord3
 push-int 1
 push-int 1
 call firstWord
-push "num_nom_adv_adj"
-push caseFirstWord
+push-str num_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -11607,8 +11607,8 @@ call f_concord3
 push-int 1
 push-int 1
 call firstWord
-push "det_nom_adv_adj"
-push caseFirstWord
+push-str det_nom_adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -11742,8 +11742,8 @@ call f_concord3
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_det_nom_pr_nom"
-push caseFirstWord
+push-str det_det_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -11846,8 +11846,8 @@ call f_concord3
 push-int 4
 push-int 1
 call elimina_GDND
-push "det_det_nom_nom"
-push caseFirstWord
+push-str det_det_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -11998,8 +11998,8 @@ call f_concord3
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_num_nom_pr_nom"
-push caseFirstWord
+push-str det_num_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -12102,8 +12102,8 @@ call f_concord3
 push-int 4
 push-int 1
 call elimina_GDND
-push "det_num_nom_nom"
-push caseFirstWord
+push-str det_num_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -12244,8 +12244,8 @@ choose_160_end:
 jmp choose_159_end
 when_227_end:
 choose_159_end:
-push "det_nom_pr_num_nom"
-push caseFirstWord
+push-str det_nom_pr_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -12440,8 +12440,8 @@ choose_165_end:
 jmp choose_164_end
 when_232_end:
 choose_164_end:
-push "nom_pr_nom_adj"
-push caseFirstWord
+push-str nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -12518,8 +12518,8 @@ call f_concord2
 push-int 3
 push-int 1
 call elimina_GDND
-push "nom_adj_nom"
-push caseFirstWord
+push-str nom_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -12649,8 +12649,8 @@ call f_concord3
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_adj"
-push caseFirstWord
+push-str det_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -12757,8 +12757,8 @@ call f_concord3
 push-int 4
 push-int 1
 call elimina_GDND
-push "det_nom_adj_nom"
-push caseFirstWord
+push-str det_nom_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -12909,8 +12909,8 @@ call f_concord3
 push-int 3
 push-int 1
 call elimina_GDND
-push "nom_pr_nom_adj_adj"
-push caseFirstWord
+push-str nom_pr_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -13017,8 +13017,8 @@ call f_concord3
 push-int 4
 push-int 1
 call elimina_GDND
-push "nom_adj_adj_nom"
-push caseFirstWord
+push-str nom_adj_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -13173,8 +13173,8 @@ call f_concord4
 push-int 4
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_adj_adj"
-push caseFirstWord
+push-str det_nom_pr_nom_adj_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -13303,8 +13303,8 @@ call f_concord4
 push-int 5
 push-int 1
 call elimina_GDND
-push "det_nom_adj_adj_nom"
-push caseFirstWord
+push-str det_nom_adj_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -13446,8 +13446,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call genere_nombre
-push "nom_pr_nom_pr_det_nom"
-push caseFirstWord
+push-str nom_pr_nom_pr_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -13535,8 +13535,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call genere_nombre
-push "nom_pr_det_nom_nom"
-push caseFirstWord
+push-str nom_pr_det_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -13618,8 +13618,8 @@ call genere_nombre
 push-int 1
 push-int 1
 call firstWord
-push "nom_nom_nom"
-push caseFirstWord
+push-str nom_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -13719,8 +13719,8 @@ call elimina_GDND
 push-int 2
 push-int 1
 call genere_nombre
-push "det_nom_pr_nom_pr_det_nom"
-push caseFirstWord
+push-str det_nom_pr_nom_pr_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -13835,8 +13835,8 @@ call elimina_GDND
 push-int 2
 push-int 1
 call genere_nombre
-push "det_nom_pr_det_nom_nom"
-push caseFirstWord
+push-str det_nom_pr_det_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -13964,8 +13964,8 @@ call elimina_GDND
 push-int 3
 push-int 1
 call elimina_GDND
-push "nom_pr_nom_pr_nom_adj"
-push caseFirstWord
+push-str nom_pr_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -14074,8 +14074,8 @@ call elimina_GDND
 push-int 4
 push-int 1
 call elimina_GDND
-push "nom_pr_nom_adj_nom"
-push caseFirstWord
+push-str nom_pr_nom_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -14204,8 +14204,8 @@ call elimina_GDND
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_pr_nom_adj"
-push caseFirstWord
+push-str det_nom_pr_nom_pr_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -14336,8 +14336,8 @@ call elimina_GDND
 push-int 3
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_adj_nom"
-push caseFirstWord
+push-str det_nom_pr_nom_adj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -14466,8 +14466,8 @@ call elimina_GDND
 push-int 3
 push-int 1
 call elimina_GDND
-push "nom_pr_nom_pr_nom_pr_nom"
-push caseFirstWord
+push-str nom_pr_nom_pr_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -14593,8 +14593,8 @@ call elimina_GDND
 push-int 4
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_pr_nom_pr_nom"
-push caseFirstWord
+push-str det_nom_pr_nom_pr_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -14724,8 +14724,8 @@ call elimina_GDND
 push-int 5
 push-int 1
 call elimina_GDND
-push "det_nom_pr_nom_pr_nom_nom"
-push caseFirstWord
+push-str det_nom_pr_nom_pr_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -14869,8 +14869,8 @@ choose_174_end:
 push-int 1
 push-int 1
 call firstWord
-push "nom_conj_nom"
-push caseFirstWord
+push-str nom_conj_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -14952,8 +14952,8 @@ choose_175_end:
 push-int 1
 push-int 1
 call firstWord
-push "nom_conj_nom_pr_nom"
-push caseFirstWord
+push-str nom_conj_nom_pr_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -15060,8 +15060,8 @@ choose_176_end:
 push-int 1
 push-int 1
 call firstWord
-push "nom_conj_nom_adj"
-push caseFirstWord
+push-str nom_conj_nom_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -15145,8 +15145,8 @@ call flexio_numerals
 push-int 1
 push-int 1
 call firstWord
-push "num_yearold"
-push caseFirstWord
+push-str num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><NUM>
@@ -15219,8 +15219,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_177_end:
-push "nom_num_yearold"
-push caseFirstWord
+push-str nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -15310,8 +15310,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_178_end:
-push "nom_num_yearold"
-push caseFirstWord
+push-str nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -15412,8 +15412,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_179_end:
-push "det_nom_num_yearold"
-push caseFirstWord
+push-str det_nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -15533,8 +15533,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_180_end:
-push "det_nom_num_yearold"
-push caseFirstWord
+push-str det_nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -15678,8 +15678,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_182_end:
-push "nom_num_yearold"
-push caseFirstWord
+push-str nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -15751,8 +15751,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_183_end:
-push "pr_num_yearold"
-push caseFirstWord
+push-str pr_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA><mf><sp>
@@ -15783,7 +15783,7 @@ cliptl
 lu 5
 chunk 7
 pushsb 5
-push "unknown"
+push-str unknown
 push-str <unknown>
 push-int 6
 push-str whole
@@ -15860,8 +15860,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_185_end:
-push "det_nom_num_yearold"
-push caseFirstWord
+push-str det_nom_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -15957,8 +15957,8 @@ push-str <sg>|<pl>|<sp>|<ND>
 push-str <pl>
 storetl
 choose_186_end:
-push "pr_num_yearold"
-push caseFirstWord
+push-str pr_num_yearold
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -15993,7 +15993,7 @@ cliptl
 lu 5
 chunk 7
 pushsb 6
-push "unknown"
+push-str unknown
 push-str <unknown>
 push-int 7
 push-str whole
@@ -16023,8 +16023,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call firstWord
-push "hace_det_nom"
-push caseFirstWord
+push-str hace_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SP>
@@ -16092,8 +16092,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call firstWord
-push "hace_num_nom"
-push caseFirstWord
+push-str hace_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SP><NUM>
@@ -16145,8 +16145,8 @@ call firstWord
 push-int 1
 push-int 1
 call elimina_GDND
-push "fa_nom"
-push caseFirstWord
+push-str fa_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SADV>
@@ -16199,8 +16199,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call firstWord
-push "pr_det_nom"
-push caseFirstWord
+push-str pr_det_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SP><UNDEF>
@@ -16266,8 +16266,8 @@ call elimina_GDND
 push-int 1
 push-int 1
 call firstWord
-push "pr_num_nom"
-push caseFirstWord
+push-str pr_num_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SP><NUM>
@@ -16315,7 +16315,7 @@ action_91_start:
 push-int 2
 push-int 1
 call firstWord
-push "coma"
+push-str coma
 push-int 1
 push-str tags
 cliptl
@@ -16325,8 +16325,8 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "relnom"
-push caseFirstWord
+push-str relnom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <REL>
@@ -16347,8 +16347,8 @@ action_92_start:
 push-int 1
 push-int 1
 call firstWord
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -16358,7 +16358,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "relnom"
+push-str relnom
 push-str <REL>
 push-str <nn>
 push-str <GD>
@@ -16377,8 +16377,8 @@ action_93_start:
 push-int 1
 push-int 1
 call firstWord
-push "num"
-push caseFirstWord
+push-str num
+push-var caseFirstWord
 case-of
 modify-case
 push-str <NUM>
@@ -16409,8 +16409,8 @@ action_94_start:
 push-int 1
 push-int 1
 call firstWord
-push "det"
-push caseFirstWord
+push-str det
+push-var caseFirstWord
 case-of
 modify-case
 push-str <DET>
@@ -16447,8 +16447,8 @@ action_95_start:
 push-int 1
 push-int 1
 call firstWord
-push "nom"
-push caseFirstWord
+push-str nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -16498,8 +16498,8 @@ push-str lema
 push-str prnsubj
 storev
 choose_187_end:
-push lema
-push caseFirstWord
+push-var lema
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -16542,8 +16542,8 @@ action_97_start:
 push-int 1
 push-int 1
 call firstWord
-push "prnref"
-push caseFirstWord
+push-str prnref
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SNref>
@@ -16593,8 +16593,8 @@ call f_concord2
 push-int 1
 push-int 1
 call determiner
-push "det_num"
-push caseFirstWord
+push-str det_num
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -16763,8 +16763,8 @@ storetl
 jmp choose_188_end
 when_260_end:
 choose_188_end:
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -16774,7 +16774,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "probj"
+push-str probj
 push-str <SN>
 push-str <tn>
 push-int 2
@@ -16844,8 +16844,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_262_end
-push "det_nom_to_inf"
-push caseFirstWord
+push-str det_nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -16923,8 +16923,8 @@ chunk 9
 out 1
 jmp choose_190_end
 when_262_end:
-push "det_nom_to_inf"
-push caseFirstWord
+push-str det_nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17037,8 +17037,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_264_end
-push "det_nom_to_inf"
-push caseFirstWord
+push-str det_nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17130,8 +17130,8 @@ chunk 9
 out 1
 jmp choose_192_end
 when_264_end:
-push "det_nom_to_inf"
-push caseFirstWord
+push-str det_nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17252,8 +17252,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_266_end
-push "nom_to_inf"
-push caseFirstWord
+push-str nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -17308,8 +17308,8 @@ chunk 7
 out 1
 jmp choose_194_end
 when_266_end:
-push "nom_to_inf"
-push caseFirstWord
+push-str nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -17388,8 +17388,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_268_end
-push "nom_to_inf"
-push caseFirstWord
+push-str nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -17458,8 +17458,8 @@ chunk 7
 out 1
 jmp choose_196_end
 when_268_end:
-push "nom_to_inf"
-push caseFirstWord
+push-str nom_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -17572,8 +17572,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_270_end
-push "det_nom_adj_to_inf"
-push caseFirstWord
+push-str det_nom_adj_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17675,8 +17675,8 @@ chunk 11
 out 1
 jmp choose_198_end
 when_270_end:
-push "det_nom_adj_to_inf"
-push caseFirstWord
+push-str det_nom_adj_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17820,8 +17820,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_272_end
-push "det_nom_adj_to_inf"
-push caseFirstWord
+push-str det_nom_adj_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -17937,8 +17937,8 @@ chunk 11
 out 1
 jmp choose_200_end
 when_272_end:
-push "det_nom_adj_to_inf"
-push caseFirstWord
+push-str det_nom_adj_to_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -18105,8 +18105,8 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_201_end:
-push "adv_adj"
-push caseFirstWord
+push-str adv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18184,8 +18184,8 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_202_end:
-push "adj"
-push caseFirstWord
+push-str adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18258,8 +18258,8 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_203_end:
-push "preadv_adj"
-push caseFirstWord
+push-str preadv_adj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18291,8 +18291,8 @@ action_109_start:
 push-int 1
 push-int 1
 call firstWord
-push "pp_pr_np"
-push caseFirstWord
+push-str pp_pr_np
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18324,8 +18324,8 @@ action_110_start:
 push-int 1
 push-int 1
 call firstWord
-push "det"
-push caseFirstWord
+push-str det
+push-var caseFirstWord
 case-of
 modify-case
 push-str <DET>
@@ -18347,7 +18347,7 @@ push-str <3>
 lu 4
 chunk 3
 pushsb 1
-push "pp_pr_np"
+push-str pp_pr_np
 push-str <SA>
 push-str <GD>
 push-str <ND>
@@ -18404,8 +18404,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_283_end
-push "adj_de_inf"
-push caseFirstWord
+push-str adj_de_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18449,8 +18449,8 @@ chunk 7
 out 1
 jmp choose_205_end
 when_283_end:
-push "adj_de_inf"
-push caseFirstWord
+push-str adj_de_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18521,8 +18521,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_285_end
-push "adj_de_inf_enc"
-push caseFirstWord
+push-str adj_de_inf_enc
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18580,8 +18580,8 @@ chunk 7
 out 1
 jmp choose_207_end
 when_285_end:
-push "adj_de_inf_enc"
-push caseFirstWord
+push-str adj_de_inf_enc
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18671,8 +18671,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_287_end
-push "adv_adj_de_inf"
-push caseFirstWord
+push-str adv_adj_de_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18721,8 +18721,8 @@ chunk 9
 out 1
 jmp choose_209_end
 when_287_end:
-push "adv_adj_de_inf"
-push caseFirstWord
+push-str adv_adj_de_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18798,8 +18798,8 @@ push-var tipus_verb
 push-str <pron>
 cmp
 jz when_289_end
-push "adv_adj_de_inf_enc"
-push caseFirstWord
+push-str adv_adj_de_inf_enc
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18862,8 +18862,8 @@ chunk 9
 out 1
 jmp choose_211_end
 when_289_end:
-push "adv_adj_de_inf_enc"
-push caseFirstWord
+push-str adv_adj_de_inf_enc
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -18969,8 +18969,8 @@ storev
 jmp choose_212_end
 when_290_end:
 choose_212_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
@@ -19014,8 +19014,8 @@ push-str kill
 cmp
 and 2
 jz when_291_end
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
@@ -19059,8 +19059,8 @@ push-str lemq
 cliptl
 concat 6
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
@@ -19089,8 +19089,8 @@ chunk 5
 out 1
 jmp choose_213_end
 when_292_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <Vcop>
@@ -19149,8 +19149,8 @@ push-str neg
 push-str 
 storev
 choose_214_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -19164,7 +19164,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <Vcop>
 push-var tipus_verb
 push-var temps_chunk
@@ -19201,8 +19201,8 @@ push-str lema
 push-str coma
 storev
 choose_215_end:
-push "pro_verbcj"
-push caseFirstWord
+push-str pro_verbcj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19219,7 +19219,7 @@ push-var verbfinal
 lu 1
 chunk 5
 pushsb 1
-push lema
+push-var lema
 push-int 2
 push-str tags
 cliptl
@@ -19255,8 +19255,8 @@ push-str neg
 push-str 
 storev
 choose_216_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -19270,7 +19270,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -19307,8 +19307,8 @@ push-str neg
 push-str 
 storev
 choose_217_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -19338,8 +19338,8 @@ push-str coma
 storev
 choose_218_end:
 pushsb 1
-push "pro_verbcj"
-push caseFirstWord
+push-str pro_verbcj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19356,7 +19356,7 @@ push-var verbfinal
 lu 1
 chunk 5
 pushsb 2
-push lema
+push-var lema
 push-int 3
 push-str tags
 cliptl
@@ -19380,8 +19380,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19409,8 +19409,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "verbcj"
-push caseFirstWord
+push-str verbcj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19462,8 +19462,8 @@ push-str pro_
 push-var lema_SV
 concat 2
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19513,8 +19513,8 @@ call passa_inf_a_pres
 push-int 1
 push-int 1
 call passa_pp_a_ifip
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19575,8 +19575,8 @@ push-str pronomenc
 push-str 
 storev
 choose_220_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19654,8 +19654,8 @@ push-str pronomenc
 push-str 
 storev
 choose_222_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19711,8 +19711,8 @@ push-int 1
 push-str lem
 push-str para
 storetl
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -19763,7 +19763,7 @@ push-str pronomenc
 push-str 
 storev
 choose_224_end:
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -19803,8 +19803,8 @@ push-int 1
 push-str lem
 push-str para
 storetl
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -19855,7 +19855,7 @@ push-str pronomenc
 push-str 
 storev
 choose_226_end:
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -19927,8 +19927,8 @@ push-str pronomenc
 push-str 
 storev
 choose_227_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -19981,8 +19981,8 @@ push-str pronomenc
 push-str 
 storev
 choose_228_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -20050,8 +20050,8 @@ push-str pronomenc
 push-str 
 storev
 choose_229_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -20104,8 +20104,8 @@ push-str pronomenc
 push-str 
 storev
 choose_230_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -20180,8 +20180,8 @@ storetl
 jmp choose_231_end
 when_311_end:
 choose_231_end:
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -20215,7 +20215,7 @@ push-str pronomenc
 push-str 
 storev
 choose_232_end:
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -20277,8 +20277,8 @@ storetl
 jmp choose_233_end
 when_314_end:
 choose_233_end:
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -20312,7 +20312,7 @@ push-str pronomenc
 push-str 
 storev
 choose_234_end:
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -20421,8 +20421,8 @@ push-str pronomenc
 push-str 
 storev
 choose_237_end:
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -20433,7 +20433,7 @@ push-str <pr>
 lu 2
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -20529,8 +20529,8 @@ push-str pronomenc
 push-str 
 storev
 choose_239_end:
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -20541,7 +20541,7 @@ push-str <pr>
 lu 2
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-int 2
@@ -20608,8 +20608,8 @@ push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <inf>
 storetl
-push "non_ger_nom"
-push caseFirstWord
+push-str non_ger_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -20673,8 +20673,8 @@ push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <inf>
 storetl
-push "non_ger_nom"
-push caseFirstWord
+push-str non_ger_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -20749,8 +20749,8 @@ push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <inf>
 storetl
-push "det_ger_nom"
-push caseFirstWord
+push-str det_ger_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -20834,8 +20834,8 @@ push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <inf>
 storetl
-push "pr_ger_nom"
-push caseFirstWord
+push-str pr_ger_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SP><UNDET>
@@ -20901,8 +20901,8 @@ push-int 2
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <inf>
 storetl
-push "no_inf"
-push caseFirstWord
+push-str no_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -20942,8 +20942,8 @@ push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <pri>
 storetl
-push "adv_ger"
-push caseFirstWord
+push-str adv_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -21009,8 +21009,8 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_240_end:
-push "adj_ger"
-push caseFirstWord
+push-str adj_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -21071,8 +21071,8 @@ push-int 3
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <pri>
 storetl
-push "nom_ger"
-push caseFirstWord
+push-str nom_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -21133,8 +21133,8 @@ push-int 4
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <pri>
 storetl
-push "det"
-push caseFirstWord
+push-str det
+push-var caseFirstWord
 case-of
 modify-case
 push-str <DET>
@@ -21156,7 +21156,7 @@ push-str <3>
 lu 4
 chunk 3
 pushsb 1
-push "adv_ger"
+push-str adv_ger
 push-str <SA>
 push-var tipus_verb
 push-int 4
@@ -21220,8 +21220,8 @@ push-str gen_chunk
 push-str <GD>
 storev
 choose_241_end:
-push "det"
-push caseFirstWord
+push-str det
+push-var caseFirstWord
 case-of
 modify-case
 push-str <DET>
@@ -21243,7 +21243,7 @@ push-str <3>
 lu 4
 chunk 3
 pushsb 1
-push "adj_ger"
+push-str adj_ger
 push-str <SA>
 push-var tipus_verb
 push-int 4
@@ -21302,8 +21302,8 @@ push-int 4
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>
 push-str <pri>
 storetl
-push "det"
-push caseFirstWord
+push-str det
+push-var caseFirstWord
 case-of
 modify-case
 push-str <DET>
@@ -21325,7 +21325,7 @@ push-str <3>
 lu 4
 chunk 3
 pushsb 1
-push "nom_ger"
+push-str nom_ger
 push-str <SA>
 push-var tipus_verb
 push-int 4
@@ -21402,8 +21402,8 @@ push-str pronomenc
 push-str 
 storev
 choose_242_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21458,8 +21458,8 @@ push-str pronomenc
 push-str 
 storev
 choose_243_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21528,8 +21528,8 @@ push-str nbr_chunk
 push-str <ND>
 storev
 choose_244_end:
-push "pp"
-push caseFirstWord
+push-str pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SA>
@@ -21565,8 +21565,8 @@ push-int 1
 push-int 2
 push-int 2
 call conj_verb_compost
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21604,8 +21604,8 @@ push-str pro_
 push-var lema_SV
 concat 2
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21654,8 +21654,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_inf"
-push caseFirstWord
+push-str auxmod_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21695,8 +21695,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "pro_auxmod_inf"
-push caseFirstWord
+push-str pro_auxmod_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21754,8 +21754,8 @@ push-int 1
 push-int 2
 push-int 2
 call conj_verb_compost
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21793,8 +21793,8 @@ push-str pro_
 push-var lema_SV
 concat 2
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21852,8 +21852,8 @@ call passa_pp_a_ifip
 push-str lema_SV
 push-str mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21902,8 +21902,8 @@ call passa_pp_a_ifip
 push-str lema_SV
 push-str pro_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -21986,8 +21986,8 @@ call conj_verb_compost
 push-str lema_SV
 push-str mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22025,8 +22025,8 @@ call conj_verb1
 push-str lema_SV
 push-str auxmod_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22105,8 +22105,8 @@ call conj_verb_compost
 push-str lema_SV
 push-str pro_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22161,8 +22161,8 @@ call conj_verb1
 push-str lema_SV
 push-str pro_auxmod_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22255,8 +22255,8 @@ call tipus_verbs
 push-str lema_SV
 push-str mod
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22284,8 +22284,8 @@ call tipus_verbs
 push-str lema_SV
 push-str aux_mod
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22360,8 +22360,8 @@ push-str neg
 push-str 
 storev
 choose_249_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -22403,7 +22403,7 @@ storev
 jmp choose_250_end
 when_333_end:
 choose_250_end:
-push "have_pp"
+push-str have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -22427,7 +22427,7 @@ cliptl
 lu 4
 chunk 5
 out 1
-push "adv"
+push-str adv
 push-int 3
 push-str <adv>|<preadv>|<adv><itg>|<cnjadv>
 cliptl
@@ -22477,8 +22477,8 @@ storev
 jmp choose_251_end
 when_334_end:
 choose_251_end:
-push "have_pp"
-push caseFirstWord
+push-str have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22548,8 +22548,8 @@ storev
 jmp choose_252_end
 when_335_end:
 choose_252_end:
-push "pro_have_pp"
-push caseFirstWord
+push-str pro_have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22652,8 +22652,8 @@ storev
 jmp choose_254_end
 when_337_end:
 choose_254_end:
-push "have_pp_inf"
-push caseFirstWord
+push-str have_pp_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22747,8 +22747,8 @@ push-str lema_SV
 push-str verbcj_inf
 storev
 choose_256_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22830,8 +22830,8 @@ push-str lema_SV
 push-str verbcj_inf_enc
 storev
 choose_258_end:
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22909,8 +22909,8 @@ choose_259_end:
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_inf_inf"
-push caseFirstWord
+push-str auxmod_inf_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -22997,8 +22997,8 @@ push-str neg
 push-str 
 storev
 choose_261_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -23012,7 +23012,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "auxmod_inf_inf"
+push-str auxmod_inf_inf
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23083,8 +23083,8 @@ push-int 1
 push-int 2
 push-int 2
 call conj_verb_compost
-push "verbcj_inf"
-push caseFirstWord
+push-str verbcj_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23164,8 +23164,8 @@ push-str neg
 push-str 
 storev
 choose_264_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -23179,7 +23179,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "verbcj_inf"
+push-str verbcj_inf
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23242,8 +23242,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "verbcj"
-push caseFirstWord
+push-str verbcj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23259,8 +23259,8 @@ chunk 3
 out 1
 jmp choose_265_end
 when_350_end:
-push "be_ger"
-push caseFirstWord
+push-str be_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23321,8 +23321,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "pro_verbcj"
-push caseFirstWord
+push-str pro_verbcj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23355,8 +23355,8 @@ chunk 5
 out 1
 jmp choose_266_end
 when_351_end:
-push "be_ger_enc"
-push caseFirstWord
+push-str be_ger_enc
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23440,8 +23440,8 @@ push-str neg
 push-str 
 storev
 choose_267_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -23466,7 +23466,7 @@ push-int 2
 push-int 3
 push-int 2
 call f_bcond
-push "verbcj"
+push-str verbcj
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23480,7 +23480,7 @@ chunk 3
 out 1
 jmp choose_268_end
 when_353_end:
-push "be_ger"
+push-str be_ger
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23544,8 +23544,8 @@ push-str neg
 push-str 
 storev
 choose_269_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -23570,7 +23570,7 @@ push-int 2
 push-int 3
 push-int 2
 call f_bcond
-push "pro_verbcj"
+push-str pro_verbcj
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23601,7 +23601,7 @@ chunk 5
 out 1
 jmp choose_270_end
 when_355_end:
-push "be_ger_enc"
+push-str be_ger_enc
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -23688,8 +23688,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "verbcj_inf"
-push caseFirstWord
+push-str verbcj_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23717,8 +23717,8 @@ chunk 5
 out 1
 jmp choose_272_end
 when_357_end:
-push "be_ger_inf"
-push caseFirstWord
+push-str be_ger_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23784,8 +23784,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23847,8 +23847,8 @@ push-str pro_
 push-var lema_SV
 concat 2
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -23941,8 +23941,8 @@ push-str neg
 push-str 
 storev
 choose_273_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -23957,8 +23957,8 @@ lu 1
 chunk 3
 pushsb 1
 out 2
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24039,8 +24039,8 @@ push-str neg
 push-str 
 storev
 choose_274_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24055,8 +24055,8 @@ lu 1
 chunk 3
 pushsb 1
 out 2
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24138,8 +24138,8 @@ call pronenc
 push-int 1
 push-int 1
 call conj_verb1
-push "verbcj_inf"
-push caseFirstWord
+push-str verbcj_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24183,8 +24183,8 @@ call pronenc
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_inf_inf"
-push caseFirstWord
+push-str auxmod_inf_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24244,8 +24244,8 @@ push-int 2
 push-int 2
 call conj_verb_compost
 pushsb 1
-push "verbcj_inf"
-push caseFirstWord
+push-str verbcj_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24302,8 +24302,8 @@ push-str neg
 push-str 
 storev
 choose_275_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24317,7 +24317,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -24368,8 +24368,8 @@ push-str neg
 push-str 
 storev
 choose_276_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24383,7 +24383,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -24445,8 +24445,8 @@ push-str neg
 push-str 
 storev
 choose_277_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24460,7 +24460,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "auxmod_inf"
+push-str auxmod_inf
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -24513,8 +24513,8 @@ push-str neg
 push-str 
 storev
 choose_278_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24528,7 +24528,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "pro_auxmod_inf"
+push-str pro_auxmod_inf
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -24599,8 +24599,8 @@ push-str neg
 push-str 
 storev
 choose_279_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24614,7 +24614,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
+push-var lema_SV
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -24665,8 +24665,8 @@ push-str neg
 push-str 
 storev
 choose_280_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24680,8 +24680,8 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24742,8 +24742,8 @@ push-str neg
 push-str 
 storev
 choose_281_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24787,8 +24787,8 @@ call conj_verb_compost
 push-str lema_SV
 push-str mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24826,8 +24826,8 @@ call conj_verb1
 push-str lema_SV
 push-str auxmod_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24892,8 +24892,8 @@ push-str neg
 push-str 
 storev
 choose_283_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -24937,8 +24937,8 @@ call conj_verb_compost
 push-str lema_SV
 push-str pro_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -24993,8 +24993,8 @@ call conj_verb1
 push-str lema_SV
 push-str pro_auxmod_mod_inf
 storev
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25098,7 +25098,7 @@ push-str <4>
 push-str <5>
 concat 5
 storev
-push "have_just_pp"
+push-str have_just_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -25143,8 +25143,8 @@ push-str neg
 push-str 
 storev
 choose_287_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -25186,7 +25186,7 @@ storev
 jmp choose_288_end
 when_373_end:
 choose_288_end:
-push "have_pp"
+push-str have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -25243,8 +25243,8 @@ push-str neg
 push-str 
 storev
 choose_289_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -25286,8 +25286,8 @@ storev
 jmp choose_290_end
 when_375_end:
 choose_290_end:
-push "pro_have_pp"
-push caseFirstWord
+push-str pro_have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25349,8 +25349,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "have_pp"
-push caseFirstWord
+push-str have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25390,8 +25390,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_have_pp"
-push caseFirstWord
+push-str auxmod_have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25448,8 +25448,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "have_pp_ger"
-push caseFirstWord
+push-str have_pp_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25493,8 +25493,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_have_pp_ger"
-push caseFirstWord
+push-str auxmod_have_pp_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25551,8 +25551,8 @@ push-int 1
 push-int 2
 push-int 2
 call conj_verb_compost
-push "pro_have_pp"
-push caseFirstWord
+push-str pro_have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25613,8 +25613,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "pro_auxmod_have_pp"
-push caseFirstWord
+push-str pro_auxmod_have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25683,8 +25683,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "pro_have_pp_ger"
-push caseFirstWord
+push-str pro_have_pp_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25757,8 +25757,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push "pro_auxmod_have_pp_ger"
-push caseFirstWord
+push-str pro_auxmod_have_pp_ger
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25852,8 +25852,8 @@ push-int 1
 push-int 2
 push-int 2
 call f_bcond
-push "have_pp_inf"
-push caseFirstWord
+push-str have_pp_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -25926,8 +25926,8 @@ choose_292_end:
 push-int 1
 push-int 1
 call conj_verb1
-push "auxmod_have_pp_inf"
-push caseFirstWord
+push-str auxmod_have_pp_inf
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -26012,8 +26012,8 @@ push-str neg
 push-str 
 storev
 choose_293_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -26027,7 +26027,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "have_pp"
+push-str have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -26084,8 +26084,8 @@ push-str neg
 push-str 
 storev
 choose_294_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -26099,7 +26099,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "auxmod_have_pp"
+push-str auxmod_have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -26165,8 +26165,8 @@ push-str neg
 push-str 
 storev
 choose_295_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -26180,7 +26180,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "pro_have_pp"
+push-str pro_have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -26254,8 +26254,8 @@ push-str neg
 push-str 
 storev
 choose_296_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 2
@@ -26269,7 +26269,7 @@ cliptl
 lu 1
 chunk 3
 pushsb 1
-push "pro_auxmod_have_pp"
+push-str pro_auxmod_have_pp
 push-str <SV>
 push-var tipus_verb
 push-var temps_chunk
@@ -26389,8 +26389,8 @@ storev
 jmp choose_299_end
 when_384_end:
 choose_299_end:
-push "have_pp"
-push caseFirstWord
+push-str have_pp
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -26416,7 +26416,7 @@ cliptl
 lu 4
 chunk 5
 pushsb 2
-push "nom"
+push-str nom
 push-str <SN><UNDET>
 push-int 3
 push-str <m>|<f>|<mf>|<GD>|<nt>
@@ -26469,7 +26469,7 @@ push-str pronomenc
 push-str 
 storev
 choose_300_end:
-push ger
+push-var ger
 push-str <SV>
 push-var tipus_verb
 push-str <ger>
@@ -26504,8 +26504,8 @@ call pron
 push-int 1
 push-int 1
 call conj_verb1
-push lema_SV
-push caseFirstWord
+push-var lema_SV
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SV>
@@ -26519,7 +26519,7 @@ push-var verbfinal
 lu 2
 chunk 3
 pushsb 1
-push "nom"
+push-str nom
 push-str <SN><UNDET>
 push-int 2
 push-str <m>|<f>|<mf>|<GD>|<nt>
@@ -26572,7 +26572,7 @@ push-str pronomenc
 push-str 
 storev
 choose_301_end:
-push ger
+push-var ger
 push-str <SV>
 push-var tipus_verb
 push-str <ger>
@@ -26601,8 +26601,8 @@ call firstWord
 push-int 1
 push-int 1
 call elimina_GDND
-push "nom_nom"
-push caseFirstWord
+push-str nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -26643,8 +26643,8 @@ call firstWord
 push-int 1
 push-int 1
 call elimina_GDND
-push "nom_nom_nom"
-push caseFirstWord
+push-str nom_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -26706,8 +26706,8 @@ call firstWord
 push-int 1
 push-int 1
 call elimina_GDND
-push "nom_pr_nom_nom_nom"
-push caseFirstWord
+push-str nom_pr_nom_nom_nom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN><UNDET>
@@ -26791,8 +26791,8 @@ action_213_start:
 push-int 1
 push-int 1
 call firstWord
-push "relnom"
-push caseFirstWord
+push-str relnom
+push-var caseFirstWord
 case-of
 modify-case
 push-str <REL>
@@ -26826,8 +26826,8 @@ action_214_start:
 push-int 1
 push-int 1
 call firstWord
-push "reladj"
-push caseFirstWord
+push-str reladj
+push-var caseFirstWord
 case-of
 modify-case
 push-str <REL>
@@ -26861,8 +26861,8 @@ action_215_start:
 push-int 1
 push-int 1
 call firstWord
-push "prn"
-push caseFirstWord
+push-str prn
+push-var caseFirstWord
 case-of
 modify-case
 push-str <SN>
@@ -26899,8 +26899,8 @@ action_216_start:
 push-int 1
 push-int 1
 call firstWord
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <PREP>
@@ -26915,8 +26915,8 @@ action_217_start:
 push-int 1
 push-int 1
 call firstWord
-push "pr"
-push caseFirstWord
+push-str pr
+push-var caseFirstWord
 case-of
 modify-case
 push-str <GEN>
@@ -26931,8 +26931,8 @@ action_218_start:
 push-int 1
 push-int 1
 call firstWord
-push "there"
-push caseFirstWord
+push-str there
+push-var caseFirstWord
 case-of
 modify-case
 push-int 1
@@ -26964,8 +26964,8 @@ push-str neg
 push-str 
 storev
 choose_302_end:
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 1
@@ -26984,8 +26984,8 @@ action_220_start:
 push-int 1
 push-int 1
 call firstWord
-push "adv"
-push caseFirstWord
+push-str adv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 1
@@ -27002,8 +27002,8 @@ action_221_start:
 push-int 1
 push-int 1
 call firstWord
-push "preadv"
-push caseFirstWord
+push-str preadv
+push-var caseFirstWord
 case-of
 modify-case
 push-int 1
@@ -27023,8 +27023,8 @@ action_222_start:
 push-int 1
 push-int 1
 call firstWord
-push "cnj"
-push caseFirstWord
+push-str cnj
+push-var caseFirstWord
 case-of
 modify-case
 push-int 1
@@ -27063,7 +27063,7 @@ storev
 jmp choose_303_end
 when_388_end:
 choose_303_end:
-push "punt"
+push-str punt
 push-str <sent>
 push-int 1
 push-str whole
@@ -27076,7 +27076,7 @@ action_224_start:
 push-str EOS
 push-str false
 storev
-push "coma"
+push-str coma
 push-str <cm>
 push-int 1
 push-str whole

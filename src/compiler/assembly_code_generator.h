@@ -56,8 +56,9 @@ static const wstring JMP_OP = L"jmp";
 static const wstring JZ_OP = L"jz";
 static const wstring MLU_OP = L"mlu";
 static const wstring MODIFY_CASE_OP = L"modify-case";
-// TODO remove PUSH_OP after creating specialized push instructions.
-static const wstring PUSH_OP = L"push";
+static const wstring PUSH_STR_OP = L"push-str";
+static const wstring PUSH_INT_OP = L"push-int";
+static const wstring PUSH_VAR_OP = L"push-var";
 static const wstring PUSHBL_OP = L"pushbl";
 static const wstring PUSHSB_OP = L"pushsb";
 static const wstring LU_OP = L"lu";
@@ -69,10 +70,6 @@ static const wstring STORECL_OP = L"storecl";
 static const wstring STORESL_OP = L"storesl";
 static const wstring STORETL_OP = L"storetl";
 static const wstring STOREV_OP = L"storev";
-
-static const wstring PUSH_STR_OP = L"push-str";
-static const wstring PUSH_INT_OP = L"push-int";
-static const wstring PUSH_VAR_OP = L"push-var";
 
 static const unsigned int RULE = 0;
 static const unsigned int WHEN = 1;

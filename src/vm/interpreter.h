@@ -106,7 +106,9 @@ private:
   void executeGetCaseFrom(const Instruction&);
   void executeModifyCase(const Instruction&);
   void executeOut(const Instruction&);
-  void executePush(const Instruction&);
+  void executePushStr(const Instruction&);
+  void executePushInt(const Instruction&);
+  void executePushVar(const Instruction&);
   void executePushbl(const Instruction&);
   void executePushsb(const Instruction&);
   void executeStorecl(const Instruction&);
@@ -115,9 +117,6 @@ private:
   void handleStoreClipInstruction(const wstring &, LexicalUnit*,
       const wstring &, const wstring &);
   void executeStorev(const Instruction&);
-  void executePushStr(const Instruction&);
-  void executePushInt(const Instruction&);
-  void executePushVar(const Instruction&);
 
 };
 

@@ -426,21 +426,28 @@ void AssemblyCodeGenerator::genChunkStart(Event & event) {
 
   wstring chunkName = L""; // Name is optional.
 
+  bool isVariableReference;
   // If there is a fromname, we push the var name.
   if (event.hasAttribute(L"namefrom")) {
     chunkName = event.getAttribute(L"namefrom");
+    isVariableReference = true;
   } else if (event.hasAttribute(L"name")) {
-    chunkName = L"\"" + event.getAttribute(L"name") + L"\"";
+    chunkName = event.getAttribute(L"name");
+    isVariableReference = false;
   }
 
   if (chunkName != L"") {
-    addCode(PUSH_OP + INSTR_SEP + chunkName);
+    if(isVariableReference) {
+      addCode(PUSH_VAR_OP + INSTR_SEP + chunkName);
+    } else {
+      addCode(PUSH_STR_OP + INSTR_SEP + chunkName);
+    }
     event.setVariable(L"name", L"true");
   }
 
   if (event.hasAttribute(L"case")) {
     // Push the var name, get its case and modify the case of the name.
-    addCode(PUSH_OP + INSTR_SEP + event.getAttribute(L"case"));
+    addCode(PUSH_VAR_OP + INSTR_SEP + event.getAttribute(L"case"));
     addCode(CASE_OF_OP);
     addCode(MODIFY_CASE_OP);
   }

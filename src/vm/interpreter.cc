@@ -142,7 +142,6 @@ void Interpreter::execute(const Instruction &instr) {
   // Cases are ordered by frequency (calculated using the en-ca pair) just
   // in case the compiler doesn't optimize it.
   switch (instr.opCode) {
-  case PUSH: executePush(instr); break;
   case PUSH_STR: executePushStr(instr); break;
   case PUSH_INT: executePushInt(instr); break;
   case PUSH_VAR: executePushVar(instr); break;
@@ -842,27 +841,6 @@ void Interpreter::executePushVar(const Instruction &instr) {
 
 void Interpreter::executePushStr(const Instruction &instr) {
   vm->systemStack.push_back(instr.op1);
-}
-
-void Interpreter::executePush(const Instruction &instr) {
-  const wstring& op1 = instr.op1;
-
-  // If starts with \", it must be a literal string.
-  if (op1.size() > 0 && op1[0] == L'\"') {
-    // Push on the system stack the string with no quotes
-    // (remove first and last chars).
-    vm->systemStack.push_back(wstring(op1.c_str() + 1, op1.size() - 2));
-  } else if (VMWstringUtils::iswnumeric(op1)) {
-    vm->systemStack.push_back(op1);
-  } else {
-    // If it's a variable reference, eval it and push its value.
-    if (vm->variables.find(op1) != vm->variables.end()) {
-      vm->systemStack.push_back(vm->variables[op1]);
-    } else {
-      vm->variables[op1] = L"";
-      vm->systemStack.push_back(L"");
-    }
-  }
 }
 
 void Interpreter::executePushbl(const Instruction &instr) {
