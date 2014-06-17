@@ -1,22 +1,22 @@
 #<assembly>
 #<transfer default="chunk">
-push "numero"
-push "<sg>"
+push-str numero
+push-str <sg>
 storev
-push "genero"
-push "<m>"
+push-str genero
+push-str <m>
 storev
-push "caso"
-push "<nom>"
+push-str caso
+push-str <nom>
 storev
-push "numero_pp"
-push "<sg>"
+push-str numero_pp
+push-str <sg>
 storev
-push "genero_pp"
-push "<m>"
+push-str genero_pp
+push-str <m>
 storev
-push "EOS"
-push "true"
+push-str EOS
+push-str true
 storev
 jmp section_rules_start
 macro_set-case-prep1_start:

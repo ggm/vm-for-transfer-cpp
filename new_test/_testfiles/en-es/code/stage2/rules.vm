@@ -1,7 +1,7 @@
 #<assembly>
 #<interchunk>
-push "nombre"
-push "<sg>"
+push-str nombre
+push-str <sg>
 storev
 jmp section_rules_start
 macro_determina_nbr_gen_SN_start:

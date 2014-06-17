@@ -61,6 +61,8 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
   opCodes[L"ends-with-ig"] = ENDS_WITH_IG;
   opCodes[L"get-case-from"] = GET_CASE_FROM;
   opCodes[L"modify-case"] = MODIFY_CASE;
+
+  opCodes[L"push-str"] = PUSH_STR;
 }
 
 AssemblyLoader::AssemblyLoader(const AssemblyLoader &c) {

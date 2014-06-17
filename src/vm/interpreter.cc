@@ -143,6 +143,7 @@ void Interpreter::execute(const Instruction &instr) {
   // in case the compiler doesn't optimize it.
   switch (instr.opCode) {
   case PUSH: executePush(instr); break;
+  case PUSH_STR: executePushStr(instr); break;
   case CLIPTL: executeCliptl(instr); break;
   case CLIP: executeClip(instr); break;
   case LU: executeLu(instr); break;
@@ -820,6 +821,10 @@ void Interpreter::executeOut(const Instruction &instr) {
     out += operands[i];
   }
   vm->writeOutput(out);
+}
+
+void Interpreter::executePushStr(const Instruction &instr) {
+  vm->systemStack.push_back(instr.op1);
 }
 
 void Interpreter::executePush(const Instruction &instr) {

@@ -1,10 +1,10 @@
 #<assembly>
 #<transfer>
-push "numero"
-push "<sg>"
+push-str numero
+push-str <sg>
 storev
-push "EOS"
-push "true"
+push-str EOS
+push-str true
 storev
 jmp section_rules_start
 macro_f_bcond_start:

@@ -31,9 +31,13 @@ using namespace std;
 enum OP_CODE {
   ADDTRIE = 0, AND, APPEND, BEGINS_WITH, BEGINS_WITH_IG, OR, CALL, CLIP, CLIPSL,
   CLIPTL, CMP_SUBSTR, CMPI_SUBSTR, CMP, CMPI, CONCAT, CHUNK, ENDS_WITH,
-  ENDS_WITH_IG, GET_CASE_FROM, IN, INIG, JMP, JZ, JNZ, MLU, MODIFY_CASE, PUSH,
+  ENDS_WITH_IG, GET_CASE_FROM, IN, INIG, JMP, JZ, JNZ, MLU, MODIFY_CASE,
   PUSHBL, PUSHSB, LU, LU_COUNT, NOT, OUT, RET, STORECL, STORESL, STORETL,
-  STOREV, CASE_OF
+  STOREV, CASE_OF,
+
+  // TODO remove PUSH instruction after replacing it with specialized
+  // versions in the compiler.
+  PUSH, PUSH_STR
 };
 
 /// A struct representing a instruction as an opcode and an operand.

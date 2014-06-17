@@ -1,13 +1,13 @@
 #<assembly>
 #<transfer default="chunk">
-push "genere"
-push "<m>"
+push-str genere
+push-str <m>
 storev
-push "nombre"
-push "<sg>"
+push-str nombre
+push-str <sg>
 storev
-push "EOS"
-push "true"
+push-str EOS
+push-str true
 storev
 jmp section_rules_start
 macro_elimina_GDND_start:

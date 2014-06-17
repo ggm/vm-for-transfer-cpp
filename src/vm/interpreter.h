@@ -115,6 +115,7 @@ private:
   void handleStoreClipInstruction(const wstring &, LexicalUnit*,
       const wstring &, const wstring &);
   void executeStorev(const Instruction&);
+  void executePushStr(const Instruction&);
 
 };
 

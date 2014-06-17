@@ -1,10 +1,10 @@
 #<assembly>
 #<interchunk>
-push "fifrase"
-push "yes"
+push-str fifrase
+push-str yes
 storev
-push "que_cnjsub"
-push "no"
+push-str que_cnjsub
+push-str no
 storev
 jmp section_rules_start
 macro_f_bcond_start:
