@@ -300,15 +300,14 @@ void AssemblyCodeGenerator::genPatternItemStart(const Event & event,
   // Push the contents of the category.
   wstring catsStr = L"";
   if (cats.size() > 0) {
-    catsStr = L"\"" + cats[0];
+    catsStr = cats[0];
     for (unsigned int i = 1; i < cats.size(); i++) {
       catsStr += L"|";
       catsStr += cats[i];
     }
-    catsStr += L"\"";
   }
 
-  addPatternsCode(PUSH_OP + INSTR_SEP + catsStr);
+  addPatternsCode(PUSH_STR_OP + INSTR_SEP + catsStr);
 }
 
 void AssemblyCodeGenerator::genActionStart(const Event & event) {

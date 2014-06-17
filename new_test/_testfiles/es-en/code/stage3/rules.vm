@@ -3,25 +3,25 @@
 jmp section_rules_start
 section_rules_start:
 patterns_start:
-push "haver_pp|haver_pp_enc"
+push-str haver_pp|haver_pp_enc
 push-int 1
 addtrie action_0_start
-push "aux_verb"
+push-str aux_verb
 push-int 1
 addtrie action_1_start
-push "aux_haver_pp|aux_haver_pp_enc"
+push-str aux_haver_pp|aux_haver_pp_enc
 push-int 1
 addtrie action_2_start
-push "verbcj|verbcj_enc"
+push-str verbcj|verbcj_enc
 push-int 1
 addtrie action_3_start
-push "subj"
+push-str subj
 push-int 1
 addtrie action_4_start
-push "haverhi"
+push-str haverhi
 push-int 1
 addtrie action_5_start
-push "haverhi_pp"
+push-str haverhi_pp
 push-int 1
 addtrie action_6_start
 patterns_end:

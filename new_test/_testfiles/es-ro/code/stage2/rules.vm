@@ -15,24 +15,24 @@ choose_0_end:
 macro_f_bcond_end: ret
 section_rules_start:
 patterns_start:
-push "<SN>|<SN><*>"
+push-str <SN>|<SN><*>
 push-int 1
 addtrie action_0_start
-push "<PREP>"
-push "<SN>|<SN><*>"
+push-str <PREP>
+push-str <SN>|<SN><*>
 push-int 2
 addtrie action_1_start
-push "<PREP>"
-push "<SA>|<SA><*>"
+push-str <PREP>
+push-str <SA>|<SA><*>
 push-int 2
 addtrie action_2_start
-push "<SA>|<SA><*>"
+push-str <SA>|<SA><*>
 push-int 1
 addtrie action_3_start
-push "<DET><*>"
+push-str <DET><*>
 push-int 1
 addtrie action_4_start
-push "<sent>"
+push-str <sent>
 push-int 1
 addtrie action_5_start
 patterns_end:
