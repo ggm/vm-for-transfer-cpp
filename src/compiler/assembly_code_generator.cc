@@ -328,12 +328,12 @@ void AssemblyCodeGenerator::genCallMacroStart(const Event & event) {
 void AssemblyCodeGenerator::genCallMacroEnd(const Event & event) {
   wstringstream ws;
   ws << event.getNumChildren();
-  addCode(PUSH_OP + INSTR_SEP + ws.str());
+  addCode(PUSH_INT_OP + INSTR_SEP + ws.str());
   addCode(CALL_OP + INSTR_SEP + event.getAttribute(L"n"));
 }
 
 void AssemblyCodeGenerator::genWithParamStart(const Event & event) {
-  addCode(PUSH_OP + INSTR_SEP + event.getAttribute(L"pos"));
+  addCode(PUSH_INT_OP + INSTR_SEP + event.getAttribute(L"pos"));
 }
 
 void AssemblyCodeGenerator::genChooseStart(Event & event) {

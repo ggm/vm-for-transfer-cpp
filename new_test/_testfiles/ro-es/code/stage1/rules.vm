@@ -464,8 +464,8 @@ cliptl
 push "<pmp>"
 cmp
 jz when_18_end
-push 1
-push 1
+push-int 1
+push-int 1
 call prn_verb
 pushsb 1
 push "haber"
@@ -3321,11 +3321,11 @@ push-int 1
 addtrie action_109_start
 patterns_end:
 action_0_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "whole"
@@ -3358,15 +3358,15 @@ lu 5
 out 5
 action_0_end:
 action_1_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
 push "el"
 push-int 1
@@ -3435,18 +3435,18 @@ lu 5
 out 7
 action_1_end:
 action_2_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push-int 1
@@ -3513,8 +3513,8 @@ lu 5
 out 7
 action_2_end:
 action_3_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push "de"
 push "<pr>"
@@ -3549,15 +3549,15 @@ lu 5
 out 5
 action_3_end:
 action_4_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push "de"
 push "<pr>"
@@ -3609,19 +3609,19 @@ lu 5
 out 7
 action_4_end:
 action_5_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
-push 2
-push 3
-push 4
-push 3
+push-int 2
+push-int 3
+push-int 4
+push-int 3
 call f_concord3
 push "de"
 push "<pr>"
@@ -3771,19 +3771,19 @@ out 5
 choose_81_end:
 action_6_end:
 action_7_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 2
-push 3
-push 3
+push-int 1
+push-int 2
+push-int 3
+push-int 3
 call f_concord3
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -3898,15 +3898,15 @@ out 5
 choose_82_end:
 action_7_end:
 action_8_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -3987,18 +3987,18 @@ out 3
 choose_83_end:
 action_8_end:
 action_9_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -4135,18 +4135,18 @@ out 9
 choose_84_end:
 action_9_end:
 action_10_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -4283,17 +4283,17 @@ out 9
 choose_85_end:
 action_10_end:
 action_11_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -4414,17 +4414,17 @@ out 7
 choose_86_end:
 action_11_end:
 action_12_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 1
 push "whole"
@@ -4467,19 +4467,19 @@ pushbl
 out 10
 action_12_end:
 action_13_start:
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
-push 5
-push 1
+push-int 5
+push-int 1
 call f_modgen
-push 3
-push 4
-push 5
-push 3
+push-int 3
+push-int 4
+push-int 5
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -4698,18 +4698,18 @@ out 15
 choose_87_end:
 action_13_end:
 action_14_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push-int 2
 push "<nom>|<dg>"
@@ -4929,11 +4929,11 @@ choose_89_end:
 choose_88_end:
 action_14_end:
 action_15_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
 push-int 2
 push "<nom>|<dg>"
@@ -5137,8 +5137,8 @@ out 11
 choose_90_end:
 action_15_end:
 action_16_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "<nom>|<dg>"
@@ -5285,9 +5285,9 @@ push "lemq"
 cliptl
 lu 6
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_18_end:
 action_19_start:
@@ -5312,18 +5312,18 @@ push "lemq"
 cliptl
 lu 6
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_19_end:
 action_20_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push-int 3
 push "lem"
@@ -5477,15 +5477,15 @@ out 5
 choose_97_end:
 action_20_end:
 action_21_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 3
 push "lem"
@@ -5625,8 +5625,8 @@ out 3
 choose_101_end:
 action_22_end:
 action_23_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push-int 1
 push "lem"
@@ -5685,14 +5685,14 @@ out 3
 choose_102_end:
 action_23_end:
 action_24_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
-push 4
-push 1
+push-int 4
+push-int 1
 call f_concord1
 push-int 3
 push "<def>|<ind>"
@@ -5967,11 +5967,11 @@ out 1
 choose_103_end:
 action_24_end:
 action_25_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 2
 push "<def>|<ind>"
@@ -6374,8 +6374,8 @@ choose_110_end:
 choose_107_end:
 action_25_end:
 action_26_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -6461,12 +6461,12 @@ out 3
 choose_114_end:
 action_26_end:
 action_27_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push-int 2
 push "<def>|<ind>"
@@ -6663,16 +6663,16 @@ choose_116_end:
 choose_115_end:
 action_27_end:
 action_28_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
-push 2
-push 3
-push 4
-push 3
+push-int 2
+push-int 3
+push-int 4
+push-int 3
 call f_concord3
 push-int 2
 push "<def>|<ind>"
@@ -6835,20 +6835,20 @@ out 7
 choose_117_end:
 action_28_end:
 action_29_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
-push 5
-push 1
+push-int 5
+push-int 1
 call f_modgen
-push 2
-push 3
-push 4
-push 5
-push 4
+push-int 2
+push-int 3
+push-int 4
+push-int 5
+push-int 4
 call f_concord4
 push-int 2
 push "<def>|<ind>"
@@ -7054,11 +7054,11 @@ choose_119_end:
 choose_118_end:
 action_29_end:
 action_30_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<def>|<ind>"
@@ -7304,11 +7304,11 @@ choose_125_end:
 choose_123_end:
 action_30_end:
 action_31_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "<nom>|<dg>"
@@ -7316,8 +7316,8 @@ cliptl
 push "<dg>"
 cmp
 jz when_180_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "de"
 push-int 1
@@ -7368,8 +7368,8 @@ choose_127_end:
 choose_126_end:
 action_31_end:
 action_32_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -7387,11 +7387,11 @@ lu 4
 out 1
 action_32_end:
 action_33_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -7409,8 +7409,8 @@ lu 4
 out 1
 action_33_end:
 action_34_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "<def>|<ind>"
@@ -7424,8 +7424,8 @@ push "<nom>"
 cmp
 and 2
 jz when_182_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -7543,8 +7543,8 @@ push "<dg>"
 cmp
 and 2
 jz when_185_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -7660,12 +7660,12 @@ choose_133_end:
 choose_131_end:
 action_34_end:
 action_35_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "lemh"
@@ -7716,11 +7716,11 @@ lu 5
 out 5
 action_35_end:
 action_36_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -7762,11 +7762,11 @@ lu 4
 out 5
 action_36_end:
 action_37_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "lemh"
@@ -7805,11 +7805,11 @@ lu 4
 out 5
 action_37_end:
 action_38_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 1
 push "<nom>|<dg>"
@@ -7823,8 +7823,8 @@ push "<def>"
 cmp
 and 2
 jz when_188_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push "<det><def>"
@@ -7907,8 +7907,8 @@ out 3
 choose_134_end:
 action_38_end:
 action_39_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -7926,11 +7926,11 @@ lu 4
 out 1
 action_39_end:
 action_40_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push-int 1
 push "lemh"
@@ -7951,11 +7951,11 @@ lu 5
 out 1
 action_40_end:
 action_41_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 1
 push "<def>|<ind>"
@@ -7969,8 +7969,8 @@ push "<nom>"
 cmp
 and 2
 jz when_189_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -8088,8 +8088,8 @@ push "<dg>"
 cmp
 and 2
 jz when_192_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -8205,11 +8205,11 @@ choose_140_end:
 choose_138_end:
 action_41_end:
 action_42_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 2
 push "<nom>|<dg>"
@@ -8233,8 +8233,8 @@ push "<def>"
 cmp
 and 4
 jz when_195_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "lem"
@@ -8398,8 +8398,8 @@ push "<ind>"
 cmp
 and 4
 jz when_198_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "lem"
@@ -8524,8 +8524,8 @@ push "<def>"
 cmp
 and 4
 jz when_200_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "lem"
@@ -8687,12 +8687,12 @@ choose_144_end:
 choose_141_end:
 action_42_end:
 action_43_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<def>|<ind>"
@@ -8706,8 +8706,8 @@ push "<nom>"
 cmp
 and 2
 jz when_202_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -8876,8 +8876,8 @@ push "<dg>"
 cmp
 and 2
 jz when_205_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -9048,15 +9048,15 @@ choose_153_end:
 choose_151_end:
 action_43_end:
 action_44_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -9225,15 +9225,15 @@ out 11
 choose_154_end:
 action_44_end:
 action_45_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -9402,12 +9402,12 @@ out 11
 choose_155_end:
 action_45_end:
 action_46_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -9566,18 +9566,18 @@ out 11
 choose_156_end:
 action_46_end:
 action_47_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -9762,18 +9762,18 @@ out 13
 choose_157_end:
 action_47_end:
 action_48_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -10226,9 +10226,9 @@ out 9
 choose_160_end:
 action_50_end:
 action_51_start:
-push 4
-push 3
-push 2
+push-int 4
+push-int 3
+push-int 2
 call f_concord2
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -10341,15 +10341,15 @@ out 7
 choose_161_end:
 action_51_end:
 action_52_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -10486,22 +10486,22 @@ out 9
 choose_162_end:
 action_52_end:
 action_53_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
-push 2
-push 1
+push-int 2
+push-int 1
 call modcase
 push-int 3
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -10672,12 +10672,12 @@ out 11
 choose_163_end:
 action_53_end:
 action_54_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "lem"
@@ -10726,12 +10726,12 @@ lu 5
 out 3
 action_54_end:
 action_55_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
 push-int 2
 push "lem"
@@ -10812,15 +10812,15 @@ out 5
 choose_165_end:
 action_55_end:
 action_56_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 2
 push "lem"
@@ -10948,12 +10948,12 @@ when_224_end:
 choose_169_end:
 action_56_end:
 action_57_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
 push-int 1
 push "<def>|<ind>"
@@ -10967,8 +10967,8 @@ push "<nom>"
 cmp
 and 2
 jz when_225_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -11161,8 +11161,8 @@ push "<dg>"
 cmp
 and 2
 jz when_228_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -11305,8 +11305,8 @@ push "<dg>"
 cmp
 and 2
 jz when_230_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -11363,12 +11363,12 @@ choose_175_end:
 choose_173_end:
 action_57_end:
 action_58_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
 push-int 1
 push "<nom>|<dg>"
@@ -11568,11 +11568,11 @@ when_233_end:
 choose_178_end:
 action_58_end:
 action_59_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
 push-int 3
 push "<nom>|<dg>"
@@ -11689,16 +11689,16 @@ lu 3
 out 3
 action_61_end:
 action_62_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 1
-push 2
-push 3
-push 3
+push-int 1
+push-int 2
+push-int 3
+push-int 3
 call f_concord3
 push-int 1
 push "<nom>|<dg>"
@@ -11712,8 +11712,8 @@ push "<def>"
 cmp
 and 2
 jz when_236_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push-int 1
@@ -11776,8 +11776,8 @@ push "<dg>"
 cmp
 and 2
 jz when_237_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -11869,16 +11869,16 @@ out 3
 choose_181_end:
 action_62_end:
 action_63_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 3
-push 1
-push 3
+push-int 2
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
 push-int 1
 push "<nom>|<dg>"
@@ -11886,8 +11886,8 @@ clipsl
 push "<dg>"
 cmp
 jz when_238_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -11997,16 +11997,16 @@ out 5
 choose_182_end:
 action_63_end:
 action_64_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
 push-int 1
 push "<nom>|<dg>"
@@ -12014,8 +12014,8 @@ clipsl
 push "<dg>"
 cmp
 jz when_239_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -12125,11 +12125,11 @@ out 5
 choose_183_end:
 action_64_end:
 action_65_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "<nom>|<dg>"
@@ -12153,8 +12153,8 @@ push "<def>"
 cmp
 and 4
 jz when_240_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "<m>|<f>|<mf>|<mn>|<fn>|<mfn>|<GD>|<nt>"
@@ -12302,8 +12302,8 @@ out 3
 choose_184_end:
 action_65_end:
 action_66_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 1
 push "<inf>|<ger>|<cni>|<fti>|<pp>|<pri>|<pii>|<pis>|<pper>|<prs>|<imp>"
@@ -12510,8 +12510,8 @@ lu 6
 out 3
 action_70_end:
 action_71_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push-int 1
 push "lem"
@@ -12548,8 +12548,8 @@ pushbl
 out 6
 action_71_end:
 action_72_start:
-push 4
-push 1
+push-int 4
+push-int 1
 call f_modgen
 push-int 4
 push "<def>|<ind>"
@@ -12773,8 +12773,8 @@ lu 4
 out 5
 action_74_end:
 action_75_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push "haber"
 push "<vbhaver><pri><p3><sg>"
@@ -12806,8 +12806,8 @@ lu 6
 out 5
 action_75_end:
 action_76_start:
-push 5
-push 1
+push-int 5
+push-int 1
 call f_concord1
 push-int 2
 push "lemh"
@@ -12860,8 +12860,8 @@ lu 6
 out 7
 action_76_end:
 action_77_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 2
 push "<nom>|<dg>"
@@ -13085,12 +13085,12 @@ out 3
 choose_189_end:
 action_77_end:
 action_78_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_concord2
 push-int 1
 push "<nom>|<dg>"
@@ -13153,8 +13153,8 @@ storetl
 jmp choose_195_end
 when_252_end:
 choose_195_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push-int 1
@@ -13270,12 +13270,12 @@ out 5
 choose_192_end:
 action_78_end:
 action_79_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_concord2
 push-int 2
 push "<nom>|<dg>"
@@ -13338,8 +13338,8 @@ storetl
 jmp choose_199_end
 when_256_end:
 choose_199_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "lem"
@@ -13471,8 +13471,8 @@ out 7
 choose_196_end:
 action_79_end:
 action_80_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 1
 push "<p1>|<p2>|<p3>"
@@ -13573,12 +13573,12 @@ out 5
 choose_200_end:
 action_80_end:
 action_81_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push-int 2
 push "<def>|<ind>"
@@ -13586,8 +13586,8 @@ clipsl
 push "<def>"
 cmp
 jz when_258_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push-int 1
@@ -13691,16 +13691,16 @@ out 5
 choose_201_end:
 action_81_end:
 action_82_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
 push-int 1
 push "lem"
@@ -13766,16 +13766,16 @@ lu 5
 out 5
 action_82_end:
 action_83_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 2
-push 1
-push 3
-push 3
+push-int 2
+push-int 1
+push-int 3
+push-int 3
 call f_concord3
 push-int 1
 push "lem"
@@ -13841,16 +13841,16 @@ lu 5
 out 5
 action_83_end:
 action_84_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 4
-push 3
-push 2
-push 3
+push-int 4
+push-int 3
+push-int 2
+push-int 3
 call f_concord3
 push-int 2
 push "<nom>|<dg>"
@@ -13928,8 +13928,8 @@ clipsl
 push "<dg>"
 cmp
 jz when_262_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push-int 1
 push "lemh"
@@ -14002,13 +14002,13 @@ when_262_end:
 choose_204_end:
 action_84_end:
 action_85_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
 push-int 1
 push "<nom>|<dg>"
@@ -14066,8 +14066,8 @@ clipsl
 push "<dg>"
 cmp
 jz when_264_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -14120,12 +14120,12 @@ when_264_end:
 choose_205_end:
 action_85_end:
 action_86_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<nom>|<dg>"
@@ -14184,8 +14184,8 @@ push "<def>"
 cmp
 and 2
 jz when_266_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -14261,15 +14261,15 @@ out 3
 choose_206_end:
 action_86_end:
 action_87_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -14381,8 +14381,8 @@ push "<def>"
 cmp
 and 2
 jz when_268_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "a"
 push-int 1
@@ -14534,9 +14534,9 @@ push "lemq"
 cliptl
 lu 6
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_88_end:
 action_89_start:
@@ -14576,9 +14576,9 @@ push "lemq"
 cliptl
 lu 6
 out 3
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_89_end:
 action_90_start:
@@ -14616,9 +14616,9 @@ out 3
 jmp choose_208_end
 when_269_end:
 choose_208_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_90_end:
 action_91_start:
@@ -14643,9 +14643,9 @@ push "lemq"
 cliptl
 lu 6
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_91_end:
 action_92_start:
@@ -14670,14 +14670,14 @@ push "lemq"
 cliptl
 lu 6
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_92_end:
 action_93_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 2
 push "lem"
@@ -14917,9 +14917,9 @@ cliptl
 lu 4
 out 5
 choose_211_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_94_end:
 action_95_start:
@@ -15058,9 +15058,9 @@ cliptl
 lu 5
 out 5
 choose_212_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_95_end:
 action_96_start:
@@ -15199,9 +15199,9 @@ cliptl
 lu 5
 out 5
 choose_214_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_96_end:
 action_97_start:
@@ -15248,8 +15248,8 @@ lu 3
 out 3
 action_98_end:
 action_99_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push-int 1
 push "lemh"
@@ -15290,11 +15290,11 @@ mlu 2
 out 1
 action_99_end:
 action_100_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
 push-int 1
 push "lemh"
@@ -15351,8 +15351,8 @@ mlu 3
 out 1
 action_100_end:
 action_101_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_modgen
 push-int 1
 push "lem"
@@ -15544,8 +15544,8 @@ cmp
 not
 and 3
 jz when_283_end
-push 1
-push 1
+push-int 1
+push-int 1
 call prn_verb
 pushbl
 push-int 1
@@ -15626,8 +15626,8 @@ out 1
 choose_216_end:
 action_101_end:
 action_102_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push-int 1
 push "<p1>|<p2>|<p3>"
@@ -15637,9 +15637,9 @@ push "<p1>|<p2>|<p3>"
 clipsl
 cmp
 jz when_284_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push-int 2
 push "lemh"
@@ -15672,8 +15672,8 @@ when_284_end:
 choose_223_end:
 action_102_end:
 action_103_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
 push "como"
 push "<adv>"
@@ -15708,15 +15708,15 @@ lu 5
 out 5
 action_103_end:
 action_104_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 3
-push 1
+push-int 3
+push-int 1
 call f_modgen
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push "como"
 push "<adv>"
@@ -15755,11 +15755,11 @@ lu 5
 out 5
 action_104_end:
 action_105_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_modgen
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "lem"
@@ -15824,11 +15824,11 @@ out 5
 choose_224_end:
 action_105_end:
 action_106_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
 push-int 1
 push "<nom>|<dg>"
@@ -15852,8 +15852,8 @@ push "<def>"
 cmp
 and 4
 jz when_286_end
-push 1
-push 1
+push-int 1
+push-int 1
 call modcase
 push "el"
 push-int 1
@@ -15939,11 +15939,11 @@ out 3
 choose_225_end:
 action_106_end:
 action_107_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call f_concord1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_concord1
 push-int 2
 push "<nom>|<dg>"
@@ -15967,8 +15967,8 @@ push "<def>"
 cmp
 and 4
 jz when_287_end
-push 2
-push 1
+push-int 2
+push-int 1
 call modcase
 push-int 1
 push "lem"

@@ -608,8 +608,8 @@ push "yes"
 storev
 action_5_end:
 action_6_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call generate_subject
 push-int 1
 push "whole"
@@ -658,8 +658,8 @@ push "yes"
 storev
 action_6_end:
 action_7_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call generate_subject
 push-int 1
 push "whole"
@@ -698,8 +698,8 @@ push "yes"
 storev
 action_7_end:
 action_8_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call generate_subject
 push-int 1
 push "whole"
@@ -874,8 +874,8 @@ push "yes"
 storev
 action_10_end:
 action_11_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call generate_subject
 push-int 1
 push "whole"
@@ -2038,8 +2038,8 @@ push "no"
 storev
 action_29_end:
 action_30_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call generate_subject
 push "verbcj"
 push "<SV>"

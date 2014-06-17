@@ -4867,8 +4867,8 @@ push-int 1
 addtrie action_224_start
 patterns_end:
 action_0_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 6
 push "lem"
@@ -4962,14 +4962,14 @@ cliptl
 lu 1
 chunk 15
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_0_end:
 action_1_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_weekdays_num"
 push caseFirstWord
@@ -5002,14 +5002,14 @@ push "<num>"
 lu 2
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_1_end:
 action_2_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "lem"
@@ -5083,8 +5083,8 @@ chunk 9
 out 1
 action_2_end:
 action_3_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "lem"
@@ -5167,8 +5167,8 @@ chunk 13
 out 1
 action_3_end:
 action_4_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_nom"
 push caseFirstWord
@@ -5195,19 +5195,19 @@ chunk 5
 out 1
 action_4_end:
 action_5_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_det_nom"
 push caseFirstWord
@@ -5273,23 +5273,23 @@ chunk 8
 out 1
 action_5_end:
 action_6_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "det_det_nom_adj"
 push caseFirstWord
@@ -5379,19 +5379,19 @@ chunk 10
 out 1
 action_6_end:
 action_7_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_nom"
 push caseFirstWord
@@ -5449,19 +5449,19 @@ chunk 5
 out 1
 action_7_end:
 action_8_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call flexio_numerals
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_nom"
 push caseFirstWord
@@ -5517,16 +5517,16 @@ chunk 5
 out 1
 action_8_end:
 action_9_start:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push "det_det_nom"
 push caseFirstWord
@@ -5603,23 +5603,23 @@ chunk 7
 out 1
 action_9_end:
 action_10_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call flexio_numerals
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_num_nom"
 push caseFirstWord
@@ -5696,8 +5696,8 @@ chunk 7
 out 1
 action_10_end:
 action_11_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
 push-int 2
 push "lem"
@@ -5723,22 +5723,22 @@ push "<m>"
 storetl
 jmp choose_124_end
 when_192_end:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call flexio_numerals
 choose_124_end:
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call flexio_numerals
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_num_nom"
 push caseFirstWord
@@ -5814,24 +5814,24 @@ chunk 7
 out 1
 action_11_end:
 action_12_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_det_num_nom"
 push caseFirstWord
@@ -5928,11 +5928,11 @@ chunk 9
 out 1
 action_12_end:
 action_13_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push-int 3
 push "lem"
@@ -5958,23 +5958,23 @@ push "<m>"
 storetl
 jmp choose_125_end
 when_193_end:
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
 choose_125_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_num_num_nom"
 push caseFirstWord
@@ -6071,16 +6071,16 @@ chunk 9
 out 1
 action_13_end:
 action_14_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
 push gen_chunk
 push "<mf>"
@@ -6168,15 +6168,15 @@ chunk 9
 out 1
 action_14_end:
 action_15_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push "nom_adj"
 push caseFirstWord
@@ -6236,23 +6236,23 @@ chunk 5
 out 1
 action_15_end:
 action_16_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "det_nom_adj"
 push caseFirstWord
@@ -6333,27 +6333,27 @@ chunk 7
 out 1
 action_16_end:
 action_17_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call flexio_numerals
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "num_nom_adj"
 push caseFirstWord
@@ -6430,20 +6430,20 @@ chunk 7
 out 1
 action_17_end:
 action_18_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "det_det_nom_adj"
 push caseFirstWord
@@ -6541,27 +6541,27 @@ chunk 9
 out 1
 action_18_end:
 action_19_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "det_num_nom_adj"
 push caseFirstWord
@@ -6659,24 +6659,24 @@ chunk 9
 out 1
 action_19_end:
 action_20_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "adj_num_nom_adj"
 push caseFirstWord
@@ -6773,23 +6773,23 @@ chunk 9
 out 1
 action_20_end:
 action_21_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 3
-push 1
-push 3
+push-int 4
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "det_nom_adv_adj"
 push caseFirstWord
@@ -6875,23 +6875,23 @@ chunk 9
 out 1
 action_21_end:
 action_22_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 1
-push 3
+push-int 4
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "num_nom_adv_adj"
 push caseFirstWord
@@ -6976,15 +6976,15 @@ chunk 9
 out 1
 action_22_end:
 action_23_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "nom_adv_adj"
 push caseFirstWord
@@ -7046,24 +7046,24 @@ chunk 7
 out 1
 action_23_end:
 action_24_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 5
-push 4
-push 2
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj1
 push "det_det_nom_adv_adj"
 push caseFirstWord
@@ -7169,27 +7169,27 @@ chunk 11
 out 1
 action_24_end:
 action_25_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 5
-push 2
+push-int 2
+push-int 5
+push-int 2
 call flexio_numerals
-push 5
-push 4
-push 2
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj1
 push "det_num_nom_adv_adj"
 push caseFirstWord
@@ -7295,12 +7295,12 @@ chunk 11
 out 1
 action_25_end:
 action_26_start:
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_adj_adv"
 push caseFirstWord
@@ -7361,27 +7361,27 @@ chunk 7
 out 1
 action_26_end:
 action_27_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj2
 push "det_nom_adj_adj"
 push caseFirstWord
@@ -7480,28 +7480,28 @@ chunk 9
 out 1
 action_27_end:
 action_28_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 4
-push 3
-push 2
-push 1
-push 5
+push-int 5
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 5
 call f_concord5
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "det_det_nom_adj_adj"
 push caseFirstWord
@@ -7620,27 +7620,27 @@ chunk 11
 out 1
 action_28_end:
 action_29_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 4
-push 3
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 3
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "det_nom_adj_adv_adj"
 push caseFirstWord
@@ -7744,20 +7744,20 @@ chunk 11
 out 1
 action_29_end:
 action_30_start:
-push 5
-push 4
-push 3
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 3
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "num_nom_adj_adv_adj"
 push caseFirstWord
@@ -7860,27 +7860,27 @@ chunk 11
 out 1
 action_30_end:
 action_31_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj2
 push "num_nom_adj_adj"
 push caseFirstWord
@@ -7978,31 +7978,31 @@ chunk 9
 out 1
 action_31_end:
 action_32_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call flexio_numerals
-push 5
-push 4
-push 3
-push 2
-push 1
-push 5
+push-int 5
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 5
 call f_concord5
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "det_num_nom_adj_adj"
 push caseFirstWord
@@ -8121,19 +8121,19 @@ chunk 11
 out 1
 action_32_end:
 action_33_start:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj2
 push "nom_adj_adj"
 push caseFirstWord
@@ -8217,31 +8217,31 @@ chunk 7
 out 1
 action_33_end:
 action_34_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 6
-push 2
+push-int 2
+push-int 6
+push-int 2
 call flexio_numerals
-push 6
-push 5
-push 4
-push 2
-push 1
-push 5
+push-int 6
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 5
 call f_concord5
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call comparatiu_adj2
 push "det_num_nom_adj_adv_adj"
 push caseFirstWord
@@ -8371,31 +8371,31 @@ chunk 13
 out 1
 action_34_end:
 action_35_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 6
-push 2
+push-int 2
+push-int 6
+push-int 2
 call flexio_numerals
-push 6
-push 5
-push 4
-push 2
-push 1
-push 5
+push-int 6
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 5
 call f_concord5
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call comparatiu_adj2
 push "det_det_nom_adj_adv_adj"
 push caseFirstWord
@@ -8525,19 +8525,19 @@ chunk 13
 out 1
 action_35_end:
 action_36_start:
-push 4
-push 3
-push 1
-push 3
+push-int 4
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj2
 push "nom_adj_conj_adj"
 push caseFirstWord
@@ -8626,19 +8626,19 @@ chunk 9
 out 1
 action_36_end:
 action_37_start:
-push 5
-push 4
-push 1
-push 3
+push-int 5
+push-int 4
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "nom_adj_conj_adv_adj"
 push caseFirstWord
@@ -8732,27 +8732,27 @@ chunk 11
 out 1
 action_37_end:
 action_38_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 4
-push 2
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "det_nom_adj_conj_adj"
 push caseFirstWord
@@ -8862,27 +8862,27 @@ chunk 11
 out 1
 action_38_end:
 action_39_start:
-push 1
-push 6
-push 2
+push-int 1
+push-int 6
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 6
-push 5
-push 2
-push 1
-push 4
+push-int 6
+push-int 5
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call comparatiu_adj2
 push "det_nom_adj_conj_adv_adj"
 push caseFirstWord
@@ -8997,27 +8997,27 @@ chunk 13
 out 1
 action_39_end:
 action_40_start:
-push 1
-push 6
-push 2
+push-int 1
+push-int 6
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 6
-push 5
-push 3
-push 1
-push 4
+push-int 6
+push-int 5
+push-int 3
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call comparatiu_adj2
 push "det_nom_adv_adj_conj_adj"
 push caseFirstWord
@@ -9132,27 +9132,27 @@ chunk 13
 out 1
 action_40_end:
 action_41_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 4
-push 2
-push 1
-push 4
+push-int 5
+push-int 4
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call comparatiu_adj2
 push "det_nom_adj_cm_adj"
 push caseFirstWord
@@ -9261,19 +9261,19 @@ chunk 10
 out 1
 action_41_end:
 action_42_start:
-push 4
-push 3
-push 1
-push 3
+push-int 4
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj2
 push "nom_adj_cm_adj"
 push caseFirstWord
@@ -9363,15 +9363,15 @@ chunk 10
 out 1
 action_42_end:
 action_43_start:
-push 4
-push 2
-push 2
+push-int 4
+push-int 2
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "nom_'adj'"
 push caseFirstWord
@@ -9439,15 +9439,15 @@ chunk 7
 out 1
 action_43_end:
 action_44_start:
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push "'nom'_adj"
 push caseFirstWord
@@ -9515,23 +9515,23 @@ chunk 7
 out 1
 action_44_end:
 action_45_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 4
-push 2
-push 1
-push 3
+push-int 4
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push "det_'nom'_adj"
 push caseFirstWord
@@ -9620,23 +9620,23 @@ chunk 9
 out 1
 action_45_end:
 action_46_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 3
-push 1
-push 3
+push-int 5
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
 push "det_nom_'adj'"
 push caseFirstWord
@@ -9725,8 +9725,8 @@ chunk 9
 out 1
 action_46_end:
 action_47_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -9766,8 +9766,8 @@ inig
 or 7
 not
 jz when_196_end
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push "nom_pr_nom"
 push caseFirstWord
@@ -9822,8 +9822,8 @@ chunk 7
 out 1
 jmp choose_128_end
 when_196_end:
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
 push "nom_nom"
 push caseFirstWord
@@ -9875,11 +9875,11 @@ out 1
 choose_128_end:
 action_47_end:
 action_48_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push-int 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -9919,12 +9919,12 @@ inig
 or 7
 not
 jz when_197_end
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom"
 push caseFirstWord
@@ -10002,12 +10002,12 @@ chunk 9
 out 1
 jmp choose_129_end
 when_197_end:
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_nom_nom"
 push caseFirstWord
@@ -10082,15 +10082,15 @@ out 1
 choose_129_end:
 action_48_end:
 action_49_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call flexio_numerals
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -10130,12 +10130,12 @@ inig
 or 7
 not
 jz when_198_end
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
 push "num_nom_pr_nom"
 push caseFirstWord
@@ -10212,12 +10212,12 @@ chunk 9
 out 1
 jmp choose_130_end
 when_198_end:
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "num_nom_nom"
 push caseFirstWord
@@ -10291,18 +10291,18 @@ out 1
 choose_130_end:
 action_49_end:
 action_50_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call flexio_numerals
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -10398,17 +10398,17 @@ chunk 9
 out 1
 action_50_end:
 action_51_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call posa_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -10535,28 +10535,28 @@ chunk 9
 out 1
 action_51_end:
 action_52_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 1
-push 2
+push-int 5
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call posa_GDND
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -10706,28 +10706,28 @@ chunk 11
 out 1
 action_52_end:
 action_53_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call flexio_numerals
-push 5
-push 1
-push 2
+push-int 5
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call posa_GDND
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -10876,20 +10876,20 @@ chunk 11
 out 1
 action_53_end:
 action_54_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call posa_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -11037,31 +11037,31 @@ chunk 13
 out 1
 action_54_end:
 action_55_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 1
-push 6
-push 2
+push-int 1
+push-int 6
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 6
-push 1
-push 2
+push-int 6
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call posa_GDND
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -11232,31 +11232,31 @@ chunk 15
 out 1
 action_55_end:
 action_56_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 6
-push 2
+push-int 1
+push-int 6
+push-int 2
 call flexio_numerals
-push 6
-push 1
-push 2
+push-int 6
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj1
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call posa_GDND
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -11426,12 +11426,12 @@ chunk 15
 out 1
 action_56_end:
 action_57_start:
-push 4
-push 3
-push 2
+push-int 4
+push-int 3
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_adv_adj"
 push caseFirstWord
@@ -11495,20 +11495,20 @@ chunk 7
 out 1
 action_57_end:
 action_58_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call flexio_numerals
-push 5
-push 4
-push 1
-push 3
+push-int 5
+push-int 4
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_nom_adv_adj"
 push caseFirstWord
@@ -11592,20 +11592,20 @@ chunk 9
 out 1
 action_58_end:
 action_59_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 5
-push 4
-push 1
-push 3
+push-int 5
+push-int 4
+push-int 1
+push-int 3
 call f_concord3
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det_nom_adv_adj"
 push caseFirstWord
@@ -11690,11 +11690,11 @@ chunk 9
 out 1
 action_59_end:
 action_60_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push-int 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -11734,13 +11734,13 @@ inig
 or 7
 not
 jz when_225_end
-push 4
-push 2
-push 1
-push 3
+push-int 4
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_det_nom_pr_nom"
 push caseFirstWord
@@ -11838,13 +11838,13 @@ chunk 11
 out 1
 jmp choose_157_end
 when_225_end:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "det_det_nom_nom"
 push caseFirstWord
@@ -11939,18 +11939,18 @@ out 1
 choose_157_end:
 action_60_end:
 action_61_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -11990,13 +11990,13 @@ inig
 or 7
 not
 jz when_226_end
-push 4
-push 2
-push 1
-push 3
+push-int 4
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_num_nom_pr_nom"
 push caseFirstWord
@@ -12094,13 +12094,13 @@ chunk 11
 out 1
 jmp choose_158_end
 when_226_end:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "det_num_nom_nom"
 push caseFirstWord
@@ -12195,25 +12195,25 @@ out 1
 choose_158_end:
 action_61_end:
 action_62_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
-push 5
-push 1
-push 2
+push-int 5
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -12332,11 +12332,11 @@ chunk 11
 out 1
 action_62_end:
 action_63_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push-int 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -12376,11 +12376,11 @@ inig
 or 7
 not
 jz when_229_end
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call posa_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -12511,12 +12511,12 @@ chunk 9
 out 1
 jmp choose_161_end
 when_229_end:
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "nom_adj_nom"
 push caseFirstWord
@@ -12594,14 +12594,14 @@ out 1
 choose_161_end:
 action_63_end:
 action_64_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push-int 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -12641,13 +12641,13 @@ inig
 or 7
 not
 jz when_234_end
-push 4
-push 1
-push 2
-push 3
+push-int 4
+push-int 1
+push-int 2
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_adj"
 push caseFirstWord
@@ -12749,13 +12749,13 @@ chunk 11
 out 1
 jmp choose_166_end
 when_234_end:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "det_nom_adj_nom"
 push caseFirstWord
@@ -12854,14 +12854,14 @@ out 1
 choose_166_end:
 action_64_end:
 action_65_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj2
 push-int 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -12901,13 +12901,13 @@ inig
 or 7
 not
 jz when_235_end
-push 4
-push 1
-push 2
-push 3
+push-int 4
+push-int 1
+push-int 2
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "nom_pr_nom_adj_adj"
 push caseFirstWord
@@ -13009,13 +13009,13 @@ chunk 11
 out 1
 jmp choose_167_end
 when_235_end:
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "nom_adj_adj_nom"
 push caseFirstWord
@@ -13114,17 +13114,17 @@ out 1
 choose_167_end:
 action_65_end:
 action_66_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call comparatiu_adj2
 push-int 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
@@ -13164,14 +13164,14 @@ inig
 or 7
 not
 jz when_236_end
-push 5
-push 2
-push 3
-push 1
-push 4
+push-int 5
+push-int 2
+push-int 3
+push-int 1
+push-int 4
 call f_concord4
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_adj_adj"
 push caseFirstWord
@@ -13294,14 +13294,14 @@ chunk 13
 out 1
 jmp choose_168_end
 when_236_end:
-push 4
-push 3
-push 2
-push 1
-push 4
+push-int 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
 call f_concord4
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_GDND
 push "det_nom_adj_adj_nom"
 push caseFirstWord
@@ -13421,8 +13421,8 @@ out 1
 choose_168_end:
 action_66_end:
 action_67_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "lem"
@@ -13437,14 +13437,14 @@ inig
 or 2
 not
 jz when_237_end
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call genere_nombre
 push "nom_pr_nom_pr_det_nom"
 push caseFirstWord
@@ -13526,14 +13526,14 @@ chunk 13
 out 1
 jmp choose_169_end
 when_237_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call genere_nombre
 push "nom_pr_det_nom_nom"
 push caseFirstWord
@@ -13612,11 +13612,11 @@ out 1
 choose_169_end:
 action_67_end:
 action_68_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call genere_nombre
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_nom_nom"
 push caseFirstWord
@@ -13684,14 +13684,14 @@ chunk 7
 out 1
 action_68_end:
 action_69_start:
-push 4
-push 1
+push-int 4
+push-int 1
 call genere_nombre
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 4
 push "lem"
@@ -13706,18 +13706,18 @@ inig
 or 2
 not
 jz when_238_end
-push 4
-push 1
-push 2
+push-int 4
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call genere_nombre
 push "det_nom_pr_nom_pr_det_nom"
 push caseFirstWord
@@ -13822,18 +13822,18 @@ chunk 15
 out 1
 jmp choose_170_end
 when_238_end:
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call genere_nombre
 push "det_nom_pr_det_nom_nom"
 push caseFirstWord
@@ -13935,11 +13935,11 @@ out 1
 choose_170_end:
 action_69_end:
 action_70_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push-int 4
 push "lem"
@@ -13954,15 +13954,15 @@ inig
 or 2
 not
 jz when_239_end
-push 4
-push 1
-push 2
+push-int 4
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "nom_pr_nom_pr_nom_adj"
 push caseFirstWord
@@ -14064,15 +14064,15 @@ chunk 13
 out 1
 jmp choose_171_end
 when_239_end:
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "nom_pr_nom_adj_nom"
 push caseFirstWord
@@ -14171,14 +14171,14 @@ out 1
 choose_171_end:
 action_70_end:
 action_71_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push-int 5
 push "lem"
@@ -14193,16 +14193,16 @@ inig
 or 2
 not
 jz when_240_end
-push 5
-push 2
-push 1
-push 3
+push-int 5
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_pr_nom_adj"
 push caseFirstWord
@@ -14325,16 +14325,16 @@ chunk 15
 out 1
 jmp choose_172_end
 when_240_end:
-push 4
-push 2
-push 1
-push 3
+push-int 4
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_adj_nom"
 push caseFirstWord
@@ -14454,17 +14454,17 @@ out 1
 choose_172_end:
 action_71_end:
 action_72_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
 push "nom_pr_nom_pr_nom_pr_nom"
 push caseFirstWord
@@ -14561,11 +14561,11 @@ chunk 15
 out 1
 action_72_end:
 action_73_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push-int 5
 push "lem"
@@ -14580,18 +14580,18 @@ inig
 or 2
 not
 jz when_241_end
-push 5
-push 1
-push 2
+push-int 5
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_pr_nom_pr_nom"
 push caseFirstWord
@@ -14711,18 +14711,18 @@ chunk 17
 out 1
 jmp choose_173_end
 when_241_end:
-push 4
-push 1
-push 2
+push-int 4
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_GDND
 push "det_nom_pr_nom_pr_nom_nom"
 push caseFirstWord
@@ -14839,11 +14839,11 @@ out 1
 choose_173_end:
 action_73_end:
 action_74_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -14866,8 +14866,8 @@ push "genere"
 push "<m>"
 storev
 choose_174_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_conj_nom"
 push caseFirstWord
@@ -14919,14 +14919,14 @@ chunk 7
 out 1
 action_74_end:
 action_75_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 3
-push 1
+push-int 3
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -14949,8 +14949,8 @@ push "genere"
 push "<m>"
 storev
 choose_175_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_conj_nom_pr_nom"
 push caseFirstWord
@@ -15023,18 +15023,18 @@ chunk 11
 out 1
 action_75_end:
 action_76_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 4
-push 1
+push-int 4
+push-int 1
 call elimina_GDND
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -15057,8 +15057,8 @@ push "genere"
 push "<m>"
 storev
 choose_176_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom_conj_nom_adj"
 push caseFirstWord
@@ -15131,19 +15131,19 @@ chunk 9
 out 1
 action_76_end:
 action_77_start:
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call flexio_numerals
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_yearold"
 push caseFirstWord
@@ -15182,19 +15182,19 @@ chunk 5
 out 1
 action_77_end:
 action_78_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call flexio_numerals
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -15277,15 +15277,15 @@ chunk 9
 out 1
 action_78_end:
 action_79_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -15368,26 +15368,26 @@ chunk 9
 out 1
 action_79_end:
 action_80_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 4
-push 2
+push-int 2
+push-int 4
+push-int 2
 call flexio_numerals
-push 4
-push 2
-push 2
+push-int 4
+push-int 2
+push-int 2
 call f_concord2
-push 7
-push 1
-push 2
+push-int 7
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -15493,22 +15493,22 @@ chunk 11
 out 1
 action_80_end:
 action_81_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
-push 5
-push 1
-push 2
+push-int 5
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -15614,15 +15614,15 @@ chunk 11
 out 1
 action_81_end:
 action_82_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -15718,15 +15718,15 @@ chunk 9
 out 1
 action_82_end:
 action_83_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -15793,18 +15793,18 @@ chunk 3
 out 3
 action_83_end:
 action_84_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 4
-push 2
-push 2
+push-int 4
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -15921,18 +15921,18 @@ chunk 11
 out 1
 action_84_end:
 action_85_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call million
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 4
-push 2
-push 2
+push-int 4
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -16003,25 +16003,25 @@ chunk 3
 out 3
 action_85_end:
 action_86_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "hace_det_nom"
 push caseFirstWord
@@ -16072,25 +16072,25 @@ chunk 7
 out 1
 action_86_end:
 action_87_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call flexio_numerals
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "hace_num_nom"
 push caseFirstWord
@@ -16139,11 +16139,11 @@ chunk 7
 out 1
 action_87_end:
 action_88_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push "fa_nom"
 push caseFirstWord
@@ -16182,22 +16182,22 @@ chunk 5
 out 1
 action_88_end:
 action_89_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr_det_nom"
 push caseFirstWord
@@ -16246,25 +16246,25 @@ chunk 7
 out 1
 action_89_end:
 action_90_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call million
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call flexio_numerals
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr_num_nom"
 push caseFirstWord
@@ -16312,8 +16312,8 @@ chunk 7
 out 1
 action_90_end:
 action_91_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call firstWord
 push "coma"
 push-int 1
@@ -16344,8 +16344,8 @@ chunk 3
 out 3
 action_91_end:
 action_92_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -16374,8 +16374,8 @@ chunk 3
 out 3
 action_92_end:
 action_93_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num"
 push caseFirstWord
@@ -16406,8 +16406,8 @@ chunk 3
 out 1
 action_93_end:
 action_94_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det"
 push caseFirstWord
@@ -16444,8 +16444,8 @@ chunk 3
 out 1
 action_94_end:
 action_95_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom"
 push caseFirstWord
@@ -16479,8 +16479,8 @@ chunk 3
 out 1
 action_95_end:
 action_96_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -16539,8 +16539,8 @@ chunk 3
 out 1
 action_96_end:
 action_97_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prnref"
 push caseFirstWord
@@ -16583,15 +16583,15 @@ chunk 3
 out 1
 action_97_end:
 action_98_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
 push "det_num"
 push caseFirstWord
@@ -16645,8 +16645,8 @@ chunk 5
 out 1
 action_98_end:
 action_99_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<p1>|<p2>|<p3>|<PD>"
@@ -16806,22 +16806,22 @@ chunk 3
 out 3
 action_99_end:
 action_100_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 2
 push "lem"
@@ -16999,22 +16999,22 @@ out 1
 choose_190_end:
 action_100_end:
 action_101_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call det_no
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 2
 push "lem"
@@ -17219,17 +17219,17 @@ mlu 2
 chunk 9
 out 1
 choose_192_end:
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_101_end:
 action_102_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -17361,11 +17361,11 @@ out 1
 choose_194_end:
 action_102_end:
 action_103_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -17524,32 +17524,32 @@ mlu 2
 chunk 7
 out 1
 choose_196_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_103_end:
 action_104_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs
 push-int 3
 push "lem"
@@ -17775,29 +17775,29 @@ out 1
 choose_198_end:
 action_104_end:
 action_105_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 3
-push 1
+push-int 3
+push-int 1
 call genere_nombre
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs
 push-int 3
 push "lem"
@@ -18050,17 +18050,17 @@ mlu 2
 chunk 11
 out 1
 choose_200_end:
-push 5
-push 6
-push 2
+push-int 5
+push-int 6
+push-int 2
 call f_bcond
 action_105_end:
 action_106_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18135,11 +18135,11 @@ chunk 5
 out 1
 action_106_end:
 action_107_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18209,11 +18209,11 @@ chunk 3
 out 1
 action_107_end:
 action_108_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call comparatiu_adj1
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18288,8 +18288,8 @@ chunk 5
 out 1
 action_108_end:
 action_109_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pp_pr_np"
 push caseFirstWord
@@ -18321,8 +18321,8 @@ chunk 7
 out 1
 action_109_end:
 action_110_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det"
 push caseFirstWord
@@ -18374,14 +18374,14 @@ chunk 7
 out 3
 action_110_end:
 action_111_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18491,14 +18491,14 @@ out 1
 choose_205_end:
 action_111_end:
 action_112_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 1
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18635,20 +18635,20 @@ mlu 2
 chunk 7
 out 1
 choose_207_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_112_end:
 action_113_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18768,14 +18768,14 @@ out 1
 choose_209_end:
 action_113_end:
 action_114_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call comparatiu_adj1
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
@@ -18922,20 +18922,20 @@ mlu 2
 chunk 9
 out 1
 choose_211_end:
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_114_end:
 action_115_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push-int 1
@@ -18985,14 +18985,14 @@ chunk 3
 out 1
 action_115_end:
 action_116_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push-int 1
@@ -19120,14 +19120,14 @@ out 1
 choose_213_end:
 action_116_end:
 action_117_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push-int 1
@@ -19177,14 +19177,14 @@ chunk 3
 out 3
 action_117_end:
 action_118_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "tags"
@@ -19231,14 +19231,14 @@ chunk 3
 out 3
 action_118_end:
 action_119_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -19283,14 +19283,14 @@ chunk 3
 out 3
 action_119_end:
 action_120_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -19368,17 +19368,17 @@ chunk 3
 out 4
 action_120_end:
 action_121_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -19397,17 +19397,17 @@ chunk 3
 out 1
 action_121_end:
 action_122_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verbcj"
 push caseFirstWord
@@ -19445,17 +19445,17 @@ chunk 5
 out 1
 action_122_end:
 action_123_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "pro_"
@@ -19498,20 +19498,20 @@ chunk 5
 out 1
 action_123_end:
 action_124_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_pp_a_ifip
 push lema_SV
 push caseFirstWord
@@ -19529,11 +19529,11 @@ chunk 3
 out 1
 action_124_end:
 action_125_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -19608,11 +19608,11 @@ when_298_end:
 choose_219_end:
 action_125_end:
 action_126_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -19701,11 +19701,11 @@ when_300_end:
 choose_221_end:
 action_126_end:
 action_127_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -19793,11 +19793,11 @@ when_302_end:
 choose_223_end:
 action_127_end:
 action_128_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 1
 push "lem"
@@ -19899,11 +19899,11 @@ when_304_end:
 choose_225_end:
 action_128_end:
 action_129_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -19953,11 +19953,11 @@ chunk 3
 out 1
 action_129_end:
 action_130_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -20022,11 +20022,11 @@ chunk 5
 out 1
 action_130_end:
 action_131_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -20076,11 +20076,11 @@ chunk 3
 out 1
 action_131_end:
 action_132_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -20145,11 +20145,11 @@ chunk 5
 out 1
 action_132_end:
 action_133_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20242,11 +20242,11 @@ chunk 3
 out 1
 action_133_end:
 action_134_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20351,11 +20351,11 @@ chunk 4
 out 1
 action_134_end:
 action_135_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20472,11 +20472,11 @@ chunk 5
 out 3
 action_135_end:
 action_136_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20592,17 +20592,17 @@ cliptl
 lu 4
 chunk 6
 out 3
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_136_end:
 action_137_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20663,11 +20663,11 @@ chunk 9
 out 1
 action_137_end:
 action_138_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20728,22 +20728,22 @@ chunk 9
 out 1
 action_138_end:
 action_139_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call determiner
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call det_no
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20824,11 +20824,11 @@ chunk 9
 out 1
 action_139_end:
 action_140_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20891,11 +20891,11 @@ chunk 9
 out 1
 action_140_end:
 action_141_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20932,11 +20932,11 @@ chunk 5
 out 1
 action_141_end:
 action_142_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -20982,11 +20982,11 @@ chunk 7
 out 1
 action_142_end:
 action_143_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -21058,14 +21058,14 @@ chunk 7
 out 1
 action_143_end:
 action_144_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -21123,11 +21123,11 @@ chunk 7
 out 1
 action_144_end:
 action_145_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 4
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -21193,11 +21193,11 @@ chunk 7
 out 3
 action_145_end:
 action_146_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push-int 4
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -21289,14 +21289,14 @@ chunk 7
 out 3
 action_146_end:
 action_147_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call elimina_GDND
 push-int 4
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -21374,11 +21374,11 @@ chunk 7
 out 3
 action_147_end:
 action_148_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -21430,11 +21430,11 @@ chunk 3
 out 1
 action_148_end:
 action_149_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -21498,8 +21498,8 @@ chunk 4
 out 1
 action_149_end:
 action_150_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
@@ -21552,18 +21552,18 @@ chunk 3
 out 1
 action_150_end:
 action_151_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push lema_SV
 push caseFirstWord
@@ -21580,24 +21580,24 @@ push verbfinal
 lu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_151_end:
 action_152_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_"
@@ -21636,23 +21636,23 @@ push verbfinal
 lu 1
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_152_end:
 action_153_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_inf"
 push caseFirstWord
@@ -21683,17 +21683,17 @@ chunk 5
 out 1
 action_153_end:
 action_154_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "pro_auxmod_inf"
 push caseFirstWord
@@ -21741,18 +21741,18 @@ chunk 7
 out 1
 action_154_end:
 action_155_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push lema_SV
 push caseFirstWord
@@ -21769,24 +21769,24 @@ push verbfinal
 lu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_155_end:
 action_156_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_"
@@ -21825,29 +21825,29 @@ push verbfinal
 lu 1
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_156_end:
 action_157_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_pp_a_ifip
 push "lema_SV"
 push "mod_inf"
@@ -21881,23 +21881,23 @@ chunk 5
 out 1
 action_157_end:
 action_158_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_pp_a_ifip
 push "lema_SV"
 push "pro_mod_inf"
@@ -21948,14 +21948,14 @@ chunk 7
 out 1
 action_158_end:
 action_159_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
 push-int 1
 push "lem"
@@ -21979,9 +21979,9 @@ push "do"
 cmpi
 or 4
 jz when_328_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "mod_inf"
@@ -22013,14 +22013,14 @@ cliptl
 lu 4
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_245_end
 when_328_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "auxmod_mod_inf"
@@ -22067,14 +22067,14 @@ out 1
 choose_245_end:
 action_159_end:
 action_160_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
 push-int 1
 push "lem"
@@ -22098,9 +22098,9 @@ push "do"
 cmpi
 or 4
 jz when_329_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_mod_inf"
@@ -22149,14 +22149,14 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 jmp choose_246_end
 when_329_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "pro_auxmod_mod_inf"
@@ -22220,8 +22220,8 @@ out 1
 choose_246_end:
 action_160_end:
 action_161_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -22245,12 +22245,12 @@ push "do"
 cmpi
 or 4
 jz when_330_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
 push "lema_SV"
 push "mod"
@@ -22269,17 +22269,17 @@ push verbfinal
 lu 1
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 jmp choose_247_end
 when_330_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
 push "lema_SV"
 push "aux_mod"
@@ -22313,20 +22313,20 @@ out 1
 choose_247_end:
 action_161_end:
 action_162_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "lem"
@@ -22442,20 +22442,20 @@ chunk 4
 out 1
 action_162_end:
 action_163_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -22506,20 +22506,20 @@ chunk 5
 out 1
 action_163_end:
 action_164_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -22594,17 +22594,17 @@ chunk 7
 out 1
 action_164_end:
 action_165_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs_imp
-push 4
-push 1
+push-int 4
+push-int 1
 call pronenc
 push-int 2
 push "lem"
@@ -22619,11 +22619,11 @@ storetl
 jmp choose_253_end
 when_336_end:
 choose_253_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -22693,17 +22693,17 @@ chunk 7
 out 1
 action_165_end:
 action_166_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
 push-int 1
 push "lem"
@@ -22718,8 +22718,8 @@ storetl
 jmp choose_255_end
 when_338_end:
 choose_255_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -22776,17 +22776,17 @@ chunk 5
 out 1
 action_166_end:
 action_167_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
 push-int 1
 push "lem"
@@ -22801,8 +22801,8 @@ storetl
 jmp choose_257_end
 when_341_end:
 choose_257_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -22871,27 +22871,27 @@ cliptl
 lu 6
 chunk 6
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_167_end:
 action_168_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs_imp
-push 4
-push 1
+push-int 4
+push-int 1
 call pronenc
 push-int 2
 push "lem"
@@ -22906,8 +22906,8 @@ storetl
 jmp choose_259_end
 when_344_end:
 choose_259_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_inf_inf"
 push caseFirstWord
@@ -22948,23 +22948,23 @@ cliptl
 lu 5
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_168_end:
 action_169_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs_imp
-push 5
-push 1
+push-int 5
+push-int 1
 call pronenc
 push-int 3
 push "lem"
@@ -22979,8 +22979,8 @@ storetl
 jmp choose_260_end
 when_345_end:
 choose_260_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -23048,23 +23048,23 @@ cliptl
 lu 5
 chunk 7
 out 3
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_169_end:
 action_170_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs_imp
-push 4
-push 1
+push-int 4
+push-int 1
 call pronenc
 push-int 2
 push "lem"
@@ -23079,9 +23079,9 @@ storetl
 jmp choose_262_end
 when_347_end:
 choose_262_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "verbcj_inf"
 push caseFirstWord
@@ -23110,27 +23110,27 @@ cliptl
 lu 5
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_170_end:
 action_171_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs_imp
-push 5
-push 1
+push-int 5
+push-int 1
 call pronenc
 push-int 3
 push "lem"
@@ -23145,9 +23145,9 @@ storetl
 jmp choose_263_end
 when_348_end:
 choose_263_end:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push-int 2
 push "lem"
@@ -23203,34 +23203,34 @@ cliptl
 lu 5
 chunk 5
 out 3
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_171_end:
 action_172_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs_imp
-push 2
-push 1
+push-int 2
+push-int 1
 call pronenc
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_be_ger
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -23238,9 +23238,9 @@ clipsl
 push "<past>"
 cmp
 jz when_350_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "verbcj"
 push caseFirstWord
@@ -23292,24 +23292,24 @@ out 1
 choose_265_end:
 action_172_end:
 action_173_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs_imp
-push 2
-push 1
+push-int 2
+push-int 1
 call pronenc
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_be_ger
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -23317,9 +23317,9 @@ clipsl
 push "<past>"
 cmp
 jz when_351_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "pro_verbcj"
 push caseFirstWord
@@ -23399,31 +23399,31 @@ cliptl
 lu 6
 chunk 6
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 choose_266_end:
 action_173_end:
 action_174_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_be_ger
 push-int 2
 push "lem"
@@ -23462,9 +23462,9 @@ clipsl
 push "<past>"
 cmp
 jz when_353_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 push "verbcj"
 push "<SV>"
@@ -23510,24 +23510,24 @@ out 1
 choose_268_end:
 action_174_end:
 action_175_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_be_ger
 push-int 2
 push "lem"
@@ -23566,9 +23566,9 @@ clipsl
 push "<past>"
 cmp
 jz when_355_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 push "pro_verbcj"
 push "<SV>"
@@ -23642,24 +23642,24 @@ cliptl
 lu 6
 chunk 6
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 choose_270_end:
 action_175_end:
 action_176_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs_imp
-push 4
-push 1
+push-int 4
+push-int 1
 call pronenc
 push-int 2
 push "lem"
@@ -23674,9 +23674,9 @@ storetl
 jmp choose_271_end
 when_356_end:
 choose_271_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_be_ger
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
@@ -23684,9 +23684,9 @@ clipsl
 push "<past>"
 cmp
 jz when_357_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "verbcj_inf"
 push caseFirstWord
@@ -23760,29 +23760,29 @@ lu 5
 chunk 7
 out 1
 choose_272_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_176_end:
 action_177_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 2
-push 4
-push 3
+push-int 1
+push-int 2
+push-int 4
+push-int 3
 call conj_going_to_inf
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push lema_SV
 push caseFirstWord
@@ -23828,19 +23828,19 @@ chunk 7
 out 1
 action_177_end:
 action_178_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 2
-push 4
-push 3
+push-int 1
+push-int 2
+push-int 4
+push-int 3
 call conj_going_to_inf
 push "lema_SV"
 push "pro_"
@@ -23906,25 +23906,25 @@ cliptl
 lu 4
 chunk 9
 out 1
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_178_end:
 action_179_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call pron
-push 1
-push 3
-push 5
-push 3
+push-int 1
+push-int 3
+push-int 5
+push-int 3
 call conj_going_to_inf
 push-int 2
 push "lem"
@@ -23999,25 +23999,25 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_179_end:
 action_180_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call pron
-push 1
-push 3
-push 5
-push 3
+push-int 1
+push-int 3
+push-int 5
+push-int 3
 call conj_going_to_inf
 push "lema_SV"
 push "pro_"
@@ -24114,29 +24114,29 @@ cliptl
 lu 4
 chunk 9
 out 1
-push 5
-push 6
-push 2
+push-int 5
+push-int 6
+push-int 2
 call f_bcond
 action_180_end:
 action_181_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call pron
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs_imp
-push 2
-push 1
+push-int 2
+push-int 1
 call pronenc
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verbcj_inf"
 push caseFirstWord
@@ -24168,20 +24168,20 @@ chunk 5
 out 1
 action_181_end:
 action_182_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_inf_inf"
 push caseFirstWord
@@ -24224,24 +24224,24 @@ chunk 7
 out 1
 action_182_end:
 action_183_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs_imp
-push 3
-push 1
+push-int 3
+push-int 1
 call pronenc
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 pushsb 1
 push "verbcj_inf"
@@ -24274,18 +24274,18 @@ chunk 5
 out 2
 action_183_end:
 action_184_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push-int 2
 push "lem"
@@ -24329,24 +24329,24 @@ push verbfinal
 lu 2
 chunk 3
 out 3
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_184_end:
 action_185_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_"
@@ -24412,23 +24412,23 @@ push verbfinal
 lu 1
 chunk 5
 out 3
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_185_end:
 action_186_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -24486,17 +24486,17 @@ chunk 5
 out 3
 action_186_end:
 action_187_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -24571,18 +24571,18 @@ chunk 7
 out 3
 action_187_end:
 action_188_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push-int 2
 push "lem"
@@ -24626,24 +24626,24 @@ push verbfinal
 lu 2
 chunk 3
 out 3
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_188_end:
 action_189_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_"
@@ -24712,20 +24712,20 @@ push verbfinal
 lu 1
 chunk 5
 out 3
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_189_end:
 action_190_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
 push-int 2
 push "lem"
@@ -24780,9 +24780,9 @@ push "do"
 cmpi
 or 4
 jz when_367_end
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "mod_inf"
@@ -24814,14 +24814,14 @@ cliptl
 lu 4
 chunk 5
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 jmp choose_282_end
 when_367_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "auxmod_mod_inf"
@@ -24868,14 +24868,14 @@ out 1
 choose_282_end:
 action_190_end:
 action_191_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
 push-int 2
 push "lem"
@@ -24930,9 +24930,9 @@ push "do"
 cmpi
 or 4
 jz when_369_end
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push "lema_SV"
 push "pro_mod_inf"
@@ -24981,14 +24981,14 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 jmp choose_284_end
 when_369_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "pro_auxmod_mod_inf"
@@ -25052,20 +25052,20 @@ out 1
 choose_284_end:
 action_191_end:
 action_192_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "lem"
@@ -25213,20 +25213,20 @@ out 1
 choose_286_end:
 action_192_end:
 action_193_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 2
 push "lem"
@@ -25332,22 +25332,22 @@ chunk 7
 out 1
 action_193_end:
 action_194_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "have_pp"
 push caseFirstWord
@@ -25378,17 +25378,17 @@ chunk 5
 out 1
 action_194_end:
 action_195_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_have_pp"
 push caseFirstWord
@@ -25431,22 +25431,22 @@ chunk 7
 out 1
 action_195_end:
 action_196_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "have_pp_ger"
 push caseFirstWord
@@ -25481,17 +25481,17 @@ chunk 7
 out 1
 action_196_end:
 action_197_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_have_pp_ger"
 push caseFirstWord
@@ -25538,18 +25538,18 @@ chunk 9
 out 1
 action_197_end:
 action_198_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
 push "pro_have_pp"
 push caseFirstWord
@@ -25595,23 +25595,23 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_198_end:
 action_199_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 3
-push 1
+push-int 3
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "pro_auxmod_have_pp"
 push caseFirstWord
@@ -25671,17 +25671,17 @@ chunk 9
 out 1
 action_199_end:
 action_200_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "pro_have_pp_ger"
 push caseFirstWord
@@ -25745,17 +25745,17 @@ chunk 11
 out 1
 action_200_end:
 action_201_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "pro_auxmod_have_pp_ger"
 push caseFirstWord
@@ -25819,17 +25819,17 @@ chunk 11
 out 1
 action_201_end:
 action_202_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs_imp
-push 5
-push 1
+push-int 5
+push-int 1
 call pronenc
 push-int 3
 push "lem"
@@ -25844,13 +25844,13 @@ storetl
 jmp choose_291_end
 when_376_end:
 choose_291_end:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb_compost
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "have_pp_inf"
 push caseFirstWord
@@ -25892,23 +25892,23 @@ cliptl
 lu 5
 chunk 7
 out 1
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_202_end:
 action_203_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
-push 5
-push 1
+push-int 5
+push-int 1
 call tipus_verbs_imp
-push 5
-push 1
+push-int 5
+push-int 1
 call pronenc
 push-int 3
 push "lem"
@@ -25923,8 +25923,8 @@ storetl
 jmp choose_292_end
 when_377_end:
 choose_292_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "auxmod_have_pp_inf"
 push caseFirstWord
@@ -25978,24 +25978,24 @@ cliptl
 lu 5
 chunk 9
 out 1
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_203_end:
 action_204_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push-int 2
 push "lem"
@@ -26051,23 +26051,23 @@ cliptl
 lu 4
 chunk 5
 out 3
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_204_end:
 action_205_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -26137,18 +26137,18 @@ chunk 7
 out 3
 action_205_end:
 action_206_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb_compost
 push-int 2
 push "lem"
@@ -26221,23 +26221,23 @@ cliptl
 lu 4
 chunk 7
 out 3
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_206_end:
 action_207_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
-push 4
-push 1
+push-int 4
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 2
 push "lem"
@@ -26324,20 +26324,20 @@ chunk 9
 out 3
 action_207_end:
 action_208_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call tipus_verbs
-push 2
-push 1
+push-int 2
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call passa_inf_a_pres
 push-int 1
 push "lem"
@@ -26444,8 +26444,8 @@ lu 5
 chunk 3
 pushsb 3
 out 4
-push 4
-push 1
+push-int 4
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -26492,17 +26492,17 @@ chunk 3
 out 1
 action_208_end:
 action_209_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call tipus_verbs
-push 1
-push 1
+push-int 1
+push-int 1
 call pron
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -26547,8 +26547,8 @@ lu 5
 chunk 3
 pushsb 2
 out 4
-push 3
-push 1
+push-int 3
+push-int 1
 call tipus_verbs
 push tipus_verb
 push "<pron>"
@@ -26595,11 +26595,11 @@ chunk 3
 out 1
 action_209_end:
 action_210_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push "nom_nom"
 push caseFirstWord
@@ -26637,11 +26637,11 @@ chunk 5
 out 1
 action_210_end:
 action_211_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push "nom_nom_nom"
 push caseFirstWord
@@ -26694,17 +26694,17 @@ cliptl
 lu 5
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_211_end:
 action_212_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call elimina_GDND
 push "nom_pr_nom_nom_nom"
 push caseFirstWord
@@ -26778,18 +26778,18 @@ cliptl
 lu 5
 chunk 11
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_212_end:
 action_213_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "relnom"
 push caseFirstWord
@@ -26823,8 +26823,8 @@ chunk 3
 out 1
 action_213_end:
 action_214_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "reladj"
 push caseFirstWord
@@ -26858,8 +26858,8 @@ chunk 3
 out 1
 action_214_end:
 action_215_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prn"
 push caseFirstWord
@@ -26896,8 +26896,8 @@ chunk 3
 out 1
 action_215_end:
 action_216_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -26912,8 +26912,8 @@ chunk 3
 out 1
 action_216_end:
 action_217_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -26928,8 +26928,8 @@ chunk 3
 out 1
 action_217_end:
 action_218_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "there"
 push caseFirstWord
@@ -26946,8 +26946,8 @@ chunk 3
 out 1
 action_218_end:
 action_219_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -26981,8 +26981,8 @@ chunk 3
 out 1
 action_219_end:
 action_220_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -26999,8 +26999,8 @@ chunk 3
 out 1
 action_220_end:
 action_221_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "preadv"
 push caseFirstWord
@@ -27020,8 +27020,8 @@ chunk 3
 out 1
 action_221_end:
 action_222_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "cnj"
 push caseFirstWord

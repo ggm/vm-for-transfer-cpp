@@ -2090,8 +2090,8 @@ storev
 push "numero_pp"
 push numero
 storev
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen-pp
 push "verbfinal"
 push "avea"
@@ -2150,8 +2150,8 @@ storev
 push "numero_pp"
 push numero
 storev
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen-pp
 push "verbfinal"
 push "avea"
@@ -2292,8 +2292,8 @@ storev
 push "numero_pp"
 push numero
 storev
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen-pp
 push "verbfinal"
 push "avea"
@@ -2754,11 +2754,11 @@ push-int 1
 addtrie action_71_start
 patterns_end:
 action_0_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push "nom"
 push caseFirstWord
@@ -2788,14 +2788,14 @@ chunk 3
 out 1
 action_0_end:
 action_1_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push-int 1
 push "<adj>|<adj><sint>|<adj><sint><comp>|<adj><sint><sup>|<adj><pos>|<adj><itg>|<adj><ind>|<vblex><pp>|<vbmod><pp>|<vbhaver><pp>|<vbser><pp>"
@@ -2878,8 +2878,8 @@ out 1
 choose_64_end:
 action_1_end:
 action_2_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -2899,11 +2899,11 @@ chunk 3
 out 1
 action_2_end:
 action_3_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push "num"
 push caseFirstWord
@@ -2930,12 +2930,12 @@ chunk 3
 out 1
 action_3_end:
 action_4_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -2983,8 +2983,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_121_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_nom"
 push caseFirstWord
@@ -3035,8 +3035,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_122_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nom_adj"
 push caseFirstWord
@@ -3084,12 +3084,12 @@ choose_66_end:
 choose_65_end:
 action_4_end:
 action_5_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -3155,8 +3155,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_124_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "predet_det_nom"
 push caseFirstWord
@@ -3225,8 +3225,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_125_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "predet_nom_adj"
 push caseFirstWord
@@ -3290,8 +3290,8 @@ choose_69_end:
 choose_68_end:
 action_5_end:
 action_6_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "caso"
 push "<nom>"
@@ -3324,12 +3324,12 @@ chunk 5
 out 1
 action_6_end:
 action_7_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -3378,8 +3378,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_127_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_nom"
 push caseFirstWord
@@ -3430,8 +3430,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_128_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "nom_adj"
 push caseFirstWord
@@ -3477,12 +3477,12 @@ choose_72_end:
 choose_71_end:
 action_7_end:
 action_8_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push "caso"
 push "<dg>"
@@ -3534,8 +3534,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_130_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_nom"
 push caseFirstWord
@@ -3586,8 +3586,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_131_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "nom_adj"
 push caseFirstWord
@@ -3633,12 +3633,12 @@ choose_75_end:
 choose_74_end:
 action_8_end:
 action_9_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -3691,8 +3691,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_133_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_nom"
 push caseFirstWord
@@ -3748,8 +3748,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_134_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nom_adj"
 push caseFirstWord
@@ -3800,12 +3800,12 @@ choose_78_end:
 choose_77_end:
 action_9_end:
 action_10_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -3858,8 +3858,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_136_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_nom_predet"
 push caseFirstWord
@@ -3915,8 +3915,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_137_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "nom_adj_predet"
 push caseFirstWord
@@ -3967,12 +3967,12 @@ choose_81_end:
 choose_80_end:
 action_10_end:
 action_11_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push "caso"
 push "<dg>"
@@ -4028,8 +4028,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_139_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_nom_predet"
 push caseFirstWord
@@ -4085,8 +4085,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_140_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "nom_adj_predet"
 push caseFirstWord
@@ -4137,22 +4137,22 @@ choose_84_end:
 choose_83_end:
 action_11_end:
 action_12_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push-int 4
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -4247,8 +4247,8 @@ push "<det><dem>"
 cmp
 or 2
 jz when_142_end
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "predet_nom_det_nom"
 push caseFirstWord
@@ -4336,8 +4336,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_143_end
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "predet_det_nom_adj"
 push caseFirstWord
@@ -4419,17 +4419,17 @@ when_143_end:
 choose_88_end:
 action_12_end:
 action_13_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 5
-push 6
-push 2
+push-int 5
+push-int 6
+push-int 2
 call f_concord2
 push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -4437,8 +4437,8 @@ clipsl
 push "<det><def>"
 cmp
 jz when_144_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -4523,8 +4523,8 @@ push "<det><dem>"
 cmp
 or 2
 jz when_146_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_nomdef_det_nom"
 push caseFirstWord
@@ -4612,8 +4612,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_147_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_nomdef_nom_adj"
 push caseFirstWord
@@ -4708,11 +4708,11 @@ push "<det><dem>"
 cmp
 or 2
 jz when_148_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -4815,8 +4815,8 @@ push "<det><dem>"
 cmp
 or 2
 jz when_150_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_det_nom_det_nom"
 push caseFirstWord
@@ -4922,8 +4922,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_151_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_det_nom_nom_adj"
 push caseFirstWord
@@ -5030,11 +5030,11 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_152_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push-int 5
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -5132,8 +5132,8 @@ push "<det><dem>"
 cmp
 or 2
 jz when_154_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_nomdef_adj_det_nom"
 push caseFirstWord
@@ -5234,8 +5234,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_155_end
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push "predet_nomdef_adj_nomdef_adj"
 push caseFirstWord
@@ -5333,12 +5333,12 @@ when_152_end:
 choose_97_end:
 action_13_end:
 action_14_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -5346,8 +5346,8 @@ clipsl
 push "<det><def>"
 cmp
 jz when_156_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_num_nom"
 push caseFirstWord
@@ -5419,8 +5419,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_157_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_num_nom"
 push caseFirstWord
@@ -5488,8 +5488,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_158_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_num_nom_adj"
 push caseFirstWord
@@ -5563,12 +5563,12 @@ choose_102_end:
 choose_101_end:
 action_14_end:
 action_15_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 4
-push 1
-push 2
+push-int 4
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -5576,11 +5576,11 @@ clipsl
 push "<det><def>"
 cmp
 jz when_159_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "det_num_adj_nom"
 push caseFirstWord
@@ -5670,11 +5670,11 @@ push "<det><ind>"
 cmp
 or 2
 jz when_160_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "det_num_adj_nom"
 push caseFirstWord
@@ -5760,11 +5760,11 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_161_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "det_num_adj_nom_adj"
 push caseFirstWord
@@ -5856,12 +5856,12 @@ choose_105_end:
 choose_104_end:
 action_15_end:
 action_16_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -5869,11 +5869,11 @@ clipsl
 push "<det><def>"
 cmp
 jz when_162_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "det_num_nom_adj"
 push caseFirstWord
@@ -5963,11 +5963,11 @@ push "<det><ind>"
 cmp
 or 2
 jz when_163_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "det_num_nom_adj"
 push caseFirstWord
@@ -6053,11 +6053,11 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_164_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "det_num_nom_adj_adj"
 push caseFirstWord
@@ -6149,12 +6149,12 @@ choose_108_end:
 choose_107_end:
 action_16_end:
 action_17_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push "num_nom"
 push caseFirstWord
@@ -6198,16 +6198,16 @@ chunk 5
 out 1
 action_17_end:
 action_18_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "num_adj_nom"
 push caseFirstWord
@@ -6269,16 +6269,16 @@ chunk 7
 out 1
 action_18_end:
 action_19_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 3
-push 1
-push 3
+push-int 2
+push-int 3
+push-int 1
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "num_nom_adj"
 push caseFirstWord
@@ -6340,8 +6340,8 @@ chunk 7
 out 1
 action_19_end:
 action_20_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "ant"
 push caseFirstWord
@@ -6360,8 +6360,8 @@ chunk 3
 out 1
 action_20_end:
 action_21_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "loc"
 push caseFirstWord
@@ -6386,15 +6386,15 @@ chunk 3
 out 1
 action_21_end:
 action_22_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "nom_adj"
 push caseFirstWord
@@ -6442,15 +6442,15 @@ chunk 5
 out 1
 action_22_end:
 action_23_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "nom_adv_adj"
 push caseFirstWord
@@ -6503,15 +6503,15 @@ chunk 7
 out 1
 action_23_end:
 action_24_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "adj_nom"
 push caseFirstWord
@@ -6559,19 +6559,19 @@ chunk 5
 out 1
 action_24_end:
 action_25_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 3
-push 3
+push-int 1
+push-int 2
+push-int 3
+push-int 3
 call f_concord3
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "nom_adj_adj"
 push caseFirstWord
@@ -6637,16 +6637,16 @@ chunk 7
 out 1
 action_25_end:
 action_26_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 3
-push 3
+push-int 2
+push-int 1
+push-int 3
+push-int 3
 call f_concord3
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -6712,8 +6712,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_166_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_nom_adj"
 push caseFirstWord
@@ -6782,8 +6782,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_167_end
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "nom_adj_adj"
 push caseFirstWord
@@ -6847,16 +6847,16 @@ choose_111_end:
 choose_110_end:
 action_26_end:
 action_27_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 4
-push 2
-push 3
+push-int 3
+push-int 4
+push-int 2
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push-int 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -6922,8 +6922,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_169_end
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_nom_adj"
 push caseFirstWord
@@ -6992,8 +6992,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_170_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nom_adj_adj"
 push caseFirstWord
@@ -7057,16 +7057,16 @@ choose_114_end:
 choose_113_end:
 action_27_end:
 action_28_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 4
-push 1
-push 3
+push-int 2
+push-int 4
+push-int 1
+push-int 3
 call f_concord3
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -7137,11 +7137,11 @@ push "<det><ind>"
 cmp
 or 2
 jz when_172_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "det_nom_adv_adj"
 push caseFirstWord
@@ -7215,11 +7215,11 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_173_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push "nom_adj_adv_adj"
 push caseFirstWord
@@ -7288,20 +7288,20 @@ choose_117_end:
 choose_116_end:
 action_28_end:
 action_29_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 3
-push 4
-push 1
-push 4
+push-int 2
+push-int 3
+push-int 4
+push-int 1
+push-int 4
 call f_concord4
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -7385,8 +7385,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_175_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_nom_adj_adj"
 push caseFirstWord
@@ -7473,8 +7473,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_176_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nom_adj_adj_adj"
 push caseFirstWord
@@ -7556,15 +7556,15 @@ choose_120_end:
 choose_119_end:
 action_29_end:
 action_30_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call f_concord2
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -7572,11 +7572,11 @@ clipsl
 push "<det><def>"
 cmp
 jz when_177_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "det_adv_adj"
 push caseFirstWord
@@ -7638,11 +7638,11 @@ push "<det><ind>"
 cmp
 or 2
 jz when_178_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "det_adv_adj"
 push caseFirstWord
@@ -7698,11 +7698,11 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_179_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "adv_adj_adj"
 push caseFirstWord
@@ -7753,19 +7753,19 @@ choose_123_end:
 choose_122_end:
 action_30_end:
 action_31_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
-push 2
+push-int 3
+push-int 1
+push-int 2
 call f_concord2
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -7773,8 +7773,8 @@ clipsl
 push "<det><def>"
 cmp
 jz when_180_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nomdef_det_adj"
 push caseFirstWord
@@ -7849,8 +7849,8 @@ push "<det><ind>"
 cmp
 or 2
 jz when_181_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "det_adj_nom"
 push caseFirstWord
@@ -7919,8 +7919,8 @@ clipsl
 push "<det><pos>"
 cmp
 jz when_182_end
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push "nom_adj_adj"
 push caseFirstWord
@@ -7984,18 +7984,18 @@ choose_126_end:
 choose_125_end:
 action_31_end:
 action_32_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen
 push "det_adj"
 push caseFirstWord
@@ -8040,14 +8040,14 @@ chunk 5
 out 1
 action_32_end:
 action_33_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push-int 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<predet><def>|<num>"
@@ -8120,11 +8120,11 @@ out 1
 choose_128_end:
 action_33_end:
 action_34_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verb_ser"
 push caseFirstWord
@@ -8150,14 +8150,14 @@ chunk 3
 out 1
 action_34_end:
 action_35_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call set-case-prep1
 push lema_SV
 push caseFirstWord
@@ -8181,14 +8181,14 @@ chunk 3
 out 1
 action_35_end:
 action_36_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 1
-push 1
+push-int 1
+push-int 1
 call set-case-prep1
 push caso
 push "<dg>"
@@ -8243,12 +8243,12 @@ out 1
 choose_129_end:
 action_36_end:
 action_37_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call conj_verb2
 push lema_SV
 push caseFirstWord
@@ -8292,11 +8292,11 @@ push "lemq"
 clipsl
 concat 6
 storesl
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -8340,14 +8340,14 @@ push "lemq"
 clipsl
 concat 6
 storesl
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push lema_SV
 push caseFirstWord
@@ -8413,11 +8413,11 @@ push "lemq"
 clipsl
 concat 6
 storesl
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 4
 push "lem"
@@ -8447,8 +8447,8 @@ storetl
 jmp choose_130_end
 when_186_end:
 choose_130_end:
-push 5
-push 1
+push-int 5
+push-int 1
 call mod-gen
 push lema_SV
 push caseFirstWord
@@ -8516,8 +8516,8 @@ chunk 7
 out 1
 action_40_end:
 action_41_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "ger"
 push caseFirstWord
@@ -8572,11 +8572,11 @@ push "lemq"
 cliptl
 concat 6
 storetl
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -8625,11 +8625,11 @@ push "lemq"
 cliptl
 concat 6
 storetl
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -8678,8 +8678,8 @@ push "aa"
 storev
 action_43_end:
 action_44_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "ger"
 push caseFirstWord
@@ -8736,8 +8736,8 @@ push "aa"
 storev
 action_44_end:
 action_45_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "inf"
 push caseFirstWord
@@ -8764,8 +8764,8 @@ chunk 5
 out 1
 action_45_end:
 action_46_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "whole"
@@ -8783,8 +8783,8 @@ push "lemq"
 cliptl
 concat 6
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen-pp
 push "de"
 push caseFirstWord
@@ -8828,8 +8828,8 @@ chunk 3
 out 3
 action_46_end:
 action_47_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "whole"
@@ -8847,8 +8847,8 @@ push "lemq"
 cliptl
 concat 6
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call mod-gen-pp
 push "de"
 push caseFirstWord
@@ -8893,11 +8893,11 @@ chunk 3
 out 3
 action_47_end:
 action_48_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verbpers_să_verbpers"
 push caseFirstWord
@@ -8945,11 +8945,11 @@ chunk 7
 out 1
 action_48_end:
 action_49_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verbpers_să_verbpers"
 push caseFirstWord
@@ -8997,8 +8997,8 @@ chunk 7
 out 1
 action_49_end:
 action_50_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fts>|<fti>|<ifi>|<imp>|<pii>|<pis>|<pri>|<prs>|<pp>|<ger>|<inf>"
@@ -9124,11 +9124,11 @@ chunk 7
 out 1
 action_50_end:
 action_51_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "verbpers_să_verbpers"
 push caseFirstWord
@@ -9176,8 +9176,8 @@ chunk 7
 out 1
 action_51_end:
 action_52_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "inf"
 push caseFirstWord
@@ -9224,11 +9224,11 @@ chunk 3
 out 1
 action_52_end:
 action_53_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push-int 2
 push "lem"
@@ -9326,8 +9326,8 @@ chunk 3
 out 1
 action_53_end:
 action_54_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "inf"
 push caseFirstWord
@@ -9373,8 +9373,8 @@ chunk 7
 out 1
 action_54_end:
 action_55_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "inf"
 push caseFirstWord
@@ -9439,14 +9439,14 @@ chunk 9
 out 1
 action_55_end:
 action_56_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 3
-push 1
+push-int 3
+push-int 1
 call mod-gen
 push "verbpers_să_verbpers"
 push caseFirstWord
@@ -9516,11 +9516,11 @@ chunk 9
 out 1
 action_56_end:
 action_57_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 1
 push "lem"
@@ -9622,11 +9622,11 @@ chunk 7
 out 1
 action_57_end:
 action_58_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 1
 push "lem"
@@ -9750,14 +9750,14 @@ chunk 11
 out 1
 action_58_end:
 action_59_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
-push 4
-push 1
+push-int 4
+push-int 1
 call mod-gen
 push-int 3
 push "lem"
@@ -9877,11 +9877,11 @@ chunk 11
 out 1
 action_59_end:
 action_60_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_concord1
 push "pro"
 push caseFirstWord
@@ -9924,8 +9924,8 @@ push "aa"
 storev
 action_60_end:
 action_61_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "enc"
 push caseFirstWord
@@ -9968,8 +9968,8 @@ push "aa"
 storev
 action_61_end:
 action_62_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prnpersubj"
 push caseFirstWord
@@ -10005,8 +10005,8 @@ push "aa"
 storev
 action_62_end:
 action_63_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prnsubj"
 push caseFirstWord
@@ -10042,8 +10042,8 @@ push "aa"
 storev
 action_63_end:
 action_64_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prnpersubj"
 push caseFirstWord
@@ -10076,11 +10076,11 @@ push "aa"
 storev
 action_64_end:
 action_65_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call mod-gen
 push-int 1
 push "lem"
@@ -10158,8 +10158,8 @@ push "aa"
 storev
 action_65_end:
 action_66_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "cnjcoo"
 push caseFirstWord
@@ -10176,8 +10176,8 @@ chunk 3
 out 1
 action_66_end:
 action_67_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "cnj"
 push caseFirstWord
@@ -10197,8 +10197,8 @@ push "aa"
 storev
 action_67_end:
 action_68_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "lema"
 push-int 1

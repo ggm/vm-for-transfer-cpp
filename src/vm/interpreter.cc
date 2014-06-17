@@ -826,6 +826,10 @@ void Interpreter::executeOut(const Instruction &instr) {
 
 void Interpreter::executePushInt(const Instruction &instr) {
   // FIXME should use the numeric value instead.
+  if (!VMWstringUtils::iswnumeric(instr.op1)) {
+    wcerr << "WARNING: instruction at line " << instr.lineNumber
+          << " does not have a integer value operand." << endl;
+  }
   vm->systemStack.push_back(instr.op1);
 }
 

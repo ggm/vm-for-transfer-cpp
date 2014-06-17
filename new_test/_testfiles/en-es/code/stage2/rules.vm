@@ -1018,8 +1018,8 @@ push-int 1
 addtrie action_60_start
 patterns_end:
 action_0_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -1220,13 +1220,13 @@ push "whole"
 clip
 chunk 1
 out 3
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_0_end:
 action_1_start:
-push 4
-push 1
+push-int 4
+push-int 1
 call posadet_SN
 push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -1437,13 +1437,13 @@ push "whole"
 clip
 chunk 1
 out 3
-push 4
-push 1
+push-int 4
+push-int 1
 call determina_nbr_gen_SN
 action_1_end:
 action_2_start:
-push 5
-push 1
+push-int 5
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -1664,8 +1664,8 @@ push "whole"
 clip
 chunk 1
 out 3
-push 5
-push 1
+push-int 5
+push-int 1
 call determina_nbr_gen_SN
 action_2_end:
 action_3_start:
@@ -3018,8 +3018,8 @@ chunk 7
 out 1
 jmp choose_105_end
 when_113_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -3044,8 +3044,8 @@ push "whole"
 clip
 chunk 1
 out 4
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_9_end:
 action_10_start:
@@ -3154,8 +3154,8 @@ choose_109_end:
 jmp choose_108_end
 when_116_end:
 choose_108_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3173,8 +3173,8 @@ push "whole"
 clip
 chunk 1
 out 6
-push 4
-push 1
+push-int 4
+push-int 1
 call determina_nbr_gen_SN
 action_10_end:
 action_11_start:
@@ -3283,8 +3283,8 @@ choose_113_end:
 jmp choose_112_end
 when_122_end:
 choose_112_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3307,8 +3307,8 @@ push "whole"
 clip
 chunk 1
 out 8
-push 5
-push 1
+push-int 5
+push-int 1
 call determina_nbr_gen_SN
 action_11_end:
 action_12_start:
@@ -3337,8 +3337,8 @@ push-int 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
 push "<HAY>"
 storecl
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3373,8 +3373,8 @@ push-int 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
 push "<HAY>"
 storecl
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3414,8 +3414,8 @@ push-int 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAVER>"
 push "<HAY>"
 storecl
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3435,12 +3435,12 @@ chunk 1
 out 6
 action_14_end:
 action_15_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -3461,8 +3461,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_130_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -3492,21 +3492,21 @@ clip
 chunk 1
 out 3
 choose_118_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_15_end:
 action_16_start:
-push 1
-push 3
-push 4
-push 3
+push-int 1
+push-int 3
+push-int 4
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -3541,17 +3541,17 @@ push "whole"
 clip
 chunk 1
 out 7
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_16_end:
 action_17_start:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
@@ -3640,17 +3640,17 @@ push "whole"
 clip
 chunk 1
 out 7
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_17_end:
 action_18_start:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
@@ -3739,8 +3739,8 @@ push "whole"
 clip
 chunk 1
 out 7
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
@@ -3776,12 +3776,12 @@ chunk 1
 out 2
 action_18_end:
 action_19_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -3802,8 +3802,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_141_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -3842,17 +3842,17 @@ clip
 chunk 1
 out 5
 choose_129_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_19_end:
 action_20_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -3873,8 +3873,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_143_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -3923,21 +3923,21 @@ clip
 chunk 1
 out 7
 choose_131_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_20_end:
 action_21_start:
-push 1
-push 3
-push 5
-push 3
+push-int 1
+push-int 3
+push-int 5
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 5
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -3977,21 +3977,21 @@ push "whole"
 clip
 chunk 1
 out 9
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_21_end:
 action_22_start:
-push 1
-push 3
-push 6
-push 3
+push-int 1
+push-int 3
+push-int 6
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 6
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4036,17 +4036,17 @@ push "whole"
 clip
 chunk 1
 out 11
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_22_end:
 action_23_start:
-push 3
-push 5
-push 2
+push-int 3
+push-int 5
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
@@ -4140,17 +4140,17 @@ push "whole"
 clip
 chunk 1
 out 9
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_23_end:
 action_24_start:
-push 3
-push 6
-push 2
+push-int 3
+push-int 6
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
@@ -4249,17 +4249,17 @@ push "whole"
 clip
 chunk 1
 out 11
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_24_end:
 action_25_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4280,8 +4280,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_153_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -4311,8 +4311,8 @@ clip
 chunk 1
 out 3
 choose_141_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4348,16 +4348,16 @@ chunk 1
 out 2
 action_25_end:
 action_26_start:
-push 1
-push 3
-push 4
-push 3
+push-int 1
+push-int 3
+push-int 4
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4453,20 +4453,20 @@ push "whole"
 clip
 chunk 1
 out 2
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push "nombre"
 push "<pl>"
 storev
 action_26_end:
 action_27_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4487,8 +4487,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_161_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -4519,8 +4519,8 @@ chunk 1
 pushsb 2
 out 4
 choose_149_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4591,12 +4591,12 @@ chunk 1
 out 5
 action_27_end:
 action_28_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4617,8 +4617,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_167_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -4659,8 +4659,8 @@ chunk 1
 pushsb 3
 out 6
 choose_155_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4695,12 +4695,12 @@ chunk 1
 out 1
 action_28_end:
 action_29_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4721,8 +4721,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_171_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -4763,8 +4763,8 @@ chunk 1
 pushsb 3
 out 6
 choose_159_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4799,12 +4799,12 @@ chunk 1
 out 1
 action_29_end:
 action_30_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -4825,8 +4825,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_175_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -4877,8 +4877,8 @@ chunk 1
 pushsb 4
 out 8
 choose_163_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4913,16 +4913,16 @@ chunk 1
 out 1
 action_30_end:
 action_31_start:
-push 1
-push 3
-push 5
-push 3
+push-int 1
+push-int 3
+push-int 5
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 5
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5023,24 +5023,24 @@ push "whole"
 clip
 chunk 1
 out 2
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push "nombre"
 push "<pl>"
 storev
 action_31_end:
 action_32_start:
-push 1
-push 3
-push 6
-push 3
+push-int 1
+push-int 3
+push-int 6
+push-int 3
 call concord_SNcoo_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 6
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5146,20 +5146,20 @@ push "whole"
 clip
 chunk 1
 out 2
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push "nombre"
 push "<pl>"
 storev
 action_32_end:
 action_33_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5199,8 +5199,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_188_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 pushsb 1
 push-int 2
@@ -5230,8 +5230,8 @@ clip
 chunk 1
 out 3
 choose_176_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 3
 push "<sg>|<pl>|<sp>|<ND>"
@@ -5268,12 +5268,12 @@ pushsb 2
 out 3
 action_33_end:
 action_34_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5313,8 +5313,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_193_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -5353,8 +5353,8 @@ clip
 chunk 1
 out 5
 choose_181_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 4
 push "<sg>|<pl>|<sp>|<ND>"
@@ -5390,12 +5390,12 @@ chunk 1
 out 2
 action_34_end:
 action_35_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5515,8 +5515,8 @@ push "whole"
 clip
 chunk 1
 out 7
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
@@ -5552,12 +5552,12 @@ chunk 1
 out 2
 action_35_end:
 action_36_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5682,8 +5682,8 @@ push "whole"
 clip
 chunk 1
 out 9
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 6
 push "<sg>|<pl>|<sp>|<ND>"
@@ -5719,12 +5719,12 @@ chunk 1
 out 2
 action_36_end:
 action_37_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5779,8 +5779,8 @@ storecl
 jmp choose_202_end
 when_214_end:
 choose_202_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 3
 push "lem"
@@ -5840,17 +5840,17 @@ clip
 chunk 1
 out 5
 choose_201_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_37_end:
 action_38_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -5905,8 +5905,8 @@ storecl
 jmp choose_206_end
 when_218_end:
 choose_206_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -5976,8 +5976,8 @@ clip
 chunk 1
 out 7
 choose_205_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_38_end:
 action_39_start:
@@ -6091,12 +6091,12 @@ chunk 3
 out 3
 action_39_end:
 action_40_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6117,8 +6117,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_226_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push-int 2
 push "lem"
@@ -6171,12 +6171,12 @@ chunk 6
 pushsb 2
 out 6
 choose_214_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call concord_SN_SV
-push 3
-push 1
+push-int 3
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6197,8 +6197,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_228_end
-push 3
-push 1
+push-int 3
+push-int 1
 call f_bcond
 push-int 4
 push "lem"
@@ -6226,18 +6226,18 @@ push "whole"
 clip
 chunk 1
 out 3
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 choose_216_end:
 action_40_end:
 action_41_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6338,17 +6338,17 @@ push "whole"
 clip
 chunk 1
 out 7
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_41_end:
 action_42_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6449,8 +6449,8 @@ push "whole"
 clip
 chunk 1
 out 7
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
@@ -6486,12 +6486,12 @@ chunk 1
 out 2
 action_42_end:
 action_43_start:
-push 1
-push 4
-push 2
+push-int 1
+push-int 4
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 4
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6593,8 +6593,8 @@ clip
 chunk 1
 pushsb 4
 out 8
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 push-int 5
 push "<sg>|<pl>|<sp>|<ND>"
@@ -6665,12 +6665,12 @@ chunk 1
 out 5
 action_43_end:
 action_44_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6717,8 +6717,8 @@ clip
 push "prnsubj"
 cmpi
 jz when_253_end
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 push "adv"
 push-int 1
@@ -6770,13 +6770,13 @@ clip
 chunk 1
 out 7
 choose_241_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_44_end:
 action_45_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 2
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -6856,17 +6856,17 @@ push "whole"
 clip
 chunk 1
 out 5
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_45_end:
 action_46_start:
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 1
 push "whole"
@@ -6878,17 +6878,17 @@ push "whole"
 clip
 chunk 1
 out 3
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_46_end:
 action_47_start:
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 1
 push "whole"
@@ -6905,17 +6905,17 @@ push "whole"
 clip
 chunk 1
 out 5
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_47_end:
 action_48_start:
-push 1
-push 5
-push 2
+push-int 1
+push-int 5
+push-int 2
 call concord_SN_SV
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 5
 push "<inf>|<pres>|<past>|<pri>|<ifip>|<cni>|<fti>|<pp>|<ger>|<pprs>|<subs>|<imp>|<ifi>|<pii>|<pis>|<prs>"
@@ -7057,11 +7057,11 @@ push "whole"
 clip
 chunk 1
 out 9
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
-push 4
-push 1
+push-int 4
+push-int 1
 call determina_nbr_gen_SN
 action_48_end:
 action_49_start:
@@ -7358,8 +7358,8 @@ push "chcontent"
 clip
 chunk 3
 out 3
-push 2
-push 1
+push-int 2
+push-int 1
 call determina_nbr_gen_SN
 action_51_end:
 action_52_start:
@@ -7542,13 +7542,13 @@ push "whole"
 clip
 chunk 1
 out 5
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_52_end:
 action_53_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call posadet_SN
 push-int 3
 push "<DET>|<UNDET>|<UNDEF>|<NUM>|<PDET>"
@@ -7645,8 +7645,8 @@ push "chcontent"
 clip
 chunk 3
 out 5
-push 3
-push 1
+push-int 3
+push-int 1
 call determina_nbr_gen_SN
 action_53_end:
 action_54_start:
@@ -7722,8 +7722,8 @@ push "whole"
 clip
 chunk 1
 out 1
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_55_end:
 action_56_start:
@@ -7820,8 +7820,8 @@ push "whole"
 clip
 chunk 1
 out 1
-push 1
-push 1
+push-int 1
+push-int 1
 call determina_nbr_gen_SN
 action_57_end:
 action_58_start:

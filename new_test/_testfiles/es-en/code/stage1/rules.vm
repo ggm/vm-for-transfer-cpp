@@ -3084,8 +3084,8 @@ push-int 1
 addtrie action_107_start
 patterns_end:
 action_0_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "nom"
 push caseFirstWord
@@ -3116,8 +3116,8 @@ chunk 3
 out 1
 action_0_end:
 action_1_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr_num"
 push caseFirstWord
@@ -3134,14 +3134,14 @@ cliptl
 lu 1
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_1_end:
 action_2_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "ant"
 push caseFirstWord
@@ -3163,8 +3163,8 @@ chunk 3
 out 1
 action_2_end:
 action_3_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "ant"
 push caseFirstWord
@@ -3186,8 +3186,8 @@ chunk 3
 out 1
 action_3_end:
 action_4_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<m>|<f>|<mf>|<nt>"
@@ -3260,19 +3260,19 @@ chunk 5
 out 1
 action_4_end:
 action_5_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push "det_nom"
 push caseFirstWord
@@ -3314,12 +3314,12 @@ chunk 5
 out 1
 action_5_end:
 action_6_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
-push 2
+push-int 2
+push-int 1
+push-int 2
 call f_concord2
 push-int 2
 push "lem"
@@ -3373,12 +3373,12 @@ chunk 5
 out 1
 action_6_end:
 action_7_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 2
-push 2
+push-int 3
+push-int 2
+push-int 2
 call f_concord2
 push "hace_num_nom"
 push caseFirstWord
@@ -3411,15 +3411,15 @@ chunk 7
 out 1
 action_7_end:
 action_8_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
 push "nom_adj"
 push caseFirstWord
@@ -3459,19 +3459,19 @@ chunk 5
 out 1
 action_8_end:
 action_9_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 3
-push 3
+push-int 1
+push-int 2
+push-int 3
+push-int 3
 call f_concord3
 push "nom_adj_adj"
 push caseFirstWord
@@ -3520,23 +3520,23 @@ chunk 7
 out 1
 action_9_end:
 action_10_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 2
-push 1
-push 3
-push 3
+push-int 2
+push-int 1
+push-int 3
+push-int 3
 call f_concord3
 push "det_nom_adj"
 push caseFirstWord
@@ -3587,27 +3587,27 @@ chunk 7
 out 1
 action_10_end:
 action_11_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call nombre_nom
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call canvia_det
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call el_millor_pitjor
-push 3
-push 2
-push 1
-push 3
+push-int 3
+push-int 2
+push-int 1
+push-int 3
 call f_concord3
 push "det_adj_nom"
 push caseFirstWord
@@ -3658,31 +3658,31 @@ chunk 7
 out 1
 action_11_end:
 action_12_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call nombre_nom
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call canvia_det
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call el_millor_pitjor
-push 3
-push 2
-push 1
-push 4
-push 4
+push-int 3
+push-int 2
+push-int 1
+push-int 4
+push-int 4
 call f_concord4
 push "det_adj_adj_nom"
 push caseFirstWord
@@ -3742,27 +3742,27 @@ chunk 9
 out 1
 action_12_end:
 action_13_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu1
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu2
-push 2
-push 3
-push 1
-push 4
-push 4
+push-int 2
+push-int 3
+push-int 1
+push-int 4
+push-int 4
 call f_concord4
 push "det_adj_adj_nom"
 push caseFirstWord
@@ -3822,16 +3822,16 @@ chunk 9
 out 1
 action_13_end:
 action_14_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu1
-push 2
-push 1
-push 3
-push 3
+push-int 2
+push-int 1
+push-int 3
+push-int 3
 call f_concord3
 push "num_nom_adj"
 push caseFirstWord
@@ -3879,28 +3879,28 @@ chunk 7
 out 1
 action_14_end:
 action_15_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu1
-push 1
-push 3
-push 4
-push 3
+push-int 1
+push-int 3
+push-int 4
+push-int 3
 call det_adv_adj
-push 2
-push 1
-push 4
-push 3
+push-int 2
+push-int 1
+push-int 4
+push-int 3
 call f_concord3
 push "det_nom_adv_adj"
 push caseFirstWord
@@ -3943,29 +3943,29 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_15_end:
 action_16_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call adv_adj
-push 2
-push 1
-push 4
-push 3
+push-int 2
+push-int 1
+push-int 4
+push-int 3
 call f_concord3
 push "num_nom_adv_adj"
 push caseFirstWord
@@ -4005,20 +4005,20 @@ cliptl
 lu 4
 chunk 7
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_16_end:
 action_17_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu2
 push-int 4
 push "<m>|<f>|<mf>|<nt>"
@@ -4036,16 +4036,16 @@ clipsl
 cmp
 and 2
 jz when_94_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_concord2
-push 5
-push 4
-push 2
+push-int 5
+push-int 4
+push-int 2
 call f_concord2
-push 5
-push 1
+push-int 5
+push-int 1
 call elimina_ND
 push "nom_adj_coo_adj_nom"
 push caseFirstWord
@@ -4113,10 +4113,10 @@ chunk 11
 out 1
 jmp choose_39_end
 when_94_end:
-push 1
-push 2
-push 4
-push 3
+push-int 1
+push-int 2
+push-int 4
+push-int 3
 call f_concord3
 push "nom_adj_coo_adj"
 push caseFirstWord
@@ -4196,19 +4196,19 @@ out 1
 choose_39_end:
 action_17_end:
 action_18_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 4
-push 3
+push-int 1
+push-int 2
+push-int 4
+push-int 3
 call f_concord3
 push "nom_adj_coo_adj"
 push caseFirstWord
@@ -4262,21 +4262,21 @@ chunk 9
 out 1
 action_18_end:
 action_19_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu1
-push 5
-push 1
+push-int 5
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
 push-int 5
 push "<m>|<f>|<mf>|<nt>"
@@ -4294,17 +4294,17 @@ clipsl
 cmp
 and 2
 jz when_95_end
-push 2
-push 1
-push 3
-push 3
+push-int 2
+push-int 1
+push-int 3
+push-int 3
 call f_concord3
-push 6
-push 5
-push 2
+push-int 6
+push-int 5
+push-int 2
 call f_concord2
-push 6
-push 1
+push-int 6
+push-int 1
 call elimina_ND
 push "det_nom_adj_coo_adj_nom"
 push caseFirstWord
@@ -4384,11 +4384,11 @@ chunk 13
 out 1
 jmp choose_40_end
 when_95_end:
-push 2
-push 1
-push 3
-push 5
-push 4
+push-int 2
+push-int 1
+push-int 3
+push-int 5
+push-int 4
 call f_concord4
 push "det_nom_adj_coo_adj"
 push caseFirstWord
@@ -4479,27 +4479,27 @@ out 1
 choose_40_end:
 action_19_end:
 action_20_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 3
-push 1
+push-int 3
+push-int 1
 call f_superlatiu1
-push 5
-push 1
+push-int 5
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 2
-push 1
-push 3
-push 5
-push 4
+push-int 2
+push-int 1
+push-int 3
+push-int 5
+push-int 4
 call f_concord4
 push "det_nom_adj_coo_adj"
 push caseFirstWord
@@ -4564,27 +4564,27 @@ chunk 11
 out 1
 action_20_end:
 action_21_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call nombre_nom
-push 4
-push 1
+push-int 4
+push-int 1
 call f_superlatiu1
-push 6
-push 1
+push-int 6
+push-int 1
 call f_superlatiu2
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call canvia_det
-push 2
-push 1
-push 4
-push 6
-push 4
+push-int 2
+push-int 1
+push-int 4
+push-int 6
+push-int 4
 call f_concord4
 push "det_nom_adv_adj_coo_adj"
 push caseFirstWord
@@ -4654,11 +4654,11 @@ chunk 13
 out 1
 action_21_end:
 action_22_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call f_superlatiu1
 push "adj"
 push caseFirstWord
@@ -4684,15 +4684,15 @@ chunk 3
 out 1
 action_22_end:
 action_23_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call adv_adj
 push "adv_adj"
 push caseFirstWord
@@ -4710,21 +4710,21 @@ push adv_adjectiu
 lu 1
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_23_end:
 action_24_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call f_superlatiu1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call el_millor_pitjor
 push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4784,14 +4784,14 @@ cliptl
 lu 3
 chunk 5
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_24_end:
 action_25_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<adv>|<preadv>|<adv><itg>"
@@ -4810,10 +4810,10 @@ storetl
 jmp choose_43_end
 when_98_end:
 choose_43_end:
-push 1
-push 2
-push 3
-push 3
+push-int 1
+push-int 2
+push-int 3
+push-int 3
 call det_adv_adj
 push-int 1
 push "<sg>|<pl>|<sp>|<ND>"
@@ -4867,14 +4867,14 @@ push adv_adjectiu
 lu 1
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_25_end:
 action_26_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "det"
 push caseFirstWord
@@ -4902,8 +4902,8 @@ chunk 3
 out 1
 action_26_end:
 action_27_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "percent"
 push "<SN>"
@@ -4922,8 +4922,8 @@ chunk 3
 out 1
 action_27_end:
 action_28_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -4933,8 +4933,8 @@ push-int 1
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_haverhi
 push lema_SV
 push caseFirstWord
@@ -4958,8 +4958,8 @@ chunk 5
 out 1
 action_28_end:
 action_29_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prpers"
 push caseFirstWord
@@ -4987,8 +4987,8 @@ out 2
 push "caseFirstWord"
 push "aa"
 storev
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -5015,11 +5015,11 @@ chunk 3
 out 1
 action_29_end:
 action_30_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 1
 push "lem"
@@ -5061,12 +5061,12 @@ chunk 3
 out 1
 action_30_end:
 action_31_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 3
-push 2
+push-int 1
+push-int 3
+push-int 2
 call conj_verb2
 push-int 3
 push "lem"
@@ -5114,11 +5114,11 @@ chunk 4
 out 1
 action_31_end:
 action_32_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -5204,8 +5204,8 @@ chunk 6
 out 1
 action_32_end:
 action_33_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -5235,8 +5235,8 @@ push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_haverhi_pp
 push lema_SV
 push caseFirstWord
@@ -5291,8 +5291,8 @@ storetl
 jmp choose_51_end
 when_106_end:
 choose_51_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -5349,11 +5349,11 @@ out 1
 choose_50_end:
 action_33_end:
 action_34_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -5407,14 +5407,14 @@ cliptl
 lu 3
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_34_end:
 action_35_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "lem"
@@ -5444,8 +5444,8 @@ push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_haverhi_pp
 push lema_SV
 push caseFirstWord
@@ -5521,8 +5521,8 @@ storetl
 jmp choose_55_end
 when_110_end:
 choose_55_end:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push-int 3
 push "<sep>"
@@ -5690,9 +5690,9 @@ cmpi
 or 2
 and 3
 jz when_114_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_59_end
 when_114_end:
@@ -5744,11 +5744,11 @@ choose_56_end:
 choose_54_end:
 action_35_end:
 action_36_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -5802,14 +5802,14 @@ cliptl
 lu 3
 chunk 5
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_36_end:
 action_37_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 4
 push "lem"
@@ -5831,8 +5831,8 @@ storetl
 jmp choose_62_end
 when_117_end:
 choose_62_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 4
 push "<sep>"
@@ -5912,9 +5912,9 @@ lu 7
 mlu 2
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_63_end
 when_118_end:
@@ -6094,15 +6094,15 @@ chunk 3
 out 2
 jmp choose_66_end
 when_122_end:
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 choose_66_end:
 action_37_end:
 action_38_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lem"
@@ -6115,8 +6115,8 @@ push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_haverhi
 push lema_SV
 push caseFirstWord
@@ -6164,11 +6164,11 @@ chunk 3
 out 3
 action_38_end:
 action_39_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -6193,14 +6193,14 @@ cliptl
 lu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_39_end:
 action_40_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<sep>"
@@ -6215,8 +6215,8 @@ cmp
 not
 and 2
 jz when_123_end
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_enc"
@@ -6264,14 +6264,14 @@ lu 7
 mlu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 jmp choose_67_end
 when_123_end:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -6323,9 +6323,9 @@ cmpi
 or 2
 and 3
 jz when_124_end
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 jmp choose_68_end
 when_124_end:
@@ -6403,11 +6403,11 @@ choose_68_end:
 choose_67_end:
 action_40_end:
 action_41_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push lema_SV
 push caseFirstWord
@@ -6432,17 +6432,17 @@ cliptl
 lu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_41_end:
 action_42_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 3
 push "<sep>"
@@ -6496,9 +6496,9 @@ lu 7
 mlu 2
 chunk 3
 out 1
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 jmp choose_71_end
 when_127_end:
@@ -6649,16 +6649,16 @@ chunk 3
 out 2
 jmp choose_73_end
 when_129_end:
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 choose_73_end:
 choose_72_end:
 action_42_end:
 action_43_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -6707,8 +6707,8 @@ chunk 3
 out 1
 action_43_end:
 action_44_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -6752,8 +6752,8 @@ chunk 3
 out 1
 action_44_end:
 action_45_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<sep>"
@@ -6883,8 +6883,8 @@ out 1
 choose_75_end:
 action_45_end:
 action_46_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -7032,8 +7032,8 @@ out 1
 choose_78_end:
 action_46_end:
 action_47_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -7082,8 +7082,8 @@ chunk 3
 out 1
 action_47_end:
 action_48_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -7127,8 +7127,8 @@ chunk 3
 out 1
 action_48_end:
 action_49_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "whole"
@@ -7368,8 +7368,8 @@ choose_83_end:
 choose_80_end:
 action_49_end:
 action_50_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -7671,8 +7671,8 @@ choose_88_end:
 choose_85_end:
 action_50_end:
 action_51_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -7843,8 +7843,8 @@ out 1
 choose_91_end:
 action_51_end:
 action_52_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -8194,11 +8194,11 @@ choose_97_end:
 choose_94_end:
 action_52_end:
 action_53_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push-int 3
 push "<sep>"
@@ -8273,9 +8273,9 @@ lu 7
 mlu 2
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_98_end
 when_154_end:
@@ -8346,9 +8346,9 @@ cmpi
 or 2
 and 3
 jz when_155_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_99_end
 when_155_end:
@@ -8399,8 +8399,8 @@ choose_99_end:
 choose_98_end:
 action_53_end:
 action_54_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -8475,8 +8475,8 @@ chunk 5
 out 1
 action_54_end:
 action_55_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -8556,8 +8556,8 @@ chunk 7
 out 1
 action_55_end:
 action_56_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -8605,12 +8605,12 @@ chunk 3
 out 1
 action_56_end:
 action_57_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call prep_inf
 push "pr"
 push caseFirstWord
@@ -8652,12 +8652,12 @@ chunk 3
 out 3
 action_57_end:
 action_58_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call prep_inf
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -8728,8 +8728,8 @@ chunk 7
 out 1
 action_58_end:
 action_59_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -8777,12 +8777,12 @@ chunk 3
 out 3
 action_59_end:
 action_60_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call prep_inf
 push-int 1
 push "lem"
@@ -8852,8 +8852,8 @@ chunk 7
 out 1
 action_60_end:
 action_61_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "inf"
 push caseFirstWord
@@ -8887,8 +8887,8 @@ chunk 3
 out 1
 action_61_end:
 action_62_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lemh"
@@ -8942,11 +8942,11 @@ chunk 3
 out 1
 action_62_end:
 action_63_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
-push 1
-push 1
+push-int 1
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_ger"
@@ -9010,8 +9010,8 @@ chunk 5
 out 1
 action_63_end:
 action_64_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_ger"
@@ -9053,14 +9053,14 @@ cliptl
 lu 5
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_64_end:
 action_65_start:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_ger"
@@ -9102,14 +9102,14 @@ cliptl
 lu 5
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_65_end:
 action_66_start:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_ger"
@@ -9187,9 +9187,9 @@ lu 7
 mlu 2
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_110_end
 when_166_end:
@@ -9257,9 +9257,9 @@ cmpi
 or 2
 and 3
 jz when_167_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_111_end
 when_167_end:
@@ -9310,8 +9310,8 @@ choose_111_end:
 choose_110_end:
 action_66_end:
 action_67_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9322,9 +9322,9 @@ jz when_169_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -9381,8 +9381,8 @@ push-int 2
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_haverhi
 push lema_SV
 push caseSecondWord
@@ -9409,8 +9409,8 @@ chunk 5
 out 1
 action_67_end:
 action_68_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9421,9 +9421,9 @@ jz when_171_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -9469,8 +9469,8 @@ chunk 3
 pushsb 1
 out 2
 choose_115_end:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push lema_SV
 push caseSecondWord
@@ -9497,8 +9497,8 @@ chunk 3
 out 1
 action_68_end:
 action_69_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9509,9 +9509,9 @@ jz when_173_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -9585,8 +9585,8 @@ push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_haverhi_pp
 push lema_SV
 push caseSecondWord
@@ -9641,8 +9641,8 @@ storetl
 jmp choose_120_end
 when_176_end:
 choose_120_end:
-push 2
-push 1
+push-int 2
+push-int 1
 call conj_verb1
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -9699,8 +9699,8 @@ out 1
 choose_119_end:
 action_69_end:
 action_70_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9711,9 +9711,9 @@ jz when_178_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -9744,8 +9744,8 @@ chunk 3
 pushsb 1
 out 2
 choose_122_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 3
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -9799,14 +9799,14 @@ cliptl
 lu 3
 chunk 5
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_70_end:
 action_71_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9846,8 +9846,8 @@ chunk 3
 pushsb 1
 out 2
 choose_124_end:
-push 4
-push 1
+push-int 4
+push-int 1
 call conj_verb1
 push-int 4
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -9901,14 +9901,14 @@ cliptl
 lu 3
 chunk 5
 out 1
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 action_71_end:
 action_72_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -9919,9 +9919,9 @@ jz when_182_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -9980,8 +9980,8 @@ push-int 4
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_haverhi_pp
 push lema_SV
 push caseSecondWord
@@ -10057,8 +10057,8 @@ storetl
 jmp choose_128_end
 when_184_end:
 choose_128_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push-int 4
 push "<sep>"
@@ -10226,9 +10226,9 @@ cmpi
 or 2
 and 3
 jz when_188_end
-push 3
-push 4
-push 2
+push-int 3
+push-int 4
+push-int 2
 call f_bcond
 jmp choose_132_end
 when_188_end:
@@ -10280,8 +10280,8 @@ choose_129_end:
 choose_127_end:
 action_72_end:
 action_73_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -10339,8 +10339,8 @@ chunk 3
 out 5
 action_73_end:
 action_74_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -10351,9 +10351,9 @@ jz when_190_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -10395,8 +10395,8 @@ push-int 3
 push "<vblex>|<vbser>|<vbhaver>|<vbmod>|<vaux>"
 push "<vbser>"
 storetl
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_haverhi
 push lema_SV
 push caseSecondWord
@@ -10444,8 +10444,8 @@ chunk 3
 out 3
 action_74_end:
 action_75_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -10456,9 +10456,9 @@ jz when_191_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -10489,8 +10489,8 @@ chunk 3
 pushsb 1
 out 2
 choose_135_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push lema_SV
 push caseSecondWord
@@ -10515,14 +10515,14 @@ cliptl
 lu 2
 chunk 3
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_75_end:
 action_76_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -10533,9 +10533,9 @@ jz when_192_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -10566,8 +10566,8 @@ chunk 3
 pushsb 1
 out 2
 choose_136_end:
-push 4
-push 1
+push-int 4
+push-int 1
 call conj_verb1
 push lema_SV
 push caseSecondWord
@@ -10592,14 +10592,14 @@ cliptl
 lu 2
 chunk 3
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_76_end:
 action_77_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -10610,9 +10610,9 @@ jz when_193_end
 push "SVnegatiu"
 push "<SVneg>"
 storev
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 push "caseSecondWord"
 push caseFirstWord
@@ -10656,8 +10656,8 @@ cmp
 not
 and 2
 jz when_194_end
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push "lema_SV"
 push "_enc"
@@ -10705,14 +10705,14 @@ lu 7
 mlu 2
 chunk 3
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_138_end
 when_194_end:
-push 3
-push 1
+push-int 3
+push-int 1
 call conj_verb1
 push lema_SV
 push caseSecondWord
@@ -10764,9 +10764,9 @@ cmpi
 or 2
 and 3
 jz when_195_end
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 jmp choose_139_end
 when_195_end:
@@ -10844,8 +10844,8 @@ choose_139_end:
 choose_138_end:
 action_77_end:
 action_78_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<sep>"
@@ -11007,8 +11007,8 @@ out 1
 choose_142_end:
 action_78_end:
 action_79_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 4
 push "whole"
@@ -11312,8 +11312,8 @@ choose_147_end:
 choose_144_end:
 action_79_end:
 action_80_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -11493,8 +11493,8 @@ out 1
 choose_149_end:
 action_80_end:
 action_81_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -11874,8 +11874,8 @@ choose_154_end:
 choose_151_end:
 action_81_end:
 action_82_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -11950,8 +11950,8 @@ chunk 7
 out 1
 action_82_end:
 action_83_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -12031,8 +12031,8 @@ chunk 9
 out 1
 action_83_end:
 action_84_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<fts>|<pri>|<prs>|<pres>|<past>|<pp>|<pprs>|<subs>|<ger>|<inf>"
@@ -12099,8 +12099,8 @@ chunk 5
 out 1
 action_84_end:
 action_85_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "lemh"
@@ -12163,8 +12163,8 @@ chunk 5
 out 1
 action_85_end:
 action_86_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -12198,22 +12198,22 @@ cliptl
 lu 1
 chunk 7
 out 3
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
-push 5
-push 6
-push 2
+push-int 5
+push-int 6
+push-int 2
 call f_bcond
 action_86_end:
 action_87_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -12249,18 +12249,18 @@ cliptl
 lu 1
 chunk 7
 out 3
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_87_end:
 action_88_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_de_mes_de_ano"
 push caseFirstWord
@@ -12286,18 +12286,18 @@ cliptl
 lu 1
 chunk 7
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_88_end:
 action_89_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -12326,18 +12326,18 @@ cliptl
 lu 1
 chunk 5
 out 3
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
-push 4
-push 5
-push 2
+push-int 4
+push-int 5
+push-int 2
 call f_bcond
 action_89_end:
 action_90_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -12368,14 +12368,14 @@ cliptl
 lu 1
 chunk 5
 out 3
-push 1
-push 2
-push 2
+push-int 1
+push-int 2
+push-int 2
 call f_bcond
 action_90_end:
 action_91_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num_de_mes"
 push caseFirstWord
@@ -12396,14 +12396,14 @@ cliptl
 lu 1
 chunk 5
 out 1
-push 2
-push 3
-push 2
+push-int 2
+push-int 3
+push-int 2
 call f_bcond
 action_91_end:
 action_92_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -12463,8 +12463,8 @@ chunk 3
 out 1
 action_92_end:
 action_93_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "adv"
 push caseFirstWord
@@ -12481,8 +12481,8 @@ chunk 3
 out 1
 action_93_end:
 action_94_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prn"
 push caseFirstWord
@@ -12519,8 +12519,8 @@ chunk 3
 out 1
 action_94_end:
 action_95_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prpers"
 push caseFirstWord
@@ -12563,8 +12563,8 @@ chunk 3
 out 1
 action_95_end:
 action_96_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 2
 push "<subj>|<obj>|<tn>|<itg>|<pos>"
@@ -12638,8 +12638,8 @@ chunk 3
 out 3
 action_96_end:
 action_97_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "prepo"
 push-int 1
@@ -12676,8 +12676,8 @@ chunk 3
 out 3
 action_97_end:
 action_98_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push-int 1
 push "lem"
@@ -12716,8 +12716,8 @@ out 1
 choose_162_end:
 action_98_end:
 action_99_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "pr"
 push caseFirstWord
@@ -12757,8 +12757,8 @@ chunk 3
 out 4
 action_99_end:
 action_100_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "lema"
 push-int 1
@@ -12778,8 +12778,8 @@ chunk 3
 out 1
 action_100_end:
 action_101_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "lema"
 push-int 1
@@ -12801,8 +12801,8 @@ chunk 3
 out 1
 action_101_end:
 action_102_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "preadv"
 push caseFirstWord
@@ -12819,8 +12819,8 @@ chunk 3
 out 1
 action_102_end:
 action_103_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "cog"
 push caseFirstWord
@@ -12842,8 +12842,8 @@ chunk 3
 out 1
 action_103_end:
 action_104_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "al"
 push caseFirstWord
@@ -12865,8 +12865,8 @@ chunk 3
 out 1
 action_104_end:
 action_105_start:
-push 1
-push 1
+push-int 1
+push-int 1
 call firstWord
 push "num"
 push caseFirstWord

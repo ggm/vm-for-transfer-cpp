@@ -166,8 +166,8 @@ push-int 1
 addtrie action_36_start
 patterns_end:
 action_0_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -216,8 +216,8 @@ lu 1
 out 1
 action_0_end:
 action_1_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -311,8 +311,8 @@ clip
 push "aa"
 modify-case
 storecl
-push 1
-push 1
+push-int 1
+push-int 1
 call gen_nbr_determinante
 push "el"
 push-int 0
@@ -334,8 +334,8 @@ clip
 lu 1
 pushsb 2
 out 6
-push 3
-push 1
+push-int 3
+push-int 1
 call gen_nbr_determinante
 push "el"
 push-int 3
@@ -371,8 +371,8 @@ out 5
 choose_6_end:
 action_2_end:
 action_3_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -461,8 +461,8 @@ when_9_end:
 choose_8_end:
 action_3_end:
 action_4_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -521,8 +521,8 @@ lu 1
 out 5
 action_4_end:
 action_5_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -616,8 +616,8 @@ when_13_end:
 choose_11_end:
 action_5_end:
 action_6_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -686,8 +686,8 @@ lu 1
 out 9
 action_6_end:
 action_7_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -761,8 +761,8 @@ lu 1
 out 11
 action_7_end:
 action_8_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -861,8 +861,8 @@ when_18_end:
 choose_15_end:
 action_8_end:
 action_9_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -949,8 +949,8 @@ when_20_end:
 choose_17_end:
 action_9_end:
 action_10_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -1029,8 +1029,8 @@ lu 1
 out 13
 action_10_end:
 action_11_start:
-push 0
-push 1
+push-int 0
+push-int 1
 call gen_nbr_determinante
 push-int 0
 push "<DET>|<UNDET>|<NUM>|<PDET>"
@@ -1952,8 +1952,8 @@ lu 1
 mlu 2
 out 1
 choose_39_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 action_20_end:
 action_21_start:
@@ -2103,8 +2103,8 @@ lu 1
 mlu 3
 out 1
 choose_43_end:
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 action_21_end:
 action_22_start:
@@ -2172,8 +2172,8 @@ push "whole"
 clip
 lu 1
 out 1
-push 1
-push 1
+push-int 1
+push-int 1
 call f_bcond
 action_23_end:
 action_24_start:
@@ -2199,8 +2199,8 @@ push "whole"
 clip
 lu 1
 out 3
-push 2
-push 1
+push-int 2
+push-int 1
 call f_bcond
 action_24_end:
 action_25_start:
@@ -2231,8 +2231,8 @@ push "whole"
 clip
 lu 1
 out 5
-push 3
-push 1
+push-int 3
+push-int 1
 call f_bcond
 action_25_end:
 action_26_start:
@@ -2285,8 +2285,8 @@ push "whole"
 clip
 lu 1
 out 3
-push 2
-push 1
+push-int 2
+push-int 1
 call f_bcond
 jmp choose_50_end
 when_53_end:
