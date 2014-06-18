@@ -372,21 +372,13 @@ wstring AssemblyLoader::getMacroName(const wstring &macroLabel) const {
  */
 bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     CodeUnit &codeUnit, Instruction &instr) {
-  // First, we get the name of the instruction or process it if it's a label.
-  wstring instrName = L"";
-  unsigned int pos;
-  for (pos = 0; pos < line.size(); pos++) {
-    wchar_t ch = line[pos];
-    if (ch == L' ' || ch == L'\t' || ch == '\r') {
-      pos++;
-      break;
-    } else if (ch == L':') {
+
+  wstring::size_type instrDelimiterPos = line.find_first_of(L" \t\r\n:");
+  wstring instrName = line.substr(0, instrDelimiterPos);
+  if (instrDelimiterPos != wstring::npos && line[instrDelimiterPos] == L':') {
       // If it's a label, just create a new address for it and end.
       currentScope->createNewLabelAddress(instrName);
       return false;
-    } else {
-      instrName += ch;
-    }
   }
 
   // Then, we use the name to get the opCode of the instruction.
@@ -398,22 +390,10 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     throwError(L"Unrecognized instruction: " + line);
   }
 
-  // Finally, we handle the operand.
-  wstring operand = L"";
-  for (; pos < line.size(); pos++) {
-      wchar_t ch = line[pos];
-      if (ch == L'\n' || ch == '\r') {
-        break;
-      } else {
-        operand += ch;
-      }
-    }
+  if (instrDelimiterPos != wstring::npos && line[instrDelimiterPos] == L' ') {
+    wstring::size_type endPosition = line.find_first_of(L"\n\r", instrDelimiterPos + 1);
+    wstring operand = line.substr(instrDelimiterPos + 1, endPosition - instrDelimiterPos);
 
-  // FIXME rewrite this ugly code.
-
-  bool hasOperand = line.find(L' ') != wstring::npos;
-  if (hasOperand) {
-    // If the instruction needs a label.
     switch (instr.opCode) {
     case ADDTRIE:
       instr.op1 = getRuleNumber(operand);
