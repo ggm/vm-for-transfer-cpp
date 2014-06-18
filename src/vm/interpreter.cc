@@ -27,6 +27,10 @@ const wstring Interpreter::FALSE_WSTR = L"0";
 
 const wstring Interpreter::TRUE_WSTR = L"1";
 
+void removeFromStack(vector<wstring>& st, int n) {
+  st.resize(st.size() - n);
+}
+
 Interpreter::Interpreter() {
   modifiedPC = false;
 }
@@ -202,13 +206,13 @@ void Interpreter::execute(const Instruction &instr) {
  * @return the operands in reversed stack order
  */
 vector<wstring> Interpreter::getOperands(const Instruction &instr) {
-  vector<wstring> operands;
+  vector<wstring>& st = vm->systemStack;
 
-  int numOperands = VMWstringUtils::stringTo<int>(instr.op1);
-  while (numOperands > 0) {
-    operands.insert(operands.begin(), popSystemStack());
-    numOperands--;
+  vector<wstring> operands;
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    operands.push_back(*it);
   }
+  removeFromStack(st, instr.intOp1);
 
   return operands;
 }
@@ -294,33 +298,33 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
 }
 
 void Interpreter::executeAnd(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
+  vector<wstring>& st = vm->systemStack;
 
-  // Return false (0) if one operand if false.
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    if (operands[i] == FALSE_WSTR) {
-      vm->systemStack.push_back(FALSE_WSTR);
-      return;
+  bool result = true;
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    if(*it == FALSE_WSTR) {
+      result = false;
+      break;
     }
   }
 
-  // Else, return true (1).
-  vm->systemStack.push_back(TRUE_WSTR);
+  removeFromStack(st, instr.intOp1);
+  vm->systemStack.push_back(result ? TRUE_WSTR : FALSE_WSTR);
 }
 
 void Interpreter::executeOr(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
+  vector<wstring>& st = vm->systemStack;
 
-  // Return true (1) if one operand if true.
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    if (operands[i] == TRUE_WSTR) {
-      vm->systemStack.push_back(TRUE_WSTR);
-      return;
+  bool result = false;
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    if(*it == TRUE_WSTR) {
+      result = true;
+      break;
     }
   }
 
-  // Else, return false (0).
-  vm->systemStack.push_back(FALSE_WSTR);
+  removeFromStack(st, instr.intOp1);
+  vm->systemStack.push_back(result ? TRUE_WSTR : FALSE_WSTR);
 }
 
 void Interpreter::executeNot(const Instruction &instr) {
@@ -334,13 +338,14 @@ void Interpreter::executeNot(const Instruction &instr) {
 }
 
 void Interpreter::executeAppend(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
-  wstring ws = L"";
+  vector<wstring>& st = vm->systemStack;
 
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    ws += operands[i];
+  wstring ws = L"";
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    ws += *it;
   }
 
+  removeFromStack(st, instr.intOp1);
   wstring varName = popSystemStack();
   vm->variables[varName] += ws;
 }
@@ -625,16 +630,18 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
 }
 
 void Interpreter::executeConcat(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
+  vector<wstring>& st = vm->systemStack;
 
-  wstring concat = L"";
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    concat += operands[i];
+  wstring ws = L"";
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    ws += *it;
   }
 
-  vm->systemStack.push_back(concat);
+  removeFromStack(st, instr.intOp1);
+  vm->systemStack.push_back(ws);
 }
 
+// TODO remove getOperands from this function.
 void Interpreter::executeChunk(const Instruction &instr) {
   vector<wstring> operands = getOperands(instr);
   unsigned int numOperands = operands.size();
@@ -746,14 +753,16 @@ void Interpreter::executeJnz(const Instruction &instr) {
 }
 
 void Interpreter::executeLu(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
+  vector<wstring>& st = vm->systemStack;
 
   wstring lu = L"";
   lu += L'^';
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    lu += operands[i];
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    lu += *it;
   }
   lu += L'$';
+
+  removeFromStack(st, instr.intOp1);
 
   // If the lu is empty, only the ^$, then push an empty string.
   if (lu.size() == 2) {
@@ -774,21 +783,23 @@ void Interpreter::executeLuCount(const Instruction &instr) {
 }
 
 void Interpreter::executeMlu(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
-  if (operands.size() == 0) {
+  if (instr.intOp1 == 0) {
     vm->systemStack.push_back(L"");
     return;
   }
 
+  vector<wstring>& st = vm->systemStack;
+
   // Append the lexical units, removing its ^...$
   wstring mlu = L"";
   mlu += L'^';
-  mlu += operands[0].substr(1, operands[0].size() - 2);
-  for (unsigned int i = 1; i < operands.size(); i++) {
-    mlu += L"+" + operands[i].substr(1, operands[i].size() - 2);
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    const wstring& curOperand = *it;
+    mlu += curOperand.substr(1, curOperand.size() - 2) + L"+";
   }
-  mlu += L'$';
+  mlu[mlu.size() - 1] = L'$';
 
+  removeFromStack(st, instr.intOp1);
   vm->systemStack.push_back(mlu);
 }
 
@@ -816,12 +827,15 @@ void Interpreter::executeModifyCase(const Instruction &instr) {
 }
 
 void Interpreter::executeOut(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
-  wstring out = L"";
-  for (unsigned int i = 0; i < operands.size(); i++) {
-    out += operands[i];
+  vector<wstring>& st = vm->systemStack;
+
+  wstring ws = L"";
+  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
+    ws += *it;
   }
-  vm->writeOutput(out);
+
+  removeFromStack(st, instr.intOp1);
+  vm->writeOutput(ws);
 }
 
 void Interpreter::executePushInt(const Instruction &instr) {

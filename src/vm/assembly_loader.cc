@@ -426,6 +426,17 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     case JNZ:
       instr.op1 = currentScope->getReferenceToLabel(operand, codeUnit);
       break;
+    case APPEND:
+    case AND:
+    case OR:
+    case CONCAT:
+    case CHUNK:
+    case MLU:
+    case LU:
+    case OUT:
+      instr.op1 = operand;
+      instr.intOp1 = VMWstringUtils::stringTo<int>(instr.op1);
+      break;
     default:
       instr.op1 = operand;
       break;
