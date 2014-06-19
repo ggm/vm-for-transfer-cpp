@@ -24,7 +24,6 @@
 #include "vm_wstring_utils.h"
 
 const wstring Interpreter::FALSE_WSTR = L"0";
-
 const wstring Interpreter::TRUE_WSTR = L"1";
 
 Interpreter::Interpreter() {
@@ -728,12 +727,8 @@ void Interpreter::executeLu(const Instruction &instr) {
 
 void Interpreter::executeLuCount(const Instruction &instr) {
   ChunkWord *word = (ChunkWord *) vm->words[vm->currentWords[0]];
-
   int luCount = word->getLuCount();
-  wstringstream ws;
-  ws << luCount;
-
-  vm->systemStack.push(ws.str());
+  vm->systemStack.push(VMWstringUtils::integerToString(luCount));
 }
 
 void Interpreter::executeMlu(const Instruction &instr) {

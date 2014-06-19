@@ -42,6 +42,7 @@ public:
     return value;
   }
 
+  static wstring integerToString(int);
   static bool iswupper(const wstring &);
   static bool iswnumeric(const wstring &);
   static wstring wtolower(const wstring &);

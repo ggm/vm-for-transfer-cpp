@@ -209,3 +209,9 @@ wstring VMWstringUtils::replace(wstring &wstr, const wstring &replaced,
 
   return wstr;
 }
+
+wstring VMWstringUtils::integerToString(int value) {
+  std::wstringstream ss;
+  ss << value;
+  return ss.str();
+}
