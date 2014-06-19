@@ -405,7 +405,11 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     case JZ: /* falls through */
     case JNZ:
       instr.op1 = currentScope->getReferenceToLabel(operand, codeUnit);
+      if(instr.op1 != L"#0#") {
+        instr.intOp1 = VMWstringUtils::stringTo<int>(instr.op1);
+      }
       break;
+    case PUSHSB:
     case APPEND:
     case AND:
     case OR:

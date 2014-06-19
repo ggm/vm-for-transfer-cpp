@@ -732,23 +732,20 @@ void Interpreter::executeEndsWithIg(const Instruction &instr) {
 }
 
 void Interpreter::executeJmp(const Instruction &instr) {
-  int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
-  modifyPC(jmpTo);
+  modifyPC(instr.intOp1);
 }
 
 void Interpreter::executeJz(const Instruction &instr) {
   wstring condition = popSystemStack();
   if (condition == FALSE_WSTR) {
-    int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
-    modifyPC(jmpTo);
+    modifyPC(instr.intOp1);
   }
 }
 
 void Interpreter::executeJnz(const Instruction &instr) {
   wstring condition = popSystemStack();
   if (condition != FALSE_WSTR) {
-    int jmpTo = VMWstringUtils::stringTo<int>(instr.op1);
-    modifyPC(jmpTo);
+    modifyPC(instr.intOp1);
   }
 }
 
@@ -865,7 +862,7 @@ void Interpreter::executePushsb(const Instruction &instr) {
   // The position is relative to the current word(s), so we have to get the
   // actual one. For the postchunk, the relative is the actual one because
   // each chunk stores the blanks in their content.
-  unsigned int relativePos = VMWstringUtils::stringTo<unsigned int>(instr.op1);
+  int relativePos = instr.intOp1;
 
   if (vm->transferStage == POSTCHUNK) {
     ChunkWord *word = (ChunkWord *) vm->words[vm->currentWords[0]];

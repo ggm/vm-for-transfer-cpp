@@ -60,7 +60,9 @@ void Scope::backPatchLabels(CodeUnit &codeUnit) const {
 
     vector<unsigned int> positions = itPatch->second;
     for (unsigned int pos = 0; pos < positions.size(); ++pos) {
-      codeUnit.code[positions[pos]].op1 = address;
+      Instruction& instr = codeUnit.code[positions[pos]];
+      instr.op1 = address;
+      instr.intOp1 = VMWstringUtils::stringTo<int>(address);
     }
   }
 }
