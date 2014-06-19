@@ -28,6 +28,7 @@
 #include "call_stack.h"
 #include "system_trie.h"
 #include "interpreter.h"
+#include "system_stack.h"
 
 using namespace std;
 
@@ -94,6 +95,7 @@ private:
   /** As a stack-based vm, the operands and results of every instruction are
    * stored in the system stack. */
   vector<wstring> systemStack;
+  SystemStack n_systemStack;
 
   /// The vm also has a trie where all patterns are stored.
   SystemTrie systemTrie;

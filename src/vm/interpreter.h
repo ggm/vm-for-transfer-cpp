@@ -63,11 +63,11 @@ private:
   void modifyPC(int);
   LexicalUnit* getSourceLexicalUnit(int);
   LexicalUnit* getTargetLexicalUnit(int);
-  vector<wstring> getOperands(const Instruction &);
   vector<int> getNOperands(const Instruction &, const wstring &);
   wstring popSystemStack();
   int popSystemStackInteger();
   void pushCaseToStack(CASE);
+  void removeFromStack(int);
 
   void executeAddtrie(const Instruction&);
   void executeAnd(const Instruction&);

@@ -27,8 +27,10 @@ const wstring Interpreter::FALSE_WSTR = L"0";
 
 const wstring Interpreter::TRUE_WSTR = L"1";
 
-void removeFromStack(vector<wstring>& st, int n) {
+void Interpreter::removeFromStack(int n) {
+  vector<wstring>& st = vm->systemStack;
   st.resize(st.size() - n);
+  vm->n_systemStack.pop(n);
 }
 
 Interpreter::Interpreter() {
@@ -199,25 +201,6 @@ void Interpreter::execute(const Instruction &instr) {
 }
 
 /**
- * Get the operands of instr from the stack and return them reversed.
- *
- * @param instr the instruction to get the operands for
- *
- * @return the operands in reversed stack order
- */
-vector<wstring> Interpreter::getOperands(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
-
-  vector<wstring> operands;
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    operands.push_back(*it);
-  }
-  removeFromStack(st, instr.intOp1);
-
-  return operands;
-}
-
-/**
  * Get n operands from the stack and return them reversed.
  *
  * @param instr the instruction to get the operands for
@@ -247,7 +230,7 @@ vector<int> Interpreter::getNOperands(const Instruction &instr,
 wstring Interpreter::popSystemStack() {
   wstring top = vm->systemStack.back();
   vm->systemStack.pop_back();
-
+  wstring w = vm->n_systemStack.popString();
   return top;
 }
 
@@ -259,6 +242,7 @@ wstring Interpreter::popSystemStack() {
 int Interpreter::popSystemStackInteger() {
   int intValue = VMWstringUtils::stringTo<int>(vm->systemStack.back());
   vm->systemStack.pop_back();
+  vm->n_systemStack.pop();
   return intValue;
 }
 
@@ -271,12 +255,15 @@ void Interpreter::pushCaseToStack(CASE valueCase) {
   switch (valueCase) {
   case aa:
     vm->systemStack.push_back(L"aa");
+    vm->n_systemStack.push(L"aa");
     break;
   case Aa:
     vm->systemStack.push_back(L"Aa");
+    vm->n_systemStack.push(L"Aa");
     break;
   case AA:
     vm->systemStack.push_back(L"AA");
+    vm->n_systemStack.push(L"AA");
     break;
   }
 }
@@ -308,8 +295,10 @@ void Interpreter::executeAnd(const Instruction &instr) {
     }
   }
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
+
   vm->systemStack.push_back(result ? TRUE_WSTR : FALSE_WSTR);
+  vm->n_systemStack.push(result ? TRUE_WSTR : FALSE_WSTR);
 }
 
 void Interpreter::executeOr(const Instruction &instr) {
@@ -323,8 +312,9 @@ void Interpreter::executeOr(const Instruction &instr) {
     }
   }
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
   vm->systemStack.push_back(result ? TRUE_WSTR : FALSE_WSTR);
+  vm->n_systemStack.push(result ? TRUE_WSTR : FALSE_WSTR);
 }
 
 void Interpreter::executeNot(const Instruction &instr) {
@@ -332,8 +322,10 @@ void Interpreter::executeNot(const Instruction &instr) {
 
   if (op1 == FALSE_WSTR) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -345,7 +337,7 @@ void Interpreter::executeAppend(const Instruction &instr) {
     ws += *it;
   }
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
   wstring varName = popSystemStack();
   vm->variables[varName] += ws;
 }
@@ -386,8 +378,10 @@ void Interpreter::executeBeginsWith(const Instruction &instr) {
 
   if (beginsWith(word, preffixes)) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -397,8 +391,10 @@ void Interpreter::executeBeginsWithIg(const Instruction &instr) {
 
   if (beginsWith(word, preffixes)) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -488,24 +484,31 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
 
   if (notLinkTo && parts == L"whole") {
     vm->systemStack.push_back(lu->getWhole());
+    vm->n_systemStack.push(lu->getWhole());
     return;
   } else if (notLinkTo && parts == L"lem") {
     vm->systemStack.push_back(lu->getPart(LEM));
+    vm->n_systemStack.push(lu->getPart(LEM));
     return;
   } else if (notLinkTo && parts == L"lemh") {
     vm->systemStack.push_back(lu->getPart(LEMH));
+    vm->n_systemStack.push(lu->getPart(LEMH));
     return;
   } else if (notLinkTo && parts == L"lemq") {
     vm->systemStack.push_back(lu->getPart(LEMQ));
+    vm->n_systemStack.push(lu->getPart(LEMQ));
     return;
   } else if (notLinkTo && parts == L"tags") {
     vm->systemStack.push_back(lu->getPart(TAGS));
+    vm->n_systemStack.push(lu->getPart(TAGS));
     return;
   } else if (notLinkTo && parts == L"chcontent") {
     vm->systemStack.push_back(lu->getPart(CHCONTENT));
+    vm->n_systemStack.push(lu->getPart(CHCONTENT));
     return;
   } else if (notLinkTo && parts == L"content") {
     vm->systemStack.push_back(lu->getPart(CONTENT));
+    vm->n_systemStack.push(lu->getPart(CONTENT));
     return;
   } else {
     // Check if one of the parts divided by | matches the lemma or tags.
@@ -524,6 +527,7 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
           }
         } else {
           vm->systemStack.push_back(linkTo);
+          vm->n_systemStack.push(linkTo);
           return;
         }
       }
@@ -537,12 +541,14 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
 
     if (longestMatch != L"") {
       vm->systemStack.push_back(longestMatch);
+      vm->n_systemStack.push(longestMatch);
       return;
     }
   }
 
   // If the lu doesn't have the part needed, return "".
   vm->systemStack.push_back(L"");
+  vm->n_systemStack.push(L"");
 }
 
 void Interpreter::executeCmp(const Instruction &instr) {
@@ -551,8 +557,10 @@ void Interpreter::executeCmp(const Instruction &instr) {
 
   if (op1 == op2) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -562,8 +570,10 @@ void Interpreter::executeCmpi(const Instruction &instr) {
 
   if (op1 == op2) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -573,8 +583,10 @@ void Interpreter::executeCmpSubstr(const Instruction &instr) {
 
   if (op2.find(op1) != wstring::npos) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -584,8 +596,10 @@ void Interpreter::executeCmpiSubstr(const Instruction &instr) {
 
   if (op2.find(op1) != wstring::npos) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -618,6 +632,7 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
     if (ch == L'|' || i == listSize - 1) {
       if (part == value) {
         vm->systemStack.push_back(TRUE_WSTR);
+        vm->n_systemStack.push(TRUE_WSTR);
         return;
       }
       part = L"";
@@ -627,6 +642,7 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
   }
 
   vm->systemStack.push_back(FALSE_WSTR);
+  vm->n_systemStack.push(FALSE_WSTR);
 }
 
 void Interpreter::executeConcat(const Instruction &instr) {
@@ -637,30 +653,31 @@ void Interpreter::executeConcat(const Instruction &instr) {
     ws += *it;
   }
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
   vm->systemStack.push_back(ws);
+  vm->n_systemStack.push(ws);
 }
 
-// TODO remove getOperands from this function.
 void Interpreter::executeChunk(const Instruction &instr) {
-  vector<wstring> operands = getOperands(instr);
-  unsigned int numOperands = operands.size();
+  vector<wstring>& st = vm->systemStack;
+  int numOperands = instr.intOp1;
 
   wstring chunk = L"";
   // If there is only one operand it's the full content of the chunk.
   if (numOperands == 1) {
-    chunk = L'^' + operands[0] + L'$';
+    const wstring& chunkContent = *(st.end() - 1);
+    chunk = L'^' + chunkContent + L'$';
   } else {
-    wstring name = operands[0];
-    wstring tags = operands[1];
+    const wstring& name = *(st.end() - numOperands);
+    const wstring& tags = *(st.end() - numOperands + 1);
     chunk += L'^' + name + tags;
 
     if (numOperands > 2) {
       // Only output enclosing {} in the chunker, in the interchunk the
       // 'chcontent' will already have the {}.
       if (vm->transferStage == TRANSFER) chunk += L'{';
-      for (unsigned int i = 2; i < numOperands; i++) {
-        chunk += operands[i];
+      for(auto it = st.end() - instr.intOp1 + 2; it != st.end(); ++it) {
+        chunk += *it;
       }
       if (vm->transferStage == TRANSFER) chunk += L'}';
     }
@@ -668,7 +685,9 @@ void Interpreter::executeChunk(const Instruction &instr) {
     chunk += L'$';
   }
 
+  removeFromStack(numOperands);
   vm->systemStack.push_back(chunk);
+  vm->n_systemStack.push(chunk);
 }
 
 bool
@@ -715,8 +734,10 @@ void Interpreter::executeEndsWith(const Instruction &instr) {
 
   if (endsWith(word, suffixes)) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -726,8 +747,10 @@ void Interpreter::executeEndsWithIg(const Instruction &instr) {
 
   if (endsWith(word, preffixes)) {
     vm->systemStack.push_back(TRUE_WSTR);
+    vm->n_systemStack.push(TRUE_WSTR);
   } else {
     vm->systemStack.push_back(FALSE_WSTR);
+    vm->n_systemStack.push(FALSE_WSTR);
   }
 }
 
@@ -759,13 +782,15 @@ void Interpreter::executeLu(const Instruction &instr) {
   }
   lu += L'$';
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
 
   // If the lu is empty, only the ^$, then push an empty string.
   if (lu.size() == 2) {
     vm->systemStack.push_back(L"");
+    vm->n_systemStack.push(L"");
   } else {
     vm->systemStack.push_back(lu);
+    vm->n_systemStack.push(lu);
   }
 }
 
@@ -777,11 +802,13 @@ void Interpreter::executeLuCount(const Instruction &instr) {
   ws << luCount;
 
   vm->systemStack.push_back(ws.str());
+  vm->n_systemStack.push(ws.str());
 }
 
 void Interpreter::executeMlu(const Instruction &instr) {
   if (instr.intOp1 == 0) {
     vm->systemStack.push_back(L"");
+    vm->n_systemStack.push(L"");
     return;
   }
 
@@ -796,8 +823,9 @@ void Interpreter::executeMlu(const Instruction &instr) {
   }
   mlu[mlu.size() - 1] = L'$';
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
   vm->systemStack.push_back(mlu);
+  vm->n_systemStack.push(mlu);
 }
 
 void Interpreter::executeCaseOf(const Instruction &instr) {
@@ -821,6 +849,7 @@ void Interpreter::executeModifyCase(const Instruction &instr) {
   container = VMWstringUtils::changeCase(container, newCase);
 
   vm->systemStack.push_back(container);
+  vm->n_systemStack.push(container);
 }
 
 void Interpreter::executeOut(const Instruction &instr) {
@@ -831,31 +860,36 @@ void Interpreter::executeOut(const Instruction &instr) {
     ws += *it;
   }
 
-  removeFromStack(st, instr.intOp1);
+  removeFromStack(instr.intOp1);
   vm->writeOutput(ws);
 }
 
 void Interpreter::executePushInt(const Instruction &instr) {
   // FIXME should use the numeric value instead.
   vm->systemStack.push_back(instr.op1);
+  vm->n_systemStack.push(instr.op1);
 }
 
 void Interpreter::executePushVar(const Instruction &instr) {
   const wstring& varName = instr.op1;
   if (vm->variables.find(varName) != vm->variables.end()) {
     vm->systemStack.push_back(vm->variables[varName]);
+    vm->n_systemStack.push(vm->variables[varName]);
   } else {
     vm->variables[varName] = L"";
     vm->systemStack.push_back(L"");
+    vm->n_systemStack.push(L"");
   }
 }
 
 void Interpreter::executePushStr(const Instruction &instr) {
   vm->systemStack.push_back(instr.op1);
+  vm->n_systemStack.push(instr.op1);
 }
 
 void Interpreter::executePushbl(const Instruction &instr) {
   vm->systemStack.push_back(L" ");
+  vm->n_systemStack.push(L" ");
 }
 
 void Interpreter::executePushsb(const Instruction &instr) {
@@ -867,12 +901,15 @@ void Interpreter::executePushsb(const Instruction &instr) {
   if (vm->transferStage == POSTCHUNK) {
     ChunkWord *word = (ChunkWord *) vm->words[vm->currentWords[0]];
     vm->systemStack.push_back(word->getBlank(relativePos));
+    vm->n_systemStack.push(word->getBlank(relativePos));
   } else {
     unsigned int actualPos = relativePos + vm->currentWords[0];
     if (actualPos < vm->superblanks.size()) {
       vm->systemStack.push_back(vm->superblanks[actualPos]);
+      vm->n_systemStack.push(vm->superblanks[actualPos]);
     } else {
       vm->systemStack.push_back(L"");
+      vm->n_systemStack.push(L"");
     }
   }
 }
