@@ -228,10 +228,8 @@ vector<int> Interpreter::getNOperands(const Instruction &instr,
  * @return the top of the stack
  */
 wstring Interpreter::popSystemStack() {
-  wstring top = vm->systemStack.back();
   vm->systemStack.pop_back();
-  wstring w = vm->n_systemStack.popString();
-  return top;
+  return vm->n_systemStack.popString();
 }
 
 /**
@@ -240,9 +238,8 @@ wstring Interpreter::popSystemStack() {
  * @return the top of the stack
  */
 int Interpreter::popSystemStackInteger() {
-  int intValue = VMWstringUtils::stringTo<int>(vm->systemStack.back());
+  int intValue = vm->n_systemStack.popInteger();
   vm->systemStack.pop_back();
-  vm->n_systemStack.pop();
   return intValue;
 }
 
