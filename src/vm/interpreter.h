@@ -64,10 +64,7 @@ private:
   LexicalUnit* getSourceLexicalUnit(int);
   LexicalUnit* getTargetLexicalUnit(int);
   vector<int> getNOperands(const Instruction &, const wstring &);
-  wstring popSystemStack();
-  int popSystemStackInteger();
   void pushCaseToStack(CASE);
-  void removeFromStack(int);
 
   void executeAddtrie(const Instruction&);
   void executeAnd(const Instruction&);

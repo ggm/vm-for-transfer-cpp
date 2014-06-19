@@ -94,7 +94,6 @@ private:
 
   /** As a stack-based vm, the operands and results of every instruction are
    * stored in the system stack. */
-  vector<wstring> systemStack;
   SystemStack n_systemStack;
 
   /// The vm also has a trie where all patterns are stored.
