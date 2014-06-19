@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 #include "vm_wstring_utils.h"
 
@@ -10,6 +11,7 @@
 
 struct SystemStackSlot {
   std::wstring wstr;
+  int intVal;
 };
 
 class SystemStack {
@@ -42,6 +44,16 @@ class SystemStack {
   inline void push(const std::wstring& wstr) {
     _stack[_index].wstr = wstr;
     _index++;
+  }
+
+  inline void pushTrueInteger(int value) {
+    _stack[_index].intVal = value;
+    _index++;
+  }
+
+  inline int popTrueInteger() {
+    _index--;
+    return _stack[_index].intVal;
   }
 
   inline std::wstring popString() {

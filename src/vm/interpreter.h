@@ -34,13 +34,6 @@ class VM;
 class Interpreter {
 
 public:
-
-  /// Define a constant to represent false as a return value of an instruction.
-  static const wstring FALSE_WSTR; // = L"0" defined in the .cc
-
-  /// Define a constant to represent true as a return value of an instruction.
-  static const wstring TRUE_WSTR; // = L"1" defined in the .cc
-
   Interpreter();
   Interpreter(VM *);
   Interpreter(const Interpreter &);
