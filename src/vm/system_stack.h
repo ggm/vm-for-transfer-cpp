@@ -15,16 +15,16 @@ struct SystemStackSlot {
 class SystemStack {
  private:
   SystemStackSlot* _stack;
-  int _index; // current top.
+  int _index; // next free.
 
  public:
   int size() {
-    return _index + 1;
+    return _index;
   }
 
   SystemStack() {
     _stack = new SystemStackSlot[STACK_SIZE];
-    _index = -1;
+    _index = 0;
   }
 
   ~SystemStack() {
@@ -40,20 +40,26 @@ class SystemStack {
   }
 
   inline void push(const std::wstring& wstr) {
-    _index++;
     _stack[_index].wstr = wstr;
+    _index++;
   }
 
   inline std::wstring popString() {
-    const std::wstring& wstr = _stack[_index].wstr;
     _index--;
-    return wstr;
+    return _stack[_index].wstr;
   }
 
   inline int popInteger() {
-    int intValue = VMWstringUtils::stringTo<int>(_stack[_index].wstr);
     _index--;
-    return intValue;
+    return VMWstringUtils::stringTo<int>(_stack[_index].wstr);
+  }
+
+  inline SystemStackSlot* relative(int relativePos) {
+    return _stack + _index - relativePos;
+  }
+
+  inline SystemStackSlot* end() {
+    return _stack + _index;
   }
 };
 

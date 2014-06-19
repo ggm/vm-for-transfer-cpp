@@ -282,11 +282,11 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
 }
 
 void Interpreter::executeAnd(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   bool result = true;
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    if(*it == FALSE_WSTR) {
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    if(it->wstr == FALSE_WSTR) {
       result = false;
       break;
     }
@@ -299,11 +299,11 @@ void Interpreter::executeAnd(const Instruction &instr) {
 }
 
 void Interpreter::executeOr(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   bool result = false;
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    if(*it == TRUE_WSTR) {
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    if(it->wstr == TRUE_WSTR) {
       result = true;
       break;
     }
@@ -327,11 +327,11 @@ void Interpreter::executeNot(const Instruction &instr) {
 }
 
 void Interpreter::executeAppend(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   wstring ws = L"";
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    ws += *it;
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    ws += it->wstr;
   }
 
   removeFromStack(instr.intOp1);
@@ -643,11 +643,11 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
 }
 
 void Interpreter::executeConcat(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   wstring ws = L"";
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    ws += *it;
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    ws += it->wstr;
   }
 
   removeFromStack(instr.intOp1);
@@ -655,26 +655,27 @@ void Interpreter::executeConcat(const Instruction &instr) {
   vm->n_systemStack.push(ws);
 }
 
+
 void Interpreter::executeChunk(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
   int numOperands = instr.intOp1;
 
   wstring chunk = L"";
   // If there is only one operand it's the full content of the chunk.
   if (numOperands == 1) {
-    const wstring& chunkContent = *(st.end() - 1);
+    const wstring& chunkContent = (st.relative(1))->wstr;
     chunk = L'^' + chunkContent + L'$';
   } else {
-    const wstring& name = *(st.end() - numOperands);
-    const wstring& tags = *(st.end() - numOperands + 1);
+    const wstring& name = (st.relative(numOperands))->wstr;
+    const wstring& tags = (st.relative(numOperands - 1))->wstr;
     chunk += L'^' + name + tags;
 
     if (numOperands > 2) {
       // Only output enclosing {} in the chunker, in the interchunk the
       // 'chcontent' will already have the {}.
       if (vm->transferStage == TRANSFER) chunk += L'{';
-      for(auto it = st.end() - instr.intOp1 + 2; it != st.end(); ++it) {
-        chunk += *it;
+      for(SystemStackSlot* it = st.relative(instr.intOp1 - 2); it != st.end(); ++it) {
+        chunk += it->wstr;
       }
       if (vm->transferStage == TRANSFER) chunk += L'}';
     }
@@ -770,12 +771,12 @@ void Interpreter::executeJnz(const Instruction &instr) {
 }
 
 void Interpreter::executeLu(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   wstring lu = L"";
   lu += L'^';
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    lu += *it;
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    lu += it->wstr;
   }
   lu += L'$';
 
@@ -809,13 +810,13 @@ void Interpreter::executeMlu(const Instruction &instr) {
     return;
   }
 
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   // Append the lexical units, removing its ^...$
   wstring mlu = L"";
   mlu += L'^';
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    const wstring& curOperand = *it;
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    const wstring& curOperand = it->wstr;
     mlu += curOperand.substr(1, curOperand.size() - 2) + L"+";
   }
   mlu[mlu.size() - 1] = L'$';
@@ -850,11 +851,11 @@ void Interpreter::executeModifyCase(const Instruction &instr) {
 }
 
 void Interpreter::executeOut(const Instruction &instr) {
-  vector<wstring>& st = vm->systemStack;
+  SystemStack& st = vm->n_systemStack;
 
   wstring ws = L"";
-  for(auto it = st.end() - instr.intOp1; it != st.end(); ++it) {
-    ws += *it;
+  for(SystemStackSlot* it = st.relative(instr.intOp1); it != st.end(); ++it) {
+    ws += it->wstr;
   }
 
   removeFromStack(instr.intOp1);
