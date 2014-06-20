@@ -201,14 +201,15 @@ void Interpreter::execute(const Instruction &instr) {
  *
  * @return the operands in reversed stack order
  */
-vector<int> Interpreter::getNOperands(const Instruction &instr, int n) {
+vector<int> Interpreter::getNOperands(const Instruction &instr, int numOperands) {
   vector<int> operands;
 
-  while (n > 0) {
-    int operand = vm->systemStack.popInteger();
-    operands.insert(operands.begin(), operand);
-    n--;
+  SystemStack& st = vm->systemStack;
+  for(SystemStackSlot* it = st.relative(numOperands); it != st.end(); ++it) {
+    operands.push_back(it->intVal);
   }
+
+  vm->systemStack.pop(numOperands);
 
   return operands;
 }
