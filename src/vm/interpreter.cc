@@ -205,7 +205,7 @@ vector<int> Interpreter::getNOperands(const Instruction &instr, int n) {
   vector<int> operands;
 
   while (n > 0) {
-    int operand = vm->systemStack.popTrueInteger();
+    int operand = vm->systemStack.popInteger();
     operands.insert(operands.begin(), operand);
     n--;
   }
@@ -233,7 +233,7 @@ void Interpreter::pushCaseToStack(CASE valueCase) {
 }
 
 void Interpreter::executeAddtrie(const Instruction &instr) {
-  int numPatterns = vm->systemStack.popTrueInteger();
+  int numPatterns = vm->systemStack.popInteger();
 
   vector<wstring> pattern;
   while (numPatterns > 0) {
@@ -258,7 +258,7 @@ void Interpreter::executeAnd(const Instruction &instr) {
   }
 
   vm->systemStack.pop(instr.intOp1);
-  vm->systemStack.pushTrueInteger(result);
+  vm->systemStack.pushInteger(result);
 }
 
 void Interpreter::executeOr(const Instruction &instr) {
@@ -273,12 +273,12 @@ void Interpreter::executeOr(const Instruction &instr) {
   }
 
   vm->systemStack.pop(instr.intOp1);
-  vm->systemStack.pushTrueInteger(result);
+  vm->systemStack.pushInteger(result);
 }
 
 void Interpreter::executeNot(const Instruction &instr) {
-  int op1 = vm->systemStack.popTrueInteger();
-  vm->systemStack.pushTrueInteger(!op1);
+  int op1 = vm->systemStack.popInteger();
+  vm->systemStack.pushInteger(!op1);
 }
 
 void Interpreter::executeAppend(const Instruction &instr) {
@@ -329,9 +329,9 @@ void Interpreter::executeBeginsWith(const Instruction &instr) {
   wstring word = vm->systemStack.popString();
 
   if (beginsWith(word, preffixes)) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -340,9 +340,9 @@ void Interpreter::executeBeginsWithIg(const Instruction &instr) {
   wstring word = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   if (beginsWith(word, preffixes)) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -351,7 +351,7 @@ void Interpreter::executeCall(const Instruction &instr) {
   vm->callStack->saveCurrentPC(vm->PC);
 
   // Get the words passed as argument to the macro.
-  vector<int> operands = getNOperands(instr, vm->systemStack.popTrueInteger());
+  vector<int> operands = getNOperands(instr, vm->systemStack.popInteger());
 
   vector<int> words;
 
@@ -386,7 +386,7 @@ void Interpreter::executeRet(const Instruction &instr) {
 
 void Interpreter::executeClip(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -400,7 +400,7 @@ void Interpreter::executeClip(const Instruction &instr) {
 
 void Interpreter::executeClipsl(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -413,7 +413,7 @@ void Interpreter::executeClipsl(const Instruction &instr) {
 
 void Interpreter::executeCliptl(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -492,9 +492,9 @@ void Interpreter::executeCmp(const Instruction &instr) {
   wstring op2 = vm->systemStack.popString();
 
   if (op1 == op2) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -503,9 +503,9 @@ void Interpreter::executeCmpi(const Instruction &instr) {
   wstring op2 = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   if (op1 == op2) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -514,9 +514,9 @@ void Interpreter::executeCmpSubstr(const Instruction &instr) {
   wstring op2 = vm->systemStack.popString();
 
   if (op2.find(op1) != wstring::npos) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -525,9 +525,9 @@ void Interpreter::executeCmpiSubstr(const Instruction &instr) {
   wstring op2 = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   if (op2.find(op1) != wstring::npos) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -559,7 +559,7 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
 
     if (ch == L'|' || i == listSize - 1) {
       if (part == value) {
-        vm->systemStack.pushTrueInteger(TRUE_INT);
+        vm->systemStack.pushInteger(TRUE_INT);
         return;
       }
       part = L"";
@@ -568,7 +568,7 @@ void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
     }
   }
 
-  vm->systemStack.pushTrueInteger(FALSE_INT);
+  vm->systemStack.pushInteger(FALSE_INT);
 }
 
 void Interpreter::executeConcat(const Instruction &instr) {
@@ -658,9 +658,9 @@ void Interpreter::executeEndsWith(const Instruction &instr) {
   wstring word = vm->systemStack.popString();
 
   if (endsWith(word, suffixes)) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -669,9 +669,9 @@ void Interpreter::executeEndsWithIg(const Instruction &instr) {
   wstring word = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   if (endsWith(word, preffixes)) {
-    vm->systemStack.pushTrueInteger(TRUE_INT);
+    vm->systemStack.pushInteger(TRUE_INT);
   } else {
-    vm->systemStack.pushTrueInteger(FALSE_INT);
+    vm->systemStack.pushInteger(FALSE_INT);
   }
 }
 
@@ -680,14 +680,14 @@ void Interpreter::executeJmp(const Instruction &instr) {
 }
 
 void Interpreter::executeJz(const Instruction &instr) {
-  int condition = vm->systemStack.popTrueInteger();
+  int condition = vm->systemStack.popInteger();
   if (!condition) {
     modifyPC(instr.intOp1);
   }
 }
 
 void Interpreter::executeJnz(const Instruction &instr) {
-  int condition = vm->systemStack.popTrueInteger();
+  int condition = vm->systemStack.popInteger();
   if (condition) {
     modifyPC(instr.intOp1);
   }
@@ -750,7 +750,7 @@ void Interpreter::executeCaseOf(const Instruction &instr) {
 }
 
 void Interpreter::executeGetCaseFrom(const Instruction &instr) {
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
   wstring lem = lu->getPart(LEM);
 
@@ -779,7 +779,7 @@ void Interpreter::executeOut(const Instruction &instr) {
 }
 
 void Interpreter::executePushInt(const Instruction &instr) {
-  vm->systemStack.pushTrueInteger(instr.intOp1);
+  vm->systemStack.pushInteger(instr.intOp1);
 }
 
 void Interpreter::executePushVar(const Instruction &instr) {
@@ -822,7 +822,7 @@ void Interpreter::executePushsb(const Instruction &instr) {
 void Interpreter::executeStorecl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring lemmaAndTags = lu->getPart(LEM) + lu->getPart(TAGS);
@@ -832,7 +832,7 @@ void Interpreter::executeStorecl(const Instruction &instr) {
 void Interpreter::executeStoresl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   handleStoreClipInstruction(parts, lu, lu->getWhole(), value);
@@ -841,7 +841,7 @@ void Interpreter::executeStoresl(const Instruction &instr) {
 void Interpreter::executeStoretl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popTrueInteger();
+  int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
   handleStoreClipInstruction(parts, lu, lu->getWhole(), value);

@@ -46,12 +46,12 @@ class SystemStack {
     _index++;
   }
 
-  inline void pushTrueInteger(int value) {
+  inline void pushInteger(int value) {
     _stack[_index].intVal = value;
     _index++;
   }
 
-  inline int popTrueInteger() {
+  inline int popInteger() {
     _index--;
     return _stack[_index].intVal;
   }
