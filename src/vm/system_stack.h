@@ -12,7 +12,6 @@
 struct SystemStackSlot {
   std::wstring wstr;
   int intVal;
-  bool pushedByInteger;
 };
 
 class SystemStack {
@@ -28,9 +27,6 @@ class SystemStack {
   SystemStack() {
     _stack = new SystemStackSlot[STACK_SIZE];
     _index = 0;
-    for(int i = 0; i < STACK_SIZE; ++i) {
-      _stack[i].pushedByInteger = false;
-    }
   }
 
   ~SystemStack() {
@@ -50,12 +46,6 @@ class SystemStack {
     _index++;
   }
 
-  inline void pushInteger(const std::wstring& wstr) {
-    wcerr << "pushInteger" << endl;
-    _stack[_index].pushedByInteger = true;
-    push(wstr);
-  }
-
   inline void pushTrueInteger(int value) {
     _stack[_index].intVal = value;
     _index++;
@@ -68,21 +58,7 @@ class SystemStack {
 
   inline std::wstring popString() {
     _index--;
-    if(_stack[_index].pushedByInteger) {
-      wcerr << "popString on integer" << endl;
-    }
-    _stack[_index].pushedByInteger = false;
     return _stack[_index].wstr;
-  }
-
-  inline int popInteger() {
-    wcerr << "popInteger" << endl;
-    _index--;
-    if(!_stack[_index].pushedByInteger) {
-      wcerr << "popInteger on non integer" << endl;
-    }
-    _stack[_index].pushedByInteger = false;
-    return VMWstringUtils::stringTo<int>(_stack[_index].wstr);
   }
 
   inline SystemStackSlot* relative(int relativePos) {

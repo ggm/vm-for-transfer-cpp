@@ -418,6 +418,7 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     case MLU:
     case LU:
     case OUT:
+    case PUSH_INT:
       instr.intOp1 = VMWstringUtils::stringTo<int>(operand);
       break;
     default:

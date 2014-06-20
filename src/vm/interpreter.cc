@@ -205,7 +205,7 @@ vector<int> Interpreter::getNOperands(const Instruction &instr, int n) {
   vector<int> operands;
 
   while (n > 0) {
-    int operand = vm->systemStack.popInteger();
+    int operand = vm->systemStack.popTrueInteger();
     operands.insert(operands.begin(), operand);
     n--;
   }
@@ -233,7 +233,7 @@ void Interpreter::pushCaseToStack(CASE valueCase) {
 }
 
 void Interpreter::executeAddtrie(const Instruction &instr) {
-  int numPatterns = vm->systemStack.popInteger();
+  int numPatterns = vm->systemStack.popTrueInteger();
 
   vector<wstring> pattern;
   while (numPatterns > 0) {
@@ -351,7 +351,7 @@ void Interpreter::executeCall(const Instruction &instr) {
   vm->callStack->saveCurrentPC(vm->PC);
 
   // Get the words passed as argument to the macro.
-  vector<int> operands = getNOperands(instr, vm->systemStack.popInteger());
+  vector<int> operands = getNOperands(instr, vm->systemStack.popTrueInteger());
 
   vector<int> words;
 
@@ -386,7 +386,7 @@ void Interpreter::executeRet(const Instruction &instr) {
 
 void Interpreter::executeClip(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -400,7 +400,7 @@ void Interpreter::executeClip(const Instruction &instr) {
 
 void Interpreter::executeClipsl(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -413,7 +413,7 @@ void Interpreter::executeClipsl(const Instruction &instr) {
 
 void Interpreter::executeCliptl(const Instruction &instr) {
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
   wstring linkTo = instr.op1;
@@ -750,7 +750,7 @@ void Interpreter::executeCaseOf(const Instruction &instr) {
 }
 
 void Interpreter::executeGetCaseFrom(const Instruction &instr) {
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
   wstring lem = lu->getPart(LEM);
 
@@ -779,7 +779,7 @@ void Interpreter::executeOut(const Instruction &instr) {
 }
 
 void Interpreter::executePushInt(const Instruction &instr) {
-  vm->systemStack.pushInteger(instr.op1);
+  vm->systemStack.pushTrueInteger(instr.intOp1);
 }
 
 void Interpreter::executePushVar(const Instruction &instr) {
@@ -822,7 +822,7 @@ void Interpreter::executePushsb(const Instruction &instr) {
 void Interpreter::executeStorecl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   wstring lemmaAndTags = lu->getPart(LEM) + lu->getPart(TAGS);
@@ -832,7 +832,7 @@ void Interpreter::executeStorecl(const Instruction &instr) {
 void Interpreter::executeStoresl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
   handleStoreClipInstruction(parts, lu, lu->getWhole(), value);
@@ -841,7 +841,7 @@ void Interpreter::executeStoresl(const Instruction &instr) {
 void Interpreter::executeStoretl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring parts = vm->systemStack.popString();
-  int pos = vm->systemStack.popInteger();
+  int pos = vm->systemStack.popTrueInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
   handleStoreClipInstruction(parts, lu, lu->getWhole(), value);
