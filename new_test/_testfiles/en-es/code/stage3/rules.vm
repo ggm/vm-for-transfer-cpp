@@ -270,7 +270,7 @@ clip
 lu 1
 out 3
 lu-count
-push-int 3
+push-str 3
 cmp
 jz when_5_end
 pushsb 2
@@ -430,7 +430,7 @@ clip
 lu 1
 out 5
 lu-count
-push-int 4
+push-str 4
 cmp
 jz when_8_end
 pushsb 3
@@ -442,7 +442,7 @@ out 2
 jmp choose_8_end
 when_8_end:
 lu-count
-push-int 5
+push-str 5
 cmp
 jz when_9_end
 pushsb 3
@@ -585,7 +585,7 @@ clip
 lu 1
 out 7
 lu-count
-push-int 5
+push-str 5
 cmp
 jz when_12_end
 pushsb 4
@@ -597,7 +597,7 @@ out 2
 jmp choose_11_end
 when_12_end:
 lu-count
-push-int 6
+push-str 6
 cmp
 jz when_13_end
 pushsb 4
@@ -830,7 +830,7 @@ clip
 lu 1
 out 9
 lu-count
-push-int 6
+push-str 6
 cmp
 jz when_17_end
 pushsb 5
@@ -842,7 +842,7 @@ out 2
 jmp choose_15_end
 when_17_end:
 lu-count
-push-int 7
+push-str 7
 cmp
 jz when_18_end
 pushsb 5
@@ -935,7 +935,7 @@ clip
 lu 1
 out 11
 lu-count
-push-int 7
+push-str 7
 cmp
 jz when_20_end
 pushsb 6

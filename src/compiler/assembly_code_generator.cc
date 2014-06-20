@@ -377,14 +377,7 @@ void AssemblyCodeGenerator::genLitStart(const Event & event) {
   genDebugCode(event);
 
   wstring value = event.getAttribute(L"v");
-  wstringstream ws(value);
-  int numericValue;
-
-  if (ws >> numericValue) {
-    addCode(PUSH_INT_OP + INSTR_SEP + value);
-  } else {
-    addCode(PUSH_STR_OP + INSTR_SEP + value);
-  }
+  addCode(PUSH_STR_OP + INSTR_SEP + value);
 }
 
 void AssemblyCodeGenerator::genLitTagStart(const Event & event) {

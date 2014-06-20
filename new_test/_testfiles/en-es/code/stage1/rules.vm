@@ -15199,7 +15199,7 @@ call firstWord
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 1
 push-str lem
@@ -15290,7 +15290,7 @@ call firstWord
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 1
 push-str lem
@@ -15392,7 +15392,7 @@ call firstWord
 push-int 2
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 2
 push-str lem
@@ -15513,7 +15513,7 @@ call firstWord
 push-int 2
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 2
 push-str lem
@@ -15658,7 +15658,7 @@ choose_181_end:
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 1
 push-str lem
@@ -15731,7 +15731,7 @@ call firstWord
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 1
 push-str lem
@@ -15840,7 +15840,7 @@ choose_184_end:
 push-int 2
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 2
 push-str lem
@@ -15937,7 +15937,7 @@ call firstWord
 push-int 2
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 push-int 2
 push-str lem

@@ -10682,7 +10682,7 @@ call f_concord2
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 not
 jz when_218_end
@@ -13705,7 +13705,7 @@ call f_concord3
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 not
 jz when_259_end
@@ -13780,7 +13780,7 @@ call f_concord3
 push-int 1
 push-str lem
 clipsl
-push-int 1
+push-str 1
 cmp
 not
 jz when_260_end

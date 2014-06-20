@@ -716,6 +716,9 @@ void Interpreter::executeLu(const Instruction &instr) {
 void Interpreter::executeLuCount(const Instruction &instr) {
   ChunkWord *word = (ChunkWord *) vm->words[vm->currentWords[0]];
   int luCount = word->getLuCount();
+  // FIXME this should be an int, but due to non-specialized cmp we cannot do it.
+  // The problem is that CMP treats everything as strings. Because this value can
+  // be used in a cmp, we should have a specialized CMP instruction for integers.
   vm->systemStack.push(VMWstringUtils::integerToString(luCount));
 }
 
