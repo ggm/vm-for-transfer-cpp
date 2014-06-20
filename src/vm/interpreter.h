@@ -56,7 +56,7 @@ private:
   void modifyPC(int);
   LexicalUnit* getSourceLexicalUnit(int);
   LexicalUnit* getTargetLexicalUnit(int);
-  vector<int> getNOperands(const Instruction &, const wstring &);
+  vector<int> getNOperands(const Instruction &, int);
   void pushCaseToStack(CASE);
 
   void executeAddtrie(const Instruction&);

@@ -396,10 +396,10 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
 
     switch (instr.opCode) {
     case ADDTRIE:
-      instr.op1 = getRuleNumber(operand);
+      instr.intOp1 = VMWstringUtils::stringTo<int>(getRuleNumber(operand));
       break;
     case CALL:
-      instr.op1 = macroNumber.find(operand)->second;
+      instr.intOp1 = VMWstringUtils::stringTo<int>(macroNumber.find(operand)->second);
       break;
     case JMP: /* falls through */
     case JZ: /* falls through */
@@ -418,8 +418,7 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     case MLU:
     case LU:
     case OUT:
-      instr.op1 = operand;
-      instr.intOp1 = VMWstringUtils::stringTo<int>(instr.op1);
+      instr.intOp1 = VMWstringUtils::stringTo<int>(operand);
       break;
     default:
       instr.op1 = operand;

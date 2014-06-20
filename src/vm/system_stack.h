@@ -46,6 +46,11 @@ class SystemStack {
     _index++;
   }
 
+  inline void pushInteger(const std::wstring& wstr) {
+    wcerr << "pushInteger" << endl;
+    push(wstr);
+  }
+
   inline void pushTrueInteger(int value) {
     _stack[_index].intVal = value;
     _index++;
@@ -62,6 +67,7 @@ class SystemStack {
   }
 
   inline int popInteger() {
+    wcerr << "popInteger" << endl;
     _index--;
     return VMWstringUtils::stringTo<int>(_stack[_index].wstr);
   }

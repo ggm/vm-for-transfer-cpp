@@ -201,15 +201,13 @@ void Interpreter::execute(const Instruction &instr) {
  *
  * @return the operands in reversed stack order
  */
-vector<int> Interpreter::getNOperands(const Instruction &instr,
-    const wstring &n) {
+vector<int> Interpreter::getNOperands(const Instruction &instr, int n) {
   vector<int> operands;
 
-  int numOperands = VMWstringUtils::stringTo<int>(n);
-  while (numOperands > 0) {
+  while (n > 0) {
     int operand = vm->systemStack.popInteger();
     operands.insert(operands.begin(), operand);
-    numOperands--;
+    n--;
   }
 
   return operands;
@@ -240,14 +238,12 @@ void Interpreter::executeAddtrie(const Instruction &instr) {
   vector<wstring> pattern;
   while (numPatterns > 0) {
     wstring part = vm->systemStack.popString();
-    pattern.insert(pattern.begin(),
-        VMWstringUtils::replace(part, L"\"", L""));
+    pattern.insert(pattern.begin(), part);
     numPatterns--;
   }
 
   // Add the pattern with the rule number to the trie.
-  int ruleNumber = VMWstringUtils::stringTo<int>(instr.op1);
-  vm->systemTrie.addPattern(pattern, ruleNumber);
+  vm->systemTrie.addPattern(pattern, instr.intOp1);
 }
 
 void Interpreter::executeAnd(const Instruction &instr) {
@@ -355,7 +351,7 @@ void Interpreter::executeCall(const Instruction &instr) {
   vm->callStack->saveCurrentPC(vm->PC);
 
   // Get the words passed as argument to the macro.
-  vector<int> operands = getNOperands(instr, vm->systemStack.popString());
+  vector<int> operands = getNOperands(instr, vm->systemStack.popInteger());
 
   vector<int> words;
 
@@ -372,11 +368,9 @@ void Interpreter::executeCall(const Instruction &instr) {
   }
 
   // Create an entry in the call stack with the macro called.
-  int macroNumber = VMWstringUtils::stringTo<int>(instr.op1);
-
   TCALL call;
   call.PC = 0;
-  call.number = macroNumber;
+  call.number = instr.intOp1;
   call.section = MACROS_SECTION;
   call.words = words;
   vm->callStack->pushCall(call);
@@ -782,8 +776,7 @@ void Interpreter::executeOut(const Instruction &instr) {
 }
 
 void Interpreter::executePushInt(const Instruction &instr) {
-  // FIXME should use the numeric value instead.
-  vm->systemStack.push(instr.op1);
+  vm->systemStack.pushInteger(instr.op1);
 }
 
 void Interpreter::executePushVar(const Instruction &instr) {
