@@ -76,38 +76,50 @@ void BilingualWord::tokenizeInput(wistream &input,
   wchar_t ch;
   BilingualWord *word;
 
-  while (input.get(ch)) {
-    if (ignoreMultipleTargets && ch != L'$') {
-      continue;
-    } else if (escapeNextChar) {
-      token += ch;
-      escapeNextChar = false;
-    } else if (ch == L'\\') {
-      token += ch;
-      escapeNextChar = true;
-    } else if (ch == L'^') {
-      word = new BilingualWord();
+  wstring buffer(1024, L'\0');
 
-      blanks.push_back(token);
-      token = L"";
-    } else if (ch == L'$') {
-      word->target = new BilingualLexicalUnit(token);
+  while (!input.eof()) {
+    input.read(&buffer[0], buffer.size());
+    int size = input.gcount();
+    int startToken = 0;
+    for (int i = 0; i < size; ++i) {
+      ch = buffer[i];
+      if (ignoreMultipleTargets && ch != L'$') {
+          token += buffer.substr(startToken, i - startToken);
+          startToken = i + 1;
+      } else if (escapeNextChar) {
+        escapeNextChar = false;
+      } else if (ch == L'\\') {
+        escapeNextChar = true;
+      } else if (ch == L'^') {
+        word = new BilingualWord();
 
-      words.push_back(word);
-      token = L"";
-      ignoreMultipleTargets = false;
-      sourceSet = false;
-    } else if (ch == L'/') {
-      if (!sourceSet) {
-        word->source = new BilingualLexicalUnit(token);
+        token += buffer.substr(startToken, i - startToken);
+        blanks.push_back(token);
+        startToken = i + 1;
         token = L"";
-        sourceSet = true;
-      } else {
-        ignoreMultipleTargets = true;
+      } else if (ch == L'$') {
+        token += buffer.substr(startToken, i - startToken);
+        word->target = new BilingualLexicalUnit(token);
+
+        words.push_back(word);
+        startToken = i + 1;
+        token = L"";
+        ignoreMultipleTargets = false;
+        sourceSet = false;
+      } else if (ch == L'/') {
+        token += buffer.substr(startToken, i - startToken);
+        startToken = i + 1;
+        if (!sourceSet) {
+          word->source = new BilingualLexicalUnit(token);
+          token = L"";
+          sourceSet = true;
+        } else {
+          ignoreMultipleTargets = true;
+        }
       }
-    } else {
-      token += ch;
     }
+    token += buffer.substr(startToken, size - startToken);
   }
 
   // Add everything at the end until the last ']' as a superblank.

@@ -276,46 +276,53 @@ void ChunkWord::tokenizeInput(wistream &input, vector<TransferWord*> &words,
   wchar_t ch;
   ChunkWord *word = new ChunkWord();
 
-  while (input.get(ch)) {
-    if (escapeNextChar) {
-      token += ch;
-      escapeNextChar = false;
-    }  else if (ch == L'\\') {
-      token += ch;
-      escapeNextChar = true;
-    } else if (ch == L'^') {
-      // Read the ^ and $ of the lexical units but not of the chunks.
-      if (!chunkStart) {
-        token += ch;
-      } else {
-        // Characters between chunks are treated like superblanks.
-        blanks.push_back(token);
+  wstring buffer(1024, L'\0');
+
+  while (!input.eof()) {
+    input.read(&buffer[0], buffer.size());
+    int size = input.gcount();
+    int startToken = 0;
+    for (int i = 0; i < size; ++i) {
+      ch = buffer[i];
+      if (escapeNextChar) {
+        escapeNextChar = false;
+      }  else if (ch == L'\\') {
+        escapeNextChar = true;
+      } else if (ch == L'^') {
+        // Read the ^ and $ of the lexical units but not of the chunks.
+        if (chunkStart) {
+          // Characters between chunks are treated like superblanks.
+          token += buffer.substr(startToken, i - startToken);
+          blanks.push_back(token);
+          token = L"";
+          startToken = i + 1;
+          chunkStart = false;
+        }
+      } else if (ch == L'$') {
+        if (chunkStart) {
+          token += buffer.substr(startToken, i - startToken);
+          startToken = i + 1;
+        }
+      } else if (ch == L'}') {
+        token += buffer.substr(startToken, i - startToken + 1);
+        startToken = i + 1;
+        word->chunk = new ChunkLexicalUnit(token);
+
+        if (solveRefs) {
+          word->solveReferences();
+        }
+        if (parseContent) {
+          word->parseChunkContent();
+        }
+
+        words.push_back(word);
+
+        chunkStart = true;
         token = L"";
-        chunkStart = false;
+        word = new ChunkWord();
       }
-    } else if (ch == L'$') {
-      if (!chunkStart) {
-        token += ch;
-      }
-    } else if (ch == L'}') {
-      token += ch;
-      word->chunk = new ChunkLexicalUnit(token);
-
-      if (solveRefs) {
-        word->solveReferences();
-      }
-      if (parseContent) {
-        word->parseChunkContent();
-      }
-
-      words.push_back(word);
-
-      chunkStart = true;
-      token = L"";
-      word = new ChunkWord();
-    } else {
-      token += ch;
     }
+    token += buffer.substr(startToken, size - startToken);
   }
 
   // Append the last superblank of the input, usually the '\n'.
