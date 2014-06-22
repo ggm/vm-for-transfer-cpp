@@ -10,7 +10,7 @@ class StringPool {
   static std::unordered_map<std::wstring, int> _stringIndex;
   static std::vector<std::wstring> _stringPool;
  public:
-  static int getCode(const std::wstring& wstr) {
+  static inline int getCode(const std::wstring& wstr) {
     auto it = _stringIndex.find(wstr);
     if(it != _stringIndex.end()) {
       return it->second;
@@ -22,8 +22,12 @@ class StringPool {
     }
   }
 
-  static size_t size() {
+  static inline size_t size() {
     return _stringPool.size();
+  }
+
+  static inline const std::wstring& ref(int index) {
+    return _stringPool[index];
   }
 };
 
