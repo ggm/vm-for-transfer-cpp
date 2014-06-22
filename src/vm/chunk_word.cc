@@ -72,32 +72,25 @@ void ChunkWord::solveReferences() {
   vector<wstring> tagsValues;
 
   wstring tags = chunk->getPart(TAGS);
-  wstring token = L"";
-  wchar_t ch;
-  for (unsigned int i = 0; i < tags.size(); i++) {
-    ch = tags[i];
-    if (ch == L'>') {
-      token += ch;
-      tagsValues.push_back(token);
-      token = L"";
-    } else {
-      token += ch;
-    }
+
+  wstring::size_type startPos = 0;
+  wstring::size_type delimPos = tags.find(L'>', startPos);
+  while (delimPos != wstring::npos) {
+    wstring token = tags.substr(startPos, delimPos - startPos + 1);
+    tagsValues.push_back(token);
+    startPos = delimPos + 1;
+    delimPos = tags.find(L'>', startPos);
   }
 
-  locale loc;
   wstring chcontent = chunk->getPart(CHCONTENT);
   wstring newChcontent = chcontent;
   wstring newWhole = chunk->getPart(WHOLE);
 
   for (unsigned int i = 0; i < chcontent.size(); i++) {
-    ch = chcontent[i];
-    if (isdigit(ch, loc)) {
+    wchar_t ch = chcontent[i];
+    if (VMWstringUtils::isdigit(ch)) {
       if (chcontent[i - 1] == L'<' && chcontent[i + 1] == L'>') {
-        unsigned int pos;
-        wstringstream ws;
-        ws << ch;
-        ws >> pos;
+        unsigned int pos = VMWstringUtils::charTo<unsigned int>(ch);
         wstring tag;
         if(pos - 1 < tagsValues.size()) {
           tag = tagsValues[pos - 1];

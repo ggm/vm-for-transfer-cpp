@@ -41,6 +41,14 @@ public:
     ss >> value;
     return value;
   }
+  template<typename T>
+  static T charTo(wchar_t s) {
+    static std::wstringstream ss;
+    static T value;
+    ss << s << endl;
+    ss >> value;
+    return value;
+  }
 
   static wstring integerToString(int);
   static bool iswupper(const wstring &);
@@ -52,6 +60,9 @@ public:
   static wstring changeCase(const wstring &, CASE);
   static wstring changeCase(const wstring &, const wstring &);
   static wstring replace(wstring &, const wstring &, const wstring &);
+  inline static bool isdigit(wchar_t ch) {
+    return std::isdigit(ch, _loc);
+  }
 
 private:
   static const std::locale _loc;

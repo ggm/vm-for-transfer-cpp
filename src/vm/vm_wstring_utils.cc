@@ -47,7 +47,7 @@ bool VMWstringUtils::iswupper(const wstring &wstr) {
  */
 bool VMWstringUtils::iswnumeric(const wstring &wstr) {
   for (unsigned int i = 0; i < wstr.size(); i++) {
-    if (!isdigit(wstr[i], _loc)) {
+    if (!std::isdigit(wstr[i], _loc)) {
       return false;
     }
   }
