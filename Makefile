@@ -18,7 +18,7 @@ COMP_OBJ = $(patsubst %,$(COMPILER_DIR)/%,$(_COMP_OBJ))
 VM_DIR=./src/vm
 VM_CFLAGS=
 VM_LIBS=
-_VM_OBJ= vm.o scope.o assembly_loader.o bilingual_lexical_unit.o bilingual_word.o chunk_lexical_unit.o chunk_word.o vm_wstring_utils.o system_trie.o call_stack.o interpreter.o system_stack.o
+_VM_OBJ= vm.o scope.o assembly_loader.o bilingual_lexical_unit.o bilingual_word.o chunk_lexical_unit.o chunk_word.o vm_wstring_utils.o system_trie.o call_stack.o interpreter.o system_stack.o string_pool.o
 VM_OBJ = $(patsubst %,$(VM_DIR)/%,$(_VM_OBJ))
 
 .PHONY: all clean doc test
