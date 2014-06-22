@@ -44,6 +44,7 @@ struct TrieNode {
   TrieNode* _insertPattern(const wchar_t* pattern, int ruleNumber);
   TrieNode* insertPattern(const std::wstring& pattern, int ruleNumber);
   void pushNextNodes(const std::wstring&, std::list<TrieNode*>&) const;
+  void pushNextNodes(int patternHash, std::list<TrieNode*>&) const;
 };
 
 class SystemTrie {
@@ -56,9 +57,12 @@ class SystemTrie {
 
   std::list<TrieNode*> getPatternNodes(const std::wstring& pattern, TrieNode *startNode);
   std::list<TrieNode*> getPatternNodes(const std::wstring& pattern);
+  std::list<TrieNode*> getPatternNodes(const std::vector<int>& patternHashes, TrieNode* startNode);
+  std::list<TrieNode*> getPatternNodes(const std::vector<int>& patternHashes);
   void addPattern(const std::vector<std::wstring> &pattern, int ruleNumber);
   int getRuleNumber(const std::wstring &pattern);
   int getRuleNumber(const std::list<TrieNode*>& nodes);
+  int getRuleNumber(const std::vector<int>& patternHashes);
 };
 
 #endif

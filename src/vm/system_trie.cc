@@ -116,6 +116,24 @@ TrieNode* TrieNode::insertPattern(const wstring& pattern, int ruleNumber) {
   return _insertPattern(patternLowered.c_str(), ruleNumber);
 }
 
+void TrieNode::pushNextNodes(int patternHash, list<TrieNode*>& nodes) const {
+  const wstring& wstr = StringPool::ref(patternHash);
+
+  if(wstr[0] == L'*') return;
+
+  // TODO optimize.
+  const auto& it = intLinks.find(patternHash);
+  if(it != intLinks.end()) {
+    nodes.push_back(it->second);
+  }
+
+  TrieNode* whichStarTransition = starTransition;
+  if(wstr[0] == L'<') whichStarTransition = starTagTransition;
+  if(whichStarTransition) {
+    nodes.push_back(whichStarTransition);
+  }
+}
+
 void TrieNode::pushNextNodes(const wstring& wstr, list<TrieNode*>& nodes) const {
   if(wstr[0] == L'*') return;
 
@@ -256,8 +274,42 @@ list<TrieNode*> SystemTrie::getPatternNodes(const wstring& pattern) {
   return getPatternNodes(pattern, root);
 }
 
+list<TrieNode*> SystemTrie::getPatternNodes(const vector<int>& patternHashes, TrieNode *startNode) {
+  list<TrieNode *> curNodes;
+
+  if (patternHashes.size() == 0) {
+    return curNodes;
+  }
+
+  curNodes.push_back(startNode);
+
+  for(int h : patternHashes) {
+    list<TrieNode*> nextNodes;
+    for(TrieNode* node : curNodes) {
+      node->pushNextNodes(h, nextNodes);
+    }
+
+    curNodes = std::move(nextNodes);
+
+    if (curNodes.size() == 0) {
+      return curNodes;
+    }
+  }
+
+  return curNodes;
+}
+
+list<TrieNode*> SystemTrie::getPatternNodes(const vector<int>& patternHashes) {
+  return getPatternNodes(patternHashes, root);
+}
+
 int SystemTrie::getRuleNumber(const wstring &pattern) {
   list<TrieNode *> nodes = getPatternNodes(pattern, root);
+  return getRuleNumber(nodes);
+}
+
+int SystemTrie::getRuleNumber(const vector<int>& patternHashes) {
+  list<TrieNode*> nodes = getPatternNodes(patternHashes, root);
   return getRuleNumber(nodes);
 }
 
