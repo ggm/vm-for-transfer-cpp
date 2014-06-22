@@ -328,12 +328,17 @@ wstring VM::getSourceWord(unsigned int pos) {
   }
 
   if (transferStage == TRANSFER) {
-    return ((BilingualWord *) words[pos])->getSource()->getWhole();
+    return
+        ((BilingualWord *) words[pos])->getSource()->getPart(LEM) +
+        ((BilingualWord *) words[pos])->getSource()->getPart(TAGS);
   } else if (transferStage == INTERCHUNK) {
     ChunkLexicalUnit *chunk = ((ChunkWord *) words[pos])->getChunk();
-    return chunk->getPart(LEM) + chunk->getPart(TAGS);
+    return
+        chunk->getPart(LEM) +
+        chunk->getPart(TAGS);
   } else {
-    return ((ChunkWord *) words[pos])->getChunk()->getPart(LEM);
+    return
+        ((ChunkWord *) words[pos])->getChunk()->getPart(LEM);
   }
 }
 
