@@ -151,31 +151,31 @@ void ChunkWord::parseChunkContent() {
   blanks.push_back(L"");
   bool firstLu = true;
 
-  wstring token = L"";
   wstring chcontent = chunk->getPart(CHCONTENT);
-  wchar_t ch;
   BilingualLexicalUnit *lu;
   bool escapeNextChar = false;
 
+  int tokenLength = 0, tokenStart = 1;
   // Ignore first and last chars '{' and '}'.
   for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
-    ch = chcontent[i];
+    wchar_t ch = chcontent[i];
     if (escapeNextChar) {
-      token += ch;
+      ++tokenLength;
       escapeNextChar = false;
     } else if (ch == L'\\') {
-      token += ch;
+      ++tokenLength;
       escapeNextChar = true;
     } else if (ch == L'^') {
       // After the first blank, append the blanks between lexical units.
       if (firstLu) {
         firstLu = false;
       } else {
-        blanks.push_back(token);
+        blanks.push_back(chcontent.substr(tokenStart, tokenLength));
       }
-      token = L"";
+      tokenStart += tokenLength + 1;
+      tokenLength = 0;
     } else if (ch == L'$') {
-      lu = new BilingualLexicalUnit(token);
+      lu = new BilingualLexicalUnit(chcontent.substr(tokenStart, tokenLength));
 
       if (upperCaseAll) {
         changeLemmaCase(*lu, pseudoLemmaCase);
@@ -186,9 +186,10 @@ void ChunkWord::parseChunkContent() {
 
       content.push_back(lu);
 
-      token = L"";
+      tokenStart += tokenLength + 1;
+      tokenLength = 0;
     } else {
-      token += ch;
+      ++tokenLength;
     }
   }
 }
