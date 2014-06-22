@@ -163,7 +163,7 @@ private:
   void selectNextRule();
   void selectNextRulePostchunk();
   void selectNextRuleLRLM();
-  void setRuleSelected(int, unsigned int, const wstring &);
+  void setRuleSelected(int, unsigned int);
   void processRuleEnd();
   void processUnmatchedPattern(TransferWord *);
 

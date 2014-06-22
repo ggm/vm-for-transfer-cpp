@@ -327,18 +327,16 @@ wstring VM::getSourceWord(unsigned int pos) {
     return L"";
   }
 
+  LexicalUnit* lu = NULL;
   if (transferStage == TRANSFER) {
-    return
-        ((BilingualWord *) words[pos])->getSource()->getPart(LEM) +
-        ((BilingualWord *) words[pos])->getSource()->getPart(TAGS);
+    lu = ((BilingualWord *) words[pos])->getSource();
+    return lu->getPart(LEM) + lu->getPart(TAGS);
   } else if (transferStage == INTERCHUNK) {
-    ChunkLexicalUnit *chunk = ((ChunkWord *) words[pos])->getChunk();
-    return
-        chunk->getPart(LEM) +
-        chunk->getPart(TAGS);
+    lu = ((ChunkWord *) words[pos])->getChunk();
+    return lu->getPart(LEM) + lu->getPart(TAGS);
   } else {
-    return
-        ((ChunkWord *) words[pos])->getChunk()->getPart(LEM);
+    lu = ((ChunkWord *) words[pos])->getChunk();
+    return lu->getPart(LEM);
   }
 }
 
@@ -396,7 +394,7 @@ void VM::selectNextRulePostchunk() {
     int ruleNumber = systemTrie.getRuleNumber(pattern);
 
     if (ruleNumber != NaRuleNumber) {
-      setRuleSelected(ruleNumber, startPatternPos, pattern);
+      setRuleSelected(ruleNumber, startPatternPos);
       return;
     } else {
       processUnmatchedPattern(words[startPatternPos]);
@@ -427,7 +425,7 @@ void VM::selectNextRuleLRLM() {
     wstring fullPattern = pattern;
     while (curNodes.size() > 0) {
       // Update the longest match if needed.
-      int ruleNumber = systemTrie.getRuleNumber(fullPattern);
+      int ruleNumber = systemTrie.getRuleNumber(curNodes);
       if (ruleNumber != NaRuleNumber) {
         longestMatch = ruleNumber;
         nextPatternToProcess = nextPattern;
@@ -451,17 +449,9 @@ void VM::selectNextRuleLRLM() {
     // the last unmatched pattern.
     nextPattern = nextPatternToProcess;
 
-    // Get the full pattern matched by the rule.
-    if (nextPattern < words.size()) {
-      size_t end = fullPattern.find(getSourceWord(nextPattern));
-      if (end != wstring::npos) {
-        fullPattern = fullPattern.substr(0, end);
-      }
-    }
-
     if (longestMatch != NaRuleNumber) {
       // If there is a longest match, set the rule to process
-      setRuleSelected(longestMatch, startPatternPos, fullPattern);
+      setRuleSelected(longestMatch, startPatternPos);
       return;
     } else {
       // Otherwise, process the unmatched pattern.
@@ -480,9 +470,8 @@ void VM::selectNextRuleLRLM() {
  *
  * @param ruleNumber the number of the rule selected
  * @param startPos the index of the first word of the pattern selected
- * @param pattern the pattern which matched the rule
  */
-void VM::setRuleSelected(int ruleNumber, unsigned int startPos, const wstring &pattern) {
+void VM::setRuleSelected(int ruleNumber, unsigned int startPos) {
   // Output the leading superblank of the matched pattern.
   writeOutput(getUniqueSuperblank(startPos));
 
