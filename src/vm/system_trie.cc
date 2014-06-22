@@ -257,14 +257,17 @@ list<TrieNode*> SystemTrie::getPatternNodes(const wstring& pattern) {
 }
 
 int SystemTrie::getRuleNumber(const wstring &pattern) {
-  list<TrieNode *> curNodes = getPatternNodes(pattern, root);
+  list<TrieNode *> nodes = getPatternNodes(pattern, root);
+  return getRuleNumber(nodes);
+}
 
+int SystemTrie::getRuleNumber(const list<TrieNode*>& nodes) {
   int ruleNumber = NaRuleNumber;
 
   // If there are several possible rules, return the first which appears on the
   // rules files.
-  if (curNodes.size() > 0) {
-    for (TrieNode* node : curNodes) {
+  if (nodes.size() > 0) {
+    for (TrieNode* node : nodes) {
       int itRuleNumber = node->ruleNumber;
 
       if (ruleNumber == NaRuleNumber) {

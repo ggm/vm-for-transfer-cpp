@@ -58,6 +58,7 @@ class SystemTrie {
   std::list<TrieNode*> getPatternNodes(const std::wstring& pattern);
   void addPattern(const std::vector<std::wstring> &pattern, int ruleNumber);
   int getRuleNumber(const std::wstring &pattern);
+  int getRuleNumber(const std::list<TrieNode*>& nodes);
 };
 
 #endif
