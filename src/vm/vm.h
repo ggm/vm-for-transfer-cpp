@@ -158,10 +158,13 @@ private:
   void tokenizeInput();
   void initializeVM();
   wstring getSourceWord(unsigned int);
+  vector<int> _getSourceWord(unsigned int);
   wstring getNextInputPattern();
+  vector<int> _getNextInputPattern();
   wstring getUniqueSuperblank(int);
   void selectNextRule();
   void selectNextRulePostchunk();
+  void _selectNextRulePostchunk();
   void selectNextRuleLRLM();
   void setRuleSelected(int, unsigned int);
   void processRuleEnd();

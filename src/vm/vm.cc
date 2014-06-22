@@ -340,6 +340,25 @@ wstring VM::getSourceWord(unsigned int pos) {
   }
 }
 
+vector<int> VM::_getSourceWord(unsigned int pos) {
+  if (pos >= words.size()) {
+    return vector<int>();
+  }
+
+  LexicalUnit* lu = NULL;
+  if (transferStage == TRANSFER) {
+    lu = ((BilingualWord *) words[pos])->getSource();
+    lu->preprocessLemmaAndTagsHashes(lu->getPart(LEM), lu->getPart(TAGS));
+  } else if (transferStage == INTERCHUNK) {
+    lu = ((ChunkWord *) words[pos])->getChunk();
+    lu->preprocessLemmaAndTagsHashes(lu->getPart(LEM), lu->getPart(TAGS));
+  } else {
+    lu = ((ChunkWord *) words[pos])->getChunk();
+    lu->preprocessLemmaAndTagsHashes(lu->getPart(LEM));
+  }
+  return lu->lemmaAndTagsHashes();
+}
+
 /**
  * Get the next input pattern to analyze, lowering the lemma first.
  *
@@ -350,6 +369,10 @@ wstring VM::getNextInputPattern() {
   nextPattern++;
 
   return pattern;
+}
+
+vector<int> VM::_getNextInputPattern() {
+  return _getSourceWord(nextPattern++);
 }
 
 /**
@@ -393,6 +416,27 @@ void VM::selectNextRulePostchunk() {
     wstring pattern = getNextInputPattern();
     int ruleNumber = systemTrie.getRuleNumber(pattern);
 
+    if (ruleNumber != NaRuleNumber) {
+      setRuleSelected(ruleNumber, startPatternPos);
+      return;
+    } else {
+      processUnmatchedPattern(words[startPatternPos]);
+    }
+  }
+
+  // if there isn't any rule at all to execute, stop the vm.
+  status = HALTED;
+}
+
+/**
+ * Select the next rule trying to match patterns one by one.
+ */
+void VM::_selectNextRulePostchunk() {
+  // Go through all the patterns until one matches a rule.
+  while (nextPattern < words.size()) {
+    unsigned int startPatternPos = nextPattern;
+    vector<int> hashes = _getNextInputPattern();
+    int ruleNumber = systemTrie.getRuleNumber(hashes);
     if (ruleNumber != NaRuleNumber) {
       setRuleSelected(ruleNumber, startPatternPos);
       return;
