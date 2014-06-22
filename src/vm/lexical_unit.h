@@ -19,8 +19,7 @@
 #define LEXICAL_UNIT_H_
 
 #include <string>
-
-using namespace std;
+#include <vector>
 
 enum LU_PART {
   WHOLE, LEM, LEMH, LEMQ, TAGS, CHCONTENT, CONTENT
@@ -30,17 +29,18 @@ enum LU_PART {
 class LexicalUnit {
 
 public:
-
-//  virtual ~LexicalUnit() { };
-
   virtual void parse() = 0;
-  virtual wstring getWhole() const = 0;
-  virtual wstring getPart(LU_PART) = 0;
-  virtual void changePart(LU_PART, const wstring &) = 0;
-  virtual void modifyTag(const wstring &, const wstring &) = 0;
+  virtual std::wstring getWhole() const = 0;
+  virtual std::wstring getPart(LU_PART) = 0;
+  virtual void changePart(LU_PART, const std::wstring &) = 0;
+  virtual void modifyTag(const std::wstring &, const std::wstring &) = 0;
+  const std::vector<int>& lemmaAndTagsHashes() const;
+  void preprocessLemmaAndTagsHashes(
+      const std::wstring& lemma,
+      const std::wstring& tags = L"");
 
-private:
-
+protected:
+  std::vector<int> _lemmaAndTagsHashes;
 };
 
 #endif /* LEXICAL_UNIT_H_ */
