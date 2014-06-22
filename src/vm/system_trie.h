@@ -33,6 +33,7 @@ struct TrieNode {
   TrieNode *starTransition;
   TrieNode *starTagTransition;
   std::unordered_map<std::wstring, TrieNode*> links;
+  std::unordered_map<int, TrieNode*> intLinks;
 
   TrieNode();
   TrieNode(int ruleNumber);

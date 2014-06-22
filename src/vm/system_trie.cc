@@ -26,6 +26,7 @@
 #include <unordered_map>
 
 #include "vm_wstring_utils.h"
+#include "string_pool.h"
 
 static size_t getFirstTokenLength(const wchar_t* pattern) {
   if (pattern[0] == L'\0') return 0;
@@ -98,10 +99,13 @@ TrieNode* TrieNode::_insertPattern(const wchar_t* pattern, int ruleNumber) {
     if(patternToken == L"<*>") {
       nextNode = getOrCreateStarTagTransition();
     } else {
+      int patternTokenCode = StringPool::getCode(patternToken);
       if(!containsTransitionBy(patternToken)) {
-        links[patternToken] = new TrieNode;
+        TrieNode* newNode = new TrieNode;
+        links[patternToken] = newNode;
+        intLinks[patternTokenCode] = newNode;
       }
-      nextNode = links[patternToken];
+      nextNode = intLinks[patternTokenCode];
     }
     return nextNode->_insertPattern(pattern + tokenLength, ruleNumber);
   }
