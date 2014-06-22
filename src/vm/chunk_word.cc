@@ -86,10 +86,10 @@ void ChunkWord::solveReferences() {
   wstring newChcontent = chcontent;
   wstring newWhole = chunk->getPart(WHOLE);
 
-  for (unsigned int i = 0; i < chcontent.size(); i++) {
+  for (unsigned int i = 1; i < chcontent.size() - 1; i++) {
     wchar_t ch = chcontent[i];
-    if (VMWstringUtils::isdigit(ch)) {
-      if (chcontent[i - 1] == L'<' && chcontent[i + 1] == L'>') {
+    if (chcontent[i - 1] == L'<' && chcontent[i + 1] == L'>') {
+      if (VMWstringUtils::isdigit(ch)) {
         unsigned int pos = VMWstringUtils::charTo<unsigned int>(ch);
         wstring tag;
         if(pos - 1 < tagsValues.size()) {
