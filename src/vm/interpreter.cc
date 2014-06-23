@@ -389,7 +389,7 @@ void Interpreter::executeRet(const Instruction &instr) {
 }
 
 void Interpreter::executeClip(const Instruction &instr) {
-  vector<wstring> parts = popListFromStack(false);
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -403,7 +403,7 @@ void Interpreter::executeClip(const Instruction &instr) {
 }
 
 void Interpreter::executeClipsl(const Instruction &instr) {
-  vector<wstring> parts = popListFromStack(false);
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -416,7 +416,7 @@ void Interpreter::executeClipsl(const Instruction &instr) {
 }
 
 void Interpreter::executeCliptl(const Instruction &instr) {
-  vector<wstring> parts = popListFromStack(false);
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
@@ -525,14 +525,14 @@ void Interpreter::executeCmpiSubstr(const Instruction &instr) {
 }
 
 void Interpreter::executeIn(const Instruction &instr) {
-  vector<wstring> list = popListFromStack(false);
+  const vector<wstring>& list = popListFromStack(false);
   wstring value = vm->systemStack.popString();
 
   searchValueInList(value, list);
 }
 
 void Interpreter::executeInig(const Instruction &instr) {
-  vector<wstring> list = popListFromStack(true);
+  const vector<wstring>& list = popListFromStack(true);
   wstring value = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   searchValueInList(value, list);
