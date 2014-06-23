@@ -19,6 +19,7 @@
 
 #include <sstream>
 #include <iostream>
+#include <unordered_map>
 
 #include "vm.h"
 #include "vm_wstring_utils.h"
@@ -386,7 +387,7 @@ void Interpreter::executeRet(const Instruction &instr) {
 }
 
 void Interpreter::executeClip(const Instruction &instr) {
-  wstring parts = vm->systemStack.popString();
+  vector<wstring> parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -400,7 +401,7 @@ void Interpreter::executeClip(const Instruction &instr) {
 }
 
 void Interpreter::executeClipsl(const Instruction &instr) {
-  wstring parts = vm->systemStack.popString();
+  vector<wstring> parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -413,7 +414,7 @@ void Interpreter::executeClipsl(const Instruction &instr) {
 }
 
 void Interpreter::executeCliptl(const Instruction &instr) {
-  wstring parts = vm->systemStack.popString();
+  vector<wstring> parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
@@ -425,41 +426,36 @@ void Interpreter::executeCliptl(const Instruction &instr) {
   handleClipInstruction(parts, lu, lu->getWhole(), linkTo);
 }
 
-void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
+void Interpreter::handleClipInstruction(const vector<wstring> &parts, LexicalUnit *lu,
     const wstring &lemmaAndTags, const wstring &linkTo) {
   bool notLinkTo = (linkTo == L"");
 
-  if (notLinkTo && parts == L"whole") {
+  if (notLinkTo && parts.size() == 1 && parts[0] == L"whole") {
     vm->systemStack.push(lu->getWhole());
     return;
-  } else if (notLinkTo && parts == L"lem") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"lem") {
     vm->systemStack.push(lu->getPart(LEM));
     return;
-  } else if (notLinkTo && parts == L"lemh") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"lemh") {
     vm->systemStack.push(lu->getPart(LEMH));
     return;
-  } else if (notLinkTo && parts == L"lemq") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"lemq") {
     vm->systemStack.push(lu->getPart(LEMQ));
     return;
-  } else if (notLinkTo && parts == L"tags") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"tags") {
     vm->systemStack.push(lu->getPart(TAGS));
     return;
-  } else if (notLinkTo && parts == L"chcontent") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"chcontent") {
     vm->systemStack.push(lu->getPart(CHCONTENT));
     return;
-  } else if (notLinkTo && parts == L"content") {
+  } else if (notLinkTo && parts.size() == 1 && parts[0] == L"content") {
     vm->systemStack.push(lu->getPart(CONTENT));
     return;
   } else {
     // Check if one of the parts divided by | matches the lemma or tags.
     wstring longestMatch = L"";
-    wstring part = L"";
 
-    size_t pipePos = 0, prevPipePos = -1;
-    while(true) {
-      pipePos = parts.find(L'|', prevPipePos + 1);
-      part = parts.substr(prevPipePos + 1, pipePos - prevPipePos - 1);
-
+    for(const wstring& part : parts) {
       if (lemmaAndTags.find(part) != wstring::npos) {
         if (notLinkTo) {
           if (part.size() > longestMatch.size()) {
@@ -470,12 +466,6 @@ void Interpreter::handleClipInstruction(const wstring &parts, LexicalUnit *lu,
           return;
         }
       }
-
-      if(pipePos == wstring::npos) {
-        break;
-      }
-
-      prevPipePos = pipePos;
     }
 
     if (longestMatch != L"") {
@@ -533,42 +523,26 @@ void Interpreter::executeCmpiSubstr(const Instruction &instr) {
 }
 
 void Interpreter::executeIn(const Instruction &instr) {
-  wstring list = vm->systemStack.popString();
+  vector<wstring> list = popListFromStack(false);
   wstring value = vm->systemStack.popString();
 
   searchValueInList(value, list);
 }
 
 void Interpreter::executeInig(const Instruction &instr) {
-  wstring list = VMWstringUtils::wtolower(vm->systemStack.popString());
+  vector<wstring> list = popListFromStack(true);
   wstring value = VMWstringUtils::wtolower(vm->systemStack.popString());
 
   searchValueInList(value, list);
 }
 
-void Interpreter::searchValueInList(const wstring &value, const wstring &list) {
-  wstring part = L"";
-  wchar_t ch;
-  size_t listSize = list.size();
-
-  for (unsigned int i = 0; i < listSize; i++) {
-    ch = list[i];
-
-    if (i == listSize - 1) {
-      part += ch;
-    }
-
-    if (ch == L'|' || i == listSize - 1) {
-      if (part == value) {
-        vm->systemStack.pushInteger(TRUE_INT);
-        return;
-      }
-      part = L"";
-    } else {
-      part += ch;
+void Interpreter::searchValueInList(const wstring &value, const vector<wstring> &list) {
+  for(const wstring& wstr : list) {
+    if(value == wstr) {
+      vm->systemStack.pushInteger(TRUE_INT);
+      return;
     }
   }
-
   vm->systemStack.pushInteger(FALSE_INT);
 }
 
@@ -918,4 +892,27 @@ void Interpreter::executeStorev(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
   wstring varName = vm->systemStack.popString();
   vm->variables[varName] = value;
+}
+
+vector<wstring> Interpreter::popListFromStack(bool lower) {
+  wstring strList = vm->systemStack.popString();
+
+  vector<wstring> vList;
+  if(strList.size() > 0) {
+    wstring::size_type searchStart = 0;
+    while(searchStart < strList.size()) {
+      wstring::size_type currentPipePos = strList.find(L'|', searchStart);
+      wstring token = strList.substr(searchStart, currentPipePos - searchStart);
+      if(lower) {
+        token = VMWstringUtils::wtolower(token);
+      }
+      vList.push_back(token);
+      if(currentPipePos == wstring::npos) {
+        break;
+      }
+      searchStart = currentPipePos + 1;
+    }
+  }
+
+  return vList;
 }

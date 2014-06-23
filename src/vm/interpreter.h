@@ -19,6 +19,7 @@
 #define INTERPRETER_H_
 
 #include <string>
+#include <vector>
 
 #include "vm_exceptions.h"
 #include "instructions.h"
@@ -29,6 +30,16 @@
 using namespace std;
 
 class VM;
+
+namespace std {
+  template<>
+  struct hash<std::pair<std::wstring, bool>> {
+    size_t operator()(
+        const std::pair<std::wstring, bool> &p) const {
+      return std::hash<std::wstring>()(p.first);
+    }
+  };
+}
 
 /// Interprets an op code and executes the appropriate instruction.
 class Interpreter {
@@ -58,6 +69,7 @@ private:
   LexicalUnit* getTargetLexicalUnit(int);
   vector<int> getNOperands(const Instruction &, int);
   void pushCaseToStack(CASE);
+  vector<wstring> popListFromStack(bool lower);
 
   void executeAddtrie(const Instruction&);
   void executeAnd(const Instruction&);
@@ -72,7 +84,7 @@ private:
   void executeClip(const Instruction&);
   void executeClipsl(const Instruction&);
   void executeCliptl(const Instruction&);
-  void handleClipInstruction(const wstring &, LexicalUnit*, const wstring &,
+  void handleClipInstruction(const vector<wstring> &, LexicalUnit*, const wstring &,
       const wstring &);
   void executeCmp(const Instruction&);
   void executeCmpi(const Instruction&);
@@ -80,7 +92,7 @@ private:
   void executeCmpiSubstr(const Instruction&);
   void executeIn(const Instruction&);
   void executeInig(const Instruction&);
-  void searchValueInList(const wstring &, const wstring &);
+  void searchValueInList(const wstring &, const vector<wstring> &);
   void executeConcat(const Instruction&);
   void executeChunk(const Instruction&);
   bool endsWith(const wstring &, const wstring &) const;
