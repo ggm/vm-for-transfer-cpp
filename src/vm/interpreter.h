@@ -69,7 +69,7 @@ private:
   LexicalUnit* getTargetLexicalUnit(int);
   vector<int> getNOperands(const Instruction &, int);
   void pushCaseToStack(CASE);
-  vector<wstring> popListFromStack(bool lower);
+  const vector<wstring>& popListFromStack(bool lower);
 
   void executeAddtrie(const Instruction&);
   void executeAnd(const Instruction&);
@@ -116,10 +116,10 @@ private:
   void executeStorecl(const Instruction&);
   void executeStoresl(const Instruction&);
   void executeStoretl(const Instruction&);
-  void handleStoreClipInstruction(const wstring &, LexicalUnit*,
+  void handleStoreClipInstruction(const vector<wstring> &, LexicalUnit*,
       const wstring &, const wstring &);
   void executeStorev(const Instruction&);
-
+  void executeStoreLP(const Instruction&);
 };
 
 #endif /* INTERPRETER_H_ */

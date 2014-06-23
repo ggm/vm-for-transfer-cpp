@@ -18,30 +18,40 @@ patterns_start:
 push-str qui
 push-int 1
 addtrie action_0_start
+push-str <rel>
+store-lp 0
+push-str <m>|<f>|<mf>|<GD>|<nt>
+store-lp 1
+push-str <sg>|<pl>|<sp>|<ND>
+store-lp 2
 push-str cifra
 push-int 1
 addtrie action_1_start
+push-str lem
+store-lp 3
+push-str <num>
+store-lp 4
 patterns_end:
 action_0_start:
 push-str qui
 push-int 1
-push-str <rel>
+push-int 0
 clip
 push-int 1
-push-str <m>|<f>|<mf>|<GD>|<nt>
+push-int 1
 clip
 push-int 1
-push-str <sg>|<pl>|<sp>|<ND>
+push-int 2
 clip
 lu 4
 out 1
 action_0_end:
 action_1_start:
 push-int 1
-push-str lem
+push-int 3
 clip
 push-int 1
-push-str <num>
+push-int 4
 clip
 lu 2
 out 1

@@ -23,6 +23,7 @@
 
 #include "vm.h"
 #include "vm_wstring_utils.h"
+#include "list_pool.h"
 
 static const int TRUE_INT = 1;
 static const int FALSE_INT = 0;
@@ -142,6 +143,7 @@ void Interpreter::execute(const Instruction &instr) {
   // Cases are ordered by frequency (calculated using the en-ca pair) just
   // in case the compiler doesn't optimize it.
   switch (instr.opCode) {
+  case STORE_LP: executeStoreLP(instr); break;
   case PUSH_STR: executePushStr(instr); break;
   case PUSH_INT: executePushInt(instr); break;
   case PUSH_VAR: executePushVar(instr); break;
@@ -796,7 +798,7 @@ void Interpreter::executePushsb(const Instruction &instr) {
 
 void Interpreter::executeStorecl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
-  wstring parts = vm->systemStack.popString();
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -806,7 +808,7 @@ void Interpreter::executeStorecl(const Instruction &instr) {
 
 void Interpreter::executeStoresl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
-  wstring parts = vm->systemStack.popString();
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getSourceLexicalUnit(pos);
 
@@ -815,34 +817,34 @@ void Interpreter::executeStoresl(const Instruction &instr) {
 
 void Interpreter::executeStoretl(const Instruction &instr) {
   wstring value = vm->systemStack.popString();
-  wstring parts = vm->systemStack.popString();
+  const vector<wstring>& parts = popListFromStack(false);
   int pos = vm->systemStack.popInteger();
   LexicalUnit *lu = getTargetLexicalUnit(pos);
 
   handleStoreClipInstruction(parts, lu, lu->getWhole(), value);
 }
 
-void Interpreter::handleStoreClipInstruction(const wstring &parts,
+void Interpreter::handleStoreClipInstruction(const vector<wstring> &parts,
     LexicalUnit *lu, const wstring &lemmaAndTags, const wstring &value) {
   wstring oldWhole = lu->getWhole();
   bool change = false;
 
-  if (parts == L"whole") {
+  if (parts.size() > 0 && parts[0] == L"whole") {
     lu->changePart(WHOLE, value);
     change = true;
-  } else if (parts == L"lem") {
+  } else if (parts.size() > 0 && parts[0] == L"lem") {
     lu->changePart(LEM, value);
     change = true;
-  } else if (parts == L"lemh") {
+  } else if (parts.size() > 0 && parts[0] == L"lemh") {
     lu->changePart(LEMH, value);
     change = true;
-  } else if (parts == L"lemq") {
+  } else if (parts.size() > 0 && parts[0] == L"lemq") {
     lu->changePart(LEMQ, value);
     change = true;
-  } else if (parts == L"tags") {
+  } else if (parts.size() > 0 && parts[0] == L"tags") {
     lu->changePart(TAGS, value);
     change = true;
-  } else if (parts == L"chcontent") {
+  } else if (parts.size() > 0 && parts[0] == L"chcontent") {
     lu->changePart(CHCONTENT, value);
     // If we are in the postchunk stage and change the chunk content
     // we need to parse it again, so we can use it as lexical units.
@@ -853,28 +855,14 @@ void Interpreter::handleStoreClipInstruction(const wstring &parts,
   } else {
     // Check if one of the parts divided by | matches the lemma or tags.
     wstring longestMatch = L"";
-    wstring part = L"";
-    wchar_t ch;
 
-    for (unsigned int i = 0; i < parts.size(); i++) {
-      ch = parts[i];
-
-      if (i == parts.size() - 1) {
-        part += ch;
-      }
-
-      if (ch == L'|' || i == parts.size() - 1) {
-        if (lemmaAndTags.find(part) != wstring::npos) {
-          if (part.size() > longestMatch.size()) {
-            longestMatch = part;
-          }
+    for(const wstring& part : parts) {
+      if (lemmaAndTags.find(part) != wstring::npos) {
+        if (part.size() > longestMatch.size()) {
+          longestMatch = part;
         }
-        part = L"";
-      } else {
-        part += ch;
       }
     }
-
     if (longestMatch != L"") {
       lu->modifyTag(longestMatch, value);
       change = true;
@@ -894,7 +882,16 @@ void Interpreter::executeStorev(const Instruction &instr) {
   vm->variables[varName] = value;
 }
 
-vector<wstring> Interpreter::popListFromStack(bool lower) {
+const vector<wstring>& Interpreter::popListFromStack(bool lower) {
+  int index = vm->systemStack.popInteger();
+  if(lower) {
+    return ListPool::refLowered(index);
+  } else {
+    return ListPool::ref(index);
+  }
+}
+
+void Interpreter::executeStoreLP(const Instruction& instr) {
   wstring strList = vm->systemStack.popString();
 
   vector<wstring> vList;
@@ -903,9 +900,6 @@ vector<wstring> Interpreter::popListFromStack(bool lower) {
     while(searchStart < strList.size()) {
       wstring::size_type currentPipePos = strList.find(L'|', searchStart);
       wstring token = strList.substr(searchStart, currentPipePos - searchStart);
-      if(lower) {
-        token = VMWstringUtils::wtolower(token);
-      }
       vList.push_back(token);
       if(currentPipePos == wstring::npos) {
         break;
@@ -914,5 +908,5 @@ vector<wstring> Interpreter::popListFromStack(bool lower) {
     }
   }
 
-  return vList;
+  ListPool::store(instr.intOp1, vList);
 }

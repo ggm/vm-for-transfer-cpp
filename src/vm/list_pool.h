@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "vm_wstring_utils.h"
 
@@ -36,6 +37,10 @@ class ListPool {
 
   static inline const std::vector<std::wstring>& refLowered(int index) {
     return _loweredPool[index];
+  }
+
+  static inline int size() {
+    return _unchangedPool.size();
   }
 };
 

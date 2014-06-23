@@ -66,6 +66,7 @@ AssemblyLoader::AssemblyLoader(char *fileName) {
   opCodes[L"get-case-from"] = GET_CASE_FROM;
   opCodes[L"modify-case"] = MODIFY_CASE;
 
+  opCodes[L"store-lp"] = STORE_LP;
 }
 
 AssemblyLoader::AssemblyLoader(const AssemblyLoader &c) {
@@ -419,6 +420,7 @@ bool AssemblyLoader::getInternalRepresentation(const wstring &line,
     case LU:
     case OUT:
     case PUSH_INT:
+    case STORE_LP:
       instr.intOp1 = VMWstringUtils::stringTo<int>(operand);
       break;
     default:

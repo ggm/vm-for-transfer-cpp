@@ -70,6 +70,7 @@ static const wstring STORECL_OP = L"storecl";
 static const wstring STORESL_OP = L"storesl";
 static const wstring STORETL_OP = L"storetl";
 static const wstring STOREV_OP = L"storev";
+static const wstring STORE_LIST_POOL_OP = L"store-lp";
 
 static const unsigned int RULE = 0;
 static const unsigned int WHEN = 1;
@@ -79,12 +80,7 @@ static const unsigned int CHOOSE = 2;
 class AssemblyCodeGenerator: public CodeGenerator {
 
 public:
-
   AssemblyCodeGenerator();
-  AssemblyCodeGenerator(const AssemblyCodeGenerator&);
-  virtual ~AssemblyCodeGenerator();
-  AssemblyCodeGenerator& operator=(const AssemblyCodeGenerator&);
-  void copy(const AssemblyCodeGenerator&);
 
   void setDebug(bool);
 
@@ -178,6 +174,8 @@ private:
 
   /// Flag to check if the jump to the rules section was already added.
   bool jumpToRulesSection;
+
+  int listPoolNextIndex;
 };
 
 #endif /* ASSEMBLY_CODE_GENERATOR_H_ */

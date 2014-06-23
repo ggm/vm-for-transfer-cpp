@@ -28,32 +28,7 @@ AssemblyCodeGenerator::AssemblyCodeGenerator() {
   nextLabel[WHEN] = 0;
   nextLabel[CHOOSE] = 0;
   jumpToRulesSection = false;
-}
-
-AssemblyCodeGenerator::AssemblyCodeGenerator(const AssemblyCodeGenerator &c) {
-  copy(c);
-}
-
-AssemblyCodeGenerator::~AssemblyCodeGenerator() {
-
-}
-
-AssemblyCodeGenerator&
-AssemblyCodeGenerator::operator=(const AssemblyCodeGenerator &c) {
-  if (this != &c) {
-    this->~AssemblyCodeGenerator();
-    this->copy(c);
-  }
-  return *this;
-}
-
-void AssemblyCodeGenerator::copy(const AssemblyCodeGenerator &c) {
-  this->nextAddress = c.nextAddress;
-  this->code = c.code;
-  this->patternsCode = c.patternsCode;
-  this->patternSection = c.patternSection;
-  this->debug = c.debug;
-  this->jumpToRulesSection = c.jumpToRulesSection;
+  listPoolNextIndex = 0;
 }
 
 /**
@@ -83,24 +58,42 @@ void AssemblyCodeGenerator::addCode(const wstring &code) {
  * @param code the assembly code to add
  */
 void AssemblyCodeGenerator::addPatternsCode(const wstring &code) {
+  // TODO duplicate code below.
+  if (patternsCode.size() == 0) {
+    patternsCode.push_back(L"patterns_start:");
+    patternsCode.push_back(L"patterns_end:");
+  }
+
   wstring footer = patternsCode.back();
   patternsCode.pop_back();
   patternsCode.push_back(code);
   patternsCode.push_back(footer);
-  nextAddress++;
-
 }
 
 void AssemblyCodeGenerator::genCodePushListOnStack(const vector<wstring>& list) {
-  wstring strList(L"");
-  if(list.size() > 0) {
-    strList = list[0];
-    for(size_t i = 1; i < list.size(); ++i) {
-      strList += L"|";
-      strList += list[i];
-    }
-  }
-  addCode(PUSH_STR_OP + INSTR_SEP + strList);
+  // Push list on stack in the preprocessing section.
+  genPatternsCodePushListOnStack(list);
+
+  // Generate instruction so the list gets stored in the list pool.
+  wstringstream ws;
+  ws << listPoolNextIndex;
+  addPatternsCode(STORE_LIST_POOL_OP + INSTR_SEP + ws.str());
+
+  // Instead of the list, push the index in the list pool.
+  addCode(PUSH_INT_OP + INSTR_SEP + ws.str());
+//
+//  wstring strList(L"");
+//  if(list.size() > 0) {
+//    strList = list[0];
+//    for(size_t i = 1; i < list.size(); ++i) {
+//      strList += L"|";
+//      strList += list[i];
+//    }
+//  }
+//
+//  addCode(PUSH_STR_OP + INSTR_SEP + strList);
+
+  ++listPoolNextIndex;
 }
 
 void AssemblyCodeGenerator::genPatternsCodePushListOnStack(const vector<wstring>& list) {
