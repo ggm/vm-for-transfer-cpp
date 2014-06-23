@@ -91,6 +91,30 @@ void AssemblyCodeGenerator::addPatternsCode(const wstring &code) {
 
 }
 
+void AssemblyCodeGenerator::genCodePushListOnStack(const vector<wstring>& list) {
+  wstring strList(L"");
+  if(list.size() > 0) {
+    strList = list[0];
+    for(size_t i = 1; i < list.size(); ++i) {
+      strList += L"|";
+      strList += list[i];
+    }
+  }
+  addCode(PUSH_STR_OP + INSTR_SEP + strList);
+}
+
+void AssemblyCodeGenerator::genPatternsCodePushListOnStack(const vector<wstring>& list) {
+  wstring strList(L"");
+  if(list.size() > 0) {
+    strList = list[0];
+    for(size_t i = 1; i < list.size(); ++i) {
+      strList += L"|";
+      strList += list[i];
+    }
+  }
+  addPatternsCode(PUSH_STR_OP + INSTR_SEP + strList);
+}
+
 /**
  * Returns a writable representation of the assembly code.
  *
@@ -296,18 +320,8 @@ void AssemblyCodeGenerator::genPatternEnd(const Event & event) {
 
 void AssemblyCodeGenerator::genPatternItemStart(const Event & event,
     const vector<wstring> &cats) {
-
   // Push the contents of the category.
-  wstring catsStr = L"";
-  if (cats.size() > 0) {
-    catsStr = cats[0];
-    for (unsigned int i = 1; i < cats.size(); i++) {
-      catsStr += L"|";
-      catsStr += cats[i];
-    }
-  }
-
-  addPatternsCode(PUSH_STR_OP + INSTR_SEP + catsStr);
+  genPatternsCodePushListOnStack(cats);
 }
 
 void AssemblyCodeGenerator::genActionStart(const Event & event) {
@@ -516,16 +530,7 @@ void AssemblyCodeGenerator::genClipCode(const Event &event,
   addCode(PUSH_INT_OP + INSTR_SEP + pos);
 
   // Push the contents of the part attribute.
-  wstring partAttrStr = L"";
-  if (partAttrs.size() > 0) {
-    partAttrStr = partAttrs[0];
-    for (unsigned int i = 1; i < partAttrs.size(); i++) {
-      partAttrStr += L"|";
-      partAttrStr += partAttrs[i];
-    }
-  }
-
-  addCode(PUSH_STR_OP + INSTR_SEP + partAttrStr);
+  genCodePushListOnStack(partAttrs);
 }
 
 void AssemblyCodeGenerator::genClipInstr(const Event &event, bool linkTo) {
@@ -569,18 +574,8 @@ void AssemblyCodeGenerator::genListStart(const Event & event,
     const vector<wstring> &list) {
   genDebugCode(event);
 
-  wstring processedList = L"";
-
   // Push the contents of the list to the stack.
-  if (list.size() > 0) {
-    processedList = list[0];
-    for (unsigned int i = 1; i < list.size(); i++) {
-      processedList += L"|";
-      processedList += list[i];
-    }
-  }
-
-  addCode(PUSH_STR_OP + INSTR_SEP + processedList);
+  genCodePushListOnStack(list);
 }
 
 void AssemblyCodeGenerator::genLetEnd(const Event & event,

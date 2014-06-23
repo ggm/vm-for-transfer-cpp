@@ -99,6 +99,8 @@ public:
   void genClipInstr(const Event &, bool);
   void genDebugCode(const Event &);
   void addJumpToRulesSection();
+  void genCodePushListOnStack(const vector<wstring>&);
+  void genPatternsCodePushListOnStack(const vector<wstring>&);
 
   void genTransferStart(const Event &);
   void genInterchunkStart(const Event &);
