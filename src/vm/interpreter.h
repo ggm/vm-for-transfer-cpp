@@ -84,8 +84,7 @@ private:
   void executeClip(const Instruction&);
   void executeClipsl(const Instruction&);
   void executeCliptl(const Instruction&);
-  void handleClipInstruction(const vector<wstring> &, LexicalUnit*, const wstring &,
-      const wstring &);
+  void handleClipInstruction(const vector<wstring> &, LexicalUnit*, const wstring &);
   void executeCmp(const Instruction&);
   void executeCmpi(const Instruction&);
   void executeCmpSubstr(const Instruction&);

@@ -398,8 +398,7 @@ void Interpreter::executeClip(const Instruction &instr) {
     VMWstringUtils::replace(linkTo, L"\"", L"");
   }
 
-  wstring lemmaAndTags = lu->getPart(LEM) + lu->getPart(TAGS);
-  handleClipInstruction(parts, lu, lemmaAndTags, linkTo);
+  handleClipInstruction(parts, lu, linkTo);
 }
 
 void Interpreter::executeClipsl(const Instruction &instr) {
@@ -412,7 +411,7 @@ void Interpreter::executeClipsl(const Instruction &instr) {
     VMWstringUtils::replace(linkTo, L"\"", L"");
   }
 
-  handleClipInstruction(parts, lu, lu->getWhole(), linkTo);
+  handleClipInstruction(parts, lu, linkTo);
 }
 
 void Interpreter::executeCliptl(const Instruction &instr) {
@@ -425,11 +424,11 @@ void Interpreter::executeCliptl(const Instruction &instr) {
     VMWstringUtils::replace(linkTo, L"\"", L"");
   }
 
-  handleClipInstruction(parts, lu, lu->getWhole(), linkTo);
+  handleClipInstruction(parts, lu, linkTo);
 }
 
 void Interpreter::handleClipInstruction(const vector<wstring> &parts, LexicalUnit *lu,
-    const wstring &lemmaAndTags, const wstring &linkTo) {
+    const wstring &linkTo) {
   bool notLinkTo = (linkTo == L"");
 
   if (notLinkTo && parts.size() == 1 && parts[0] == L"whole") {
@@ -456,9 +455,10 @@ void Interpreter::handleClipInstruction(const vector<wstring> &parts, LexicalUni
   } else {
     // Check if one of the parts divided by | matches the lemma or tags.
     wstring longestMatch = L"";
+    wstring tags = lu->getPart(TAGS);
 
     for(const wstring& part : parts) {
-      if (lemmaAndTags.find(part) != wstring::npos) {
+      if (tags.find(part) != wstring::npos) {
         if (notLinkTo) {
           if (part.size() > longestMatch.size()) {
             longestMatch = part;
