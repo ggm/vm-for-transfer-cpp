@@ -23,7 +23,7 @@ not
 jz when_1_end
 push-str genero
 push-int 1
-push-int 1
+push-int 0
 clip
 storev
 jmp choose_1_end
@@ -33,7 +33,7 @@ push-str <m>
 storev
 choose_1_end:
 push-int 1
-push-int 2
+push-int 1
 clip
 push-str <sp>
 cmp
@@ -41,7 +41,7 @@ not
 jz when_2_end
 push-str numero
 push-int 1
-push-int 3
+push-int 1
 clip
 storev
 jmp choose_2_end
@@ -55,1313 +55,167 @@ section_rules_start:
 patterns_start:
 push-str <m>|<f>|<mf>|<GD>|<nt>
 store-lp 0
-push-str <m>|<f>|<mf>|<GD>|<nt>
+push-str <sg>|<pl>|<sp>|<ND>
 store-lp 1
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 2
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 3
 push-str nom
 push-int 1
 addtrie action_0_start
 push-str <DET>|<UNDET>|<NUM>|<PDET>
+store-lp 2
+push-str <n>|<np>|<n><acr>
+store-lp 3
+push-str lem
 store-lp 4
-push-str <n>|<np>|<n><acr>
-store-lp 5
-push-str <n>|<np>|<n><acr>
-store-lp 6
-push-str lem
-store-lp 7
-push-str lem
-store-lp 8
 push-str whole
-store-lp 9
+store-lp 5
 push-str num_nom|det_nom|nom_adj
 push-int 1
 addtrie action_1_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 10
-push-str <n>|<np>|<n><acr>
-store-lp 11
-push-str <n>|<np>|<n><acr>
-store-lp 12
-push-str lem
-store-lp 13
-push-str lem
-store-lp 14
-push-str whole
-store-lp 15
-push-str whole
-store-lp 16
-push-str whole
-store-lp 17
 push-str nom_conj_nom
 push-int 1
 addtrie action_2_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 18
-push-str <n>|<np>|<n><acr>
-store-lp 19
-push-str <n>|<np>|<n><acr>
-store-lp 20
-push-str lem
-store-lp 21
-push-str lem
-store-lp 22
-push-str whole
-store-lp 23
-push-str whole
-store-lp 24
-push-str whole
-store-lp 25
-push-str whole
-store-lp 26
-push-str whole
-store-lp 27
-push-str whole
-store-lp 28
 push-str nom_adv_adj|nom_adj_adv|num_nom_adj|nom_adj_nom|nom_adj_adj
 push-int 1
 addtrie action_3_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 29
-push-str <n>|<np>|<n><acr>
-store-lp 30
-push-str <n>|<np>|<n><acr>
-store-lp 31
-push-str lem
-store-lp 32
-push-str lem
-store-lp 33
-push-str whole
-store-lp 34
-push-str whole
-store-lp 35
-push-str whole
-store-lp 36
-push-str whole
-store-lp 37
-push-str whole
-store-lp 38
-push-str whole
-store-lp 39
 push-str nom_adj_adv|nom_nom_nom|num_nom_nom|num_num_nom|nom_pr_nom|nom_nom_nom|nom_conj_nom|nom_to_inf
 push-int 1
 addtrie action_4_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 40
-push-str <n>|<np>|<n><acr>
-store-lp 41
-push-str <n>|<np>|<n><acr>
-store-lp 42
-push-str lem
-store-lp 43
-push-str lem
-store-lp 44
-push-str whole
-store-lp 45
-push-str whole
-store-lp 46
-push-str whole
-store-lp 47
 push-str adj_num_nom_adj|nom_conj_nom_adj|num_nom_adv_adj|num_nom_adj_adj|nom_'adj'|'nom'_adj|nom_pr_nom_adj
 push-int 1
 addtrie action_5_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 48
-push-str <n>|<np>|<n><acr>
-store-lp 49
-push-str <n>|<np>|<n><acr>
-store-lp 50
-push-str lem
-store-lp 51
-push-str lem
-store-lp 52
-push-str whole
-store-lp 53
-push-str whole
-store-lp 54
-push-str whole
-store-lp 55
-push-str whole
-store-lp 56
-push-str whole
-store-lp 57
-push-str whole
-store-lp 58
-push-str whole
-store-lp 59
 push-str nom_conj_nom_pr_nom|num_nom_pr_nom_adj|nom_pr_det_nom_nom
 push-int 1
 addtrie action_6_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 60
-push-str <n>|<np>|<n><acr>
-store-lp 61
-push-str <n>|<np>|<n><acr>
-store-lp 62
-push-str lem
-store-lp 63
-push-str lem
-store-lp 64
-push-str whole
-store-lp 65
-push-str whole
-store-lp 66
-push-str whole
-store-lp 67
-push-str whole
-store-lp 68
-push-str whole
-store-lp 69
 push-str nom_pr_nom_pr_det_nom
 push-int 1
 addtrie action_7_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 70
-push-str <n>|<np>|<n><acr>
-store-lp 71
-push-str <n>|<np>|<n><acr>
-store-lp 72
-push-str lem
-store-lp 73
-push-str lem
-store-lp 74
-push-str whole
-store-lp 75
-push-str whole
-store-lp 76
-push-str whole
-store-lp 77
-push-str whole
-store-lp 78
-push-str whole
-store-lp 79
-push-str whole
-store-lp 80
 push-str nom_pr_nom_adj_nom|num_nom_adj_adv_adj
 push-int 1
 addtrie action_8_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 81
-push-str <n>|<np>|<n><acr>
-store-lp 82
-push-str <n>|<np>|<n><acr>
-store-lp 83
-push-str lem
-store-lp 84
-push-str lem
-store-lp 85
-push-str whole
-store-lp 86
-push-str whole
-store-lp 87
-push-str whole
-store-lp 88
-push-str whole
-store-lp 89
-push-str whole
-store-lp 90
-push-str whole
-store-lp 91
-push-str whole
-store-lp 92
-push-str whole
-store-lp 93
 push-str nom_pr_nom_pr_nom_adj
 push-int 1
 addtrie action_9_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 94
-push-str <n>|<np>|<n><acr>
-store-lp 95
-push-str <n>|<np>|<n><acr>
-store-lp 96
-push-str lem
-store-lp 97
-push-str lem
-store-lp 98
-push-str whole
-store-lp 99
-push-str whole
-store-lp 100
-push-str whole
-store-lp 101
-push-str whole
-store-lp 102
-push-str whole
-store-lp 103
-push-str whole
-store-lp 104
-push-str whole
-store-lp 105
 push-str nom_pr_nom_pr_nom_pr_nom
 push-int 1
 addtrie action_10_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 106
-push-str <n>|<np>|<n><acr>
-store-lp 107
-push-str <n>|<np>|<n><acr>
-store-lp 108
-push-str lem
-store-lp 109
-push-str lem
-store-lp 110
-push-str whole
-store-lp 111
-push-str whole
-store-lp 112
-push-str whole
-store-lp 113
-push-str whole
-store-lp 114
-push-str whole
-store-lp 115
-push-str whole
-store-lp 116
-push-str whole
-store-lp 117
 push-str num_nom_pr_nom|nom_pr_num_nom|nom_num_yearold|non_ger_nom
 push-int 1
 addtrie action_11_start
-push-str <DET>|<UNDET>|<NUM>|<PDET>
-store-lp 118
-push-str <n>|<np>|<n><acr>
-store-lp 119
-push-str <n>|<np>|<n><acr>
-store-lp 120
-push-str lem
-store-lp 121
-push-str lem
-store-lp 122
-push-str whole
-store-lp 123
-push-str whole
-store-lp 124
-push-str whole
-store-lp 125
-push-str whole
-store-lp 126
 push-str inf
 push-int 1
 addtrie action_12_start
 push-str <p1>|<p2>|<p3>|<PD>
-store-lp 127
+store-lp 6
 push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 128
+store-lp 7
 push-str lemh
-store-lp 129
+store-lp 8
 push-str tags
-store-lp 130
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 131
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 132
+store-lp 9
 push-str lemq
-store-lp 133
-push-str whole
-store-lp 134
+store-lp 10
 push-str inf_inf
 push-int 1
 addtrie action_13_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 135
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 136
-push-str lemh
-store-lp 137
-push-str tags
-store-lp 138
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 139
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 140
-push-str lemq
-store-lp 141
-push-str whole
-store-lp 142
-push-str whole
-store-lp 143
 push-str inf_enc|subs_enc
 push-int 1
 addtrie action_14_start
 push-str <SV><pron>|<SV>
-store-lp 144
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 145
-push-str lem
-store-lp 146
+store-lp 11
 push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 147
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 148
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 149
-push-str whole
-store-lp 150
-push-str whole
-store-lp 151
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 152
-push-str lem
-store-lp 153
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 154
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 155
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 156
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 157
-push-str whole
-store-lp 158
-push-str lemh
-store-lp 159
-push-str tags
-store-lp 160
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 161
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 162
-push-str lemq
-store-lp 163
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 164
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 165
+store-lp 12
 push-str <pro>|<enc>
-store-lp 166
-push-str whole
-store-lp 167
-push-str lemh
-store-lp 168
-push-str tags
-store-lp 169
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 170
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 171
-push-str lemq
-store-lp 172
-push-str whole
-store-lp 173
-push-str whole
-store-lp 174
+store-lp 13
 push-str inf_enc_enc|subs_enc_enc
 push-int 1
 addtrie action_15_start
-push-str <SV><pron>|<SV>
-store-lp 175
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 176
-push-str lem
-store-lp 177
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 178
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 179
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 180
-push-str whole
-store-lp 181
-push-str whole
-store-lp 182
-push-str whole
-store-lp 183
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 184
-push-str lem
-store-lp 185
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 186
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 187
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 188
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 189
-push-str <pro>|<enc>
-store-lp 190
-push-str whole
-store-lp 191
-push-str whole
-store-lp 192
-push-str lemh
-store-lp 193
-push-str tags
-store-lp 194
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 195
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 196
-push-str lemq
-store-lp 197
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 198
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 199
-push-str <pro>|<enc>
-store-lp 200
-push-str <pro>|<enc>
-store-lp 201
-push-str whole
-store-lp 202
-push-str whole
-store-lp 203
-push-str lemh
-store-lp 204
-push-str tags
-store-lp 205
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 206
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 207
-push-str lemq
-store-lp 208
-push-str whole
-store-lp 209
-push-str whole
-store-lp 210
-push-str whole
-store-lp 211
 push-str inf_inf_enc
 push-int 1
 addtrie action_16_start
 push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 212
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 213
-push-str lem
-store-lp 214
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 215
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 216
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 217
-push-str whole
-store-lp 218
-push-str whole
-store-lp 219
-push-str whole
-store-lp 220
-push-str whole
-store-lp 221
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 222
-push-str lem
-store-lp 223
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 224
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 225
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 226
-push-str lemh
-store-lp 227
-push-str tags
-store-lp 228
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 229
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 230
-push-str lemq
-store-lp 231
-push-str whole
-store-lp 232
-push-str whole
-store-lp 233
-push-str whole
-store-lp 234
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 235
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 236
-push-str lemh
-store-lp 237
-push-str tags
-store-lp 238
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 239
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 240
-push-str lemq
-store-lp 241
-push-str whole
-store-lp 242
-push-str whole
-store-lp 243
-push-str whole
-store-lp 244
-push-str whole
-store-lp 245
-push-str whole
-store-lp 246
+store-lp 14
 push-str have_enc_pp
 push-int 1
 addtrie action_17_start
-push-str <SV><pron>|<SV>
-store-lp 247
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 248
-push-str lem
-store-lp 249
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 250
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 251
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 252
-push-str whole
-store-lp 253
-push-str whole
-store-lp 254
-push-str whole
-store-lp 255
 push-str have_enc_enc_pp
 push-int 1
 addtrie action_18_start
-push-str <SV><pron>|<SV>
-store-lp 256
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 257
-push-str lem
-store-lp 258
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 259
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 260
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 261
-push-str whole
-store-lp 262
-push-str whole
-store-lp 263
-push-str whole
-store-lp 264
-push-str whole
-store-lp 265
 push-str ger
 push-int 1
 addtrie action_19_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 266
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 267
-push-str lemh
-store-lp 268
-push-str tags
-store-lp 269
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 270
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 271
-push-str lemq
-store-lp 272
-push-str whole
-store-lp 273
 push-str ger_enc
 push-int 1
 addtrie action_20_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 274
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 275
-push-str <SV><pron>|<SV>
-store-lp 276
-push-str lem
-store-lp 277
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 278
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 279
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 280
-push-str lem
-store-lp 281
 push-str <ref>
-store-lp 282
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 283
-push-str <m>|<f>|<mf>|<GD>|<nt>
-store-lp 284
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 285
-push-str lemh
-store-lp 286
-push-str tags
-store-lp 287
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 288
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 289
-push-str lemq
-store-lp 290
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 291
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 292
-push-str <SV><pron>|<SV>
-store-lp 293
-push-str lem
-store-lp 294
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 295
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 296
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 297
-push-str whole
-store-lp 298
-push-str whole
-store-lp 299
+store-lp 15
 push-str ger_enc_enc
 push-int 1
 addtrie action_21_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 300
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 301
-push-str <SV><pron>|<SV>
-store-lp 302
-push-str lem
-store-lp 303
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 304
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 305
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 306
-push-str lem
-store-lp 307
-push-str <ref>
-store-lp 308
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 309
-push-str <m>|<f>|<mf>|<GD>|<nt>
-store-lp 310
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 311
-push-str lem
-store-lp 312
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 313
-push-str <m>|<f>|<mf>|<GD>|<nt>
-store-lp 314
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 315
-push-str lemh
-store-lp 316
-push-str tags
-store-lp 317
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 318
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 319
-push-str lemq
-store-lp 320
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 321
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 322
-push-str <SV><pron>|<SV>
-store-lp 323
-push-str lem
-store-lp 324
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 325
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 326
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 327
-push-str whole
-store-lp 328
-push-str whole
-store-lp 329
-push-str whole
-store-lp 330
 push-str be
 push-int 1
 addtrie action_22_start
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 331
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 332
-push-str lem
-store-lp 333
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 334
-push-str lem
-store-lp 335
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 336
-push-str whole
-store-lp 337
 push-str pro_vblike
 push-int 1
 addtrie action_23_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 338
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 339
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 340
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 341
-push-str whole
-store-lp 342
 push-str pro_vblike2
 push-int 1
 addtrie action_24_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 343
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 344
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 345
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 346
-push-str whole
-store-lp 347
-push-str whole
-store-lp 348
 push-str pro_vblike3
 push-int 1
 addtrie action_25_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 349
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 350
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 351
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 352
-push-str whole
-store-lp 353
-push-str whole
-store-lp 354
-push-str whole
-store-lp 355
 push-str have_pp
 push-int 1
 addtrie action_26_start
-push-str <SV><pron>|<SV>
-store-lp 356
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 357
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 358
-push-str lem
-store-lp 359
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 360
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 361
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 362
-push-str whole
-store-lp 363
-push-str whole
-store-lp 364
-push-str whole
-store-lp 365
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 366
-push-str lem
-store-lp 367
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 368
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 369
-push-str whole
-store-lp 370
-push-str whole
-store-lp 371
-push-str whole
-store-lp 372
-push-str whole
-store-lp 373
-push-str whole
-store-lp 374
-push-str whole
-store-lp 375
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 376
-push-str lem
-store-lp 377
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 378
-push-str whole
-store-lp 379
-push-str whole
-store-lp 380
 push-str be_ger
 push-int 1
 addtrie action_27_start
-push-str <SV><pron>|<SV>
-store-lp 381
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 382
-push-str lem
-store-lp 383
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 384
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 385
-push-str whole
-store-lp 386
-push-str whole
-store-lp 387
-push-str whole
-store-lp 388
-push-str whole
-store-lp 389
-push-str whole
-store-lp 390
 push-str be_ger_enc
 push-int 1
 addtrie action_28_start
-push-str <SV><pron>|<SV>
-store-lp 391
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 392
-push-str lem
-store-lp 393
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 394
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 395
-push-str whole
-store-lp 396
-push-str whole
-store-lp 397
-push-str whole
-store-lp 398
-push-str whole
-store-lp 399
-push-str whole
-store-lp 400
-push-str whole
-store-lp 401
-push-str whole
-store-lp 402
 push-str be_ger_inf|auxmod_inf_inf|have_pp_inf
 push-int 1
 addtrie action_29_start
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 403
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 404
-push-str lem
-store-lp 405
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 406
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 407
-push-str whole
-store-lp 408
-push-str whole
-store-lp 409
-push-str whole
-store-lp 410
-push-str whole
-store-lp 411
-push-str whole
-store-lp 412
-push-str whole
-store-lp 413
-push-str whole
-store-lp 414
 push-str auxmod_have_pp_inf
 push-int 1
 addtrie action_30_start
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 415
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 416
-push-str lem
-store-lp 417
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 418
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 419
-push-str whole
-store-lp 420
-push-str whole
-store-lp 421
-push-str whole
-store-lp 422
-push-str whole
-store-lp 423
-push-str whole
-store-lp 424
-push-str whole
-store-lp 425
-push-str whole
-store-lp 426
-push-str whole
-store-lp 427
-push-str whole
-store-lp 428
 push-str verbcj_inf
 push-int 1
 addtrie action_31_start
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 429
-push-str <SV><pron>|<SV>
-store-lp 430
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 431
-push-str lem
-store-lp 432
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 433
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 434
-push-str whole
-store-lp 435
-push-str whole
-store-lp 436
-push-str whole
-store-lp 437
-push-str <SV><pron>|<SV>
-store-lp 438
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 439
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 440
-push-str lem
-store-lp 441
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 442
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 443
-push-str whole
-store-lp 444
-push-str whole
-store-lp 445
-push-str whole
-store-lp 446
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 447
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 448
-push-str lem
-store-lp 449
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 450
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 451
-push-str whole
-store-lp 452
-push-str whole
-store-lp 453
-push-str whole
-store-lp 454
-push-str <SV><pron>|<SV>
-store-lp 455
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 456
-push-str lem
-store-lp 457
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 458
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 459
-push-str whole
-store-lp 460
-push-str whole
-store-lp 461
-push-str whole
-store-lp 462
-push-str whole
-store-lp 463
-push-str whole
-store-lp 464
-push-str <SV><pron>|<SV>
-store-lp 465
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 466
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 467
-push-str lem
-store-lp 468
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 469
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 470
-push-str whole
-store-lp 471
-push-str whole
-store-lp 472
-push-str whole
-store-lp 473
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 474
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 475
-push-str lem
-store-lp 476
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 477
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 478
-push-str whole
-store-lp 479
-push-str whole
-store-lp 480
-push-str whole
-store-lp 481
 push-str verbcj_inf_enc
 push-int 1
 addtrie action_32_start
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 482
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 483
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 484
-push-str lem
-store-lp 485
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 486
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 487
-push-str whole
-store-lp 488
-push-str whole
-store-lp 489
-push-str whole
-store-lp 490
-push-str whole
-store-lp 491
-push-str whole
-store-lp 492
-push-str whole
-store-lp 493
-push-str whole
-store-lp 494
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 495
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 496
-push-str lem
-store-lp 497
-push-str <prn><pro>|<prn><pro><ref>|<prn><enc>|<prn><enc><ref>
-store-lp 498
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 499
-push-str whole
-store-lp 500
-push-str whole
-store-lp 501
-push-str whole
-store-lp 502
-push-str whole
-store-lp 503
-push-str whole
-store-lp 504
-push-str whole
-store-lp 505
-push-str whole
-store-lp 506
-push-str whole
-store-lp 507
-push-str whole
-store-lp 508
 push-str verbcj|pro_verbcj|auxmod_inf|mod_inf|auxmod_mod_inf|auxmod_have_pp|pro_be_ger|pro_auxmod_inf|pro_mod_inf|pro_have_pp|pro_do_inf|pro_auxmod_mod_inf|pro_auxmod_have_pp|going_to_inf|pro_going_to_inf
 push-int 1
 addtrie action_33_start
-push-str <SV><pron>|<SV>
-store-lp 509
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 510
-push-str lem
-store-lp 511
 push-str <prn><pro>|<prn><pro><ref>
-store-lp 512
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 513
-push-str whole
-store-lp 514
-push-str whole
-store-lp 515
-push-str lem
-store-lp 516
-push-str lem
-store-lp 517
-push-str lem
-store-lp 518
-push-str lem
-store-lp 519
-push-str lem
-store-lp 520
-push-str whole
-store-lp 521
-push-str lem
-store-lp 522
-push-str lem
-store-lp 523
-push-str lem
-store-lp 524
-push-str lem
-store-lp 525
-push-str lem
-store-lp 526
-push-str lem
-store-lp 527
-push-str lem
-store-lp 528
-push-str lem
-store-lp 529
-push-str whole
-store-lp 530
-push-str whole
-store-lp 531
-push-str lem
-store-lp 532
-push-str lem
-store-lp 533
-push-str lem
-store-lp 534
-push-str whole
-store-lp 535
-push-str whole
-store-lp 536
-push-str whole
-store-lp 537
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 538
-push-str lem
-store-lp 539
-push-str <cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>|<ifip>
-store-lp 540
-push-str lem
-store-lp 541
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 542
-push-str lem
-store-lp 543
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 544
-push-str lem
-store-lp 545
-push-str lem
-store-lp 546
-push-str lem
-store-lp 547
-push-str lem
-store-lp 548
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 549
-push-str lem
-store-lp 550
-push-str lem
-store-lp 551
-push-str lem
-store-lp 552
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 553
-push-str whole
-store-lp 554
-push-str lem
-store-lp 555
-push-str lem
-store-lp 556
-push-str lem
-store-lp 557
-push-str lem
-store-lp 558
-push-str lem
-store-lp 559
-push-str whole
-store-lp 560
-push-str lem
-store-lp 561
-push-str lem
-store-lp 562
-push-str lem
-store-lp 563
-push-str lem
-store-lp 564
-push-str lem
-store-lp 565
-push-str lem
-store-lp 566
-push-str lem
-store-lp 567
-push-str lem
-store-lp 568
-push-str lem
-store-lp 569
-push-str whole
-store-lp 570
-push-str whole
-store-lp 571
-push-str lem
-store-lp 572
-push-str lem
-store-lp 573
-push-str lem
-store-lp 574
-push-str whole
-store-lp 575
-push-str whole
-store-lp 576
-push-str whole
-store-lp 577
+store-lp 16
 push-str reflexiu
 push-int 1
 addtrie action_34_start
-push-str <p1>|<p2>|<p3>|<PD>
-store-lp 578
-push-str lem
-store-lp 579
-push-str <m>|<f>|<mf>|<GD>|<nt>
-store-lp 580
-push-str <sg>|<pl>|<sp>|<ND>
-store-lp 581
-push-str <prn><pro>|<prn><pro><ref>
-store-lp 582
-push-str whole
-store-lp 583
 push-str hi
 push-int 1
 addtrie action_35_start
-push-str lem
-store-lp 584
-push-str tags
-store-lp 585
-push-str whole
-store-lp 586
 push-str tener
 push-int 1
 addtrie action_36_start
-push-str lem
-store-lp 587
-push-str <vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>|<HAY>
-store-lp 588
-push-str whole
-store-lp 589
 patterns_end:
 action_0_start:
 push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 4
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 5
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 6
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1379,9 +233,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 7
+push-int 4
 push-int 1
-push-int 8
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1390,7 +244,7 @@ jmp choose_3_end
 when_3_end:
 choose_3_end:
 push-int 1
-push-int 9
+push-int 5
 clip
 lu 1
 out 1
@@ -1400,18 +254,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 10
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 11
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 12
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1429,9 +283,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 13
+push-int 4
 push-int 1
-push-int 14
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1440,12 +294,12 @@ jmp choose_4_end
 when_4_end:
 choose_4_end:
 push-int 1
-push-int 15
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 16
+push-int 5
 clip
 lu 1
 out 3
@@ -1455,7 +309,7 @@ cmp
 jz when_5_end
 pushsb 2
 push-int 3
-push-int 17
+push-int 5
 clip
 lu 1
 out 2
@@ -1465,18 +319,18 @@ choose_5_end:
 action_1_end:
 action_2_start:
 push-int 0
-push-int 18
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 19
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 20
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1484,9 +338,9 @@ not
 and 3
 jz when_6_end
 push-int 1
-push-int 21
+push-int 4
 push-int 1
-push-int 22
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1504,12 +358,12 @@ push-var numero
 lu 4
 pushbl
 push-int 1
-push-int 23
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 24
+push-int 5
 clip
 lu 1
 pushsb 2
@@ -1527,24 +381,24 @@ push-var numero
 lu 4
 pushbl
 push-int 3
-push-int 25
+push-int 5
 clip
 lu 1
 out 3
 jmp choose_6_end
 when_6_end:
 push-int 1
-push-int 26
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 27
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 28
+push-int 5
 clip
 lu 1
 out 5
@@ -1555,18 +409,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 29
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 30
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 31
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1584,9 +438,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 32
+push-int 4
 push-int 1
-push-int 33
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1595,17 +449,17 @@ jmp choose_7_end
 when_7_end:
 choose_7_end:
 push-int 1
-push-int 34
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 35
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 36
+push-int 5
 clip
 lu 1
 out 5
@@ -1615,7 +469,7 @@ cmp
 jz when_8_end
 pushsb 3
 push-int 4
-push-int 37
+push-int 5
 clip
 lu 1
 out 2
@@ -1627,12 +481,12 @@ cmp
 jz when_9_end
 pushsb 3
 push-int 4
-push-int 38
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 39
+push-int 5
 clip
 lu 1
 out 4
@@ -1645,18 +499,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 40
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 41
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 42
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1674,9 +528,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 43
+push-int 4
 push-int 1
-push-int 44
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1685,17 +539,17 @@ jmp choose_9_end
 when_10_end:
 choose_9_end:
 push-int 1
-push-int 45
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 46
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 47
+push-int 5
 clip
 lu 1
 out 5
@@ -1705,18 +559,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 48
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 49
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 50
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1734,9 +588,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 51
+push-int 4
 push-int 1
-push-int 52
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1745,22 +599,22 @@ jmp choose_10_end
 when_11_end:
 choose_10_end:
 push-int 1
-push-int 53
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 54
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 55
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 56
+push-int 5
 clip
 lu 1
 out 7
@@ -1770,7 +624,7 @@ cmp
 jz when_12_end
 pushsb 4
 push-int 5
-push-int 57
+push-int 5
 clip
 lu 1
 out 2
@@ -1782,12 +636,12 @@ cmp
 jz when_13_end
 pushsb 4
 push-int 5
-push-int 58
+push-int 5
 clip
 lu 1
 pushsb 5
 push-int 6
-push-int 59
+push-int 5
 clip
 lu 1
 out 4
@@ -1800,18 +654,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 60
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 61
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 62
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1829,9 +683,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 63
+push-int 4
 push-int 1
-push-int 64
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1840,27 +694,27 @@ jmp choose_12_end
 when_14_end:
 choose_12_end:
 push-int 1
-push-int 65
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 66
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 67
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 68
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 69
+push-int 5
 clip
 lu 1
 out 9
@@ -1870,18 +724,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 70
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 71
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 72
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1899,9 +753,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 73
+push-int 4
 push-int 1
-push-int 74
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1910,32 +764,32 @@ jmp choose_13_end
 when_15_end:
 choose_13_end:
 push-int 1
-push-int 75
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 76
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 77
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 78
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 79
+push-int 5
 clip
 lu 1
 pushsb 5
 push-int 6
-push-int 80
+push-int 5
 clip
 lu 1
 out 11
@@ -1945,18 +799,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 81
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 82
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 83
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -1974,9 +828,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 84
+push-int 4
 push-int 1
-push-int 85
+push-int 4
 clip
 push-str aa
 modify-case
@@ -1985,27 +839,27 @@ jmp choose_14_end
 when_16_end:
 choose_14_end:
 push-int 1
-push-int 86
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 87
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 88
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 89
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 90
+push-int 5
 clip
 lu 1
 out 9
@@ -2015,7 +869,7 @@ cmp
 jz when_17_end
 pushsb 5
 push-int 6
-push-int 91
+push-int 5
 clip
 lu 1
 out 2
@@ -2027,12 +881,12 @@ cmp
 jz when_18_end
 pushsb 5
 push-int 6
-push-int 92
+push-int 5
 clip
 lu 1
 pushsb 6
 push-int 7
-push-int 93
+push-int 5
 clip
 lu 1
 out 4
@@ -2045,18 +899,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 94
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 95
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 96
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -2074,9 +928,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 97
+push-int 4
 push-int 1
-push-int 98
+push-int 4
 clip
 push-str aa
 modify-case
@@ -2085,32 +939,32 @@ jmp choose_16_end
 when_19_end:
 choose_16_end:
 push-int 1
-push-int 99
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 100
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 101
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 102
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 103
+push-int 5
 clip
 lu 1
 pushsb 5
 push-int 6
-push-int 104
+push-int 5
 clip
 lu 1
 out 11
@@ -2120,7 +974,7 @@ cmp
 jz when_20_end
 pushsb 6
 push-int 7
-push-int 105
+push-int 5
 clip
 lu 1
 out 2
@@ -2133,18 +987,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 106
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 107
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 108
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -2162,9 +1016,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 109
+push-int 4
 push-int 1
-push-int 110
+push-int 4
 clip
 push-str aa
 modify-case
@@ -2173,37 +1027,37 @@ jmp choose_18_end
 when_21_end:
 choose_18_end:
 push-int 1
-push-int 111
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 112
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 113
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 114
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 115
+push-int 5
 clip
 lu 1
 pushsb 5
 push-int 6
-push-int 116
+push-int 5
 clip
 lu 1
 pushsb 6
 push-int 7
-push-int 117
+push-int 5
 clip
 lu 1
 out 13
@@ -2213,18 +1067,18 @@ push-int 0
 push-int 1
 call gen_nbr_determinante
 push-int 0
-push-int 118
+push-int 2
 clip
 push-str <PDET>
 cmp
 push-int 1
-push-int 119
+push-int 3
 clip
 push-str <np>
 cmp
 not
 push-int 1
-push-int 120
+push-int 3
 clip
 push-str <n><acr>
 cmp
@@ -2242,9 +1096,9 @@ lu 4
 pushbl
 out 2
 push-int 1
-push-int 121
+push-int 4
 push-int 1
-push-int 122
+push-int 4
 clip
 push-str aa
 modify-case
@@ -2253,35 +1107,35 @@ jmp choose_19_end
 when_22_end:
 choose_19_end:
 push-int 1
-push-int 123
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 124
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 125
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 126
+push-int 5
 clip
 lu 1
 out 7
 action_11_end:
 action_12_start:
 push-int 0
-push-int 127
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 128
+push-int 7
 clip
 push-str <inf>
 cmp
@@ -2289,26 +1143,26 @@ not
 and 2
 jz when_23_end
 push-int 1
-push-int 129
+push-int 8
 clip
 push-int 1
-push-int 130
+push-int 9
 clip
 push-int 0
-push-int 131
+push-int 6
 clip
 push-int 0
-push-int 132
+push-int 1
 clip
 push-int 1
-push-int 133
+push-int 10
 clip
 lu 5
 out 1
 jmp choose_20_end
 when_23_end:
 push-int 1
-push-int 134
+push-int 5
 clip
 lu 1
 out 1
@@ -2316,13 +1170,13 @@ choose_20_end:
 action_12_end:
 action_13_start:
 push-int 0
-push-int 135
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 136
+push-int 7
 clip
 push-str <inf>
 cmp
@@ -2330,72 +1184,72 @@ not
 and 2
 jz when_24_end
 push-int 1
-push-int 137
+push-int 8
 clip
 push-int 1
-push-int 138
+push-int 9
 clip
 push-int 0
-push-int 139
+push-int 6
 clip
 push-int 0
-push-int 140
+push-int 1
 clip
 push-int 1
-push-int 141
+push-int 10
 clip
 lu 5
 out 1
 jmp choose_21_end
 when_24_end:
 push-int 1
-push-int 142
+push-int 5
 clip
 lu 1
 out 1
 choose_21_end:
 pushsb 1
 push-int 2
-push-int 143
+push-int 5
 clip
 lu 1
 out 2
 action_13_end:
 action_14_start:
 push-int 0
-push-int 144
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_25_end
 push-int 0
-push-int 145
+push-int 6
 clip
 push-str <PD>
 cmp
 jz when_26_end
 push-int 2
-push-int 146
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 147
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 148
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 149
+push-int 1
 push-str <sp>
 storecl
 push-int 1
-push-int 150
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 151
+push-int 5
 clip
 lu 1
 mlu 2
@@ -2403,53 +1257,53 @@ out 1
 jmp choose_23_end
 when_26_end:
 push-int 0
-push-int 152
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_27_end
 push-int 2
-push-int 153
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 154
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 2
-push-int 155
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 156
+push-int 1
 push-str <sp>
 storecl
 jmp choose_24_end
 when_27_end:
 push-int 2
-push-int 157
+push-int 12
 push-str <prn><pro>
 storecl
 choose_24_end:
 push-int 2
-push-int 158
+push-int 5
 clip
 lu 1
 pushbl
 push-int 1
-push-int 159
+push-int 8
 clip
 push-int 1
-push-int 160
+push-int 9
 clip
 push-int 0
-push-int 161
+push-int 6
 clip
 push-int 0
-push-int 162
+push-int 1
 clip
 push-int 1
-push-int 163
+push-int 10
 clip
 lu 5
 out 3
@@ -2457,13 +1311,13 @@ choose_23_end:
 jmp choose_22_end
 when_25_end:
 push-int 0
-push-int 164
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 165
+push-int 7
 clip
 push-str <inf>
 cmp
@@ -2471,39 +1325,39 @@ not
 and 2
 jz when_28_end
 push-int 2
-push-int 166
+push-int 13
 push-str <pro>
 storecl
 push-int 2
-push-int 167
+push-int 5
 clip
 lu 1
 pushbl
 push-int 1
-push-int 168
+push-int 8
 clip
 push-int 1
-push-int 169
+push-int 9
 clip
 push-int 0
-push-int 170
+push-int 6
 clip
 push-int 0
-push-int 171
+push-int 1
 clip
 push-int 1
-push-int 172
+push-int 10
 clip
 lu 5
 out 3
 jmp choose_25_end
 when_28_end:
 push-int 1
-push-int 173
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 174
+push-int 5
 clip
 lu 1
 mlu 2
@@ -2513,43 +1367,43 @@ choose_22_end:
 action_14_end:
 action_15_start:
 push-int 0
-push-int 175
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_29_end
 push-int 0
-push-int 176
+push-int 6
 clip
 push-str <PD>
 cmp
 jz when_30_end
 push-int 2
-push-int 177
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 178
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 179
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 180
+push-int 1
 push-str <sp>
 storecl
 push-int 1
-push-int 181
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 182
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 183
+push-int 5
 clip
 lu 1
 mlu 3
@@ -2557,62 +1411,62 @@ out 1
 jmp choose_27_end
 when_30_end:
 push-int 0
-push-int 184
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_31_end
 push-int 2
-push-int 185
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 186
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 2
-push-int 187
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 188
+push-int 1
 push-str <sp>
 storecl
 jmp choose_28_end
 when_31_end:
 push-int 2
-push-int 189
+push-int 12
 push-str <prn><pro>
 storecl
 choose_28_end:
 push-int 3
-push-int 190
+push-int 13
 push-str <pro>
 storecl
 push-int 2
-push-int 191
+push-int 5
 clip
 lu 1
 pushbl
 push-int 3
-push-int 192
+push-int 5
 clip
 lu 1
 pushbl
 push-int 1
-push-int 193
+push-int 8
 clip
 push-int 1
-push-int 194
+push-int 9
 clip
 push-int 0
-push-int 195
+push-int 6
 clip
 push-int 0
-push-int 196
+push-int 1
 clip
 push-int 1
-push-int 197
+push-int 10
 clip
 lu 5
 out 5
@@ -2620,13 +1474,13 @@ choose_27_end:
 jmp choose_26_end
 when_29_end:
 push-int 0
-push-int 198
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 199
+push-int 7
 clip
 push-str <inf>
 cmp
@@ -2634,52 +1488,52 @@ not
 and 2
 jz when_32_end
 push-int 2
-push-int 200
+push-int 13
 push-str <pro>
 storecl
 push-int 3
-push-int 201
+push-int 13
 push-str <pro>
 storecl
 push-int 2
-push-int 202
+push-int 5
 clip
 lu 1
 pushbl
 push-int 3
-push-int 203
+push-int 5
 clip
 lu 1
 pushbl
 push-int 1
-push-int 204
+push-int 8
 clip
 push-int 1
-push-int 205
+push-int 9
 clip
 push-int 0
-push-int 206
+push-int 6
 clip
 push-int 0
-push-int 207
+push-int 1
 clip
 push-int 1
-push-int 208
+push-int 10
 clip
 lu 5
 out 5
 jmp choose_29_end
 when_32_end:
 push-int 1
-push-int 209
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 210
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 211
+push-int 5
 clip
 lu 1
 mlu 3
@@ -2689,48 +1543,48 @@ choose_26_end:
 action_15_end:
 action_16_start:
 push-int 2
-push-int 212
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_33_end
 push-int 0
-push-int 213
+push-int 6
 clip
 push-str <PD>
 cmp
 jz when_34_end
 push-int 3
-push-int 214
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 215
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 216
+push-int 6
 push-str <p3>
 storecl
 push-int 3
-push-int 217
+push-int 1
 push-str <sp>
 storecl
 push-int 1
-push-int 218
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 219
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 220
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 221
+push-int 5
 clip
 lu 1
 mlu 3
@@ -2738,57 +1592,57 @@ out 3
 jmp choose_31_end
 when_34_end:
 push-int 0
-push-int 222
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_35_end
 push-int 3
-push-int 223
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 224
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 225
+push-int 6
 push-str <p3>
 storecl
 push-int 3
-push-int 226
+push-int 1
 push-str <sp>
 storecl
 jmp choose_32_end
 when_35_end:
 choose_32_end:
 push-int 1
-push-int 227
+push-int 8
 clip
 push-int 1
-push-int 228
+push-int 9
 clip
 push-int 0
-push-int 229
+push-int 6
 clip
 push-int 0
-push-int 230
+push-int 1
 clip
 push-int 1
-push-int 231
+push-int 10
 clip
 lu 5
 pushsb 1
 push-int 2
-push-int 232
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 233
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 234
+push-int 5
 clip
 lu 1
 mlu 3
@@ -2797,13 +1651,13 @@ choose_31_end:
 jmp choose_30_end
 when_33_end:
 push-int 0
-push-int 235
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 236
+push-int 7
 clip
 push-str <inf>
 cmp
@@ -2811,28 +1665,28 @@ not
 and 2
 jz when_36_end
 push-int 1
-push-int 237
+push-int 8
 clip
 push-int 1
-push-int 238
+push-int 9
 clip
 push-int 0
-push-int 239
+push-int 6
 clip
 push-int 0
-push-int 240
+push-int 1
 clip
 push-int 1
-push-int 241
+push-int 10
 clip
 lu 5
 pushsb 1
 push-int 2
-push-int 242
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 243
+push-int 5
 clip
 lu 1
 mlu 2
@@ -2840,16 +1694,16 @@ out 3
 jmp choose_33_end
 when_36_end:
 push-int 1
-push-int 244
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 245
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 246
+push-int 5
 clip
 lu 1
 mlu 2
@@ -2859,31 +1713,31 @@ choose_30_end:
 action_16_end:
 action_17_start:
 push-int 0
-push-int 247
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_37_end
 push-int 0
-push-int 248
+push-int 6
 clip
 push-str <PD>
 cmp
 jz when_38_end
 push-int 2
-push-int 249
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 250
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 251
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 252
+push-int 1
 push-str <sp>
 storecl
 jmp choose_35_end
@@ -2893,48 +1747,48 @@ jmp choose_34_end
 when_37_end:
 choose_34_end:
 push-int 1
-push-int 253
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 254
+push-int 5
 clip
 lu 1
 mlu 2
 pushsb 2
 push-int 3
-push-int 255
+push-int 5
 clip
 lu 1
 out 3
 action_17_end:
 action_18_start:
 push-int 0
-push-int 256
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_39_end
 push-int 0
-push-int 257
+push-int 6
 clip
 push-str <PD>
 cmp
 jz when_40_end
 push-int 2
-push-int 258
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 259
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 260
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 261
+push-int 1
 push-str <sp>
 storecl
 jmp choose_37_end
@@ -2944,34 +1798,34 @@ jmp choose_36_end
 when_39_end:
 choose_36_end:
 push-int 1
-push-int 262
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 263
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 264
+push-int 5
 clip
 lu 1
 mlu 3
 pushsb 3
 push-int 4
-push-int 265
+push-int 5
 clip
 lu 1
 out 3
 action_18_end:
 action_19_start:
 push-int 0
-push-int 266
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 267
+push-int 7
 clip
 push-str <ger>
 cmp
@@ -2979,26 +1833,26 @@ not
 and 2
 jz when_41_end
 push-int 1
-push-int 268
+push-int 8
 clip
 push-int 1
-push-int 269
+push-int 9
 clip
 push-int 0
-push-int 270
+push-int 6
 clip
 push-int 0
-push-int 271
+push-int 1
 clip
 push-int 1
-push-int 272
+push-int 10
 clip
 lu 5
 out 1
 jmp choose_38_end
 when_41_end:
 push-int 1
-push-int 273
+push-int 5
 clip
 lu 1
 out 1
@@ -3006,13 +1860,13 @@ choose_38_end:
 action_19_end:
 action_20_start:
 push-int 0
-push-int 274
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 275
+push-int 7
 clip
 push-str <ger>
 cmp
@@ -3020,99 +1874,99 @@ not
 and 2
 jz when_42_end
 push-int 0
-push-int 276
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_43_end
 push-int 2
-push-int 277
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 278
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 2
-push-int 279
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 280
+push-int 1
 push-str <sp>
 storecl
 jmp choose_40_end
 when_43_end:
 choose_40_end:
 push-int 2
-push-int 281
+push-int 4
 clip
 push-str <prn><pro>
 push-int 2
-push-int 282
+push-int 15
 clip
 push-int 2
-push-int 283
+push-int 6
 clip
 push-int 2
-push-int 284
+push-int 0
 clip
 push-int 2
-push-int 285
+push-int 1
 clip
 lu 6
 pushsb 1
 push-int 1
-push-int 286
+push-int 8
 clip
 push-int 1
-push-int 287
+push-int 9
 clip
 push-int 0
-push-int 288
+push-int 6
 clip
 push-int 0
-push-int 289
+push-int 1
 clip
 push-int 2
-push-int 290
+push-int 10
 clip
 lu 5
 out 3
 jmp choose_39_end
 when_42_end:
 push-int 0
-push-int 291
+push-int 6
 clip
 push-str <PD>
 cmp
 push-int 0
-push-int 292
+push-int 7
 clip
 push-str <ger>
 cmp
 and 2
 jz when_44_end
 push-int 0
-push-int 293
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_45_end
 push-int 2
-push-int 294
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 295
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 296
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 297
+push-int 1
 push-str <sp>
 storecl
 jmp choose_42_end
@@ -3122,11 +1976,11 @@ jmp choose_41_end
 when_44_end:
 choose_41_end:
 push-int 1
-push-int 298
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 299
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3138,13 +1992,13 @@ call f_bcond
 action_20_end:
 action_21_start:
 push-int 0
-push-int 300
+push-int 6
 clip
 push-str <PD>
 cmp
 not
 push-int 0
-push-int 301
+push-int 7
 clip
 push-str <ger>
 cmp
@@ -3152,114 +2006,114 @@ not
 and 2
 jz when_46_end
 push-int 0
-push-int 302
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_47_end
 push-int 2
-push-int 303
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 304
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 2
-push-int 305
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 306
+push-int 1
 push-str <sp>
 storecl
 jmp choose_44_end
 when_47_end:
 choose_44_end:
 push-int 2
-push-int 307
+push-int 4
 clip
 push-str <prn><pro>
 push-int 2
-push-int 308
+push-int 15
 clip
 push-int 2
-push-int 309
+push-int 6
 clip
 push-int 2
-push-int 310
+push-int 0
 clip
 push-int 2
-push-int 311
+push-int 1
 clip
 lu 6
 pushsb 1
 push-int 3
-push-int 312
+push-int 4
 clip
 push-str <prn><pro>
 push-int 3
-push-int 313
+push-int 6
 clip
 push-int 3
-push-int 314
+push-int 0
 clip
 push-int 3
-push-int 315
+push-int 1
 clip
 lu 5
 pushbl
 push-int 1
-push-int 316
+push-int 8
 clip
 push-int 1
-push-int 317
+push-int 9
 clip
 push-int 0
-push-int 318
+push-int 6
 clip
 push-int 0
-push-int 319
+push-int 1
 clip
 push-int 2
-push-int 320
+push-int 10
 clip
 lu 5
 out 5
 jmp choose_43_end
 when_46_end:
 push-int 0
-push-int 321
+push-int 6
 clip
 push-str <PD>
 cmp
 push-int 0
-push-int 322
+push-int 7
 clip
 push-str <ger>
 cmp
 and 2
 jz when_48_end
 push-int 0
-push-int 323
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_49_end
 push-int 2
-push-int 324
+push-int 4
 push-str se
 storecl
 push-int 2
-push-int 325
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 2
-push-int 326
+push-int 6
 push-str <p3>
 storecl
 push-int 2
-push-int 327
+push-int 1
 push-str <sp>
 storecl
 jmp choose_46_end
@@ -3269,15 +2123,15 @@ jmp choose_45_end
 when_48_end:
 choose_45_end:
 push-int 1
-push-int 328
+push-int 5
 clip
 lu 1
 push-int 2
-push-int 329
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 330
+push-int 5
 clip
 lu 1
 mlu 3
@@ -3289,39 +2143,39 @@ call f_bcond
 action_21_end:
 action_22_start:
 push-int 0
-push-int 331
+push-int 14
 clip
 push-str <HAY>
 cmp
 jz when_50_end
 push-int 1
-push-int 332
+push-int 7
 clip
 push-str <pri>
 cmp
 jz when_51_end
 push-int 1
-push-int 333
+push-int 4
 push-str hay
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push-int 334
+push-int 14
 push-str <vblex>
 storecl
 jmp choose_48_end
 when_51_end:
 push-int 1
-push-int 335
+push-int 4
 push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push-int 336
+push-int 14
 push-str <vbhaver>
 storecl
 choose_48_end:
@@ -3329,26 +2183,26 @@ jmp choose_47_end
 when_50_end:
 choose_47_end:
 push-int 1
-push-int 337
+push-int 5
 clip
 lu 1
 out 1
 action_22_end:
 action_23_start:
 push-int 2
-push-int 338
+push-int 6
 push-int 1
-push-int 339
+push-int 6
 clip
 storecl
 push-int 2
-push-int 340
 push-int 1
-push-int 341
+push-int 1
+push-int 1
 clip
 storecl
 push-int 2
-push-int 342
+push-int 5
 clip
 lu 1
 out 1
@@ -3358,24 +2212,24 @@ call f_bcond
 action_23_end:
 action_24_start:
 push-int 2
-push-int 343
+push-int 6
 push-int 1
-push-int 344
+push-int 6
 clip
 storecl
 push-int 2
-push-int 345
 push-int 1
-push-int 346
+push-int 1
+push-int 1
 clip
 storecl
 push-int 2
-push-int 347
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 3
-push-int 348
+push-int 5
 clip
 lu 1
 out 3
@@ -3385,29 +2239,29 @@ call f_bcond
 action_24_end:
 action_25_start:
 push-int 2
-push-int 349
+push-int 6
 push-int 1
-push-int 350
+push-int 6
 clip
 storecl
 push-int 2
-push-int 351
 push-int 1
-push-int 352
+push-int 1
+push-int 1
 clip
 storecl
 push-int 2
-push-int 353
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 3
-push-int 354
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 4
-push-int 355
+push-int 5
 clip
 lu 1
 out 5
@@ -3417,51 +2271,51 @@ call f_bcond
 action_25_end:
 action_26_start:
 push-int 0
-push-int 356
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_52_end
 push-int 0
-push-int 357
+push-int 7
 clip
 push-str <ger>
 cmp
 push-int 0
-push-int 358
+push-int 6
 clip
 push-str <PD>
 cmp
 and 2
 jz when_53_end
 push-int 1
-push-int 359
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 360
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 1
-push-int 361
+push-int 6
 push-str <p3>
 storecl
 push-int 1
-push-int 362
+push-int 1
 push-str <sp>
 storecl
 push-int 2
-push-int 363
+push-int 5
 clip
 lu 1
 push-int 1
-push-int 364
+push-int 5
 clip
 lu 1
 mlu 2
 pushsb 1
 push-int 3
-push-int 365
+push-int 5
 clip
 lu 1
 out 3
@@ -3471,52 +2325,52 @@ call f_bcond
 jmp choose_50_end
 when_53_end:
 push-int 0
-push-int 366
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_54_end
 push-int 1
-push-int 367
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 368
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 1
-push-int 369
+push-int 1
 push-str <sp>
 storecl
 push-int 1
-push-int 370
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 371
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 372
+push-int 5
 clip
 lu 1
 out 5
 jmp choose_50_end
 when_54_end:
 push-int 1
-push-int 373
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 374
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 375
+push-int 5
 clip
 lu 1
 out 5
@@ -3524,32 +2378,32 @@ choose_50_end:
 jmp choose_49_end
 when_52_end:
 push-int 0
-push-int 376
+push-int 14
 clip
 push-str <HAY>
 cmp
 jz when_55_end
 push-int 2
-push-int 377
+push-int 4
 push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 2
-push-int 378
+push-int 14
 push-str <vbhaver>
 storecl
 jmp choose_51_end
 when_55_end:
 choose_51_end:
 push-int 1
-push-int 379
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 380
+push-int 5
 clip
 lu 1
 out 3
@@ -3557,43 +2411,43 @@ choose_49_end:
 action_26_end:
 action_27_start:
 push-int 0
-push-int 381
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_56_end
 push-int 0
-push-int 382
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_57_end
 push-int 3
-push-int 383
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 384
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 385
+push-int 1
 push-str <sp>
 storecl
 jmp choose_53_end
 when_57_end:
 choose_53_end:
 push-int 1
-push-int 386
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 387
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 388
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3601,12 +2455,12 @@ out 3
 jmp choose_52_end
 when_56_end:
 push-int 1
-push-int 389
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 390
+push-int 5
 clip
 lu 1
 out 3
@@ -3614,47 +2468,47 @@ choose_52_end:
 action_27_end:
 action_28_start:
 push-int 0
-push-int 391
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_58_end
 push-int 0
-push-int 392
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_59_end
 push-int 3
-push-int 393
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 394
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 395
+push-int 1
 push-str <sp>
 storecl
 jmp choose_55_end
 when_59_end:
 choose_55_end:
 push-int 1
-push-int 396
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 397
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 398
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 399
+push-int 5
 clip
 lu 1
 mlu 3
@@ -3662,16 +2516,16 @@ out 3
 jmp choose_54_end
 when_58_end:
 push-int 1
-push-int 400
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 401
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 402
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3680,48 +2534,48 @@ choose_54_end:
 action_28_end:
 action_29_start:
 push-int 3
-push-int 403
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_60_end
 push-int 0
-push-int 404
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_61_end
 push-int 4
-push-int 405
+push-int 4
 push-str se
 storecl
 push-int 4
-push-int 406
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 4
-push-int 407
+push-int 1
 push-str <sp>
 storecl
 jmp choose_57_end
 when_61_end:
 choose_57_end:
 push-int 1
-push-int 408
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 409
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 410
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 411
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3729,17 +2583,17 @@ out 5
 jmp choose_56_end
 when_60_end:
 push-int 1
-push-int 412
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 413
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 414
+push-int 5
 clip
 lu 1
 out 5
@@ -3747,53 +2601,53 @@ choose_56_end:
 action_29_end:
 action_30_start:
 push-int 4
-push-int 415
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_62_end
 push-int 0
-push-int 416
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_63_end
 push-int 5
-push-int 417
+push-int 4
 push-str se
 storecl
 push-int 5
-push-int 418
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 5
-push-int 419
+push-int 1
 push-str <sp>
 storecl
 jmp choose_59_end
 when_63_end:
 choose_59_end:
 push-int 1
-push-int 420
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 421
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 422
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 423
+push-int 5
 clip
 lu 1
 push-int 5
-push-int 424
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3801,22 +2655,22 @@ out 7
 jmp choose_58_end
 when_62_end:
 push-int 1
-push-int 425
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 426
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 427
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 428
+push-int 5
 clip
 lu 1
 out 7
@@ -3824,46 +2678,46 @@ choose_58_end:
 action_30_end:
 action_31_start:
 push-int 0
-push-int 429
+push-int 7
 clip
 push-str <ifip>
 cmp
 not
 jz when_64_end
 push-int 0
-push-int 430
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_65_end
 push-int 0
-push-int 431
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_66_end
 push-int 1
-push-int 432
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 433
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 1
-push-int 434
+push-int 1
 push-str <sp>
 storecl
 jmp choose_62_end
 when_66_end:
 choose_62_end:
 push-int 1
-push-int 435
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 436
+push-int 5
 clip
 lu 1
 pushsb 2
@@ -3871,51 +2725,51 @@ out 4
 jmp choose_61_end
 when_65_end:
 push-int 1
-push-int 437
+push-int 5
 clip
 lu 1
 pushsb 1
 out 2
 choose_61_end:
 push-int 0
-push-int 438
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_67_end
 push-int 3
-push-int 439
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_68_end
 push-int 0
-push-int 440
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_69_end
 push-int 4
-push-int 441
+push-int 4
 push-str se
 storecl
 push-int 4
-push-int 442
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 4
-push-int 443
+push-int 1
 push-str <sp>
 storecl
 jmp choose_65_end
 when_69_end:
 choose_65_end:
 push-int 3
-push-int 444
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 445
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3923,7 +2777,7 @@ out 1
 jmp choose_64_end
 when_68_end:
 push-int 3
-push-int 446
+push-int 5
 clip
 lu 1
 mlu 1
@@ -3932,38 +2786,38 @@ choose_64_end:
 jmp choose_63_end
 when_67_end:
 push-int 2
-push-int 447
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_70_end
 push-int 0
-push-int 448
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_71_end
 push-int 3
-push-int 449
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 450
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 451
+push-int 1
 push-str <sp>
 storecl
 jmp choose_67_end
 when_71_end:
 choose_67_end:
 push-int 2
-push-int 452
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 453
+push-int 5
 clip
 lu 1
 mlu 2
@@ -3971,7 +2825,7 @@ out 1
 jmp choose_66_end
 when_70_end:
 push-int 2
-push-int 454
+push-int 5
 clip
 lu 1
 mlu 1
@@ -3981,44 +2835,44 @@ choose_63_end:
 jmp choose_60_end
 when_64_end:
 push-int 0
-push-int 455
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_72_end
 push-int 0
-push-int 456
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_73_end
 push-int 1
-push-int 457
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 458
+push-int 12
 push-str <prn><pro><ref>
 storecl
 push-int 1
-push-int 459
+push-int 1
 push-str <sp>
 storecl
 jmp choose_69_end
 when_73_end:
 choose_69_end:
 push-int 1
-push-int 460
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 461
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 462
+push-int 5
 clip
 lu 1
 pushsb 3
@@ -4026,56 +2880,56 @@ out 6
 jmp choose_68_end
 when_72_end:
 push-int 1
-push-int 463
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 464
+push-int 5
 clip
 lu 1
 pushsb 2
 out 4
 choose_68_end:
 push-int 0
-push-int 465
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_74_end
 push-int 4
-push-int 466
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_75_end
 push-int 0
-push-int 467
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_76_end
 push-int 5
-push-int 468
+push-int 4
 push-str se
 storecl
 push-int 5
-push-int 469
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 5
-push-int 470
+push-int 1
 push-str <sp>
 storecl
 jmp choose_72_end
 when_76_end:
 choose_72_end:
 push-int 4
-push-int 471
+push-int 5
 clip
 lu 1
 push-int 5
-push-int 472
+push-int 5
 clip
 lu 1
 mlu 2
@@ -4083,7 +2937,7 @@ out 1
 jmp choose_71_end
 when_75_end:
 push-int 4
-push-int 473
+push-int 5
 clip
 lu 1
 mlu 1
@@ -4092,38 +2946,38 @@ choose_71_end:
 jmp choose_70_end
 when_74_end:
 push-int 3
-push-int 474
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_77_end
 push-int 0
-push-int 475
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_78_end
 push-int 4
-push-int 476
+push-int 4
 push-str se
 storecl
 push-int 4
-push-int 477
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 4
-push-int 478
+push-int 1
 push-str <sp>
 storecl
 jmp choose_74_end
 when_78_end:
 choose_74_end:
 push-int 3
-push-int 479
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 480
+push-int 5
 clip
 lu 1
 mlu 2
@@ -4131,7 +2985,7 @@ out 1
 jmp choose_73_end
 when_77_end:
 push-int 3
-push-int 481
+push-int 5
 clip
 lu 1
 mlu 1
@@ -4142,54 +2996,54 @@ choose_60_end:
 action_31_end:
 action_32_start:
 push-int 0
-push-int 482
+push-int 7
 clip
 push-str <ifip>
 cmp
 not
 jz when_79_end
 push-int 2
-push-int 483
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_80_end
 push-int 0
-push-int 484
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_81_end
 push-int 3
-push-int 485
+push-int 4
 push-str se
 storecl
 push-int 3
-push-int 486
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 3
-push-int 487
+push-int 1
 push-str <sp>
 storecl
 jmp choose_77_end
 when_81_end:
 choose_77_end:
 push-int 1
-push-int 488
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 489
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 490
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 491
+push-int 5
 clip
 lu 1
 mlu 3
@@ -4197,16 +3051,16 @@ out 3
 jmp choose_76_end
 when_80_end:
 push-int 1
-push-int 492
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 493
+push-int 5
 clip
 lu 1
 push-int 3
-push-int 494
+push-int 5
 clip
 lu 1
 mlu 2
@@ -4215,52 +3069,52 @@ choose_76_end:
 jmp choose_75_end
 when_79_end:
 push-int 3
-push-int 495
+push-int 14
 clip
 push-str <vblex><pron>
 cmp
 jz when_82_end
 push-int 0
-push-int 496
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_83_end
 push-int 4
-push-int 497
+push-int 4
 push-str se
 storecl
 push-int 4
-push-int 498
+push-int 12
 push-str <prn><enc><ref>
 storecl
 push-int 4
-push-int 499
+push-int 1
 push-str <sp>
 storecl
 jmp choose_79_end
 when_83_end:
 choose_79_end:
 push-int 1
-push-int 500
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 501
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 502
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 503
+push-int 5
 clip
 lu 1
 push-int 5
-push-int 504
+push-int 5
 clip
 lu 1
 mlu 3
@@ -4268,21 +3122,21 @@ out 5
 jmp choose_78_end
 when_82_end:
 push-int 1
-push-int 505
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 506
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 507
+push-int 5
 clip
 lu 1
 push-int 4
-push-int 508
+push-int 5
 clip
 lu 1
 mlu 2
@@ -4292,64 +3146,64 @@ choose_75_end:
 action_32_end:
 action_33_start:
 push-int 0
-push-int 509
+push-int 11
 clip
 push-str <SV><pron>
 cmp
 jz when_84_end
 push-int 0
-push-int 510
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_85_end
 push-int 1
-push-int 511
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 512
+push-int 16
 push-str <prn><pro><ref>
 storecl
 push-int 1
-push-int 513
+push-int 1
 push-str <sp>
 storecl
 jmp choose_81_end
 when_85_end:
 choose_81_end:
 push-int 1
-push-int 514
+push-int 5
 clip
 lu 1
 pushsb 1
 push-int 2
-push-int 515
+push-int 5
 clip
 lu 1
 out 3
 push-int 0
-push-int 516
+push-int 4
 clip
 push-str pro_verbcj
 cmpi
 push-int 0
-push-int 517
+push-int 4
 clip
 push-str auxmod_inf
 cmpi
 push-int 0
-push-int 518
+push-int 4
 clip
 push-str mod_inf
 cmpi
 push-int 0
-push-int 519
+push-int 4
 clip
 push-str have_pp
 cmpi
 push-int 0
-push-int 520
+push-int 4
 clip
 push-str be_ger
 cmpi
@@ -4357,7 +3211,7 @@ or 5
 jz when_86_end
 pushsb 2
 push-int 3
-push-int 521
+push-int 5
 clip
 lu 1
 out 2
@@ -4365,42 +3219,42 @@ jmp choose_82_end
 when_86_end:
 choose_82_end:
 push-int 0
-push-int 522
+push-int 4
 clip
 push-str auxmod_mod_inf
 cmpi
 push-int 0
-push-int 523
+push-int 4
 clip
 push-str auxmod_have_pp
 cmpi
 push-int 0
-push-int 524
+push-int 4
 clip
 push-str pro_be_ger
 cmpi
 push-int 0
-push-int 525
+push-int 4
 clip
 push-str pro_auxmod_inf
 cmpi
 push-int 0
-push-int 526
+push-int 4
 clip
 push-str pro_mod_inf
 cmpi
 push-int 0
-push-int 527
+push-int 4
 clip
 push-str pro_have_pp
 cmpi
 push-int 0
-push-int 528
+push-int 4
 clip
 push-str pro_do_inf
 cmpi
 push-int 0
-push-int 529
+push-int 4
 clip
 push-str going_to_inf
 cmpi
@@ -4408,12 +3262,12 @@ or 8
 jz when_87_end
 pushsb 2
 push-int 3
-push-int 530
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 531
+push-int 5
 clip
 lu 1
 out 4
@@ -4421,17 +3275,17 @@ jmp choose_83_end
 when_87_end:
 choose_83_end:
 push-int 0
-push-int 532
+push-int 4
 clip
 push-str pro_auxmod_mod_inf
 cmpi
 push-int 0
-push-int 533
+push-int 4
 clip
 push-str pro_auxmod_have_pp
 cmpi
 push-int 0
-push-int 534
+push-int 4
 clip
 push-str pro_going_to_inf
 cmpi
@@ -4439,17 +3293,17 @@ or 3
 jz when_88_end
 pushsb 2
 push-int 3
-push-int 535
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 536
+push-int 5
 clip
 lu 1
 pushsb 4
 push-int 5
-push-int 537
+push-int 5
 clip
 lu 1
 out 6
@@ -4459,95 +3313,95 @@ choose_84_end:
 jmp choose_80_end
 when_84_end:
 push-int 0
-push-int 538
+push-int 14
 clip
 push-str <HAY>
 cmp
 jz when_89_end
 push-int 0
-push-int 539
+push-int 4
 clip
 push-str verbcj
 cmpi
 jz when_90_end
 push-int 1
-push-int 540
+push-int 7
 clip
 push-str <pri>
 cmp
 jz when_91_end
 push-int 1
-push-int 541
+push-int 4
 push-str hay
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push-int 542
+push-int 14
 push-str <vblex>
 storecl
 jmp choose_87_end
 when_91_end:
 push-int 1
-push-int 543
+push-int 4
 push-str haber
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push-int 544
+push-int 14
 push-str <vbhaver>
 storecl
 choose_87_end:
 jmp choose_86_end
 when_90_end:
 push-int 0
-push-int 545
+push-int 4
 clip
 push-str auxmod_inf
 cmpi
 push-int 0
-push-int 546
+push-int 4
 clip
 push-str mod_inf
 cmpi
 push-int 0
-push-int 547
+push-int 4
 clip
 push-str have_pp
 cmpi
 or 3
 jz when_92_end
 push-int 2
-push-int 548
+push-int 4
 push-str haber
 storecl
 push-int 2
-push-int 549
+push-int 14
 push-str <vbhaver>
 storecl
 jmp choose_86_end
 when_92_end:
 push-int 0
-push-int 550
+push-int 4
 clip
 push-str auxmod_mod_inf
 cmpi
 push-int 0
-push-int 551
+push-int 4
 clip
 push-str auxmod_have_pp
 cmpi
 or 2
 jz when_93_end
 push-int 3
-push-int 552
+push-int 4
 push-str haber
 storecl
 push-int 3
-push-int 553
+push-int 14
 push-str <vbhaver>
 storecl
 jmp choose_86_end
@@ -4557,32 +3411,32 @@ jmp choose_85_end
 when_89_end:
 choose_85_end:
 push-int 1
-push-int 554
+push-int 5
 clip
 lu 1
 out 1
 push-int 0
-push-int 555
+push-int 4
 clip
 push-str pro_verbcj
 cmpi
 push-int 0
-push-int 556
+push-int 4
 clip
 push-str auxmod_inf
 cmpi
 push-int 0
-push-int 557
+push-int 4
 clip
 push-str mod_inf
 cmpi
 push-int 0
-push-int 558
+push-int 4
 clip
 push-str have_pp
 cmpi
 push-int 0
-push-int 559
+push-int 4
 clip
 push-str be_ger
 cmpi
@@ -4590,7 +3444,7 @@ or 5
 jz when_94_end
 pushsb 1
 push-int 2
-push-int 560
+push-int 5
 clip
 lu 1
 out 2
@@ -4598,47 +3452,47 @@ jmp choose_88_end
 when_94_end:
 choose_88_end:
 push-int 0
-push-int 561
+push-int 4
 clip
 push-str auxmod_mod_inf
 cmpi
 push-int 0
-push-int 562
+push-int 4
 clip
 push-str auxmod_have_pp
 cmpi
 push-int 0
-push-int 563
+push-int 4
 clip
 push-str pro_be_ger
 cmpi
 push-int 0
-push-int 564
+push-int 4
 clip
 push-str pro_auxmod_inf
 cmpi
 push-int 0
-push-int 565
+push-int 4
 clip
 push-str pro_mod_inf
 cmpi
 push-int 0
-push-int 566
+push-int 4
 clip
 push-str pro_have_pp
 cmpi
 push-int 0
-push-int 567
+push-int 4
 clip
 push-str pro_be_ger
 cmpi
 push-int 0
-push-int 568
+push-int 4
 clip
 push-str pro_do_inf
 cmpi
 push-int 0
-push-int 569
+push-int 4
 clip
 push-str going_to_inf
 cmpi
@@ -4646,12 +3500,12 @@ or 9
 jz when_95_end
 pushsb 1
 push-int 2
-push-int 570
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 571
+push-int 5
 clip
 lu 1
 out 4
@@ -4659,17 +3513,17 @@ jmp choose_89_end
 when_95_end:
 choose_89_end:
 push-int 0
-push-int 572
+push-int 4
 clip
 push-str pro_auxmod_mod_inf
 cmpi
 push-int 0
-push-int 573
+push-int 4
 clip
 push-str pro_auxmod_have_pp
 cmpi
 push-int 0
-push-int 574
+push-int 4
 clip
 push-str pro_going_to_inf
 cmpi
@@ -4677,17 +3531,17 @@ or 3
 jz when_96_end
 pushsb 1
 push-int 2
-push-int 575
+push-int 5
 clip
 lu 1
 pushsb 2
 push-int 3
-push-int 576
+push-int 5
 clip
 lu 1
 pushsb 3
 push-int 4
-push-int 577
+push-int 5
 clip
 lu 1
 out 6
@@ -4698,65 +3552,65 @@ choose_80_end:
 action_33_end:
 action_34_start:
 push-int 0
-push-int 578
+push-int 6
 clip
 push-str <p3>
 cmp
 jz when_97_end
 push-int 1
-push-int 579
+push-int 4
 push-str se
 storecl
 push-int 1
-push-int 580
+push-int 0
 push-str <mf>
 storecl
 push-int 1
-push-int 581
+push-int 1
 push-str <sp>
 storecl
 push-int 1
-push-int 582
+push-int 16
 push-str <prn><pro><ref>
 storecl
 jmp choose_91_end
 when_97_end:
 choose_91_end:
 push-int 1
-push-int 583
+push-int 5
 clip
 lu 1
 out 1
 action_34_end:
 action_35_start:
 push-int 1
-push-int 584
+push-int 4
 push-str hi
 storecl
 push-int 1
-push-int 585
+push-int 9
 push-str <prn><pro><adv>
 storecl
 push-int 1
-push-int 586
+push-int 5
 clip
 lu 1
 out 1
 action_35_end:
 action_36_start:
 push-int 1
-push-int 587
+push-int 4
 push-str tener
 push-int 0
 get-case-from
 modify-case
 storecl
 push-int 1
-push-int 588
+push-int 14
 push-str <vblex>
 storecl
 push-int 1
-push-int 589
+push-int 5
 clip
 lu 1
 out 1

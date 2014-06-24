@@ -28,69 +28,23 @@ push-str <PREP>
 push-str <SN>|<SN><*>
 push-int 2
 addtrie action_1_start
-push-str lem
-store-lp 3
 push-str asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea
-store-lp 4
-push-str tags
-store-lp 5
-push-str lem
-store-lp 6
-push-str tags
-store-lp 7
-push-str chcontent
-store-lp 8
-push-str lem
-store-lp 9
-push-str tags
-store-lp 10
-push-str chcontent
-store-lp 11
+store-lp 3
 push-str <PREP>
 push-str <SA>|<SA><*>
 push-int 2
 addtrie action_2_start
-push-str lem
-store-lp 12
-push-str asupra|contra|împotriva|înaintea|dinaintea|împrejurul|dinăuntrul|înapoia|deasupra|în fața|în dosul|în spatele|la mijlocul|în centrul|în vremea|pe vremea|în timpul|din timpul|din cauza|din pricina|în vederea|în folosul|în favoarea|în defavoarea|în detrimentul|în paguba|în ciuda|în pofida|în numele|la adresa|cu excepția|în afara|datorită|grație|mulțumită|conform|potrivit|contrar|asemenea|asemeni|aidoma|așijderea
-store-lp 13
-push-str tags
-store-lp 14
-push-str lem
-store-lp 15
-push-str tags
-store-lp 16
-push-str chcontent
-store-lp 17
-push-str lem
-store-lp 18
-push-str tags
-store-lp 19
-push-str chcontent
-store-lp 20
 push-str <SA>|<SA><*>
 push-int 1
 addtrie action_3_start
-push-str lem
-store-lp 21
-push-str tags
-store-lp 22
-push-str chcontent
-store-lp 23
 push-str <DET><*>
 push-int 1
 addtrie action_4_start
-push-str lem
-store-lp 24
-push-str tags
-store-lp 25
-push-str chcontent
-store-lp 26
 push-str <sent>
 push-int 1
 addtrie action_5_start
 push-str whole
-store-lp 27
+store-lp 4
 patterns_end:
 action_0_start:
 push-int 1
@@ -107,100 +61,100 @@ out 1
 action_0_end:
 action_1_start:
 push-int 1
-push-int 3
+push-int 0
 clip
-push-int 4
+push-int 3
 inig
 jz when_1_end
 push-int 2
-push-int 5
+push-int 1
 push-str <SN><dg>
 storecl
 jmp choose_1_end
 when_1_end:
 choose_1_end:
 push-int 1
-push-int 6
+push-int 0
 clip
 push-int 1
-push-int 7
+push-int 1
 clip
 push-int 1
-push-int 8
+push-int 2
 clip
 chunk 3
 pushsb 1
 push-int 2
-push-int 9
+push-int 0
 clip
 push-int 2
-push-int 10
+push-int 1
 clip
 push-int 2
-push-int 11
+push-int 2
 clip
 chunk 3
 out 3
 action_1_end:
 action_2_start:
 push-int 1
-push-int 12
+push-int 0
 clip
-push-int 13
+push-int 3
 inig
 jz when_2_end
 push-int 2
-push-int 14
+push-int 1
 push-str <SN><dg>
 storecl
 jmp choose_2_end
 when_2_end:
 choose_2_end:
 push-int 1
-push-int 15
+push-int 0
 clip
 push-int 1
-push-int 16
+push-int 1
 clip
 push-int 1
-push-int 17
+push-int 2
 clip
 chunk 3
 pushsb 1
 push-int 2
-push-int 18
+push-int 0
 clip
 push-int 2
-push-int 19
+push-int 1
 clip
 push-int 2
-push-int 20
+push-int 2
 clip
 chunk 3
 out 3
 action_2_end:
 action_3_start:
 push-int 1
-push-int 21
+push-int 0
 clip
 push-int 1
-push-int 22
+push-int 1
 clip
 push-int 1
-push-int 23
+push-int 2
 clip
 chunk 3
 out 1
 action_3_end:
 action_4_start:
 push-int 1
-push-int 24
+push-int 0
 clip
 push-int 1
-push-int 25
+push-int 1
 clip
 push-int 1
-push-int 26
+push-int 2
 clip
 chunk 3
 out 1
@@ -210,7 +164,7 @@ push-str nombre
 push-str <sg>
 storev
 push-int 1
-push-int 27
+push-int 4
 clip
 chunk 1
 out 1
