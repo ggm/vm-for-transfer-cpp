@@ -76,6 +76,19 @@ static const unsigned int RULE = 0;
 static const unsigned int WHEN = 1;
 static const unsigned int CHOOSE = 2;
 
+namespace std {
+  template<>
+  struct hash<std::vector<std::wstring>> {
+    size_t operator()(const std::vector<std::wstring>& v) const {
+      size_t ret = 0;
+      for(const wstring& wstr : v) {
+        ret ^= std::hash<std::wstring>()(wstr);
+      }
+      return ret;
+    }
+  };
+}
+
 /// This class generates code as a predefined pseudo-assembly.
 class AssemblyCodeGenerator: public CodeGenerator {
 
@@ -152,7 +165,6 @@ public:
   void genEndsWithEnd(const Event &);
   void genContainsSubstringEnd(const Event &);
 
-
 private:
   /// Used to get the next address of an instruction if needed.
   int nextAddress;
@@ -174,8 +186,6 @@ private:
 
   /// Flag to check if the jump to the rules section was already added.
   bool jumpToRulesSection;
-
-  int listPoolNextIndex;
 };
 
 #endif /* ASSEMBLY_CODE_GENERATOR_H_ */

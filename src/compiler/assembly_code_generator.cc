@@ -18,6 +18,7 @@
 #include <assembly_code_generator.h>
 
 #include <sstream>
+#include <unordered_map>
 
 #include <compiler_exception.h>
 #include <wstring_utils.h>
@@ -28,7 +29,6 @@ AssemblyCodeGenerator::AssemblyCodeGenerator() {
   nextLabel[WHEN] = 0;
   nextLabel[CHOOSE] = 0;
   jumpToRulesSection = false;
-  listPoolNextIndex = 0;
 }
 
 /**
@@ -71,29 +71,25 @@ void AssemblyCodeGenerator::addPatternsCode(const wstring &code) {
 }
 
 void AssemblyCodeGenerator::genCodePushListOnStack(const vector<wstring>& list) {
-  // Push list on stack in the preprocessing section.
-  genPatternsCodePushListOnStack(list);
+  static unordered_map<vector<wstring>, int> listIndexMap;
+  auto it = listIndexMap.find(list);
 
-  // Generate instruction so the list gets stored in the list pool.
   wstringstream ws;
-  ws << listPoolNextIndex;
-  addPatternsCode(STORE_LIST_POOL_OP + INSTR_SEP + ws.str());
+  if(it != listIndexMap.end()) {
+    ws << it->second;
+  } else {
+    // Push list on stack in the preprocessing section.
+    genPatternsCodePushListOnStack(list);
+    int index = static_cast<int>(listIndexMap.size());
+    listIndexMap[list] = index;
+    ws << index;
+
+    // Generate instruction so the list gets stoqred in the list pool.
+    addPatternsCode(STORE_LIST_POOL_OP + INSTR_SEP + ws.str());
+  }
 
   // Instead of the list, push the index in the list pool.
   addCode(PUSH_INT_OP + INSTR_SEP + ws.str());
-//
-//  wstring strList(L"");
-//  if(list.size() > 0) {
-//    strList = list[0];
-//    for(size_t i = 1; i < list.size(); ++i) {
-//      strList += L"|";
-//      strList += list[i];
-//    }
-//  }
-//
-//  addCode(PUSH_STR_OP + INSTR_SEP + strList);
-
-  ++listPoolNextIndex;
 }
 
 void AssemblyCodeGenerator::genPatternsCodePushListOnStack(const vector<wstring>& list) {
